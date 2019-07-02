@@ -13,9 +13,10 @@ before_install:
 script:
   # Test&Build
   - docker-compose build app
+after_success:
   # Deploy
-  - scp dashboard.tar root@185.141.33.33:/home/docker-images/
-  - ssh root@185.141.33.33 'bash -s' < deploy.sh
+  - scp dashboard.tar $SSH_USERNAME@185.141.33.33:/home/docker-images/
+  - ssh  $SSH_USERNAME@185.141.33.33 'bash -s' < deploy.sh
 notifications:
   email:
     - nazmialtun@windowslive.com
