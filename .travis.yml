@@ -15,8 +15,8 @@ script:
   - docker-compose build app
 after_success:
   # Deploy
-  - scp dashboard.tar $SSH_USERNAME@$SSH_HOST:/home/docker-images/
-  - ssh  $SSH_USERNAME@$SSH_HOST 'bash -s' < deploy.sh
+  - sshpass -p $SSH_PASSWORD scp dashboard.tar $SSH_USERNAME@$SSH_HOST:/home/docker-images/
+  - sshpass -p $SSH_PASSWORD ssh  $SSH_USERNAME@$SSH_HOST 'bash -s' < deploy.sh
 notifications:
   email:
     - nazmialtun@windowslive.com
