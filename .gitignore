@@ -1,0 +1,6 @@
+node_modules
+.next
+*.log
+coverage
+dist
+/public/env-config.js

@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  app:
+    image: testokur-dashboard:latest
+    build: .
+    ports:
+      - '5080:80'
+    environment:
+      - 'authority=https://kimlik-qa.testokur.com'
+    volumes:
+      - npm-cache:/root/.npm
+  mock:
+    image: nazmialtun/mockizen:latest
+    volumes:
+      - ./mocks:/opt/app/mocks
+    expose:
+      - '8080'
+    ports:
+      - '8097:8080'
+volumes:
+  npm-cache:
