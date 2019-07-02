@@ -17,10 +17,9 @@ addons:
 script:
   # Test&Build
   - docker-compose build app
-after_success:
-  # Deploy
   - docker save -o dashboard.tar testokur-dashboard:latest
   - sshpass -p $SSH_PASSWORD scp dashboard.tar $SSH_USERNAME@$SSH_HOST:/home/docker-images/
+after_success:
   - sshpass -p $SSH_PASSWORD ssh  $SSH_USERNAME@$SSH_HOST 'bash -s' < deploy.sh
 notifications:
   email:
