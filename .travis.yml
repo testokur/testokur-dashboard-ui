@@ -10,6 +10,10 @@ before_install:
     > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
+addons:
+  apt:
+    packages:
+    - sshpass
 script:
   # Test&Build
   - docker-compose build app
