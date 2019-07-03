@@ -1,6 +1,6 @@
 version: 2
 jobs:
-   build:
+  build:
     machine: true
     steps:
       - checkout
@@ -15,14 +15,19 @@ jobs:
           name: Test&Build
           command: |
             docker-compose build app
-      - deploy:
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - run:
           name: compress the image file
           command: |
             docker save -o dashboard.tar testokur-dashboard:latest
+      - run:
           name: copy image to the app server
           command: |
             scp dashboard.tar $SSH_USERNAME@$SSH_HOST:/home/docker-images/
-          name: run
+      - run:
+          name: run the app
           command: |
             ssh  $SSH_USERNAME@$SSH_HOST 'bash -s' < deploy.sh
-

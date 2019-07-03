@@ -13,7 +13,7 @@ before_install:
 addons:
   apt:
     packages:
-    - sshpass
+      - sshpass
 script:
   # Test&Build
   - docker-compose build app
