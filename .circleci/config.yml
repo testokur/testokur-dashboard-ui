@@ -1,9 +1,7 @@
 version: 2
 jobs:
    build:
-    docker:
-      - image: node:current-alpine
-      - image: nginx:mainline-alpine
+    machine: true
     steps:
       - checkout
       - run:
