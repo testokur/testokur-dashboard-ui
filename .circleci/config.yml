@@ -31,3 +31,11 @@ jobs:
           name: run the app
           command: |
             ssh  $SSH_USERNAME@$SSH_HOST 'bash -s' < deploy.sh
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
