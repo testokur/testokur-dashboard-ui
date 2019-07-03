@@ -16,14 +16,14 @@ jobs:
           command: |
             docker-compose build app
       - run:
-          name: compress the image file
+          name: Compress the image file
           command: |
             docker save -o dashboard.tar testokur-dashboard:latest
       - run:
-          name: copy image to the app server
+          name: Copy image to the app server
           command: |
             scp dashboard.tar $SSH_USERNAME@$SSH_HOST:/home/docker-images/
       - run:
-          name: run the app
+          name: Run container on the app server
           command: |
             ssh  $SSH_USERNAME@$SSH_HOST 'bash -s' < deploy.sh
