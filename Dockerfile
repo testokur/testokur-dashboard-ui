@@ -16,6 +16,7 @@ ARG SONAR_TOKEN
 ENV SONAR_TOKEN $SONAR_TOKEN
 COPY --from=builder /src /src
 WORKDIR /src
+RUN rm -rf /dist
 RUN node sonar.js
 
 FROM nginx:mainline-alpine
