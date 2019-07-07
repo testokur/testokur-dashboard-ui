@@ -7,6 +7,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   testEnvironment: 'node',
   collectCoverage:true,
+  testResultsProcessor: "jest-sonar-reporter",
   // Setup Enzyme
   snapshotSerializers: ['enzyme-to-json/serializer'],
   setupFilesAfterEnv: ['<rootDir>/src/setupEnzyme.ts'],

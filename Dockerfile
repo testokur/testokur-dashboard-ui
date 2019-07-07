@@ -11,6 +11,13 @@ RUN apk add git
 RUN ./node_modules/.bin/codecov --token=$CODECOV_TOKEN
 RUN yarn build
 
+FROM node:latest
+ARG SONAR_TOKEN
+ENV SONAR_TOKEN $SONAR_TOKEN
+COPY --from=builder /src /src
+WORKDIR /src
+RUN node sonar.js
+
 FROM nginx:mainline-alpine
 COPY conf/ /etc/nginx/conf.d/
 COPY --from=builder /src/dist /usr/share/nginx/html

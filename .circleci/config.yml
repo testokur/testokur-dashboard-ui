@@ -1,13 +1,9 @@
 version: 2.1
-orbs:
-  sonarqube-analyzer: corballis/sonarqube-analyzer@0.1.1
 jobs:
   build:
     machine: true
     steps:
       - checkout
-      - sonarqube-analyzer/check-code-quality:
-        sonar_server_url: https://sonarcloud.io
       - run:
           name: Install Docker Compose
           command: |
@@ -18,7 +14,7 @@ jobs:
       - run:
           name: Test&Build
           command: |
-            docker-compose build --build-arg CODECOV_TOKEN=$CODECOV_TOKEN
+            docker-compose build --build-arg CODECOV_TOKEN=$CODECOV_TOKEN SONAR_TOKEN=$SONAR_TOKEN
       - run:
           name: Compress the image file
           command: |
