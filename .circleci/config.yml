@@ -6,7 +6,7 @@ jobs:
     machine: true
     steps:
       - checkout
-      - sonarqube:
+      - sonarqube/sonarqube-analyzer:
         sonar_server_url: https://sonarcloud.io
       - run:
           name: Install Docker Compose
