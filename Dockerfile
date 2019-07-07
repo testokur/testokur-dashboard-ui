@@ -1,5 +1,14 @@
 FROM node:current-alpine AS base
 
+FROM base as sonar
+ARG SONAR_TOKEN
+ENV SONAR_TOKEN $SONAR_TOKEN
+WORKDIR /src
+COPY . ./
+RUN rm -rf package.json yarn.lock
+RUN yarn init --yes && yarn add --dev sonarqube-scanner
+RUN node sonar.js
+
 FROM base as builder
 ARG CODECOV_TOKEN
 WORKDIR /src
@@ -10,14 +19,6 @@ RUN yarn precommit
 RUN apk add git
 RUN ./node_modules/.bin/codecov --token=$CODECOV_TOKEN
 RUN yarn build
-
-FROM node:latest
-ARG SONAR_TOKEN
-ENV SONAR_TOKEN $SONAR_TOKEN
-COPY --from=builder /src /src
-WORKDIR /src
-RUN rm -rf /dist
-RUN node sonar.js
 
 FROM nginx:mainline-alpine
 COPY conf/ /etc/nginx/conf.d/
