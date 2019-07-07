@@ -1,6 +1,6 @@
 FROM node:current-alpine AS base
 
-FROM base as sonar
+FROM node:latest as sonar
 ARG SONAR_TOKEN
 ENV SONAR_TOKEN $SONAR_TOKEN
 WORKDIR /src

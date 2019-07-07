@@ -1,9 +1,16 @@
 version: '3.7'
 
 services:
+  sonar:
+    image: testokur-dashboard:latest
+    build:
+      context: .
+      target: sonar
   app:
     image: testokur-dashboard:latest
-    build: .
+    build:
+      context: .
+      target: builder
     ports:
       - '5080:80'
     environment:

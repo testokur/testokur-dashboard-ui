@@ -12,9 +12,13 @@ jobs:
             chmod +x ~/docker-compose
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - run:
+          name: Static Code Analysis
+          command: |
+            docker-compose build --build-arg SONAR_TOKEN=$SONAR_TOKEN sonar
+      - run:
           name: Test&Build
           command: |
-            docker-compose build --build-arg CODECOV_TOKEN=$CODECOV_TOKEN --build-arg SONAR_TOKEN=$SONAR_TOKEN
+            docker-compose build --build-arg CODECOV_TOKEN=$CODECOV_TOKEN  app
       - run:
           name: Compress the image file
           command: |
