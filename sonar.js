@@ -6,7 +6,8 @@ scanner(
     token :  process.env.SONAR_TOKEN,
     options: {
       "sonar.organization": "nazmialtun-github",
-      "sonar.projectKey": "NazmiAltun_testokur-dashboard-ui"
+      "sonar.projectKey": "NazmiAltun_testokur-dashboard-ui",
+      "sonar.projectName": "testokur-dashboard-ui"
     },
   },
   () => {
