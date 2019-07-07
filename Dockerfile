@@ -1,14 +1,5 @@
 FROM node:current-alpine AS base
 
-FROM node:latest as sonar
-ARG SONAR_TOKEN
-ENV SONAR_TOKEN $SONAR_TOKEN
-WORKDIR /src
-COPY . ./
-RUN rm -rf package.json yarn.lock
-RUN yarn init --yes && yarn add --dev sonarqube-scanner
-RUN node sonar.js
-
 FROM base as builder
 ARG CODECOV_TOKEN
 WORKDIR /src

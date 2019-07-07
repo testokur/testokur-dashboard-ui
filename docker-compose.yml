@@ -2,15 +2,13 @@ version: '3.7'
 
 services:
   sonar:
-    image: testokur-dashboard:latest
+    image: testokur-dashboard-sonar:latest
     build:
       context: .
-      target: sonar
+      dockerfile: sonar.Dockerfile
   app:
     image: testokur-dashboard:latest
-    build:
-      context: .
-      target: builder
+    build: .
     ports:
       - '5080:80'
     environment:
