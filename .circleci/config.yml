@@ -1,9 +1,13 @@
-version: 2
+version: 2.1
+orbs:
+  sonarqube: corballis/sonarqube-analyzer@0.1.1
 jobs:
   build:
     machine: true
     steps:
       - checkout
+      - sonarqube:
+        sonar_server_url: https://sonarcloud.io
       - run:
           name: Install Docker Compose
           command: |
