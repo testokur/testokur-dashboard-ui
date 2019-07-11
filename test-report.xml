@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="C:\Projects\testokur-dashboard-ui\src\App\helpers\api.test.ts">
+    <testCase name="should create identity api with bearer token and json content-type header" duration="31"/>
+    <testCase name="should create web api with bearer token and json content-type header" duration="1"/>
+  </file>
+  <file path="C:\Projects\testokur-dashboard-ui\src\App\helpers\generateRandomString.test.ts">
+    <testCase name="should generate a random string with given size" duration="16"/>
+  </file>
+  <file path="C:\Projects\testokur-dashboard-ui\src\App\pages\changePassword\actions.test.ts">
+    <testCase name="should create success action" duration="12"/>
+    <testCase name="should create request action" duration="1"/>
+    <testCase name="should create fail action" duration="1"/>
+  </file>
+  <file path="C:\Projects\testokur-dashboard-ui\src\App\helpers\snakeToCamel.test.ts">
+    <testCase name="should convert snake case to camel case" duration="2"/>
+  </file>
+  <file path="C:\Projects\testokur-dashboard-ui\src\App\components\messageBox.test.tsx">
+    <testCase name="messagebox should not render when it is closed" duration="405"/>
+  </file>
+  <file path="C:\Projects\testokur-dashboard-ui\src\App\auth\PrivateRoute.test.tsx">
+    <testCase name="should render only spinner when user is not logged in" duration="116"/>
+    <testCase name="should render component when user is logged in" duration="18"/>
+  </file>
+  <file path="C:\Projects\testokur-dashboard-ui\src\App\pages\users\UserStatus.test.tsx">
+    <testCase name="When status is active then check icon with &quot;active&quot; text should be displayed" duration="78"/>
+    <testCase name="When status is expired then expired icon and text should be displayed" duration="17"/>
+    <testCase name="When status is pending then pending icon and text should be displayed" duration="19"/>
+    <testCase name="When status is cancelled then cancelled icon and text should be displayed" duration="9"/>
+  </file>
+  <file path="C:\Projects\testokur-dashboard-ui\src\App\App.test.tsx">
+    <testCase name="renders without crashing" duration="65"/>
+  </file>
+</testExecutions>

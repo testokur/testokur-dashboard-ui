@@ -17,30 +17,54 @@ interface PropsFromState {
 
 type Props = PropsFromState & ComponentProps;
 
+/* eslint-disable react/display-name */
 const component: React.FC<Props> = (props) => {
-  return <MaterialTable icons={tableIcons} title="KULLANICILAR"
-  columns={[{ title: 'E-Posta', field: 'userName' },
-  { title: 'Ad Soyad', field: 'firstName',   render: rowData => <span>{rowData.firstName} {rowData.lastName}</span> },
-  { title: 'Şehir-İlçe', field: 'cityName', render: rowData => <span>{rowData.cityName} {rowData.districtName}</span> },
-  { title: 'Bitiş Tarihi', field: 'expiryDateUtc' }]}
-  data={props.users}
-  localization={{
-    body: {
-      emptyDataSourceMessage: 'Gösterilecek kayıt yok'
-    },
-    toolbar: {
-      searchTooltip: 'Arama',
-      searchPlaceholder: 'Arama'
-    },
-    pagination: {
-      labelRowsSelect: 'satır',
-      labelDisplayedRows: '{count} satırdan {from}-{to} arası',
-      firstTooltip: 'İlk Sayfa',
-      previousTooltip: 'Önceki Sayfa',
-      nextTooltip: 'Sonraki Sayfa',
-      lastTooltip: 'Son Sayfa'
-    }
-  }}/>;
+  return (
+    <MaterialTable
+      icons={tableIcons}
+      title="KULLANICILAR"
+      columns={[
+        { title: 'E-Posta', field: 'userName' },
+        {
+          title: 'Ad Soyad',
+          field: 'firstName',
+          render: (rowData) => (
+            <span>
+              {rowData.firstName} {rowData.lastName}
+            </span>
+          ),
+        },
+        {
+          title: 'Şehir-İlçe',
+          field: 'cityName',
+          render: (rowData) => (
+            <span>
+              {rowData.cityName} {rowData.districtName}
+            </span>
+          ),
+        },
+        { title: 'Bitiş Tarihi', field: 'expiryDateUtc' },
+      ]}
+      data={props.users}
+      localization={{
+        body: {
+          emptyDataSourceMessage: 'Gösterilecek kayıt yok',
+        },
+        toolbar: {
+          searchTooltip: 'Arama',
+          searchPlaceholder: 'Arama',
+        },
+        pagination: {
+          labelRowsSelect: 'satır',
+          labelDisplayedRows: '{count} satırdan {from}-{to} arası',
+          firstTooltip: 'İlk Sayfa',
+          previousTooltip: 'Önceki Sayfa',
+          nextTooltip: 'Sonraki Sayfa',
+          lastTooltip: 'Son Sayfa',
+        },
+      }}
+    />
+  );
 };
 
 const mapStateToProps = ({ users }: AppState) => ({

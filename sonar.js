@@ -1,15 +1,14 @@
-const scanner = require("sonarqube-scanner");
+const scanner = require('sonarqube-scanner');
 
 scanner(
   {
-    serverUrl: "https://sonarcloud.io",
-    token :  process.env.SONAR_TOKEN,
+    serverUrl: 'https://sonarcloud.io',
+    token: process.env.SONAR_TOKEN,
     options: {
-      "sonar.organization": "nazmialtun-github",
-      "sonar.projectKey": "NazmiAltun_testokur-dashboard-ui",
-      "sonar.projectName": "testokur-dashboard-ui"
+      'sonar.organization': 'nazmialtun-github',
+      'sonar.projectKey': 'NazmiAltun_testokur-dashboard-ui',
+      'sonar.projectName': 'testokur-dashboard-ui',
     },
   },
-  () => {
-  }
+  () => {},
 );

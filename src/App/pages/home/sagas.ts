@@ -1,12 +1,12 @@
 import { identityApi, webApi } from '../../helpers';
 import { put, call, takeEvery, fork, all } from 'redux-saga/effects';
 import { fetchFailed, fetchSuccess } from './actions';
-import { FETCH_USERS_REQUEST ,User } from './types';
+import { FETCH_USERS_REQUEST, User } from './types';
 
 function callIdentityApi() {
   return identityApi.get('/account/users');
 }
-function callWebApi(){
+function callWebApi() {
   return webApi.get('/api/v1/users');
 }
 
@@ -23,9 +23,9 @@ function* handleFetch() {
     var users: User[] = [];
 
     identitApiRes.data.forEach((user: any) => {
-      webApiRes.data.forEach( (apiUser:any) => {
-        if(user.id === apiUser.subjectId) {
-          users.push({...user, ...apiUser});
+      webApiRes.data.forEach((apiUser: any) => {
+        if (user.id === apiUser.subjectId) {
+          users.push({ ...user, ...apiUser });
         }
       });
     });

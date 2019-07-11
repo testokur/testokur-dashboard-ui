@@ -21,15 +21,15 @@ export interface User {
   expiryDateUtc?: Date;
   activationTimeUtc: Date;
   loginDevices: LoginDevice[];
-  smsBalance:number;
-  cityName:string;
-  districtName:string;
-  cityId:number;
-  districtId:number;
-  phone:string;
-  firstName:string;
-  lastName:string;
-  schoolName:string;
+  smsBalance: number;
+  cityName: string;
+  districtName: string;
+  cityId: number;
+  districtId: number;
+  phone: string;
+  firstName: string;
+  lastName: string;
+  schoolName: string;
 }
 
 export interface UsersState {
