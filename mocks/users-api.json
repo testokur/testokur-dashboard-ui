@@ -1,0 +1,58 @@
+[
+  {
+    "id" : 1,
+    "subjectId":"793bdaa8-708c-4c45-9328-1d5b71556d62",
+    "smsBalance" :1966,
+    "cityName": "Denizli",
+    "districtName" : "Merkez",
+    "cityId" : 20,
+    "districtId":450,
+    "email": "nazmialtun88@gmail.com",
+    "phone" : "5544205163",
+    "firstName" :"Nazmi",
+    "lastName" :"Altun",
+    "schoolName" : "X-Men School"
+  },
+  {
+    "id" : 2,
+    "subjectId":"793bdaa8-708c-4c45-9328-1d5b71556d63",
+    "smsBalance" :154,
+    "cityName": "Izmir",
+    "districtName" : "Bornova",
+    "cityId" : 35,
+    "districtId":750,
+    "email": "nazmialtun@windowslive.com",
+    "phone" : "5554442233",
+    "firstName" :"John",
+    "lastName" :"Brown",
+    "schoolName" : "X-Men School"
+  },
+  {
+    "id" : 3,
+    "subjectId":"793bdaa8-708c-4c45-9328-1d5b71556d64",
+    "smsBalance" :578,
+    "cityName": "Istanbul",
+    "districtName" : "Pendik",
+    "cityId" : 34,
+    "districtId":650,
+    "email": "marry@hotmail.com",
+    "phone" : "5523336699",
+    "firstName" :"Marry",
+    "lastName" :"Brown",
+    "schoolName" : "X-Men School"
+  },
+  {
+    "id" : 4,
+    "subjectId":"793bdaa8-708c-4c45-9328-1d5b71556d65",
+    "smsBalance" :18,
+    "cityName": "Istanbul",
+    "districtName" : "Bakirkoy",
+    "cityId" : 34,
+    "districtId":659,
+    "email": "josh@hotmail.com",
+    "phone" : "5449875544",
+    "firstName" :"Josh",
+    "lastName" :"Pollack",
+    "schoolName" : "X-Men School"
+  }
+]

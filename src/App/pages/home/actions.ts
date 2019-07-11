@@ -1,6 +1,5 @@
 import { action } from 'typesafe-actions';
-import { FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS, FETCH_USERS_ERROR } from './types';
-import { User } from 'oidc-client';
+import { FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS, FETCH_USERS_ERROR, User } from './types';
 import { ErrorMessage } from '../../data';
 
 export const fetchUsers = () => action(FETCH_USERS_REQUEST);

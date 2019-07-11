@@ -21,6 +21,10 @@
       "options": 204,
       "post": 204
     },
+    "/api/v1/users": {
+      "options": 204,
+      "get": "users-api.json"
+    },
     "/account/users": {
       "options": 204,
       "get": "users.json"
