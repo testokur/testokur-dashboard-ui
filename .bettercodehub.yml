@@ -1,2 +1,2 @@
 exclude:
-- .*/webpack.config\.js
+  - .*/webpack.config\.js
