@@ -67,11 +67,14 @@ export const SendSmsDialog: React.FC<Props> = (props) => {
         )}
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => {
-          props.onClose();
-          setSuccess(false);
-          setBody('');
-          }} color="primary">
+        <Button
+          onClick={() => {
+            props.onClose();
+            setSuccess(false);
+            setBody('');
+          }}
+          color="primary"
+        >
           Kapat
         </Button>
         {success ? (

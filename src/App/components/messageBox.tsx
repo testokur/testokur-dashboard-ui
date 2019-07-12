@@ -47,7 +47,7 @@ interface Props {
   className?: string;
   message?: string;
   variant: keyof typeof variantIcon;
-  hasCloseButton: boolean;
+  hasCloseButton?: boolean;
 }
 
 export const messageBox: React.FC<Props> = (props) => {
@@ -83,4 +83,6 @@ export const messageBox: React.FC<Props> = (props) => {
   );
 };
 
-messageBox.defaultProps = { hasCloseButton: true };
+messageBox.defaultProps = {
+  hasCloseButton: true,
+};
