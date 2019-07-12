@@ -47,6 +47,7 @@ interface Props {
   className?: string;
   message?: string;
   variant: keyof typeof variantIcon;
+  hasCloseButton: boolean;
 }
 
 export const messageBox: React.FC<Props> = (props) => {
@@ -54,6 +55,15 @@ export const messageBox: React.FC<Props> = (props) => {
   const classes = useStyles();
   const { className, message, variant, ...other } = props;
   const Icon = variantIcon[variant];
+  var action: any;
+
+  if (props.hasCloseButton) {
+    action = [
+      <IconButton key="close" aria-label="Close" color="inherit" onClick={() => setClosed(true)}>
+        <CloseIcon className={classes.icon} />
+      </IconButton>,
+    ];
+  }
 
   return closed ? (
     <></>
@@ -67,12 +77,10 @@ export const messageBox: React.FC<Props> = (props) => {
           {message}
         </span>
       }
-      action={[
-        <IconButton key="close" aria-label="Close" color="inherit" onClick={() => setClosed(true)}>
-          <CloseIcon className={classes.icon} />
-        </IconButton>,
-      ]}
+      action={action}
       {...other}
     />
   );
 };
+
+messageBox.defaultProps = { hasCloseButton: true };
