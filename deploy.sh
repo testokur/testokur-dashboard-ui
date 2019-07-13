@@ -14,4 +14,5 @@ docker run -d  \
 	--restart=always  \
 	--network=testokur \
 	--network-alias=dashboard-qa \
+  -p 8090:80 \
 	testokur-dashboard:latest
