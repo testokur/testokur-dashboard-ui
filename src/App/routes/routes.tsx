@@ -31,7 +31,7 @@ const routes = (props: Props) => {
     return <SigninCallback />;
   }
 
-  if (_.isNil(props.user)) {
+  if (_.isNil(props.user) && props.location.pathname !== '/signin-callback') {
     userManager.signinRedirect();
     return spinner();
   }
