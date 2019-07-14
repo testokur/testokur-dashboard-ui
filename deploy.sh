@@ -10,6 +10,7 @@ docker run -d  \
   -e authority=https://kimlik-qa.testokur.com \
   -e reduxLoggerActive=true \
   -e webapiUrl=https://webapi-qa.testokur.com \
+  -e identityApiUrl=https://kimlik-qa.testokur.com \
 	--name testokur-dashboard-qa \
 	--restart=always  \
 	--network=testokur \
