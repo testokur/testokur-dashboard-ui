@@ -10,13 +10,16 @@ interface Props {
   dispatch: Dispatch;
 }
 
+/* eslint-disable no-debugger*/
 const signinCallback: React.FC<Props> = (props) => {
   function onSuccess(user: User) {
+    debugger;
     localStorage.setItem('access_token', user.access_token);
     props.dispatch(push('/'));
   }
 
   function onError() {
+    debugger;
     props.dispatch(push('/'));
   }
   return (
