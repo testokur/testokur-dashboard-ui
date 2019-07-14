@@ -10,7 +10,8 @@ interface Props {
   dispatch: Dispatch;
 }
 
-/* eslint-disable no-debugger*/
+/* eslint-disable no-debugger */
+/* eslint-disable no-console*/
 const signinCallback: React.FC<Props> = (props) => {
   function onSuccess(user: User) {
     debugger;
@@ -18,8 +19,9 @@ const signinCallback: React.FC<Props> = (props) => {
     props.dispatch(push('/'));
   }
 
-  function onError() {
+  function onError(error: Error) {
     debugger;
+    console.log(error);
     props.dispatch(push('/'));
   }
   return (
