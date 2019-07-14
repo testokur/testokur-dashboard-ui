@@ -26,7 +26,8 @@ const routes = (props: Props) => {
   if (props.isLoadingUser || !props.location) {
     return spinner();
   }
-
+  /* eslint-disable no-debugger*/
+  debugger;
   if (props.location.pathname === '/signin-callback') {
     return <SigninCallback />;
   }
