@@ -16,7 +16,7 @@ const signinCallback: React.FC<Props> = (props) => {
     props.dispatch(push('/'));
   }
 
-  function onError(error: Error) {
+  function onError() {
     props.dispatch(push('/'));
   }
   return (

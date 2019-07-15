@@ -27,7 +27,7 @@
     },
     "/api/v1/users": {
       "options": 204,
-      "get": "users-api.json"
+      "get": "users-api.js"
     },
     "/account/users": {
       "options": 204,

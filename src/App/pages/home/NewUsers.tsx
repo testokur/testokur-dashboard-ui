@@ -2,7 +2,7 @@ import React from 'react';
 import * as _ from 'lodash';
 import CustomerIcon from '@material-ui/icons/PersonAdd';
 import { withStyles } from '@material-ui/core/styles';
-import { Typography, Divider, List, Card, ListItemText, ListItem } from '@material-ui/core';
+import { Typography, Divider, List, Card, ListItemText, ListItem, CircularProgress, Box } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CardIcon from './CardIcon';
@@ -34,7 +34,11 @@ class Component extends React.Component<Props> {
   }
   public render() {
     const customerIcon = (className: string) => <CustomerIcon className={className} />;
-    return (
+    return this.props.loading ? (
+      <Box display="flex" justifyContent="center">
+        <CircularProgress size={120} />
+      </Box>
+    ) : (
       <div className={this.props.classes.main}>
         <CardIcon icon={customerIcon} bgColor="#4caf50" />
         <Card className={this.props.classes.card}>
@@ -62,7 +66,7 @@ const mapStateToProps = ({ users }: AppState) => ({
   loading: users.loading,
   success: users.success,
   errorMessage: users.errorMessage,
-  users: _.filter(users.data, { active: false }),
+  users: _.filter(users.data, (u) => _.isNil(u.expiryDateUtc)),
 });
 
 const mapDispatchToProps = {

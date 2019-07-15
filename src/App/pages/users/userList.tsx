@@ -1,6 +1,6 @@
 import dateformat from 'dateformat';
 import React, { useEffect, useState } from 'react';
-import { withStyles } from '@material-ui/core';
+import { withStyles, CircularProgress, Box } from '@material-ui/core';
 import { connect } from 'react-redux';
 import MaterialTable from 'material-table';
 import { styles } from './styles';
@@ -18,6 +18,7 @@ interface ComponentProps {
 
 interface PropsFromState {
   users: User[];
+  loading: boolean;
 }
 
 interface PropsFromDispatch {
@@ -39,7 +40,11 @@ const component: React.FC<Props> = (props) => {
     return true;
   };
 
-  return (
+  return props.loading ? (
+    <Box display="flex" justifyContent="center">
+      <CircularProgress size={120} />
+    </Box>
+  ) : (
     <div>
       <MaterialTable
         icons={tableIcons}
@@ -112,6 +117,7 @@ const component: React.FC<Props> = (props) => {
 
 const mapStateToProps = ({ users }: AppState) => ({
   users: users.data,
+  loading: users.loading,
 });
 
 const mapDispatchToProps = {

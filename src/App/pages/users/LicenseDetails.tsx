@@ -9,12 +9,18 @@ import { LicenseTypeSelect } from '../../licenseType';
 interface Props {
   user: User;
   classes: any;
+  onActivated: () => void;
 }
 
 const component: React.FC<Props> = (props) => {
   return (
     <form className={props.classes.container} noValidate>
-      <ActivateSwitch active={props.user.active} email={props.user.email} />
+      <ActivateSwitch
+        active={props.user.active}
+        email={props.user.email}
+        expiryDateUtc={props.user.expiryDateUtc}
+        onActivated={props.onActivated}
+      />
       <TextField
         label="E-Posta"
         style={{ margin: 8 }}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import * as _ from 'lodash';
 import { RouteComponentProps } from 'react-router';
 import { Grid, Avatar, withStyles, Divider, Tabs, Tab } from '@material-ui/core';
@@ -26,10 +26,18 @@ interface PropsFromState {
 type Props = PropsFromState & ComponentProps;
 
 const component: React.FC<Props> = (props) => {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
   function handleChange(event: React.ChangeEvent<{}>, newValue: number) {
     setValue(newValue);
   }
+  const [active, setActive] = useState(props.user.active);
+  const [expiryDateUtc, setexpiryDateUtc] = useState(props.user.expiryDateUtc);
+
+  useEffect(() => {
+    setActive(props.user.active);
+    setexpiryDateUtc(props.user.expiryDateUtc);
+  }, [props.user.active, props.user.expiryDateUtc]);
+
   return (
     <div className={props.classes.root}>
       <Grid container justify="center" alignItems="center">
@@ -37,7 +45,7 @@ const component: React.FC<Props> = (props) => {
           <PersonIcon />
         </Avatar>
         <h3>{props.user.userName}</h3>
-        <UserStatus active={props.user.active} expirationDate={props.user.expiryDateUtc} />
+        <UserStatus active={active} expirationDate={expiryDateUtc} />
       </Grid>
       <Divider />
       <Tabs value={value} onChange={handleChange} variant="fullWidth" indicatorColor="primary" textColor="primary">
@@ -45,7 +53,19 @@ const component: React.FC<Props> = (props) => {
         <Tab label="KISISEL BILGILER" />
         <Tab label="SMS BILGILERI" />
       </Tabs>
-      {value === 0 && <LicenseDetails user={props.user} />}
+      {value === 0 && (
+        <LicenseDetails
+          user={props.user}
+          onActivated={() => {
+            setActive(true);
+            var d = new Date();
+            var year = d.getFullYear();
+            var month = d.getMonth();
+            var day = d.getDate();
+            setexpiryDateUtc(new Date(year + 1, month, day));
+          }}
+        />
+      )}
       {value === 2 && <SmsDetails user={props.user} />}
     </div>
   );
