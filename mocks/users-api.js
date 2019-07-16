@@ -58,5 +58,5 @@ module.exports = (req, res) => {
         schoolName: 'X-Men School',
       },
     ]);
-  }, 4000);
+  }, 2000);
 };

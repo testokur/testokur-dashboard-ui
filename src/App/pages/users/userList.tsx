@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import dateformat from 'dateformat';
 import React, { useEffect, useState } from 'react';
 import { withStyles, CircularProgress, Box } from '@material-ui/core';
@@ -8,9 +9,12 @@ import { User } from '../home/types';
 import AppState from '../../AppState';
 import { tableIcons } from '../../components';
 import Sms from '@material-ui/icons/Sms';
+import AddCircleOutline from '@material-ui/icons/AddCircleOutline';
+
 import { fetchUsers } from '../home/actions';
 import { SendSmsDialog } from './SendSmsDialog';
 import { webApi } from '../../helpers';
+import { AddSmsDialog } from './smsDetails/AddSmsDialog';
 
 interface ComponentProps {
   classes: any;
@@ -32,12 +36,19 @@ const component: React.FC<Props> = (props) => {
   useEffect(() => {
     props.fetchUsers();
   }, []);
-  const [dialogOpen, setDialogOpen] = useState(false);
-  const [phone, setPhone] = useState('');
+  const [smsDialogOpen, setSmsDialogOpen] = useState(false);
+  const [addSmsCreditDialogOpen, setAddSmsCreditDialogOpen] = useState(false);
+  const [user, setUser] = useState<User>();
 
-  const handleSendSms = async (phone: string, body: string): Promise<boolean> => {
-    await webApi.post('/api/v1/sms/send-admin', { receiver: phone, body: body });
+  const handleSendSms = async (body: string): Promise<boolean> => {
+    await webApi.post('/api/v1/sms/send-admin', { receiver: user!.phone, body: body });
     return true;
+  };
+
+  const handleAddCredit = async (amount: number) => {
+    setAddSmsCreditDialogOpen(false);
+    await webApi.post('/api/v1/sms/add-credits', { userId: user!.id, amount: amount });
+    props.fetchUsers();
   };
 
   return props.loading ? (
@@ -74,6 +85,10 @@ const component: React.FC<Props> = (props) => {
             field: 'expiryDateUtc',
             render: (rowData) => <span>{dateformat(rowData.expiryDateUtc, 'dd.mm.yyyy HH:MM')}</span>,
           },
+          {
+            title: 'Sms Bakiye',
+            field: 'smsBalance'
+          },
         ]}
         data={props.users}
         localization={{
@@ -101,8 +116,16 @@ const component: React.FC<Props> = (props) => {
             icon: () => <Sms />,
             tooltip: 'Sms Gonder',
             onClick: (event, rowData) => {
-              setPhone(rowData.phone);
-              setDialogOpen(true);
+              setUser(rowData);
+              setSmsDialogOpen(true);
+            },
+          },
+          {
+            icon: () => <AddCircleOutline />,
+            tooltip: 'Sms Kredisi Ekle',
+            onClick: (event, rowData) => {
+              setUser(rowData);
+              setAddSmsCreditDialogOpen(true);
             },
           },
         ]}
@@ -110,7 +133,8 @@ const component: React.FC<Props> = (props) => {
           actionsColumnIndex: -1,
         }}
       />
-      <SendSmsDialog onSubmit={handleSendSms} open={dialogOpen} onClose={() => setDialogOpen(false)} phone={phone} />
+      <SendSmsDialog onSubmit={handleSendSms} open={smsDialogOpen} onClose={() => setSmsDialogOpen(false)} phone={_.get(user,'phone','')} />
+      <AddSmsDialog open={addSmsCreditDialogOpen} onSubmit={handleAddCredit} onClose={() => setAddSmsCreditDialogOpen(false)} />
     </div>
   );
 };

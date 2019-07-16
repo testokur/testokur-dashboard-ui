@@ -47,17 +47,17 @@ interface Props {
   className?: string;
   message?: string;
   variant: keyof typeof variantIcon;
-  hasCloseButton?: boolean;
+  hasCloseButton: boolean;
 }
 
 export const messageBox: React.FC<Props> = (props) => {
   const [closed, setClosed] = useState(false);
   const classes = useStyles();
-  const { className, message, variant, ...other } = props;
+  const { className, message, variant,hasCloseButton, ...other } = props;
   const Icon = variantIcon[variant];
   var action: any;
 
-  if (props.hasCloseButton) {
+  if (hasCloseButton) {
     action = [
       <IconButton key="close" aria-label="Close" color="inherit" onClick={() => setClosed(true)}>
         <CloseIcon className={classes.icon} />

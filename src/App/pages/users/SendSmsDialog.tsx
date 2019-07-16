@@ -12,7 +12,7 @@ interface Props {
   open: boolean;
   phone: string;
   onClose(): void;
-  onSubmit(phone: string, body: string): Promise<boolean>;
+  onSubmit(body: string): Promise<boolean>;
 }
 
 export const SendSmsDialog: React.FC<Props> = (props) => {
@@ -83,7 +83,7 @@ export const SendSmsDialog: React.FC<Props> = (props) => {
           <Button
             onClick={async (event) => {
               event.preventDefault();
-              setSuccess(await props.onSubmit(phone, body));
+              setSuccess(await props.onSubmit(body));
             }}
             color="primary"
           >
