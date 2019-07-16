@@ -41,13 +41,13 @@ const component: React.FC<Props> = (props) => {
   const [user, setUser] = useState<User>();
 
   const handleSendSms = async (body: string): Promise<boolean> => {
-    await webApi.post('/api/v1/sms/send-admin', { receiver: user!.phone, body: body });
+    await webApi.post('/api/v1/sms/send-admin', { receiver: _.get(user, 'phone', ''), body: body });
     return true;
   };
 
   const handleAddCredit = async (amount: number) => {
     setAddSmsCreditDialogOpen(false);
-    await webApi.post('/api/v1/sms/add-credits', { userId: user!.id, amount: amount });
+    await webApi.post('/api/v1/sms/add-credits', { userId: _.get(user, 'id', ''), amount: amount });
     props.fetchUsers();
   };
 
@@ -87,7 +87,7 @@ const component: React.FC<Props> = (props) => {
           },
           {
             title: 'Sms Bakiye',
-            field: 'smsBalance'
+            field: 'smsBalance',
           },
         ]}
         data={props.users}
@@ -133,8 +133,17 @@ const component: React.FC<Props> = (props) => {
           actionsColumnIndex: -1,
         }}
       />
-      <SendSmsDialog onSubmit={handleSendSms} open={smsDialogOpen} onClose={() => setSmsDialogOpen(false)} phone={_.get(user,'phone','')} />
-      <AddSmsDialog open={addSmsCreditDialogOpen} onSubmit={handleAddCredit} onClose={() => setAddSmsCreditDialogOpen(false)} />
+      <SendSmsDialog
+        onSubmit={handleSendSms}
+        open={smsDialogOpen}
+        onClose={() => setSmsDialogOpen(false)}
+        phone={_.get(user, 'phone', '')}
+      />
+      <AddSmsDialog
+        open={addSmsCreditDialogOpen}
+        onSubmit={handleAddCredit}
+        onClose={() => setAddSmsCreditDialogOpen(false)}
+      />
     </div>
   );
 };
