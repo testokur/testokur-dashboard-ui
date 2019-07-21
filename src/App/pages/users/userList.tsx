@@ -62,11 +62,11 @@ const component: React.FC<Props> = (props) => {
         icons={tableIcons}
         title="KULLANICILAR"
         columns={[
-          { title: 'E-Posta', field: 'userName',  render: (rowData) => (
-            <Link to={`/users/${rowData.userName}`}>
-              {rowData.userName}
-            </Link>
-          )},
+          {
+            title: 'E-Posta',
+            field: 'userName',
+            render: (rowData) => <Link to={`/users/${rowData.userName}`}>{rowData.userName}</Link>,
+          },
           {
             title: 'Ad Soyad',
             field: 'firstName',
