@@ -3,6 +3,7 @@ import dateformat from 'dateformat';
 import React, { useEffect, useState } from 'react';
 import { withStyles, CircularProgress, Box } from '@material-ui/core';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import MaterialTable from 'material-table';
 import { styles } from './styles';
 import { User } from '../home/types';
@@ -61,7 +62,11 @@ const component: React.FC<Props> = (props) => {
         icons={tableIcons}
         title="KULLANICILAR"
         columns={[
-          { title: 'E-Posta', field: 'userName' },
+          { title: 'E-Posta', field: 'userName',  render: (rowData) => (
+            <Link to={`/users/${rowData.userName}`}>
+              {rowData.userName}
+            </Link>
+          )},
           {
             title: 'Ad Soyad',
             field: 'firstName',
