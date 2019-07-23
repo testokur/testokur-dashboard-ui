@@ -1,14 +1,14 @@
 import * as _ from 'lodash';
 import dateformat from 'dateformat';
 import React, { useEffect, useState } from 'react';
-import { withStyles, CircularProgress, Box } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import MaterialTable from 'material-table';
 import { styles } from './styles';
 import { User } from '../home/types';
 import AppState from '../../AppState';
-import { tableIcons } from '../../components';
+import { tableIcons, withLoading } from '../../components';
 import Sms from '@material-ui/icons/Sms';
 import AddCircleOutline from '@material-ui/icons/AddCircleOutline';
 
@@ -23,7 +23,6 @@ interface ComponentProps {
 
 interface PropsFromState {
   users: User[];
-  loading: boolean;
 }
 
 interface PropsFromDispatch {
@@ -35,7 +34,9 @@ type Props = PropsFromState & ComponentProps & PropsFromDispatch;
 /* eslint-disable react/display-name */
 const component: React.FC<Props> = (props) => {
   useEffect(() => {
-    props.fetchUsers();
+    if (_.isEmpty(props.users)) {
+      props.fetchUsers();
+    }
   }, []);
   const [smsDialogOpen, setSmsDialogOpen] = useState(false);
   const [addSmsCreditDialogOpen, setAddSmsCreditDialogOpen] = useState(false);
@@ -52,11 +53,7 @@ const component: React.FC<Props> = (props) => {
     props.fetchUsers();
   };
 
-  return props.loading ? (
-    <Box display="flex" justifyContent="center">
-      <CircularProgress size={120} />
-    </Box>
-  ) : (
+  return (
     <div>
       <MaterialTable
         icons={tableIcons}
@@ -162,7 +159,9 @@ const mapDispatchToProps = {
   fetchUsers,
 };
 
+const styled = withStyles(styles as any, { withTheme: true })(withLoading(component) as any);
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(withStyles(styles as any, { withTheme: true })(component as any) as any);
+)(styled as any);

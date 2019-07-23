@@ -10,6 +10,8 @@ import { styles } from './styles';
 
 interface ComponentProps {
   classes?: any;
+  cityId: number;
+  districtId: number;
 }
 
 interface PropsFromState {
@@ -24,11 +26,13 @@ interface PropsFromDispatch {
 type Props = PropsFromState & PropsFromDispatch & ComponentProps;
 
 const component: React.FC<Props> = (props) => {
-  useEffect(() => {
-    props.fetchCityRequest();
-  }, []);
   const [cityValue, setCityValue] = useState();
   const [districtValue, setDistrictValue] = useState();
+  useEffect(() => {
+    props.fetchCityRequest();
+    setCityValue(props.cityId);
+    setDistrictValue(props.districtId);
+  }, []);
 
   return (
     <div>
@@ -51,10 +55,10 @@ const component: React.FC<Props> = (props) => {
           <MenuItem value="">
             <em>Seciniz</em>
           </MenuItem>
-          {_.isNil(cityValue) ? (
+          {_.isNil(cityValue) || _.isEmpty(props.cities) ? (
             <></>
           ) : (
-            (_.find(props.cities, { id: cityValue }) as City).districts.map((record) => (
+            (_.find(props.cities, 'id', cityValue) as City).districts.map((record) => (
               <MenuItem key={record.id} value={record.id}>
                 {record.name}
               </MenuItem>
@@ -66,9 +70,11 @@ const component: React.FC<Props> = (props) => {
   );
 };
 
-const mapStateToProps = ({ cities }: AppState) => ({
+const mapStateToProps = ({ cities }: AppState, ownProps: ComponentProps) => ({
   loading: cities.loading,
   cities: cities.data,
+  cityId: ownProps.cityId,
+  districtId: ownProps.districtId,
 });
 
 const mapDispatchToProps = {

@@ -45,7 +45,7 @@ const component: React.FC<Props> = (props) => {
           shrink: true,
         }}
       />
-      <LicenseTypeSelect />
+      <LicenseTypeSelect id={props.user.licenseTypeId} />
       <TextField
         label="Izin verilen PC Sayisi"
         style={{ margin: 8 }}

@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import * as _ from 'lodash';
 import { FormControl, InputLabel, Select, MenuItem, withStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { LicenseTypeModel } from './types';
 import { fetchLicenseTypes } from './actions';
 import AppState from '../AppState';
 import { styles } from './styles';
+import { withLoading } from '../components';
 
 interface ComponentProps {
   classes?: any;
+  id: number;
 }
 
 interface PropsFromState {
-  loading: boolean;
   licenseTypes: LicenseTypeModel[];
 }
 
@@ -22,10 +24,13 @@ interface PropsFromDispatch {
 type Props = PropsFromState & PropsFromDispatch & ComponentProps;
 
 const component: React.FC<Props> = (props) => {
-  useEffect(() => {
-    props.fetchLicenseTypes();
-  }, []);
   const [value, setValue] = useState();
+
+  useEffect(() => {
+    if (_.isEmpty(props.licenseTypes)) {
+      props.fetchLicenseTypes();
+    }
+  }, []);
 
   return (
     <FormControl fullWidth variant="outlined" className={props.classes.formControl}>
@@ -44,16 +49,19 @@ const component: React.FC<Props> = (props) => {
   );
 };
 
-const mapStateToProps = ({ licenseTypes }: AppState) => ({
+const mapStateToProps = ({ licenseTypes }: AppState, ownProps: ComponentProps) => ({
   loading: licenseTypes.loading,
   licenseTypes: licenseTypes.data,
+  id: ownProps.id,
 });
 
 const mapDispatchToProps = {
   fetchLicenseTypes,
 };
 
+const styled = withStyles(styles as any, { withTheme: true })(withLoading(component) as any);
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(withStyles(styles as any, { withTheme: true })(component as any) as any);
+)(styled);

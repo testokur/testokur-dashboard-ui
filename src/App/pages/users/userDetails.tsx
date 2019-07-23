@@ -10,6 +10,7 @@ import { User } from '../home/types';
 import AppState from '../../AppState';
 import LicenseDetails from './LicenseDetails';
 import { SmsDetails } from './smsDetails';
+import PersonalDetails from './personalDetails';
 
 interface MatchParams {
   userName: string;
@@ -66,6 +67,7 @@ const component: React.FC<Props> = (props) => {
           }}
         />
       )}
+      {value === 1 && <PersonalDetails user={props.user} />}
       {value === 2 && <SmsDetails user={props.user} />}
     </div>
   );

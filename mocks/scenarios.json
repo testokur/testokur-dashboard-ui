@@ -29,6 +29,10 @@
       "options": 204,
       "get": "users-api.js"
     },
+    "/api/v1/users/update-by-admin": {
+      "options": 204,
+      "post": 204
+    },
     "/account/users": {
       "options": 204,
       "get": "users.json"

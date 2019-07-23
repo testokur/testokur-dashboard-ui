@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { userManager } from '../../../auth';
 import AppState from '../../../AppState';
 
-export interface OwnProps {
+interface OwnProps {
   open: boolean;
 }
 

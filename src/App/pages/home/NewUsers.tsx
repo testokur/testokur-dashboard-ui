@@ -2,7 +2,7 @@ import React from 'react';
 import * as _ from 'lodash';
 import CustomerIcon from '@material-ui/icons/PersonAdd';
 import { withStyles } from '@material-ui/core/styles';
-import { Typography, Divider, List, Card, ListItemText, ListItem, CircularProgress, Box } from '@material-ui/core';
+import { Typography, Divider, List, Card, ListItemText, ListItem } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CardIcon from './CardIcon';
@@ -10,13 +10,13 @@ import { styles } from './NewUsers.styles';
 import { User } from './types';
 import { fetchUsers } from './actions';
 import AppState from '../../AppState';
+import { withLoading } from '../../components';
 
 interface ComponentProps {
   classes: any;
 }
 
 interface PropsFromState {
-  loading: boolean;
   success: boolean;
   errorMessage?: string;
   users: User[];
@@ -30,15 +30,13 @@ type Props = PropsFromState & PropsFromDispatch & ComponentProps;
 
 class Component extends React.Component<Props> {
   public async componentDidMount() {
-    await this.props.fetchUsers();
+    if (_.isEmpty(this.props.users)) {
+      await this.props.fetchUsers();
+    }
   }
   public render() {
     const customerIcon = (className: string) => <CustomerIcon className={className} />;
-    return this.props.loading ? (
-      <Box display="flex" justifyContent="center">
-        <CircularProgress size={120} />
-      </Box>
-    ) : (
+    return (
       <div className={this.props.classes.main}>
         <CardIcon icon={customerIcon} bgColor="#4caf50" />
         <Card className={this.props.classes.card}>
@@ -73,7 +71,9 @@ const mapDispatchToProps = {
   fetchUsers,
 };
 
+const styled = withStyles(styles as any, { withTheme: true })(withLoading(Component) as any);
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(withStyles(styles as any, { withTheme: true })(Component as any) as any);
+)(styled);
