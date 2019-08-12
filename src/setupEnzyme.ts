@@ -8,4 +8,5 @@ window._env_ = {
   reduxLoggerActive: false,
   webapiUrl: 'http://localhost:9079',
   identityApiUrl: 'http://localhost:9079',
+  sentryKey: '',
 };

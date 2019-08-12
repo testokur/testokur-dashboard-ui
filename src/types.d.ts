@@ -4,5 +4,6 @@ interface Window {
     webapiUrl: string;
     identityApiUrl: string;
     reduxLoggerActive: boolean;
+    sentryKey: string;
   };
 }
