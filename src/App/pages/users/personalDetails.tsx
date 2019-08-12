@@ -2,6 +2,7 @@ import React from 'react';
 import { TextField, withStyles } from '@material-ui/core';
 import { styles } from './styles';
 import { User } from '../home/types';
+import { CitySelect } from '../../city';
 
 interface Props {
   classes: any;
@@ -47,7 +48,7 @@ const component: React.FC<Props> = (props) => {
         margin="normal"
         variant="outlined"
       />
-      {/* <CitySelect cityId={props.user.cityId} districtId={props.user.districtId} /> */}
+      <CitySelect cityId={props.user.cityId} districtId={props.user.districtId} />
     </div>
   );
 };

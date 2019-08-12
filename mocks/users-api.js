@@ -8,7 +8,7 @@ module.exports = (req, res) => {
         cityName: 'Denizli',
         districtName: 'Merkez',
         cityId: 20,
-        districtId: 450,
+        districtId: 278,
         email: 'nazmialtun88@gmail.com',
         phone: '5544205163',
         firstName: 'Nazmi',
@@ -22,7 +22,7 @@ module.exports = (req, res) => {
         cityName: 'Izmir',
         districtName: 'Bornova',
         cityId: 35,
-        districtId: 750,
+        districtId: 172,
         email: 'nazmialtun@windowslive.com',
         phone: '5554442233',
         firstName: 'John',
@@ -36,7 +36,7 @@ module.exports = (req, res) => {
         cityName: 'Istanbul',
         districtName: 'Pendik',
         cityId: 34,
-        districtId: 650,
+        districtId: 724,
         email: 'marry@hotmail.com',
         phone: '5523336699',
         firstName: 'Marry',
@@ -50,7 +50,7 @@ module.exports = (req, res) => {
         cityName: 'Istanbul',
         districtName: 'Bakirkoy',
         cityId: 34,
-        districtId: 659,
+        districtId: 114,
         email: 'josh@hotmail.com',
         phone: '5449875544',
         firstName: 'Josh',
@@ -58,5 +58,5 @@ module.exports = (req, res) => {
         schoolName: 'X-Men School',
       },
     ]);
-  }, 2000);
+  }, 200);
 };
