@@ -13,7 +13,7 @@ const config = {
   },
   output: {
     path: resolve(__dirname, 'dist'),
-    filename: '[name].js',
+    filename: '[name].[contenthash].js',
     publicPath: '/',
   },
   resolve: {
@@ -71,6 +71,9 @@ if (dev) {
         extractComments: true,
       }),
     ],
+    splitChunks : {
+      chunks: 'all',
+    }
   };
 }
 
