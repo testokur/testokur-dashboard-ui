@@ -71,9 +71,9 @@ if (dev) {
         extractComments: true,
       }),
     ],
-    splitChunks : {
+    splitChunks: {
       chunks: 'all',
-    }
+    },
   };
 }
 

@@ -26,7 +26,7 @@ jobs:
       - run:
           name: Copy image to the app server
           command: |
-            scp dashboard.tar $SSH_USERNAME@$SSH_HOST:/home/docker-images/
+            scp -q dashboard.tar $SSH_USERNAME@$SSH_HOST:/home/docker-images/
       - run:
           name: Run container on the app server
           command: |
