@@ -32,6 +32,7 @@ jobs:
           command: |
             ssh  $SSH_USERNAME@$SSH_HOST 'bash -s' < deploy.sh
   deploy_prod:
+    machine: true
     filters:
       branches:
         only: master
