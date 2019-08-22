@@ -50,9 +50,9 @@ workflows:
           requires:
             - build
           filters:
-            branches:
+            tags:
               ignore:
-                - /release-.*/
+                - /v.*/
       - deploy-prod:
           requires:
             - build
