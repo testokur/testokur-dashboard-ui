@@ -43,7 +43,7 @@ const component: React.FC<Props> = (props) => {
   const [smsDialogOpen, setSmsDialogOpen] = useState(false);
   const [deleteUserDialogOpen, setDeleteUserDialogOpen] = useState(false);
   const [addSmsCreditDialogOpen, setAddSmsCreditDialogOpen] = useState(false);
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<User | User[]>();
 
   const handleSendSms = async (body: string): Promise<boolean> => {
     await webApi.post('/api/v1/sms/send-admin', { receiver: _.get(user, 'phone', ''), body: body });
