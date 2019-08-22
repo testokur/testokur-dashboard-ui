@@ -19,6 +19,9 @@ jobs:
           name: Test&Build
           command: |
             docker-compose build --build-arg CODECOV_TOKEN=$CODECOV_TOKEN  app
+  deploy-qa:
+    machine: true
+    steps:
       - run:
           name: Compress the image file
           command: |
@@ -28,13 +31,29 @@ jobs:
           command: |
             scp -q dashboard.tar $SSH_USERNAME@$SSH_HOST:/home/docker-images/
       - run:
-          name: Run container on the app server
+          name: Run container
           command: |
             ssh  $SSH_USERNAME@$SSH_HOST 'bash -s' < deploy.sh
-  deploy_prod:
+  deploy-prod:
     machine: true
-    filters:
-      branches:
-        only: master
-      tags:
-        only: /^v[0-9]+(\.[0-9]+)*$/
+    steps:
+      - run:
+          name: Run container
+          command: |
+            ssh  $SSH_USERNAME@$SSH_HOST 'bash -s' < deploy-prod.sh
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build:
+      - deploy-qa:
+          requires:
+            - build
+      - deploy-prod:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+            tags:
+              only: /v.*/
