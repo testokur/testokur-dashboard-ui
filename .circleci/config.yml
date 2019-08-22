@@ -31,3 +31,11 @@ jobs:
           name: Run container on the app server
           command: |
             ssh  $SSH_USERNAME@$SSH_HOST 'bash -s' < deploy.sh
+  deploy-prod:
+    filters:
+      tags:
+        only: /^v.*/
+    run:
+      name: Run container on the app server
+      command: |
+        ssh  $SSH_USERNAME@$SSH_HOST 'bash -s' < deploy-prod.sh
