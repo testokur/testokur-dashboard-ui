@@ -49,6 +49,10 @@ workflows:
       - deploy-qa:
           requires:
             - build
+          filters:
+            branches:
+              ignore:
+                - /release-.*/
       - deploy-prod:
           requires:
             - build
