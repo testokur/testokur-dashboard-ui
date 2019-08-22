@@ -22,6 +22,7 @@ jobs:
   deploy-qa:
     machine: true
     steps:
+      - checkout
       - run:
           name: Compress the image file
           command: |
@@ -37,6 +38,7 @@ jobs:
   deploy-prod:
     machine: true
     steps:
+      - checkout
       - run:
           name: Run container
           command: |
@@ -50,14 +52,11 @@ workflows:
           requires:
             - build
           filters:
-            tags:
-              ignore:
-                - /v.*/
+            branches:
+              only: master
       - deploy-prod:
           requires:
             - build
           filters:
-            branches:
-              only: master
             tags:
-              only: /v.*/
+              only: /^v.*/
