@@ -2,7 +2,8 @@
   "port": 8080,
   "headers": {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "*"
+    "Access-Control-Allow-Headers": "*",
+    "Access-Control-Allow-Methods": "*"
   },
   "routes": {
     "/api/v1/license-types": {
@@ -36,6 +37,10 @@
     "/account/users": {
       "options": 204,
       "get": "users.json"
+    },
+    "/api/v1/users/:id": {
+      "options": 204,
+      "delete": 204
     }
   }
 }

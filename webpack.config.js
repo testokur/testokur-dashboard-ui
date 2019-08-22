@@ -13,7 +13,7 @@ const config = {
   },
   output: {
     path: resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash].js',
+    filename: dev ? '[name].[hash].js' : '[name].[contenthash].js',
     publicPath: '/',
   },
   resolve: {
@@ -40,14 +40,14 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      chunks: ['index'],
       title: 'TestOkur Dasbhoard',
       template: 'public/index.html',
+      excludeChunks: ['silentRenew', 'vendors~index~silentRenew'],
     }),
     new HtmlWebpackPlugin({
-      chunks: ['silentRenew'],
       filename: 'silentRenew.html',
       template: 'public/silentRenew.html',
+      excludeChunks: ['index', 'vendors~index'],
     }),
     new CopyPlugin([{ from: 'assets/favicons', to: 'assets/favicons' }]),
   ],

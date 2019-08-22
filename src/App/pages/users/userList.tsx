@@ -10,12 +10,14 @@ import { User } from '../home/types';
 import AppState from '../../AppState';
 import { tableIcons, withLoading } from '../../components';
 import Sms from '@material-ui/icons/Sms';
+import DeleteForever from '@material-ui/icons/DeleteForever';
 import AddCircleOutline from '@material-ui/icons/AddCircleOutline';
 
 import { fetchUsers } from '../home/actions';
 import { SendSmsDialog } from './SendSmsDialog';
 import { webApi } from '../../helpers';
 import { AddSmsDialog } from './smsDetails/AddSmsDialog';
+import { DeleteUserDialog } from './deleteUserDialog';
 
 interface ComponentProps {
   classes: any;
@@ -39,6 +41,7 @@ const component: React.FC<Props> = (props) => {
     }
   }, []);
   const [smsDialogOpen, setSmsDialogOpen] = useState(false);
+  const [deleteUserDialogOpen, setDeleteUserDialogOpen] = useState(false);
   const [addSmsCreditDialogOpen, setAddSmsCreditDialogOpen] = useState(false);
   const [user, setUser] = useState<User>();
 
@@ -50,6 +53,12 @@ const component: React.FC<Props> = (props) => {
   const handleAddCredit = async (amount: number) => {
     setAddSmsCreditDialogOpen(false);
     await webApi.post('/api/v1/sms/add-credits', { userId: _.get(user, 'id', ''), amount: amount });
+    props.fetchUsers();
+  };
+
+  const deleteUser = async () => {
+    await webApi.delete(`/api/v1/users/${_.get(user, 'id', '')}`);
+    setDeleteUserDialogOpen(false);
     props.fetchUsers();
   };
 
@@ -115,6 +124,14 @@ const component: React.FC<Props> = (props) => {
         }}
         actions={[
           {
+            icon: () => <DeleteForever />,
+            tooltip: 'Sil',
+            onClick: (event, rowData) => {
+              setUser(rowData);
+              setDeleteUserDialogOpen(true);
+            },
+          },
+          {
             icon: () => <Sms />,
             tooltip: 'Sms Gonder',
             onClick: (event, rowData) => {
@@ -145,6 +162,12 @@ const component: React.FC<Props> = (props) => {
         open={addSmsCreditDialogOpen}
         onSubmit={handleAddCredit}
         onClose={() => setAddSmsCreditDialogOpen(false)}
+      />
+      <DeleteUserDialog
+        open={deleteUserDialogOpen}
+        email={_.get(user, 'email', '')}
+        onNoClick={() => setDeleteUserDialogOpen(false)}
+        onYesClick={deleteUser}
       />
     </div>
   );

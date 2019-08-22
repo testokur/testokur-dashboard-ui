@@ -52,7 +52,7 @@ const component: React.FC<Props> = (props) => {
       <Tabs value={value} onChange={handleChange} variant="fullWidth" indicatorColor="primary" textColor="primary">
         <Tab label="LISANS BILGILERI" />
         <Tab label="KISISEL BILGILER" />
-        <Tab label="SMS BILGILERI" />
+        <Tab label="DIGER BILGILER" />
       </Tabs>
       {value === 0 && (
         <LicenseDetails

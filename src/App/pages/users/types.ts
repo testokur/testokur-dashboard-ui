@@ -1,3 +1,7 @@
+export const DELETE_USER_REQUEST = '@@user/DELETE_USER_REQUEST';
+export const DELETE_USER_SUCCESS = '@@user/DELETE_USER_SUCCESS';
+export const DELETE_USER_ERROR = '@@user/DELETE_USER_ERROR';
+
 import { Guid } from 'guid-typescript';
 
 export interface UpdateUserModel {
