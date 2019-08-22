@@ -17,7 +17,7 @@ import { fetchUsers } from '../home/actions';
 import { SendSmsDialog } from './SendSmsDialog';
 import { webApi } from '../../helpers';
 import { AddSmsDialog } from './smsDetails/AddSmsDialog';
-import { DeleteUserDialog } from './deleteUserDialog';
+import { DeleteUserDialog } from './DeleteUserDialog';
 
 interface ComponentProps {
   classes: any;
