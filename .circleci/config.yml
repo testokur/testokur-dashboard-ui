@@ -25,7 +25,9 @@ jobs:
       - run:
           name: Compress the image file
           command: |
-            docker save -o dashboard.tar testokur-dashboard:latest
+            mkdir -p workspace
+            cp *.sh workspace
+            docker save -o workspace/dashboard.tar testokur-dashboard:latest
       - persist_to_workspace:
           root: workspace
           paths:
@@ -36,7 +38,7 @@ jobs:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: /workspace
       - run:
           name: Copy image to the app server
           command: |
