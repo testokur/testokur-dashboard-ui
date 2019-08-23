@@ -1,6 +1,6 @@
 version: 2.1
 defaults: &defaults
-  working_directory: ~/app
+  working_directory: ~/repo
   machine: true
 jobs:
   build:
@@ -25,11 +25,9 @@ jobs:
       - run:
           name: Compress the image file
           command: |
-            mkdir -p workspace
-            cp *.sh workspace
-            docker save -o workspace/dashboard.tar testokur-dashboard:latest
+            docker save -o dashboard.tar testokur-dashboard:latest
       - persist_to_workspace:
-          root: workspace
+          root: ~/repo
           paths:
             - dashboard.tar
             - deploy.sh
@@ -38,7 +36,7 @@ jobs:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: /workspace
+          at: ~/repo
       - run:
           name: Copy image to the app server
           command: |
@@ -51,7 +49,7 @@ jobs:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: ~/repo
       - run:
           name: Run container
           command: |
