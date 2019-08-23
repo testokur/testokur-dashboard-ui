@@ -55,7 +55,7 @@ jobs:
       - run:
           name: Run container
           command: |
-            ssh  $SSH_USERNAME@$SSH_HOST 'bash -s' < deploy.sh
+            ssh  $SSH_USERNAME@$SSH_HOST 'bash -s' < deploy.sh > /dev/null
   deploy-prod:
     <<: *defaults
     steps:
@@ -64,7 +64,7 @@ jobs:
       - run:
           name: Run container
           command: |
-            ssh  $SSH_USERNAME@$SSH_HOST 'bash -s' < deploy-prod.sh
+            ssh  $SSH_USERNAME@$SSH_HOST 'bash -s' < deploy-prod.sh > /dev/null
 workflows:
   version: 2
   build-deploy:
