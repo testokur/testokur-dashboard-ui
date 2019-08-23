@@ -1,6 +1,6 @@
 version: 2.1
 defaults: &defaults
-  working_directory: /tmp
+  working_directory: ~/app
   machine: true
 jobs:
   build:
