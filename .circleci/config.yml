@@ -1,7 +1,10 @@
 version: 2.1
+defaults: &defaults
+  working_directory: /tmp
+  machine: true
 jobs:
   build:
-    machine: true
+    <<: *defaults
     steps:
       - checkout
       - run:
@@ -23,22 +26,30 @@ jobs:
           name: Compress the image file
           command: |
             docker save -o dashboard.tar testokur-dashboard:latest
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - dashboard.tar
+            - deploy.sh
+            - deploy-prod.sh
+  deploy-qa:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
       - run:
           name: Copy image to the app server
           command: |
             scp -q dashboard.tar $SSH_USERNAME@$SSH_HOST:/home/docker-images/
-  deploy-qa:
-    machine: true
-    steps:
-      - checkout
       - run:
           name: Run container
           command: |
             ssh  $SSH_USERNAME@$SSH_HOST 'bash -s' < deploy.sh
   deploy-prod:
-    machine: true
+    <<: *defaults
     steps:
-      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
       - run:
           name: Run container
           command: |
