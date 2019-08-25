@@ -41,13 +41,13 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'TestOkur Dasbhoard',
-      template: 'public/index.html',
-      excludeChunks: ['silentRenew', 'vendors~index~silentRenew'],
+      chunks: ['index'],
+      template: 'public/index.html'
     }),
     new HtmlWebpackPlugin({
+      chunks: ['silentRenew'],
       filename: 'silentRenew.html',
-      template: 'public/silentRenew.html',
-      excludeChunks: ['index', 'vendors~index'],
+      template: 'public/silentRenew.html'
     }),
     new CopyPlugin([{ from: 'assets/favicons', to: 'assets/favicons' }]),
   ],
