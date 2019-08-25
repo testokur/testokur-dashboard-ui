@@ -70,7 +70,7 @@ if (dev) {
         parallel: true,
         extractComments: true,
       }),
-    ]
+    ],
   };
 }
 
