@@ -1,13 +1,13 @@
-import { identityApi, webApi } from '../../helpers';
+import { createIdentityApiClient, createWebApiClient } from '../../helpers';
 import { put, call, takeEvery, fork, all } from 'redux-saga/effects';
 import { fetchFailed, fetchSuccess } from './actions';
 import { FETCH_USERS_REQUEST, User } from './types';
 
 function callIdentityApi() {
-  return identityApi.get('/account/users');
+  return createIdentityApiClient().get('/account/users');
 }
 function callWebApi() {
-  return webApi.get('/api/v1/users');
+  return createWebApiClient().get('/api/v1/users');
 }
 
 function* handleFetch() {

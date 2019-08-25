@@ -4,7 +4,7 @@ import { styles } from './styles';
 import { User } from '../../home/types';
 import { default as SmsFieldWithButton } from './smsFieldWithButton';
 import { AddSmsDialog } from './AddSmsDialog';
-import { webApi } from '../../../helpers';
+import { createWebApiClient } from '../../../helpers';
 
 interface Props {
   classes: any;
@@ -16,7 +16,7 @@ const component: React.FC<Props> = (props) => {
 
   const handleAddCredit = async (amount: number) => {
     setDialogOpen(false);
-    await webApi.post('/api/v1/sms/add-credits', { userId: props.user.id, amount: amount });
+    await createWebApiClient().post('/api/v1/sms/add-credits', { userId: props.user.id, amount: amount });
   };
   return (
     <div>

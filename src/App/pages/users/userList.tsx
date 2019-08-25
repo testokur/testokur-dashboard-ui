@@ -15,7 +15,7 @@ import AddCircleOutline from '@material-ui/icons/AddCircleOutline';
 
 import { fetchUsers } from '../home/actions';
 import { SendSmsDialog } from './SendSmsDialog';
-import { webApi } from '../../helpers';
+import { createWebApiClient } from '../../helpers';
 import { AddSmsDialog } from './smsDetails/AddSmsDialog';
 import { DeleteUserDialog } from './DeleteUserDialog';
 
@@ -46,18 +46,18 @@ const component: React.FC<Props> = (props) => {
   const [user, setUser] = useState<User | User[]>();
 
   const handleSendSms = async (body: string): Promise<boolean> => {
-    await webApi.post('/api/v1/sms/send-admin', { receiver: _.get(user, 'phone', ''), body: body });
+    await createWebApiClient().post('/api/v1/sms/send-admin', { receiver: _.get(user, 'phone', ''), body: body });
     return true;
   };
 
   const handleAddCredit = async (amount: number) => {
     setAddSmsCreditDialogOpen(false);
-    await webApi.post('/api/v1/sms/add-credits', { userId: _.get(user, 'id', ''), amount: amount });
+    await createWebApiClient().post('/api/v1/sms/add-credits', { userId: _.get(user, 'id', ''), amount: amount });
     props.fetchUsers();
   };
 
   const deleteUser = async () => {
-    await webApi.delete(`/api/v1/users/${_.get(user, 'id', '')}`);
+    await createWebApiClient().delete(`/api/v1/users/${_.get(user, 'id', '')}`);
     setDeleteUserDialogOpen(false);
     props.fetchUsers();
   };

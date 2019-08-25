@@ -1,13 +1,13 @@
 import { call, put, takeLatest, fork, all } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
-import { identityApi, HttpStatusCode } from '../../helpers';
+import { createIdentityApiClient, HttpStatusCode } from '../../helpers';
 import { changePasswordFailed, changePasswordSuccess } from './actions';
 import { CHANGE_PASSWORD_REQUEST } from './types';
 
 type ChangePasswordResponse = AxiosResponse<any>;
 
 function callApi(model: any) {
-  return identityApi.post('/account/change-password', model);
+  return createIdentityApiClient().post('/account/change-password', model);
 }
 
 function* handlePost(model: any) {

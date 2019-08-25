@@ -1,10 +1,10 @@
 import { put, call, takeEvery, fork, all } from 'redux-saga/effects';
 import { fetchSuccess } from './actions';
-import { webApi } from '../helpers';
+import { createWebApiClient } from '../helpers';
 import { FETCH_CITIES_REQUEST } from './types';
 
 function callApi() {
-  return webApi.get('/api/v1/cities');
+  return createWebApiClient().get('/api/v1/cities');
 }
 
 function* handleFetch() {

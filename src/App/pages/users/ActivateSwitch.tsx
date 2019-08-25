@@ -4,7 +4,7 @@ import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { TransitionProps } from '@material-ui/core/transitions';
 import { Slide, Dialog, DialogTitle, DialogContentText, DialogContent, Button, DialogActions } from '@material-ui/core';
-import { webApi } from '../../helpers';
+import { createWebApiClient } from '../../helpers';
 
 const Transition = React.forwardRef<unknown, TransitionProps>(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -23,7 +23,7 @@ export const ActivateSwitch: React.FC<Props> = (props: Props) => {
   const activate = async (event: any) => {
     event.preventDefault();
     setOpenDialog(false);
-    await webApi.post(`/api/v1/users/activate?email=${props.email}`);
+    await createWebApiClient().post(`/api/v1/users/activate?email=${props.email}`);
     props.onActivated();
   };
 
