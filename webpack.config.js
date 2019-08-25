@@ -70,10 +70,7 @@ if (dev) {
         parallel: true,
         extractComments: true,
       }),
-    ],
-    splitChunks: {
-      chunks: 'all',
-    },
+    ]
   };
 }
 
