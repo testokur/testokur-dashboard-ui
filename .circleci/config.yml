@@ -62,12 +62,16 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run:
+          name: Copy image to the app server
+          command: |
+            scp -q dashboard.tar $SSH_USERNAME@$SSH_HOST:/home/docker-images/
+      - run:
           name: Run container
           command: |
             ssh  $SSH_USERNAME@$SSH_HOST 'bash -s' < deploy-prod.sh > /dev/null
 workflows:
   version: 2
-  build-deploy:
+  dashboard-ui:
     jobs:
       - build-and-test:
           filters:
