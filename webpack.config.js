@@ -42,12 +42,12 @@ const config = {
     new HtmlWebpackPlugin({
       title: 'TestOkur Dasbhoard',
       chunks: ['index'],
-      template: 'public/index.html'
+      template: 'public/index.html',
     }),
     new HtmlWebpackPlugin({
       chunks: ['silentRenew'],
       filename: 'silentRenew.html',
-      template: 'public/silentRenew.html'
+      template: 'public/silentRenew.html',
     }),
     new CopyPlugin([{ from: 'assets/favicons', to: 'assets/favicons' }]),
   ],
