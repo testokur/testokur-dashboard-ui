@@ -17,6 +17,7 @@ export interface User {
   maxAllowedStudentCount: number;
   canScan: true;
   licenseTypeId: number;
+  licenseTypeName: string;
   startDateTimeUtc?: Date;
   expiryDateUtc?: Date;
   activationTimeUtc: Date;
@@ -30,6 +31,7 @@ export interface User {
   firstName: string;
   lastName: string;
   schoolName: string;
+  status: string;
 }
 
 export interface UsersState {

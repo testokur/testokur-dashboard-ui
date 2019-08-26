@@ -74,6 +74,10 @@ const component: React.FC<Props> = (props) => {
             render: (rowData) => <Link to={`/users/${rowData.userName}`}>{rowData.userName}</Link>,
           },
           {
+            title: 'Lisans Turu',
+            field: 'licenseTypeName',
+          },
+          {
             title: 'Ad Soyad',
             field: 'firstName',
             render: (rowData) => (
@@ -99,6 +103,10 @@ const component: React.FC<Props> = (props) => {
           {
             title: 'Sms Bakiye',
             field: 'smsBalance',
+          },
+          {
+            title: 'Durum',
+            field: 'status',
           },
         ]}
         data={props.users}

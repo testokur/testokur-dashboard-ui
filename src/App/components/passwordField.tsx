@@ -10,7 +10,7 @@ interface Props {
   validators?: any[];
 }
 
-export const PasswordField: React.FC<Props> = (props) => {
+export const passwordField: React.FC<Props> = (props) => {
   return (
     <TextValidator
       variant="outlined"

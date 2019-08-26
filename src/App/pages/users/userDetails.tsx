@@ -11,6 +11,7 @@ import AppState from '../../AppState';
 import LicenseDetails from './LicenseDetails';
 import { SmsDetails } from './smsDetails';
 import PersonalDetails from './personalDetails';
+import ChangeUserPassword from './changeUserPassword';
 
 interface MatchParams {
   userName: string;
@@ -53,6 +54,7 @@ const component: React.FC<Props> = (props) => {
         <Tab label="LISANS BILGILERI" />
         <Tab label="KISISEL BILGILER" />
         <Tab label="DIGER BILGILER" />
+        <Tab label="PAROLA DEGISTIR" />
       </Tabs>
       {value === 0 && (
         <LicenseDetails
@@ -69,6 +71,7 @@ const component: React.FC<Props> = (props) => {
       )}
       {value === 1 && <PersonalDetails user={props.user} />}
       {value === 2 && <SmsDetails user={props.user} />}
+      {value === 3 && <ChangeUserPassword user={props.user} />}
     </div>
   );
 };
