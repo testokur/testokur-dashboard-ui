@@ -9,6 +9,7 @@ export default interface AppState {
   oidc: OidcState;
   router: RouterState;
   changePassword: ChangePasswordState;
+  resetUserPassword: ChangePasswordState;
   users: UsersState;
   licenseTypes: LicenseTypeState;
   cities: CityState;

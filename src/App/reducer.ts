@@ -6,6 +6,7 @@ import { default as changePasswordReducer } from './pages/changePassword/reducer
 import { default as usersReducer } from './pages/home/reducer';
 import { default as licenseTypesReducer } from './licenseType/reducer';
 import { default as citiesReducer } from './city/reducer';
+import { resetUserPasswordReducer } from './pages/users/resetUserPassword';
 
 export default (history: History) =>
   combineReducers({
@@ -15,4 +16,5 @@ export default (history: History) =>
     users: usersReducer,
     licenseTypes: licenseTypesReducer,
     cities: citiesReducer,
+    resetUserPassword: resetUserPasswordReducer,
   });

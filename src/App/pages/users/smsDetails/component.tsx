@@ -20,8 +20,10 @@ const component: React.FC<Props> = (props) => {
   };
   return (
     <div>
-      <SmsFieldWithButton credit={props.user.smsBalance} onClick={() => setDialogOpen(true)} />
-      <AddSmsDialog open={dialogOpen} onSubmit={handleAddCredit} onClose={() => setDialogOpen(false)} />
+      <div>
+        <SmsFieldWithButton credit={props.user.smsBalance} onClick={() => setDialogOpen(true)} />
+        <AddSmsDialog open={dialogOpen} onSubmit={handleAddCredit} onClose={() => setDialogOpen(false)} />
+      </div>
     </div>
   );
 };

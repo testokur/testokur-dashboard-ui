@@ -14,6 +14,7 @@ module.exports = (req, res) => {
         firstName: 'Nazmi',
         lastName: 'Altun',
         schoolName: 'X-Men School',
+        notes: 'This is just a dummy note.Sure we could add more notes to this.',
       },
       {
         id: 2,
@@ -28,6 +29,7 @@ module.exports = (req, res) => {
         firstName: 'John',
         lastName: 'Brown',
         schoolName: 'X-Men School',
+        notes: 'This is just a dummy note.Sure we could add more notes to this.',
       },
       {
         id: 3,
@@ -42,6 +44,7 @@ module.exports = (req, res) => {
         firstName: 'Marry',
         lastName: 'Brown',
         schoolName: 'X-Men School',
+        notes: 'This is just a dummy note.Sure we could add more notes to this.',
       },
       {
         id: 4,
@@ -56,6 +59,7 @@ module.exports = (req, res) => {
         firstName: 'Josh',
         lastName: 'Pollack',
         schoolName: 'X-Men School',
+        notes: 'This is just a dummy note.Sure we could add more notes to this.',
       },
     ]);
   }, 200);

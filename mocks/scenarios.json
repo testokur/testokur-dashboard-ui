@@ -38,6 +38,10 @@
       "options": 204,
       "get": "users.json"
     },
+    "/account/reset-user-password-by-admin": {
+      "options": 204,
+      "post": 204
+    },
     "/api/v1/users/:id": {
       "options": 204,
       "delete": 204

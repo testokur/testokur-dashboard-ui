@@ -8,7 +8,7 @@ import { requestChangePassword } from './actions';
 import { connect } from 'react-redux';
 import { MessageBox } from '../../components';
 import AppState from '../../AppState';
-import { styles } from './styles';
+import { styles } from '../users/resetUserPassword/styles';
 
 interface ComponentProps {
   classes: any;

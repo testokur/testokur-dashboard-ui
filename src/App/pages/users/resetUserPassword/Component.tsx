@@ -1,13 +1,14 @@
 import React from 'react';
 import * as _ from 'lodash';
-import { withStyles, CircularProgress, Button, Grid } from '@material-ui/core';
-import { styles } from './styles';
+import { CircularProgress, Button, Grid, withStyles } from '@material-ui/core';
 import { ValidatorForm } from 'react-material-ui-form-validator';
-import { PasswordField, MessageBox } from '../../components';
-import { snakeToCamel } from '../../helpers';
+import { PasswordField, MessageBox } from '../../../components';
+import { snakeToCamel } from '../../../helpers';
 import { connect } from 'react-redux';
-import { User } from '../home/types';
-import AppState from '../../AppState';
+import { User } from '../../home/types';
+import AppState from '../../../AppState';
+import { styles } from './styles';
+import { requestResetPassword } from './actions';
 
 interface ComponentProps {
   classes?: any;
@@ -24,7 +25,11 @@ interface State {
   formData: any;
 }
 
-type Props = PropsFromState & ComponentProps;
+interface PropsFromDispatch {
+  requestResetPassword: typeof requestResetPassword;
+}
+
+type Props = PropsFromState & PropsFromDispatch & ComponentProps;
 
 class Component extends React.Component<Props, State> {
   public constructor(props: Props) {
@@ -47,10 +52,9 @@ class Component extends React.Component<Props, State> {
   }
   public componentDidUpdate() {
     if (this.props.success && !_.isNil(this.props.message)) {
-      if (this.state.formData.currentPassword !== '') {
+      if (this.state.formData.newPassword !== '') {
         this.setState({
           formData: {
-            currentPassword: '',
             newPassword: '',
             newPasswordConfirm: '',
           },
@@ -64,7 +68,9 @@ class Component extends React.Component<Props, State> {
     formData[snakeToCamel(event.target.name)] = event.target.value;
     this.setState({ formData });
   };
-  private handleSubmit = () => {};
+  private handleSubmit = () => {
+    this.props.requestResetPassword(this.props.user.id, this.state.formData.newPassword);
+  };
 
   public render() {
     const { formData } = this.state;
@@ -110,10 +116,20 @@ class Component extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state: AppState, ownProps: ComponentProps) {
+function mapStateToProps({ resetUserPassword }: AppState, ownProps: ComponentProps) {
   return {
     user: ownProps.user,
+    loading: resetUserPassword.loading,
+    success: resetUserPassword.success,
+    message: resetUserPassword.message,
   };
 }
 
-export default connect(mapStateToProps)(withStyles(styles as any, { withTheme: true })(Component as any) as any);
+const mapDispatchToProps = {
+  requestResetPassword,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(withStyles(styles as any, { withTheme: true })(Component as any) as any);
