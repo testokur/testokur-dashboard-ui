@@ -40,7 +40,7 @@
     },
     "/account/reset-user-password-by-admin": {
       "options": 204,
-      "post": 204
+      "post": "reset-user-password-by-admin.js"
     },
     "/api/v1/users/:id": {
       "options": 204,
