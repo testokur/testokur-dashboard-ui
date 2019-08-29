@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import * as _ from 'lodash';
 import { FormControl, InputLabel, Select, MenuItem, withStyles } from '@material-ui/core';
 import { connect } from 'react-redux';

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import * as _ from 'lodash';
 import { RouteComponentProps } from 'react-router';
 import { Grid, Avatar, withStyles, Divider, Tabs, Tab, Button, Paper, Box } from '@material-ui/core';
@@ -13,9 +13,6 @@ import { SmsDetails } from './smsDetails';
 import PersonalDetails from './personalDetails';
 import { ResetUserPassword } from './resetUserPassword';
 import { ConfirmationDialog } from '../../components';
-import { createWebApiClient } from '../../helpers';
-import { UpdateUserModel } from './types';
-import { Guid } from 'guid-typescript';
 
 interface MatchParams {
   userName: string;
@@ -46,28 +43,28 @@ class Component extends React.Component<Props, State> {
     };
   }
 
-  handleTabChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+  private handleTabChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     this.setState((prevState) => ({
       ...prevState,
       tabIndex: newValue,
     }));
   };
 
-  setUpdateUserDialogState = (display: boolean) => {
+  private setUpdateUserDialogState = (display: boolean) => {
     this.setState((prevState) => ({
       ...prevState,
       openUpdateUserDialog: display,
     }));
   };
 
-  handleChange = (newUser: User) => {
+  private handleChange = (newUser: User) => {
     this.setState((prevState) => ({
       ...prevState,
       user: newUser,
     }));
   };
 
-  updateUser = () => {
+  private updateUser = () => {
     this.setUpdateUserDialogState(false);
   };
 
@@ -98,7 +95,7 @@ class Component extends React.Component<Props, State> {
           {this.state.tabIndex === 0 && (
             <LicenseDetails
               user={this.state.user}
-              onChange={(u:User) => this.setState((prevState) => ({...prevState, user: u})) }
+              onChange={(u: User) => this.setState((prevState) => ({ ...prevState, user: u }))}
               onActivated={() => {
                 var d = new Date();
                 var year = d.getFullYear();
@@ -115,7 +112,12 @@ class Component extends React.Component<Props, State> {
               }}
             />
           )}
-          {this.state.tabIndex === 1 && <PersonalDetails user={this.props.user} onChange={(u:User) => this.setState((prevState) => ({...prevState, user: u})) } />}
+          {this.state.tabIndex === 1 && (
+            <PersonalDetails
+              user={this.props.user}
+              onChange={(u: User) => this.setState((prevState) => ({ ...prevState, user: u }))}
+            />
+          )}
           {this.state.tabIndex === 2 && <SmsDetails user={this.props.user} />}
           {this.state.tabIndex === 3 && <ResetUserPassword user={this.props.user} />}
         </div>

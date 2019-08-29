@@ -69,7 +69,7 @@ class Component extends React.Component<Props, State> {
     this.setState({ formData });
   };
   private handleSubmit = () => {
-    this.props.requestResetPassword(this.props.user.id, this.state.formData.newPassword);
+    this.props.requestResetPassword(this.props.user.subjectId, this.state.formData.newPassword);
   };
 
   public render() {
