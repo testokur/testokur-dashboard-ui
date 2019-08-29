@@ -17,7 +17,7 @@ import { fetchUsers } from '../home/actions';
 import { SendSmsDialog } from './SendSmsDialog';
 import { createWebApiClient } from '../../helpers';
 import { AddSmsDialog } from './smsDetails/AddSmsDialog';
-import { DeleteUserDialog } from './DeleteUserDialog';
+import { ConfirmationDialog } from '../../components/confirmationDialog';
 
 interface ComponentProps {
   classes: any;
@@ -171,11 +171,12 @@ const component: React.FC<Props> = (props) => {
         onSubmit={handleAddCredit}
         onClose={() => setAddSmsCreditDialogOpen(false)}
       />
-      <DeleteUserDialog
+      <ConfirmationDialog
         open={deleteUserDialogOpen}
-        email={_.get(user, 'email', '')}
         onNoClick={() => setDeleteUserDialogOpen(false)}
         onYesClick={deleteUser}
+        title={'Kullanici Silme'}
+        message={_.get(user, 'email', '') + ' e-posta adresine sahip kullaniciyi silmek istediginize emin misiniz?'}
       />
     </div>
   );

@@ -2,14 +2,8 @@ import React, { useState } from 'react';
 import * as _ from 'lodash';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { TransitionProps } from '@material-ui/core/transitions';
-import { Slide, Dialog, DialogTitle, DialogContentText, DialogContent, Button, DialogActions } from '@material-ui/core';
 import { createWebApiClient } from '../../helpers';
-
-const Transition = React.forwardRef<unknown, TransitionProps>(function Transition(props, ref) {
-  return <Slide direction="down" ref={ref} {...props} />;
-});
-Transition.displayName = 'Transition';
+import { ConfirmationDialog } from '../../components/confirmationDialog';
 
 interface Props {
   active: boolean;
@@ -43,30 +37,15 @@ export const ActivateSwitch: React.FC<Props> = (props: Props) => {
         label="Lisans Durumu"
         labelPlacement="start"
       />
-      <Dialog
+      <ConfirmationDialog
         open={openDialog}
-        TransitionComponent={Transition}
-        onClose={() => setOpenDialog(false)}
-        aria-labelledby="alert-dialog-slide-title"
-        aria-describedby="alert-dialog-slide-description"
-      >
-        <DialogTitle id="alert-dialog-slide-title">{'Lisans Aktivasyon'}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            {
-              'Lisans aktiflestirilecektir ve kullaniciya SMS ve E-Posta bilgilendirme mesajlari gonderilecektir. Onayliyor musunuz?'
-            }
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setOpenDialog(false)} color="primary">
-            Hayir
-          </Button>
-          <Button onClick={activate} color="primary">
-            Evet
-          </Button>
-        </DialogActions>
-      </Dialog>
+        title={'Lisans Aktivasyon'}
+        message={
+          'Lisans aktiflestirilecektir ve kullaniciya SMS ve E-Posta bilgilendirme mesajlari gonderilecektir. Onayliyor musunuz?'
+        }
+        onNoClick={() => setOpenDialog(false)}
+        onYesClick={activate}
+      />
     </div>
   );
 };

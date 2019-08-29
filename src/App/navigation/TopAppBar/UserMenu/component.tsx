@@ -4,10 +4,10 @@ import { Button, withStyles, MenuItem, Menu } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import { styles } from './styles';
-import { LogoutDialog } from './LogoutDialog';
 import { connect } from 'react-redux';
 import { userManager } from '../../../auth';
 import AppState from '../../../AppState';
+import { ConfirmationDialog } from '../../../components/confirmationDialog';
 
 interface OwnProps {
   open: boolean;
@@ -89,10 +89,12 @@ class Component extends React.Component<Props, State> {
           </MenuItem>
           <MenuItem onClick={this.openLogoutDialog}>Oturum Kapat</MenuItem>
         </Menu>
-        <LogoutDialog
+        <ConfirmationDialog
           open={this.state.logoutDialogOpen}
           onYesClick={this.handleLogout}
           onNoClick={() => this.setState({ logoutDialogOpen: false })}
+          title={'Oturum Kapat'}
+          message={'Oturumu kapatmak istediginize emin misiniz?'}
         />
       </div>
     );

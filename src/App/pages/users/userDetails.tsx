@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as _ from 'lodash';
 import { RouteComponentProps } from 'react-router';
-import { Grid, Avatar, withStyles, Divider, Tabs, Tab } from '@material-ui/core';
+import { Grid, Avatar, withStyles, Divider, Tabs, Tab, Button, Paper, Box } from '@material-ui/core';
 import PersonIcon from '@material-ui/icons/Person';
 import { connect } from 'react-redux';
 import { styles } from './styles';
@@ -41,37 +41,52 @@ const component: React.FC<Props> = (props) => {
   }, [props.user.active, props.user.expiryDateUtc]);
 
   return (
-    <div className={props.classes.root}>
-      <Grid container justify="center" alignItems="center">
-        <Avatar className={props.classes.avatar}>
-          <PersonIcon />
-        </Avatar>
-        <h3>{props.user.userName}</h3>
-        <UserStatus active={active} expirationDate={expiryDateUtc} />
-      </Grid>
-      <Divider />
-      <Tabs value={value} onChange={handleChange} variant="fullWidth" indicatorColor="primary" textColor="primary">
-        <Tab label="LISANS BILGILERI" />
-        <Tab label="KISISEL BILGILER" />
-        <Tab label="DIGER BILGILER" />
-        <Tab label="PAROLA DEGISTIR" />
-      </Tabs>
-      {value === 0 && (
-        <LicenseDetails
-          user={props.user}
-          onActivated={() => {
-            setActive(true);
-            var d = new Date();
-            var year = d.getFullYear();
-            var month = d.getMonth();
-            var day = d.getDate();
-            setexpiryDateUtc(new Date(year + 1, month, day));
-          }}
-        />
+    <div>
+      <div className={props.classes.root}>
+        <Grid container justify="center" alignItems="center">
+          <Avatar className={props.classes.avatar}>
+            <PersonIcon />
+          </Avatar>
+          <h3>{props.user.userName}</h3>
+          <UserStatus active={active} expirationDate={expiryDateUtc} />
+        </Grid>
+        <Divider />
+        <Tabs value={value} onChange={handleChange} variant="fullWidth" indicatorColor="primary" textColor="primary">
+          <Tab label="LISANS BILGILERI" />
+          <Tab label="KISISEL BILGILER" />
+          <Tab label="DIGER BILGILER" />
+          <Tab label="PAROLA DEGISTIR" />
+        </Tabs>
+        {value === 0 && (
+          <LicenseDetails
+            user={props.user}
+            onActivated={() => {
+              setActive(true);
+              var d = new Date();
+              var year = d.getFullYear();
+              var month = d.getMonth();
+              var day = d.getDate();
+              setexpiryDateUtc(new Date(year + 1, month, day));
+            }}
+          />
+        )}
+        {value === 1 && <PersonalDetails user={props.user} />}
+        {value === 2 && <SmsDetails user={props.user} />}
+        {value === 3 && <ResetUserPassword user={props.user} />}
+      </div>
+      {value !== 3 && value !== 2 && (
+        <Box marginTop={2}>
+          <Grid container justify="flex-start">
+            <Grid item xs={6}>
+              <Paper>
+                <Button type="button" fullWidth variant="contained" color="primary">
+                  Degisiklikleri Kaydet
+                </Button>
+              </Paper>
+            </Grid>
+          </Grid>
+        </Box>
       )}
-      {value === 1 && <PersonalDetails user={props.user} />}
-      {value === 2 && <SmsDetails user={props.user} />}
-      {value === 3 && <ResetUserPassword user={props.user} />}
     </div>
   );
 };

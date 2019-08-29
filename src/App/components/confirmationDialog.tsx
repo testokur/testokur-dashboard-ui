@@ -10,11 +10,13 @@ Transition.displayName = 'Transition';
 
 interface Props {
   open: boolean;
+  message: string;
+  title: string;
   onNoClick(): void;
-  onYesClick(): void;
+  onYesClick(event?: any): void;
 }
 
-export const LogoutDialog: React.FC<Props> = (props) => {
+export const ConfirmationDialog: React.FC<Props> = (props) => {
   return (
     <Dialog
       open={props.open}
@@ -23,11 +25,9 @@ export const LogoutDialog: React.FC<Props> = (props) => {
       aria-labelledby="alert-dialog-slide-title"
       aria-describedby="alert-dialog-slide-description"
     >
-      <DialogTitle id="alert-dialog-slide-title">{'Oturum Kapat'}</DialogTitle>
+      <DialogTitle id="alert-dialog-slide-title">{props.title}</DialogTitle>
       <DialogContent>
-        <DialogContentText id="alert-dialog-slide-description">
-          Oturumu kapatmak istediginize emin misiniz?
-        </DialogContentText>
+        <DialogContentText id="alert-dialog-slide-description">{props.message}</DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button onClick={props.onNoClick} color="primary">
@@ -36,7 +36,7 @@ export const LogoutDialog: React.FC<Props> = (props) => {
         <Button
           onClick={(event) => {
             event.preventDefault();
-            props.onYesClick();
+            props.onYesClick(event);
           }}
           color="primary"
         >
