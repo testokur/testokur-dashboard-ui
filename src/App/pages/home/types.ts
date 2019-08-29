@@ -1,3 +1,5 @@
+import { Guid } from 'guid-typescript';
+
 export const FETCH_USERS_REQUEST = '@@user/FETCH_USERS_REQUEST';
 export const FETCH_USERS_SUCCESS = '@@user/FETCH_USERS_SUCCESS';
 export const FETCH_USERS_ERROR = '@@user/FETCH_USERS_ERROR';
@@ -8,14 +10,15 @@ export interface LoginDevice {
 }
 
 export interface User {
-  id: string;
+  id: number;
+  subjectId: Guid;
   userName: string;
   email: string;
   active: boolean;
   createdDateTimeUtc: Date;
   maxAllowedDeviceCount: number;
   maxAllowedStudentCount: number;
-  canScan: true;
+  canScan: boolean;
   licenseTypeId: number;
   licenseTypeName: string;
   startDateTimeUtc?: Date;

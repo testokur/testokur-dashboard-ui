@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { createWebApiClient } from '../../helpers';
-import { ConfirmationDialog } from '../../components/confirmationDialog';
+import { ConfirmationDialog } from '../../components';
 
 interface Props {
   active: boolean;
@@ -33,7 +33,7 @@ export const ActivateSwitch: React.FC<Props> = (props: Props) => {
     <div>
       <FormControlLabel
         value="start"
-        control={<Switch color="primary" value={props.active} onClick={onSwitchClick} />}
+        control={<Switch color="primary" checked={props.active} onClick={onSwitchClick} />}
         label="Lisans Durumu"
         labelPlacement="start"
       />

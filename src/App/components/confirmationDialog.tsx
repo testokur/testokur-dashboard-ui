@@ -16,7 +16,7 @@ interface Props {
   onYesClick(event?: any): void;
 }
 
-export const ConfirmationDialog: React.FC<Props> = (props) => {
+export const confirmationDialog: React.FC<Props> = (props) => {
   return (
     <Dialog
       open={props.open}

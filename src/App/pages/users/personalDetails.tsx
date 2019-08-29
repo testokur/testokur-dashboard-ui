@@ -7,6 +7,7 @@ import { CitySelect } from '../../city';
 interface Props {
   classes: any;
   user: User;
+  onChange: (user: User) => void;
 }
 
 const component: React.FC<Props> = (props) => {
@@ -18,6 +19,7 @@ const component: React.FC<Props> = (props) => {
         placeholder="Isim"
         fullWidth
         value={props.user.firstName}
+        onChange={(e) => props.onChange({ ...props.user, firstName: e.target.value })}
         margin="normal"
         variant="outlined"
       />
@@ -27,6 +29,7 @@ const component: React.FC<Props> = (props) => {
         placeholder="Soyisim"
         fullWidth
         value={props.user.lastName}
+        onChange={(e) => props.onChange({ ...props.user, lastName: e.target.value })}
         margin="normal"
         variant="outlined"
       />
@@ -36,6 +39,7 @@ const component: React.FC<Props> = (props) => {
         placeholder="Kurum Adi"
         fullWidth
         value={props.user.schoolName}
+        onChange={(e) => props.onChange({ ...props.user, schoolName: e.target.value })}
         margin="normal"
         variant="outlined"
       />
@@ -44,11 +48,18 @@ const component: React.FC<Props> = (props) => {
         style={{ margin: 8 }}
         placeholder="Telefon"
         fullWidth
+        onChange={(e) => props.onChange({ ...props.user, phone: e.target.value })}
         value={props.user.phone}
         margin="normal"
         variant="outlined"
       />
-      <CitySelect cityId={props.user.cityId} districtId={props.user.districtId} />
+      <CitySelect
+        cityId={props.user.cityId}
+        districtId={props.user.districtId}
+        onChange={(newCityId, newDistrictId) =>
+          props.onChange({ ...props.user, cityId: newCityId, districtId: newDistrictId })
+        }
+      />
     </div>
   );
 };

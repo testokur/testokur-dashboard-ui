@@ -17,7 +17,7 @@ import { fetchUsers } from '../home/actions';
 import { SendSmsDialog } from './SendSmsDialog';
 import { createWebApiClient } from '../../helpers';
 import { AddSmsDialog } from './smsDetails/AddSmsDialog';
-import { ConfirmationDialog } from '../../components/confirmationDialog';
+import { ConfirmationDialog } from '../../components';
 
 interface ComponentProps {
   classes: any;

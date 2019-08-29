@@ -7,7 +7,7 @@ import { styles } from './styles';
 import { connect } from 'react-redux';
 import { userManager } from '../../../auth';
 import AppState from '../../../AppState';
-import { ConfirmationDialog } from '../../../components/confirmationDialog';
+import { ConfirmationDialog } from '../../../components';
 
 interface OwnProps {
   open: boolean;

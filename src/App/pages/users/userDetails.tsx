@@ -12,6 +12,10 @@ import LicenseDetails from './LicenseDetails';
 import { SmsDetails } from './smsDetails';
 import PersonalDetails from './personalDetails';
 import { ResetUserPassword } from './resetUserPassword';
+import { ConfirmationDialog } from '../../components';
+import { createWebApiClient } from '../../helpers';
+import { UpdateUserModel } from './types';
+import { Guid } from 'guid-typescript';
 
 interface MatchParams {
   userName: string;
@@ -24,75 +28,130 @@ interface ComponentProps extends RouteComponentProps<MatchParams> {
 interface PropsFromState {
   user: User;
 }
+interface State {
+  tabIndex: number;
+  openUpdateUserDialog: boolean;
+  user: User;
+}
 
 type Props = PropsFromState & ComponentProps;
 
-const component: React.FC<Props> = (props) => {
-  const [value, setValue] = useState(0);
-  function handleChange(event: React.ChangeEvent<{}>, newValue: number) {
-    setValue(newValue);
+class Component extends React.Component<Props, State> {
+  public constructor(props: Props) {
+    super(props);
+    this.state = {
+      tabIndex: 0,
+      openUpdateUserDialog: false,
+      user: this.props.user,
+    };
   }
-  const [active, setActive] = useState(props.user.active);
-  const [expiryDateUtc, setexpiryDateUtc] = useState(props.user.expiryDateUtc);
 
-  useEffect(() => {
-    setActive(props.user.active);
-    setexpiryDateUtc(props.user.expiryDateUtc);
-  }, [props.user.active, props.user.expiryDateUtc]);
+  handleTabChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      tabIndex: newValue,
+    }));
+  };
 
-  return (
-    <div>
-      <div className={props.classes.root}>
-        <Grid container justify="center" alignItems="center">
-          <Avatar className={props.classes.avatar}>
-            <PersonIcon />
-          </Avatar>
-          <h3>{props.user.userName}</h3>
-          <UserStatus active={active} expirationDate={expiryDateUtc} />
-        </Grid>
-        <Divider />
-        <Tabs value={value} onChange={handleChange} variant="fullWidth" indicatorColor="primary" textColor="primary">
-          <Tab label="LISANS BILGILERI" />
-          <Tab label="KISISEL BILGILER" />
-          <Tab label="DIGER BILGILER" />
-          <Tab label="PAROLA DEGISTIR" />
-        </Tabs>
-        {value === 0 && (
-          <LicenseDetails
-            user={props.user}
-            onActivated={() => {
-              setActive(true);
-              var d = new Date();
-              var year = d.getFullYear();
-              var month = d.getMonth();
-              var day = d.getDate();
-              setexpiryDateUtc(new Date(year + 1, month, day));
-            }}
-          />
-        )}
-        {value === 1 && <PersonalDetails user={props.user} />}
-        {value === 2 && <SmsDetails user={props.user} />}
-        {value === 3 && <ResetUserPassword user={props.user} />}
-      </div>
-      {value !== 3 && value !== 2 && (
-        <Box marginTop={2}>
-          <Grid container justify="flex-start">
-            <Grid item xs={6}>
-              <Paper>
-                <Button type="button" fullWidth variant="contained" color="primary">
-                  Degisiklikleri Kaydet
-                </Button>
-              </Paper>
-            </Grid>
+  setUpdateUserDialogState = (display: boolean) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      openUpdateUserDialog: display,
+    }));
+  };
+
+  handleChange = (newUser: User) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      user: newUser,
+    }));
+  };
+
+  updateUser = () => {
+    this.setUpdateUserDialogState(false);
+  };
+
+  public render() {
+    return (
+      <div>
+        <div className={this.props.classes.root}>
+          <Grid container justify="center" alignItems="center">
+            <Avatar className={this.props.classes.avatar}>
+              <PersonIcon />
+            </Avatar>
+            <h3>{this.props.user.userName}</h3>
+            <UserStatus active={this.state.user.active} expirationDate={this.state.user.expiryDateUtc} />
           </Grid>
-        </Box>
-      )}
-    </div>
-  );
-};
+          <Divider />
+          <Tabs
+            value={this.state.tabIndex}
+            onChange={this.handleTabChange}
+            variant="fullWidth"
+            indicatorColor="primary"
+            textColor="primary"
+          >
+            <Tab label="LISANS BILGILERI" />
+            <Tab label="KISISEL BILGILER" />
+            <Tab label="DIGER BILGILER" />
+            <Tab label="PAROLA DEGISTIR" />
+          </Tabs>
+          {this.state.tabIndex === 0 && (
+            <LicenseDetails
+              user={this.state.user}
+              onChange={(u:User) => this.setState((prevState) => ({...prevState, user: u})) }
+              onActivated={() => {
+                var d = new Date();
+                var year = d.getFullYear();
+                var month = d.getMonth();
+                var day = d.getDate();
+                this.setState((prevState) => ({
+                  ...prevState,
+                  user: {
+                    ...prevState.user,
+                    expiryDateUtc: new Date(year + 1, month, day),
+                    active: true,
+                  },
+                }));
+              }}
+            />
+          )}
+          {this.state.tabIndex === 1 && <PersonalDetails user={this.props.user} onChange={(u:User) => this.setState((prevState) => ({...prevState, user: u})) } />}
+          {this.state.tabIndex === 2 && <SmsDetails user={this.props.user} />}
+          {this.state.tabIndex === 3 && <ResetUserPassword user={this.props.user} />}
+        </div>
+        {this.state.tabIndex !== 3 && this.state.tabIndex !== 2 && (
+          <Box marginTop={2}>
+            <Grid container justify="flex-start">
+              <Grid item xs={6}>
+                <Paper>
+                  <Button
+                    type="button"
+                    onClick={() => this.setUpdateUserDialogState(true)}
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                  >
+                    Degisiklikleri Kaydet
+                  </Button>
+                </Paper>
+              </Grid>
+            </Grid>
+          </Box>
+        )}
+        <ConfirmationDialog
+          open={this.state.openUpdateUserDialog}
+          title={'Guncelleme Onay'}
+          message={'Yaptiginiz degisikliler kaydedilecektir. Onayliyor musunuz?'}
+          onNoClick={() => this.setUpdateUserDialogState(false)}
+          onYesClick={() => this.updateUser()}
+        />
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = ({ users }: AppState, { match }: ComponentProps) => ({
   user: _.head(_.filter(users.data, { userName: match.params.userName })),
 });
 
-export default connect(mapStateToProps)(withStyles(styles as any, { withTheme: true })(component as any) as any);
+export default connect(mapStateToProps)(withStyles(styles as any, { withTheme: true })(Component as any) as any);

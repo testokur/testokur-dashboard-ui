@@ -11,6 +11,7 @@ import { withLoading } from '../components';
 interface ComponentProps {
   classes?: any;
   id: number;
+  onChange: (newValue: number) => void;
 }
 
 interface PropsFromState {
@@ -24,19 +25,16 @@ interface PropsFromDispatch {
 type Props = PropsFromState & PropsFromDispatch & ComponentProps;
 
 const component: React.FC<Props> = (props) => {
-  const [value, setValue] = useState(1);
-
   useEffect(() => {
     if (_.isEmpty(props.licenseTypes)) {
       props.fetchLicenseTypes();
     }
-    setValue(props.id);
   }, []);
 
   return (
     <FormControl fullWidth variant="outlined" className={props.classes.formControl}>
       <InputLabel htmlFor="license-type-select">Lisan Turu/Paket</InputLabel>
-      <Select value={value} onChange={(e) => setValue(e.target.value as number)}>
+      <Select value={props.id} onChange={(e) => props.onChange(e.target.value as number)}>
         <MenuItem value="">
           <em>Seciniz</em>
         </MenuItem>
@@ -54,6 +52,7 @@ const mapStateToProps = ({ licenseTypes }: AppState, ownProps: ComponentProps) =
   loading: licenseTypes.loading,
   licenseTypes: licenseTypes.data,
   id: ownProps.id,
+  onChange: ownProps.onChange,
 });
 
 const mapDispatchToProps = {

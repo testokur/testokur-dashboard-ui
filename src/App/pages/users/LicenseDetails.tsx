@@ -10,6 +10,7 @@ interface Props {
   user: User;
   classes: any;
   onActivated: () => void;
+  onChange: (user: User) => void;
 }
 
 const component: React.FC<Props> = (props) => {
@@ -41,11 +42,17 @@ const component: React.FC<Props> = (props) => {
         value={dateformat(props.user.createdDateTimeUtc, 'dd.mm.yyyy HH:MM')}
         margin="normal"
         variant="outlined"
+        InputProps={{
+          readOnly: true,
+        }}
         InputLabelProps={{
           shrink: true,
         }}
       />
-      <LicenseTypeSelect id={props.user.licenseTypeId} />
+      <LicenseTypeSelect
+        id={props.user.licenseTypeId}
+        onChange={(newValue) => props.onChange({ ...props.user, licenseTypeId: newValue })}
+      />
       <TextField
         label="Izin verilen PC Sayisi"
         style={{ margin: 8 }}
@@ -53,6 +60,9 @@ const component: React.FC<Props> = (props) => {
         fullWidth
         type="number"
         value={props.user.maxAllowedDeviceCount}
+        onChange={(e) =>
+          props.onChange({ ...props.user, maxAllowedDeviceCount: (e.target.value as unknown) as number })
+        }
         margin="normal"
         variant="outlined"
         InputLabelProps={{
@@ -65,6 +75,9 @@ const component: React.FC<Props> = (props) => {
         placeholder="Izin verilen Ogrenci Kayit Sayisi"
         fullWidth
         type="number"
+        onChange={(e) =>
+          props.onChange({ ...props.user, maxAllowedStudentCount: (e.target.value as unknown) as number })
+        }
         value={props.user.maxAllowedStudentCount}
         margin="normal"
         variant="outlined"
@@ -72,7 +85,17 @@ const component: React.FC<Props> = (props) => {
           shrink: true,
         }}
       />
-      <FormControlLabel control={<Switch color="primary" />} label="Tarama Yapabilir" labelPlacement="start" />
+      <FormControlLabel
+        control={
+          <Switch
+            color="primary"
+            checked={props.user.canScan}
+            onChange={(e) => props.onChange({ ...props.user, canScan: e.target.checked })}
+          />
+        }
+        label="Tarama Yapabilir"
+        labelPlacement="start"
+      />
     </form>
   );
 };
