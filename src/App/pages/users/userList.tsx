@@ -158,6 +158,8 @@ const component: React.FC<Props> = (props) => {
         ]}
         options={{
           actionsColumnIndex: -1,
+          pageSize:10000,
+          pageSizeOptions:[100,1000,10000]
         }}
       />
       <SendSmsDialog
