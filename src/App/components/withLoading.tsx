@@ -17,6 +17,15 @@ export const withLoading = <P extends object>(Component: React.ComponentType<P>)
   class WithLoading extends React.Component<P & Props> {
     public render() {
       const { loading, ...props } = this.props;
-      return loading ? <LoadingSpinner /> : <Component {...(props as P)} />;
+      return (
+        <Box width="100%">
+          <Box className="loading-spinner" display={loading ? 'block' : 'none'}>
+            <LoadingSpinner />
+          </Box>
+          <Box className="component" display={loading ? 'none' : 'block'}>
+            <Component {...(props as P)} />
+          </Box>
+        </Box>
+      );
     }
   };

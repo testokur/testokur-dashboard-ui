@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import * as _ from 'lodash';
 import { FormControl, InputLabel, Select, MenuItem, withStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { LicenseTypeModel } from './types';
@@ -26,9 +25,7 @@ type Props = PropsFromState & PropsFromDispatch & ComponentProps;
 
 const component: React.FC<Props> = (props) => {
   useEffect(() => {
-    if (_.isEmpty(props.licenseTypes)) {
-      props.fetchLicenseTypes();
-    }
+    props.fetchLicenseTypes();
   }, []);
 
   return (

@@ -28,9 +28,7 @@ type Props = PropsFromState & PropsFromDispatch & ComponentProps;
 
 class Component extends React.Component<Props> {
   public componentDidMount() {
-    if (_.isEmpty(this.props.cities)) {
-      this.props.fetchCityRequest();
-    }
+    this.props.fetchCityRequest();
   }
   public constructor(props: Props) {
     super(props);
