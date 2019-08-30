@@ -67,7 +67,7 @@ class Component extends React.Component<Props, State> {
   };
 
   private handleChange = async (newUser: User) => {
-    var reFetchUsers: boolean = false;
+    var reFetchUsers = false;
 
     if (newUser.smsBalance != this.state.user.smsBalance) {
       reFetchUsers = true;
