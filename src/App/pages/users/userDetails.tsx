@@ -16,6 +16,7 @@ import { ConfirmationDialog, MessageBox } from '../../components';
 import { createWebApiClient } from '../../helpers';
 import { UpdateUserModel } from './types';
 import { Guid } from 'guid-typescript';
+import { fetchUsers } from '../home/actions';
 
 interface MatchParams {
   userName: string;
@@ -27,6 +28,7 @@ interface ComponentProps extends RouteComponentProps<MatchParams> {
 
 interface PropsFromState {
   user: User;
+  fetchUsers: typeof fetchUsers;
 }
 interface State {
   tabIndex: number;
@@ -64,11 +66,21 @@ class Component extends React.Component<Props, State> {
     }));
   };
 
-  private handleChange = (newUser: User) => {
+  private handleChange = async (newUser: User) => {
+    var reFetchUsers: boolean = false;
+
+    if (newUser.smsBalance != this.state.user.smsBalance) {
+      reFetchUsers = true;
+    }
+
     this.setState((prevState) => ({
       ...prevState,
       user: { ...prevState.user, ...newUser },
     }));
+
+    if (reFetchUsers) {
+      await this.props.fetchUsers();
+    }
   };
 
   private updateUser = async () => {
@@ -96,6 +108,7 @@ class Component extends React.Component<Props, State> {
       message: 'Basariyla Guncellendi',
       openUpdateUserDialog: false,
     }));
+    await this.props.fetchUsers();
   };
 
   public render() {
@@ -186,4 +199,11 @@ const mapStateToProps = ({ users }: AppState, { match }: ComponentProps) => ({
   user: _.head(_.filter(users.data, { userName: match.params.userName })),
 });
 
-export default connect(mapStateToProps)(withStyles(styles as any, { withTheme: true })(Component as any) as any);
+const mapDispatchToProps = {
+  fetchUsers,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(withStyles(styles as any, { withTheme: true })(Component as any) as any);

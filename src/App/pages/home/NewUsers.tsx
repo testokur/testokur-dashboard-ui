@@ -20,6 +20,7 @@ interface PropsFromState {
   success: boolean;
   errorMessage?: string;
   users: User[];
+  pendingUsers: User[];
 }
 
 interface PropsFromDispatch {
@@ -44,11 +45,11 @@ class Component extends React.Component<Props> {
             Onay Bekleyen Kullanicilar
           </Typography>
           <Typography variant="h2" component="h2" className={this.props.classes.value}>
-            {this.props.users.length}
+            {this.props.pendingUsers.length}
           </Typography>
           <Divider />
           <List>
-            {this.props.users.map((record) => (
+            {this.props.pendingUsers.map((record) => (
               <ListItem button to={`/users/${record.userName}`} component={Link} key={record.id}>
                 <ListItemText primary={`${record.userName}`} className={this.props.classes.listItemText} />
               </ListItem>
@@ -64,7 +65,8 @@ const mapStateToProps = ({ users }: AppState) => ({
   loading: users.loading,
   success: users.success,
   errorMessage: users.errorMessage,
-  users: _.filter(users.data, (u) => _.isNil(u.expiryDateUtc)),
+  users: users.data,
+  pendingUsers: _.filter(users.data, (u) => _.isNil(u.expiryDateUtc)),
 });
 
 const mapDispatchToProps = {

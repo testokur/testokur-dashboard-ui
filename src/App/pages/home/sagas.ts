@@ -42,9 +42,8 @@ function* handleFetch() {
             ...user,
             ...apiUser,
             licenseTypeName: _.find(licenseTypes, ['id', user.licenseTypeId]).name,
-            status: getStatus(user.active, user.expiryDateUtc),
           };
-          combinedUser.expiryDateUtc = _.isUndefined(user.expiryDateUtc) ? undefined : new Date(user.expiryDateUtc);
+          combinedUser.expiryDateUtc = _.isNil(user.expiryDateUtc) ? undefined : new Date(user.expiryDateUtc);
           combinedUser.startDateTimeUtc = _.isUndefined(user.startDateTimeUtc)
             ? undefined
             : new Date(user.startDateTimeUtc);
