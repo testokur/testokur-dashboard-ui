@@ -38,16 +38,18 @@ function* handleFetch() {
     identitApiRes.data.forEach((user: any) => {
       webApiRes.data.forEach((apiUser: User) => {
         if (user.id === apiUser.subjectId) {
-          var combinedUser : User = {
+          var combinedUser: User = {
             ...user,
             ...apiUser,
             licenseTypeName: _.find(licenseTypes, ['id', user.licenseTypeId]).name,
             status: getStatus(user.active, user.expiryDateUtc),
           };
           combinedUser.expiryDateUtc = _.isUndefined(user.expiryDateUtc) ? undefined : new Date(user.expiryDateUtc);
-          combinedUser.startDateTimeUtc = _.isUndefined(user.startDateTimeUtc) ? undefined : new Date(user.startDateTimeUtc);
+          combinedUser.startDateTimeUtc = _.isUndefined(user.startDateTimeUtc)
+            ? undefined
+            : new Date(user.startDateTimeUtc);
           combinedUser.createdDateTimeUtc = new Date(user.createdDateTimeUtc);
-          combinedUser.status = getStatus(combinedUser.active,combinedUser.expiryDateUtc);
+          combinedUser.status = getStatus(combinedUser.active, combinedUser.expiryDateUtc);
           users.push(combinedUser);
         }
       });
