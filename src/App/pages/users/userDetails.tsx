@@ -12,7 +12,10 @@ import LicenseDetails from './LicenseDetails';
 import { SmsDetails } from './smsDetails';
 import PersonalDetails from './personalDetails';
 import { ResetUserPassword } from './resetUserPassword';
-import { ConfirmationDialog } from '../../components';
+import { ConfirmationDialog, MessageBox } from '../../components';
+import { createWebApiClient } from '../../helpers';
+import { UpdateUserModel } from './types';
+import { Guid } from 'guid-typescript';
 
 interface MatchParams {
   userName: string;
@@ -29,6 +32,8 @@ interface State {
   tabIndex: number;
   openUpdateUserDialog: boolean;
   user: User;
+  success: boolean;
+  message: string;
 }
 
 type Props = PropsFromState & ComponentProps;
@@ -40,6 +45,8 @@ class Component extends React.Component<Props, State> {
       tabIndex: 0,
       openUpdateUserDialog: false,
       user: this.props.user,
+      success: false,
+      message: '',
     };
   }
 
@@ -60,23 +67,51 @@ class Component extends React.Component<Props, State> {
   private handleChange = (newUser: User) => {
     this.setState((prevState) => ({
       ...prevState,
-      user: newUser,
+      user: { ...prevState.user, ...newUser },
     }));
   };
 
-  private updateUser = () => {
-    this.setUpdateUserDialogState(false);
+  private updateUser = async () => {
+    const model: UpdateUserModel = {
+      id: Guid.create(),
+      updatedUserId: this.props.user.id,
+      subjectId: this.props.user.subjectId,
+      schoolName: this.state.user.schoolName,
+      mobilePhone: this.state.user.phone,
+      cityId: this.state.user.cityId,
+      districtId: this.state.user.districtId,
+      firstName: this.state.user.firstName,
+      lastName: this.state.user.lastName,
+      email: this.state.user.email,
+      maxAllowedDeviceCount: this.state.user.maxAllowedDeviceCount,
+      maxAllowedStudentCount: this.state.user.maxAllowedStudentCount,
+      canScan: this.state.user.canScan,
+      licenseTypeId: this.state.user.licenseTypeId,
+      expiryDateUtc: this.state.user.expiryDateUtc,
+    };
+    await createWebApiClient().post('/api/v1/users/update-by-admin', model);
+    this.setState((prevState) => ({
+      ...prevState,
+      success: true,
+      message: 'Basariyla Guncellendi',
+      openUpdateUserDialog: false,
+    }));
   };
 
   public render() {
     return (
       <div>
         <div className={this.props.classes.root}>
+          {this.state.success && !_.isNil(this.state.message) ? (
+            <MessageBox variant="success" message={this.state.message} />
+          ) : (
+            <></>
+          )}
           <Grid container justify="center" alignItems="center">
             <Avatar className={this.props.classes.avatar}>
               <PersonIcon />
             </Avatar>
-            <h3>{this.props.user.userName}</h3>
+            <h3>{this.state.user.userName}</h3>
             <UserStatus active={this.state.user.active} expirationDate={this.state.user.expiryDateUtc} />
           </Grid>
           <Divider />
@@ -95,7 +130,7 @@ class Component extends React.Component<Props, State> {
           {this.state.tabIndex === 0 && (
             <LicenseDetails
               user={this.state.user}
-              onChange={(u: User) => this.setState((prevState) => ({ ...prevState, user: u }))}
+              onChange={this.handleChange}
               onActivated={() => {
                 var d = new Date();
                 var year = d.getFullYear();
@@ -112,14 +147,9 @@ class Component extends React.Component<Props, State> {
               }}
             />
           )}
-          {this.state.tabIndex === 1 && (
-            <PersonalDetails
-              user={this.props.user}
-              onChange={(u: User) => this.setState((prevState) => ({ ...prevState, user: u }))}
-            />
-          )}
-          {this.state.tabIndex === 2 && <SmsDetails user={this.props.user} />}
-          {this.state.tabIndex === 3 && <ResetUserPassword user={this.props.user} />}
+          {this.state.tabIndex === 1 && <PersonalDetails user={this.state.user} onChange={this.handleChange} />}
+          {this.state.tabIndex === 2 && <SmsDetails user={this.state.user} />}
+          {this.state.tabIndex === 3 && <ResetUserPassword user={this.state.user} />}
         </div>
         {this.state.tabIndex !== 3 && this.state.tabIndex !== 2 && (
           <Box marginTop={2}>
