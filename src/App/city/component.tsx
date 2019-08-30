@@ -7,6 +7,7 @@ import { City } from './types';
 import AppState from '../AppState';
 import { fetchCityRequest } from './actions';
 import { styles } from './styles';
+import { withLoading } from '../components';
 
 interface ComponentProps {
   classes?: any;
@@ -16,7 +17,6 @@ interface ComponentProps {
 }
 
 interface PropsFromState {
-  loading: boolean;
   cities: City[];
 }
 
@@ -89,4 +89,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(withStyles(styles as any, { withTheme: true })(Component as any) as any);
+)(withStyles(styles as any, { withTheme: true })(withLoading(Component) as any) as any);

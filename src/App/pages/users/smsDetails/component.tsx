@@ -9,6 +9,7 @@ import { createWebApiClient } from '../../../helpers';
 interface Props {
   classes: any;
   user: User;
+  onChange: (user: User) => void;
 }
 
 const component: React.FC<Props> = (props) => {
@@ -17,6 +18,7 @@ const component: React.FC<Props> = (props) => {
   const handleAddCredit = async (amount: number) => {
     setDialogOpen(false);
     await createWebApiClient().post('/api/v1/sms/add-credits', { userId: props.user.id, amount: amount });
+    props.onChange({ ...props.user, smsBalance: props.user.smsBalance + amount });
   };
   return (
     <div>

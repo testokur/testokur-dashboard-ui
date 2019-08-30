@@ -36,7 +36,7 @@ export const AddSmsDialog: React.FC<Props> = (props) => {
         <Button
           onClick={(event) => {
             event.preventDefault();
-            props.onSubmit(amount);
+            props.onSubmit(parseInt(amount));
             setAmount(0);
           }}
           color="primary"

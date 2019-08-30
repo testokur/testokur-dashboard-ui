@@ -148,7 +148,7 @@ class Component extends React.Component<Props, State> {
             />
           )}
           {this.state.tabIndex === 1 && <PersonalDetails user={this.state.user} onChange={this.handleChange} />}
-          {this.state.tabIndex === 2 && <SmsDetails user={this.state.user} />}
+          {this.state.tabIndex === 2 && <SmsDetails user={this.state.user} onChange={this.handleChange} />}
           {this.state.tabIndex === 3 && <ResetUserPassword user={this.state.user} />}
         </div>
         {this.state.tabIndex !== 3 && this.state.tabIndex !== 2 && (
