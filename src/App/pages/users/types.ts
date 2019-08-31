@@ -1,7 +1,7 @@
 import { Guid } from 'guid-typescript';
 
 export interface UpdateUserModel {
-  id: Guid;
+  id: string;
   updatedUserId: number;
   subjectId: Guid;
   schoolName: string;

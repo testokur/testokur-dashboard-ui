@@ -1,6 +1,5 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { CircularProgress, Box } from '@material-ui/core';
 import { withLoading } from './withLoading';
 
 const dummyComponent: React.FC<{}> = () => {

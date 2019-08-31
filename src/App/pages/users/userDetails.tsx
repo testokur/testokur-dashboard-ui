@@ -85,7 +85,7 @@ class Component extends React.Component<Props, State> {
 
   private updateUser = async () => {
     const model: UpdateUserModel = {
-      id: Guid.create(),
+      id: Guid.raw(),
       updatedUserId: this.props.user.id,
       subjectId: this.props.user.subjectId,
       schoolName: this.state.user.schoolName,

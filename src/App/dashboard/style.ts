@@ -30,7 +30,6 @@ export const styles = (theme: Theme) => ({
   },
   footer: {
     marginBottom: 20,
-    position: 'fixed',
     bottom: 0,
   },
 });
