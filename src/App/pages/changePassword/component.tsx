@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import * as _ from 'lodash';
 import { Typography, Button, Grid, CircularProgress, withStyles } from '@material-ui/core';
 import { ValidatorForm } from 'react-material-ui-form-validator';

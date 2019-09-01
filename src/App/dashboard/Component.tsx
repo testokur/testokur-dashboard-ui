@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { CssBaseline } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { SideMenu, TopAppBar } from '../navigation';
