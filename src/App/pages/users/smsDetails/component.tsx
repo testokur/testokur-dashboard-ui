@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withStyles } from '@material-ui/core';
+import { withStyles, TextField } from '@material-ui/core';
 import { styles } from './styles';
 import { User } from '../../home/types';
 import { default as SmsFieldWithButton } from './smsFieldWithButton';
@@ -26,6 +26,18 @@ const component: React.FC<Props> = (props) => {
         <SmsFieldWithButton credit={props.user.smsBalance} onClick={() => setDialogOpen(true)} />
         <AddSmsDialog open={dialogOpen} onSubmit={handleAddCredit} onClose={() => setDialogOpen(false)} />
       </div>
+      <TextField
+        label="Notlar/Yorumlar"
+        style={{ margin: 8 }}
+        placeholder="Notlar/Yorumlar"
+        fullWidth
+        multiline
+        rows="4"
+        value={props.user.notes}
+        onChange={(e) => props.onChange({ ...props.user, notes: e.target.value })}
+        margin="normal"
+        variant="outlined"
+      />
     </div>
   );
 };

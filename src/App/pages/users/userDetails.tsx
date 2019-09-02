@@ -105,7 +105,7 @@ class Component extends React.Component<Props, State> {
           {this.state.tabIndex === 2 && <SmsDetails user={this.state.user} onChange={this.handleChange} />}
           {this.state.tabIndex === 3 && <ResetUserPassword user={this.state.user} />}
         </div>
-        {this.state.tabIndex !== 3 && this.state.tabIndex !== 2 && (
+        {this.state.tabIndex !== 3  && (
           <Box marginTop={2}>
             <Grid container justify="flex-start">
               <Grid item xs={6}>
