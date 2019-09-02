@@ -32,7 +32,7 @@ const component = (props: Props) => {
         placeholder="Notlar/Yorumlar"
         fullWidth
         multiline
-        rows="4"
+        rows="5"
         value={props.user.notes}
         onChange={(e) => props.onChange({ ...props.user, notes: e.target.value })}
         margin="normal"

@@ -32,6 +32,6 @@ export const styles = (theme: Theme) => ({
     marginBottom: 20,
     marginTop: 20,
     bottom: 0,
-    position: 'absolute',
+    position: 'relative',
   },
 });
