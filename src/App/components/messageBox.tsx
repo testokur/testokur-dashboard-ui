@@ -50,7 +50,7 @@ interface Props {
   hasCloseButton?: boolean;
 }
 
-export const messageBox: React.FC<Props> = (props) => {
+export const messageBox = (props: Props) => {
   const [closed, setClosed] = useState(false);
   const classes = useStyles();
   const { className, message, variant, hasCloseButton, ...other } = props;

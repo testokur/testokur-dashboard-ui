@@ -12,7 +12,7 @@ interface Props {
   onActivated: () => void;
 }
 
-export const ActivateSwitch: React.FC<Props> = (props: Props) => {
+export const ActivateSwitch = (props: Props) => {
   const [openDialog, setOpenDialog] = useState(false);
   const activate = async (event: any) => {
     event.preventDefault();

@@ -57,7 +57,7 @@ function getStatus(props: Props): Status {
     : new Status('cancelled', <Cancel />, 'Iptal Edilmis');
 }
 
-export const UserStatus: React.FC<Props> = (props) => {
+export const UserStatus = (props: Props) => {
   const classes = useStyles();
   const status = getStatus(props);
   return (

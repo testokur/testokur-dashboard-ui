@@ -13,7 +13,7 @@ interface Props {
   onSubmit(amount: number): void;
 }
 
-export const AddSmsDialog: React.FC<Props> = (props) => {
+export const AddSmsDialog = (props: Props) => {
   const [amount, setAmount] = useState();
   return (
     <Dialog open={props.open} TransitionComponent={Transition} onClose={props.onClose}>

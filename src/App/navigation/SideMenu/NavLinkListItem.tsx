@@ -11,7 +11,7 @@ interface Props {
   icon: () => JSX.Element;
 }
 
-const NavLinkListItem: React.FC<Props> = (props) => {
+const NavLinkListItem = (props: Props) => {
   return (
     <ListItem key={props.key} className={props.classes.link} component={Link} to={props.path} button={true}>
       <ListItemIcon>{props.icon()}</ListItemIcon>

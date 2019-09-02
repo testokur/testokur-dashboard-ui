@@ -13,7 +13,7 @@ interface Props {
   onChange: (user: User) => void;
 }
 
-const component: React.FC<Props> = (props) => {
+const component = (props: Props) => {
   return (
     <form className={props.classes.container} noValidate>
       <ActivateSwitch

@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { withLoading } from './withLoading';
 
-const dummyComponent: React.FC<{}> = () => {
+const dummyComponent = () => {
   return <div />;
 };
 test('when loading is set true then loader should be rendered', () => {

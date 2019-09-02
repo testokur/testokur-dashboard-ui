@@ -5,7 +5,7 @@ import { styles } from './styles';
 import clsx from 'clsx';
 import { default as UserMenu } from './UserMenu/component';
 
-export interface Props {
+interface Props {
   handleDrawerOpen: () => void;
   classes: any;
   open: boolean;

@@ -12,7 +12,7 @@ interface Props {
   onChange: (user: User) => void;
 }
 
-const component: React.FC<Props> = (props) => {
+const component = (props: Props) => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleAddCredit = async (amount: number) => {

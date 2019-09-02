@@ -10,7 +10,7 @@ interface Props {
   classes: any;
 }
 
-const cardIcon: React.FC<Props> = (props) => {
+const cardIcon = (props: Props) => {
   return (
     <Card className={props.classes.card} style={{ backgroundColor: props.bgColor }}>
       {props.icon(props.classes.icon)}

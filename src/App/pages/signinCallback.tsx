@@ -10,7 +10,7 @@ interface Props {
   dispatch: Dispatch;
 }
 
-const signinCallback: React.FC<Props> = (props) => {
+const signinCallback = (props: Props) => {
   function onSuccess(user: User) {
     localStorage.setItem('access_token', user.access_token);
     props.dispatch(push('/'));

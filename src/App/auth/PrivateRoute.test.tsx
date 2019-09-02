@@ -10,7 +10,7 @@ test('should render only spinner when user is not logged in', () => {
 });
 
 test('should render component when user is logged in', () => {
-  const dummyComponent: React.FC<{}> = () => {
+  const dummyComponent = () => {
     return <div />;
   };
 

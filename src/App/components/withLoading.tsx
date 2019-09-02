@@ -5,7 +5,7 @@ interface Props {
   loading: boolean;
 }
 
-const LoadingSpinner: React.FC<{}> = () => {
+const LoadingSpinner = () => {
   return (
     <Box display="flex" justifyContent="center">
       <CircularProgress size={120} />

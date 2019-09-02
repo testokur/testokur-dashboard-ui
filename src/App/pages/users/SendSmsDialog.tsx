@@ -15,7 +15,7 @@ interface Props {
   onSubmit(body: string): Promise<boolean>;
 }
 
-export const SendSmsDialog: React.FC<Props> = (props) => {
+export const SendSmsDialog = (props: Props) => {
   const [body, setBody] = useState('');
   const [phone, setPhone] = useState(props.phone);
   const [success, setSuccess] = useState(false);

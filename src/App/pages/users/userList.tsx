@@ -34,7 +34,7 @@ interface PropsFromDispatch {
 type Props = PropsFromState & ComponentProps & PropsFromDispatch;
 
 /* eslint-disable react/display-name */
-const component: React.FC<Props> = (props) => {
+const component = (props: Props) => {
   useEffect(() => {
     if (_.isEmpty(props.users)) {
       props.fetchUsers();

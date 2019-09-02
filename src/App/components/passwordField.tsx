@@ -10,7 +10,7 @@ interface Props {
   onChange?(e: React.FormEvent<{}>, newValue: string): void;
 }
 
-export const passwordField: React.FC<Props> = (props) => {
+export const passwordField = (props: Props) => {
   return (
     <TextValidator
       variant="outlined"

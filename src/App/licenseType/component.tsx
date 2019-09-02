@@ -23,7 +23,7 @@ interface PropsFromDispatch {
 
 type Props = PropsFromState & PropsFromDispatch & ComponentProps;
 
-const component: React.FC<Props> = (props) => {
+const component = (props: Props) => {
   useEffect(() => {
     props.fetchLicenseTypes();
   }, []);

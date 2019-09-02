@@ -10,7 +10,7 @@ interface Props {
   onClick: () => void;
 }
 
-const component: React.FC<Props> = (props) => {
+const component = (props: Props) => {
   return (
     <TextField
       id="filled-adornment-password"
