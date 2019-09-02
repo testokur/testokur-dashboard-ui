@@ -30,8 +30,8 @@ export const styles = (theme: Theme) => ({
   },
   footer: {
     marginBottom: 20,
-    marginTop:20,
+    marginTop: 20,
     bottom: 0,
-    position: 'absolute'
+    position: 'absolute',
   },
 });
