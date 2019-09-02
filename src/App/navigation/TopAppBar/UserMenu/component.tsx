@@ -33,7 +33,7 @@ class Component extends React.Component<Props, State> {
   public constructor(props: Props) {
     super(props);
     this.state = {
-      anchorEl: null,
+      anchorEl: undefined,
       logoutDialogOpen: false,
     };
   }
@@ -86,7 +86,7 @@ class Component extends React.Component<Props, State> {
   };
 
   private handleMenuClose = () => {
-    this.setState({ anchorEl: null });
+    this.setState({ anchorEl: undefined });
   };
 
   private openLogoutDialog = () => {
