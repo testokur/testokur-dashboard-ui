@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, Slide, TextField } from '@material-ui/core';
 import { TransitionProps } from '@material-ui/core/transitions';
 
-const Transition = React.forwardRef<unknown, TransitionProps>(function Transition(props, ref) {
+const Transition = React.forwardRef<unknown, TransitionProps>((props, ref) => {
   return <Slide direction="down" ref={ref} {...props} />;
 });
 Transition.displayName = 'Transition';
@@ -36,7 +36,7 @@ export const AddSmsDialog: React.FC<Props> = (props) => {
         <Button
           onClick={(event) => {
             event.preventDefault();
-            props.onSubmit(parseInt(amount));
+            props.onSubmit(parseInt(amount, 10));
             setAmount(0);
           }}
           color="primary"

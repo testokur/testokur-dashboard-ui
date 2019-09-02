@@ -30,15 +30,12 @@ class Component extends React.Component<Props> {
   public componentDidMount() {
     this.props.fetchCityRequest();
   }
-  public constructor(props: Props) {
-    super(props);
-  }
   public render = () => {
     return _.isEmpty(this.props.cities) ? (
       <></>
     ) : (
       <div>
-        <FormControl fullWidth variant="outlined" className={this.props.classes.formControl}>
+        <FormControl fullWidth={true} variant="outlined" className={this.props.classes.formControl}>
           <InputLabel htmlFor="city-select">Sehir</InputLabel>
           <Select value={this.props.cityId} onChange={(e) => this.props.onChange(e.target.value as number, 0)}>
             <MenuItem value={0}>

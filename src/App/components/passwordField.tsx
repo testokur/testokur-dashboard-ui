@@ -2,12 +2,12 @@ import React from 'react';
 import { TextValidator } from 'react-material-ui-form-validator';
 
 interface Props {
+  errorMessages?: any[] | string;
+  validators?: any[];
   label: string;
   value: any;
   name: string;
   onChange?(e: React.FormEvent<{}>, newValue: string): void;
-  errorMessages?: any[] | string;
-  validators?: any[];
 }
 
 export const passwordField: React.FC<Props> = (props) => {

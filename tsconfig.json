@@ -1,4 +1,5 @@
 {
+  "extends": "./node_modules/react-redux-typescript-scripts/tsconfig.json",
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",

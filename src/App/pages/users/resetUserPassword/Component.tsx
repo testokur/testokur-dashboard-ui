@@ -63,15 +63,6 @@ class Component extends React.Component<Props, State> {
     }
   }
 
-  private handleChange = (event: any) => {
-    const { formData } = this.state;
-    formData[snakeToCamel(event.target.name)] = event.target.value;
-    this.setState({ formData });
-  };
-  private handleSubmit = () => {
-    this.props.requestResetPassword(this.props.user.subjectId, this.state.formData.newPassword);
-  };
-
   public render() {
     const { formData } = this.state;
 
@@ -114,6 +105,15 @@ class Component extends React.Component<Props, State> {
       </Grid>
     );
   }
+
+  private handleChange = (event: any) => {
+    const { formData } = this.state;
+    formData[snakeToCamel(event.target.name)] = event.target.value;
+    this.setState({ formData });
+  };
+  private handleSubmit = () => {
+    this.props.requestResetPassword(this.props.user.subjectId, this.state.formData.newPassword);
+  };
 }
 
 function mapStateToProps({ resetUserPassword }: AppState, ownProps: ComponentProps) {

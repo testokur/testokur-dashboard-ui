@@ -3,7 +3,7 @@ import { Button, Dialog, DialogActions, DialogContent, Slide, TextField } from '
 import { TransitionProps } from '@material-ui/core/transitions';
 import { MessageBox } from '../../components';
 
-const Transition = React.forwardRef<unknown, TransitionProps>(function Transition(props, ref) {
+const Transition = React.forwardRef<unknown, TransitionProps>((props, ref) => {
   return <Slide direction="down" ref={ref} {...props} />;
 });
 Transition.displayName = 'Transition';

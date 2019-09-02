@@ -52,65 +52,6 @@ class Component extends React.Component<Props, State> {
     };
   }
 
-  private handleTabChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    this.setState((prevState) => ({
-      ...prevState,
-      tabIndex: newValue,
-    }));
-  };
-
-  private setUpdateUserDialogState = (display: boolean) => {
-    this.setState((prevState) => ({
-      ...prevState,
-      openUpdateUserDialog: display,
-    }));
-  };
-
-  private handleChange = async (newUser: User) => {
-    var reFetchUsers = false;
-
-    if (newUser.smsBalance != this.state.user.smsBalance) {
-      reFetchUsers = true;
-    }
-
-    this.setState((prevState) => ({
-      ...prevState,
-      user: { ...prevState.user, ...newUser },
-    }));
-
-    if (reFetchUsers) {
-      await this.props.fetchUsers();
-    }
-  };
-
-  private updateUser = async () => {
-    const model: UpdateUserModel = {
-      id: Guid.raw(),
-      updatedUserId: this.props.user.id,
-      subjectId: this.props.user.subjectId,
-      schoolName: this.state.user.schoolName,
-      mobilePhone: this.state.user.phone,
-      cityId: this.state.user.cityId,
-      districtId: this.state.user.districtId,
-      firstName: this.state.user.firstName,
-      lastName: this.state.user.lastName,
-      email: this.state.user.email,
-      maxAllowedDeviceCount: this.state.user.maxAllowedDeviceCount,
-      maxAllowedStudentCount: this.state.user.maxAllowedStudentCount,
-      canScan: this.state.user.canScan,
-      licenseTypeId: this.state.user.licenseTypeId,
-      expiryDateUtc: this.state.user.expiryDateUtc,
-    };
-    await createWebApiClient().post('/api/v1/users/update-by-admin', model);
-    this.setState((prevState) => ({
-      ...prevState,
-      success: true,
-      message: 'Basariyla Guncellendi',
-      openUpdateUserDialog: false,
-    }));
-    await this.props.fetchUsers();
-  };
-
   public render() {
     return (
       <div>
@@ -145,10 +86,10 @@ class Component extends React.Component<Props, State> {
               user={this.state.user}
               onChange={this.handleChange}
               onActivated={() => {
-                var d = new Date();
-                var year = d.getFullYear();
-                var month = d.getMonth();
-                var day = d.getDate();
+                const d = new Date();
+                const year = d.getFullYear();
+                const month = d.getMonth();
+                const day = d.getDate();
                 this.setState((prevState) => ({
                   ...prevState,
                   user: {
@@ -193,6 +134,65 @@ class Component extends React.Component<Props, State> {
       </div>
     );
   }
+
+  private handleTabChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      tabIndex: newValue,
+    }));
+  };
+
+  private setUpdateUserDialogState = (display: boolean) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      openUpdateUserDialog: display,
+    }));
+  };
+
+  private handleChange = async (newUser: User) => {
+    let reFetchUsers = false;
+
+    if (newUser.smsBalance !== this.state.user.smsBalance) {
+      reFetchUsers = true;
+    }
+
+    this.setState((prevState) => ({
+      ...prevState,
+      user: { ...prevState.user, ...newUser },
+    }));
+
+    if (reFetchUsers) {
+      await this.props.fetchUsers();
+    }
+  };
+
+  private updateUser = async () => {
+    const model: UpdateUserModel = {
+      id: Guid.raw(),
+      updatedUserId: this.props.user.id,
+      subjectId: this.props.user.subjectId,
+      schoolName: this.state.user.schoolName,
+      mobilePhone: this.state.user.phone,
+      cityId: this.state.user.cityId,
+      districtId: this.state.user.districtId,
+      firstName: this.state.user.firstName,
+      lastName: this.state.user.lastName,
+      email: this.state.user.email,
+      maxAllowedDeviceCount: this.state.user.maxAllowedDeviceCount,
+      maxAllowedStudentCount: this.state.user.maxAllowedStudentCount,
+      canScan: this.state.user.canScan,
+      licenseTypeId: this.state.user.licenseTypeId,
+      expiryDateUtc: this.state.user.expiryDateUtc,
+    };
+    await createWebApiClient().post('/api/v1/users/update-by-admin', model);
+    this.setState((prevState) => ({
+      ...prevState,
+      success: true,
+      message: 'Basariyla Guncellendi',
+      openUpdateUserDialog: false,
+    }));
+    await this.props.fetchUsers();
+  };
 }
 
 const mapStateToProps = ({ users }: AppState, { match }: ComponentProps) => ({

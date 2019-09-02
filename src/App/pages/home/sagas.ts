@@ -33,12 +33,12 @@ function* handleFetch() {
     if (webApiRes.error) {
       yield put(fetchFailed(webApiRes.error));
     }
-    var users: User[] = [];
+    const users: User[] = [];
 
     identitApiRes.data.forEach((user: any) => {
       webApiRes.data.forEach((apiUser: User) => {
         if (user.id === apiUser.subjectId) {
-          var combinedUser: User = {
+          const combinedUser: User = {
             ...user,
             ...apiUser,
             licenseTypeName: _.find(licenseTypes, ['id', user.licenseTypeId]).name,

@@ -38,25 +38,6 @@ class Component extends React.Component<Props, State> {
     };
   }
 
-  private handleMenu = (event: any) => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  private handleMenuClose = () => {
-    this.setState({ anchorEl: null });
-  };
-
-  private openLogoutDialog = () => {
-    this.handleMenuClose();
-    this.setState({ logoutDialogOpen: true });
-  };
-  private handleLogout = () => {
-    this.setState({ logoutDialogOpen: false });
-    userManager.removeUser();
-    /* eslint-disable @typescript-eslint/camelcase */
-    userManager.signoutRedirect({ id_token_hint: this.props.idToken });
-  };
-
   public render() {
     return (
       <div>
@@ -99,6 +80,25 @@ class Component extends React.Component<Props, State> {
       </div>
     );
   }
+
+  private handleMenu = (event: any) => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  private handleMenuClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
+  private openLogoutDialog = () => {
+    this.handleMenuClose();
+    this.setState({ logoutDialogOpen: true });
+  };
+  private handleLogout = () => {
+    this.setState({ logoutDialogOpen: false });
+    userManager.removeUser();
+    /* eslint-disable @typescript-eslint/camelcase */
+    userManager.signoutRedirect({ id_token_hint: this.props.idToken });
+  };
 }
 
 function mapStateToProps(state: AppState, ownProps: OwnProps) {

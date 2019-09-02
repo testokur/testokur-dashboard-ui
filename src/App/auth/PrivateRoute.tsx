@@ -22,14 +22,6 @@ export class PrivateRoute extends React.Component<Props> {
       userManager.signinRedirect();
     }
   };
-  private spinner = () => {
-    return (
-      <Box display="flex" justifyContent="center">
-        {' '}
-        <CircularProgress size={100} />{' '}
-      </Box>
-    );
-  };
 
   public render = () => {
     const { component: Component, ...rest } = this.props;
@@ -37,6 +29,15 @@ export class PrivateRoute extends React.Component<Props> {
       this.spinner()
     ) : (
       <Route {...rest} render={(routeProps) => <Component {...routeProps} />} />
+    );
+  };
+
+  private spinner = () => {
+    return (
+      <Box display="flex" justifyContent="center">
+        {' '}
+        <CircularProgress size={100} />{' '}
+      </Box>
     );
   };
 }

@@ -17,7 +17,7 @@ export default (history: History) => {
     middlewares = applyMiddleware(routerMiddleware(history), sagaMiddleware);
   }
 
-  var store = createStore(allReducers, middlewares);
+  const store = createStore(allReducers, middlewares);
   sagaMiddleware.run(rootSaga);
   return store;
 };

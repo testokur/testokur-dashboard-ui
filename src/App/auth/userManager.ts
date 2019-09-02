@@ -2,7 +2,7 @@
 import { UserManagerSettings } from 'oidc-client';
 import { createUserManager } from 'redux-oidc';
 
-const clientRoot: string = window.location.protocol + '//' + window.location.host;
+const clientRoot = `${window.location.protocol}/ ${window.location.host}`;
 
 const userManagerSettings: UserManagerSettings = {
   client_id: 'testokur.web.client',

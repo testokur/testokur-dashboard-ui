@@ -13,7 +13,7 @@ function callApi(model: any) {
 function* handlePost(model: any) {
   try {
     const response: ChangePasswordResponse = yield call(callApi, model.payload);
-    if (response.status == HttpStatusCode.OK) {
+    if (response.status === HttpStatusCode.OK) {
       yield put(changePasswordSuccess());
     } else {
       yield put(changePasswordFailed(response.data[0]));

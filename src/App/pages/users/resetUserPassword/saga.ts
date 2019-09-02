@@ -13,7 +13,7 @@ function callApi(model: any) {
 function* handlePost(model: any) {
   try {
     const response: ResetPasswordResponse = yield call(callApi, model.payload);
-    if (response.status == HttpStatusCode.OK || response.status == HttpStatusCode.NO_CONTENT) {
+    if (response.status === HttpStatusCode.OK || response.status === HttpStatusCode.NO_CONTENT) {
       yield put(resetPasswordSuccess());
     } else {
       yield put(resetPasswordFailed(response.data[0]));

@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "react-redux-typescript-scripts/tslint.json",
+    "react-redux-typescript-scripts/tslint-react.json",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "no-submodule-imports": false,
+    "jsx-boolean-value": false
+  }
+}

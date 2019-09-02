@@ -1,7 +1,12 @@
 import axios from 'axios';
 
-axios.defaults.headers.post['Content-Type'] = 'application/json';
-axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('access_token')}`;
+export const HeaderNames = {
+  ContentType: 'Content-Type',
+  Authorization: 'Authorization',
+};
+
+axios.defaults.headers.post[HeaderNames.ContentType] = 'application/json';
+axios.defaults.headers.common[HeaderNames.Authorization] = `Bearer ${localStorage.getItem('access_token')}`;
 
 export const createIdentityApiClient = () =>
   axios.create({

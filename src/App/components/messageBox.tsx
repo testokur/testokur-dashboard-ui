@@ -55,7 +55,7 @@ export const messageBox: React.FC<Props> = (props) => {
   const classes = useStyles();
   const { className, message, variant, hasCloseButton, ...other } = props;
   const Icon = variantIcon[variant];
-  var action: any;
+  let action: any;
 
   if (hasCloseButton) {
     action = [

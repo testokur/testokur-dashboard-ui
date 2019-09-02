@@ -23,6 +23,9 @@ class Component extends React.Component<Props, State> {
       open: true,
     };
   }
+  public render() {
+    return this.Body();
+  }
   private handleDrawerOpen = () => {
     this.setState({ open: true });
   };
@@ -55,10 +58,6 @@ class Component extends React.Component<Props, State> {
       </div>
     );
   };
-
-  public render() {
-    return this.Body();
-  }
 }
 
 export default withStyles(styles as any, { withTheme: true })(Component as any) as any;
