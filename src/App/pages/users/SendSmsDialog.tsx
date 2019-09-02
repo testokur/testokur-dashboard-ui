@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Dialog, DialogActions, DialogContent, Slide, TextField } from '@material-ui/core';
-import { TransitionProps } from '@material-ui/core/transitions';
-import { MessageBox } from '../../components';
-
-const Transition = React.forwardRef<unknown, TransitionProps>((props, ref) => {
-  return <Slide direction="down" ref={ref} {...props} />;
-});
-Transition.displayName = 'Transition';
+import { Button, Dialog, DialogActions, DialogContent, TextField } from '@material-ui/core';
+import { MessageBox, DefaultTransition } from '../../components';
 
 interface Props {
   open: boolean;
@@ -25,7 +19,7 @@ export const SendSmsDialog = (props: Props) => {
   }, [props.phone]);
 
   return (
-    <Dialog open={props.open} TransitionComponent={Transition} onClose={props.onClose}>
+    <Dialog open={props.open} TransitionComponent={DefaultTransition} onClose={props.onClose}>
       <DialogContent>
         {success ? (
           <div>

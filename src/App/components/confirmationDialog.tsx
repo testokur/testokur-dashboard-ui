@@ -1,12 +1,6 @@
 import React from 'react';
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Slide } from '@material-ui/core';
-import { TransitionProps } from '@material-ui/core/transitions';
-
-const Transition = React.forwardRef<unknown, TransitionProps>((props, ref) => {
-  return <Slide direction="down" ref={ref} {...props} />;
-});
-
-Transition.displayName = 'Transition';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
+import { DefaultTransition } from '.';
 
 interface Props {
   open: boolean;
@@ -20,7 +14,7 @@ export const confirmationDialog = (props: Props) => {
   return (
     <Dialog
       open={props.open}
-      TransitionComponent={Transition}
+      TransitionComponent={DefaultTransition}
       onClose={props.onNoClick}
       aria-labelledby="alert-dialog-slide-title"
       aria-describedby="alert-dialog-slide-description"

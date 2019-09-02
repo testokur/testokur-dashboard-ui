@@ -3,7 +3,7 @@ import { TextField, withStyles } from '@material-ui/core';
 import { styles } from './styles';
 import { User } from '../home/types';
 import { CitySelect } from '../../city';
-import { withPhoneMask } from '../../components/withPhoneMask';
+import { withPhoneMask } from '../../components';
 
 interface Props {
   classes: any;
@@ -51,7 +51,7 @@ const component = (props: Props) => {
         style={{ margin: 8 }}
         placeholder="Telefon"
         fullWidth
-        onChange={(e) => props.onChange({ ...props.user, phone: e.target.value.replace(/[-)()]/g,'') })}
+        onChange={(e) => props.onChange({ ...props.user, phone: e.target.value.replace(/[-)()]/g, '') })}
         value={props.user.phone}
         margin="normal"
         variant="outlined"

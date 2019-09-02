@@ -21,8 +21,8 @@ export interface User {
   canScan: boolean;
   licenseTypeId: number;
   licenseTypeName: string;
-  startDateTimeUtc?: Date;
-  expiryDateUtc?: Date;
+  startDateTimeUtc: Date | undefined;
+  expiryDateUtc: Date | undefined;
   activationTimeUtc: Date;
   loginDevices: LoginDevice[];
   smsBalance: number;

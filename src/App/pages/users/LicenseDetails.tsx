@@ -1,4 +1,5 @@
 import React from 'react';
+import * as _ from 'lodash';
 import dateformat from 'dateformat';
 import { User } from '../home/types';
 import { TextField, withStyles, Switch, FormControlLabel } from '@material-ui/core';
@@ -14,6 +15,9 @@ interface Props {
 }
 
 const component = (props: Props) => {
+  const displayDateTime = (d: Date | undefined) => {
+    return _.isUndefined(d) ? '-' : dateformat(d, 'dd.mm.yyyy HH:MM');
+  };
   return (
     <form className={props.classes.container} noValidate>
       <ActivateSwitch
@@ -35,16 +39,44 @@ const component = (props: Props) => {
         }}
       />
       <TextField
-        label="Olusturulma Tarihi"
+        label="Olusturulma Tarihi/Zamani"
         style={{ margin: 8 }}
         placeholder="Olusturulma Tarihi"
         fullWidth
-        value={dateformat(props.user.createdDateTimeUtc, 'dd.mm.yyyy HH:MM')}
+        value={displayDateTime(props.user.createdDateTimeUtc)}
         margin="normal"
         variant="outlined"
         InputProps={{
           readOnly: true,
         }}
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+      <TextField
+        label="Ilk Kullanim/Kullanima Acilma Tarihi/Zamani"
+        style={{ margin: 8 }}
+        placeholder="Ilk Kullanim/Kullanima Acilma Tarihi/Zamani"
+        fullWidth
+        value={displayDateTime(props.user.startDateTimeUtc)}
+        margin="normal"
+        variant="outlined"
+        InputProps={{
+          readOnly: true,
+        }}
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+      <TextField
+        label="Lisans Bitis/Son Kullanim Tarihi/Zamani"
+        style={{ margin: 8 }}
+        placeholder="Lisans Bitis/Son Kullanim Tarihi/Zamani"
+        fullWidth
+        value={displayDateTime(props.user.expiryDateUtc)}
+        onChange={(e) => props.onChange({ ...props.user, expiryDateUtc: new Date(e.target.value) })}
+        margin="normal"
+        variant="outlined"
         InputLabelProps={{
           shrink: true,
         }}
