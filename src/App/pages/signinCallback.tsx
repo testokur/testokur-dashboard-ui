@@ -5,6 +5,7 @@ import { push } from 'react-router-redux';
 import { Dispatch } from 'redux';
 import { userManager } from '../auth';
 import { User } from 'oidc-client';
+import axios from 'axios';
 
 interface Props {
   dispatch: Dispatch;
@@ -12,7 +13,8 @@ interface Props {
 
 const signinCallback = (props: Props) => {
   function onSuccess(user: User) {
-    localStorage.setItem('access_token', user.access_token);
+    const authorizationHeaderName = 'Authorization';
+    axios.defaults.headers.common[authorizationHeaderName] = `Bearer ${localStorage.getItem('access_token')}`;
     props.dispatch(push('/'));
   }
 

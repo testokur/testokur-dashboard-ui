@@ -6,7 +6,6 @@ export const HeaderNames = {
 };
 
 axios.defaults.headers.post[HeaderNames.ContentType] = 'application/json';
-axios.defaults.headers.common[HeaderNames.Authorization] = `Bearer ${localStorage.getItem('access_token')}`;
 
 export const createIdentityApiClient = () =>
   axios.create({
