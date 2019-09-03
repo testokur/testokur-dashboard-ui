@@ -1,5 +1,4 @@
 import * as _ from 'lodash';
-import dateformat from 'dateformat';
 import React, { useEffect, useState } from 'react';
 import { withStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
@@ -15,7 +14,7 @@ import AddCircleOutline from '@material-ui/icons/AddCircleOutline';
 
 import { fetchUsers } from '../home/actions';
 import { SendSmsDialog } from './SendSmsDialog';
-import { createWebApiClient } from '../../helpers';
+import { createWebApiClient, formatDateTime } from '../../helpers';
 import { AddSmsDialog } from './smsDetails/AddSmsDialog';
 import { ConfirmationDialog } from '../../components';
 
@@ -98,7 +97,7 @@ const component = (props: Props) => {
           {
             title: 'Bitiş Tarihi',
             field: 'expiryDateUtc',
-            render: (rowData) => <span>{dateformat(rowData.expiryDateUtc, 'dd.mm.yyyy HH:MM')}</span>,
+            render: (rowData) => <span>{formatDateTime(rowData.expiryDateUtc)}</span>,
           },
           {
             title: 'Sms Bakiye',

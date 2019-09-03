@@ -1,11 +1,11 @@
 import React from 'react';
 import * as _ from 'lodash';
-import dateformat from 'dateformat';
 import { User } from '../home/types';
 import { TextField, withStyles, Switch, FormControlLabel } from '@material-ui/core';
 import { ActivateSwitch } from './ActivateSwitch';
 import { styles } from './LicenseDetails.styles';
 import { LicenseTypeSelect } from '../../licenseType';
+import { formatDateTime } from '../../helpers';
 
 interface Props {
   user: User;
@@ -16,7 +16,7 @@ interface Props {
 
 const component = (props: Props) => {
   const displayDateTime = (d: Date | undefined) => {
-    return _.isUndefined(d) ? '-' : dateformat(d, 'dd.mm.yyyy HH:MM');
+    return _.isUndefined(d) ? '-' : formatDateTime(d);
   };
   return (
     <form className={props.classes.container} noValidate>
