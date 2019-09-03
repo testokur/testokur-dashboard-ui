@@ -1,8 +1,8 @@
 import * as _ from 'lodash';
-import dateformat from 'dateformat';
+import fecha from 'fecha';
 
-const defaultFormat = 'dd.mm.yyyy HH:MM';
+const defaultFormat = 'DD.MM.YYYY HH:mm';
 
 export default (date: Date | undefined, undefinedString: string = '-') => {
-  return _.isUndefined(date) ? undefinedString : dateformat(date, defaultFormat);
+  return _.isUndefined(date) ? undefinedString : fecha.format(date, defaultFormat);
 };
