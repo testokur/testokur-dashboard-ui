@@ -10,7 +10,7 @@ import clsx from 'clsx';
 
 interface Props {
   active: boolean;
-  expirationDate?: Date;
+  expirationDate: Date | undefined;
 }
 
 class Status {
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 function getStatus(props: Props): Status {
   if (props.active) {
-    return !_.isUndefined(props.expirationDate) && props.expirationDate > new Date()
+    return _.isUndefined(props.expirationDate) || props.expirationDate > new Date()
       ? new Status('active', <CheckCircleOutlineIcon />, 'Aktif')
       : new Status('expired', <HourglassFull />, 'Suresi Dolmus');
   }

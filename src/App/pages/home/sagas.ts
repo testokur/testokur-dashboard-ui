@@ -14,9 +14,9 @@ function getLicenseTypes() {
   return createWebApiClient().get('/api/v1/license-types');
 }
 
-function getStatus(active: boolean, expiryDateUtc?: Date): string {
+function getStatus(active: boolean, expiryDateUtc: Date | undefined): string {
   if (active) {
-    return !_.isUndefined(expiryDateUtc) && expiryDateUtc > new Date() ? 'Aktif' : 'Suresi Dolmus';
+    return _.isUndefined(expiryDateUtc) || expiryDateUtc > new Date() ? 'Aktif' : 'Suresi Dolmus';
   }
   return _.isNil(expiryDateUtc) ? 'Onay Bekliyor' : 'Iptal Edilmis';
 }

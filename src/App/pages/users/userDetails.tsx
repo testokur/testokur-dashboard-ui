@@ -86,15 +86,10 @@ class Component extends React.Component<Props, State> {
               user={this.state.user}
               onChange={this.handleChange}
               onActivated={() => {
-                const d = new Date();
-                const year = d.getFullYear();
-                const month = d.getMonth();
-                const day = d.getDate();
                 this.setState((prevState) => ({
                   ...prevState,
                   user: {
                     ...prevState.user,
-                    expiryDateUtc: new Date(year + 1, month, day),
                     active: true,
                   },
                 }));
