@@ -1,6 +1,6 @@
 import { action } from 'typesafe-actions';
 import { CHANGE_PASSWORD_ERROR, CHANGE_PASSWORD_REQUEST, CHANGE_PASSWORD_SUCCESS } from './types';
-import { ErrorMessage } from '../../data';
+import { ErrorMessage } from '../../helpers';
 
 export const requestChangePassword = (currentPassword: string, newPassword: string) =>
   action(CHANGE_PASSWORD_REQUEST, { currentPassword, newPassword });

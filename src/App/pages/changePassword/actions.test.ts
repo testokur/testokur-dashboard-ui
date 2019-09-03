@@ -1,6 +1,6 @@
 import { changePasswordFailed, requestChangePassword, changePasswordSuccess } from './actions';
 import { CHANGE_PASSWORD_SUCCESS, CHANGE_PASSWORD_REQUEST, CHANGE_PASSWORD_ERROR } from './types';
-import { ErrorMessage } from '../../data';
+import { ErrorMessage } from '../../helpers';
 
 test('should create success action', () => {
   const action = changePasswordSuccess();

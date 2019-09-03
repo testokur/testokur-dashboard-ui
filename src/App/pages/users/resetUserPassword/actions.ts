@@ -1,6 +1,6 @@
 import { action } from 'typesafe-actions';
 import { RESET_PASSWORD_ADMIN_REQUEST, RESET_PASSWORD_ADMIN_ERROR, RESET_PASSWORD_ADMIN_SUCCESS } from './types';
-import { ErrorMessage } from '../../../data';
+import { ErrorMessage } from '../../../helpers';
 import { Guid } from 'guid-typescript';
 
 export const requestResetPassword = (subjectId: Guid, newPassword: string) =>
