@@ -32,7 +32,7 @@
     },
     "/api/v1/users/update-by-admin": {
       "options": 204,
-      "post": "update-user.js"
+      "post": "wait-for-2sec.js"
     },
     "/account/users": {
       "options": 204,
@@ -40,7 +40,11 @@
     },
     "/account/reset-user-password-by-admin": {
       "options": 204,
-      "post": "reset-user-password-by-admin.js"
+      "post": "wait-for-2sec.js"
+    },
+    "/account/change-password": {
+      "options": 204,
+      "post": "wait-for-2sec.js"
     },
     "/api/v1/users/:id": {
       "options": 204,

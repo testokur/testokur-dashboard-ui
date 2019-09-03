@@ -1,5 +1,5 @@
 module.exports = (req, res) => {
   setTimeout(() => {
-    res.status(204).end();
+    res.status(200).end();
   }, 2000);
 };
