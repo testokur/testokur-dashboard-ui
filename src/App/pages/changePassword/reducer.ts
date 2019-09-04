@@ -1,5 +1,11 @@
 import { Reducer } from 'redux';
-import { ChangePasswordState, CHANGE_PASSWORD_REQUEST, CHANGE_PASSWORD_SUCCESS, CHANGE_PASSWORD_ERROR } from './types';
+import {
+  ChangePasswordState,
+  CHANGE_PASSWORD_REQUEST,
+  CHANGE_PASSWORD_SUCCESS,
+  CHANGE_PASSWORD_ERROR,
+  CHANGE_PASSWORD_STATE_RESET,
+} from './types';
 
 export const initialState: ChangePasswordState = {
   loading: false,
@@ -17,6 +23,9 @@ const reducer: Reducer<ChangePasswordState> = (state = initialState, action) => 
     }
     case CHANGE_PASSWORD_ERROR: {
       return { ...state, loading: false, success: false, message: action.payload.description };
+    }
+    case CHANGE_PASSWORD_STATE_RESET: {
+      return { ...state, ...initialState };
     }
     default: {
       return state;

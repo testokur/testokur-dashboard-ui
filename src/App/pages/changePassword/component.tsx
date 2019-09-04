@@ -4,7 +4,7 @@ import { Typography, Button, Grid, CircularProgress, withStyles } from '@materia
 import { ValidatorForm } from 'react-material-ui-form-validator';
 import { PasswordField } from '../../components';
 import { snakeToCamel } from '../../helpers';
-import { requestChangePassword } from './actions';
+import { requestChangePassword, resetChangePasswordState } from './actions';
 import { connect } from 'react-redux';
 import { MessageBox } from '../../components';
 import AppState from '../../AppState';
@@ -26,6 +26,7 @@ interface State {
 
 interface PropsFromDispatch {
   requestChangePassword: typeof requestChangePassword;
+  resetChangePasswordState: typeof resetChangePasswordState;
 }
 
 type Props = PropsFromState & PropsFromDispatch & ComponentProps;
@@ -42,6 +43,7 @@ class Component extends React.Component<Props, State> {
     };
   }
   public componentDidMount() {
+    this.props.resetChangePasswordState();
     ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
       const { formData } = this.state;
       if (value !== formData.newPassword) {
@@ -134,6 +136,7 @@ const mapStateToProps = ({ changePassword }: AppState) => ({
 
 const mapDispatchToProps = {
   requestChangePassword,
+  resetChangePasswordState,
 };
 
 export default connect(
