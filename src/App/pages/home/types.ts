@@ -36,6 +36,8 @@ export interface User {
   schoolName: string;
   status: string;
   notes: string;
+  registrarFullName: string;
+  registrarPhone: string;
 }
 
 export interface UsersState {

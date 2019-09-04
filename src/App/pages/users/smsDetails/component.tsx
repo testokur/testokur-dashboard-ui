@@ -5,12 +5,14 @@ import { User } from '../../home/types';
 import { default as SmsFieldWithButton } from './smsFieldWithButton';
 import { AddSmsDialog } from './AddSmsDialog';
 import { createWebApiClient } from '../../../helpers';
+import { withPhoneMask } from '../../../components';
 
 interface Props {
   classes: any;
   user: User;
   onChange: (user: User) => void;
 }
+const PhoneField = withPhoneMask(TextField);
 
 const component = (props: Props) => {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -26,6 +28,30 @@ const component = (props: Props) => {
         <SmsFieldWithButton credit={props.user.smsBalance} onClick={() => setDialogOpen(true)} />
         <AddSmsDialog open={dialogOpen} onSubmit={handleAddCredit} onClose={() => setDialogOpen(false)} />
       </div>
+      <TextField
+        label="Siparis Veren Ad-Soyad"
+        style={{ margin: 8 }}
+        placeholder="Siparis Veren Ad-Soyad"
+        fullWidth
+        value={props.user.registrarFullName}
+        margin="normal"
+        variant="outlined"
+        InputProps={{
+          readOnly: true,
+        }}
+      />
+      <PhoneField
+        label="Siparis Veren Telefon"
+        style={{ margin: 8 }}
+        placeholder="Siparis Veren Telefon"
+        fullWidth
+        value={props.user.registrarPhone}
+        margin="normal"
+        variant="outlined"
+        InputProps={{
+          readOnly: true,
+        }}
+      />
       <TextField
         label="Notlar/Yorumlar"
         style={{ margin: 8 }}

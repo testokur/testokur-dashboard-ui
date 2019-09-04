@@ -14,7 +14,8 @@ module.exports = (req, res) => {
         firstName: 'Nazmi',
         lastName: 'Altun',
         schoolName: 'X-Men School',
-        notes: 'This is just a dummy note.Sure we could add more notes to this.',
+        notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',        registrarFullName: 'Cengiz Altun',
+        registrarPhone: '5544205163',
       },
       {
         id: 2,
@@ -29,7 +30,8 @@ module.exports = (req, res) => {
         firstName: 'John',
         lastName: 'Brown',
         schoolName: 'X-Men School',
-        notes: 'This is just a dummy note.Sure we could add more notes to this.',
+        notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',        registrarFullName: 'Jesse Brown',
+        registrarPhone: '5554442233',
       },
       {
         id: 3,
@@ -44,7 +46,9 @@ module.exports = (req, res) => {
         firstName: 'Marry',
         lastName: 'Brown',
         schoolName: 'X-Men School',
-        notes: 'This is just a dummy note.Sure we could add more notes to this.',
+        notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        registrarFullName: 'Walter Brown',
+        registrarPhone: '5523336699',
       },
       {
         id: 4,
@@ -59,7 +63,8 @@ module.exports = (req, res) => {
         firstName: 'Josh',
         lastName: 'Pollack',
         schoolName: 'X-Men School',
-        notes: 'This is just a dummy note.Sure we could add more notes to this.',
+        notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',        registrarFullName: 'Lilly Pollack',
+        registrarPhone: '5449875544',
       },
     ]);
   }, 200);
