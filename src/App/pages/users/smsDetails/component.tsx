@@ -5,14 +5,13 @@ import { User } from '../../home/types';
 import { default as SmsFieldWithButton } from './smsFieldWithButton';
 import { AddSmsDialog } from './AddSmsDialog';
 import { createWebApiClient } from '../../../helpers';
-import { withPhoneMask } from '../../../components';
+import { PhoneField } from '../../../components';
 
 interface Props {
   classes: any;
   user: User;
   onChange: (user: User) => void;
 }
-const PhoneField = withPhoneMask(TextField);
 
 const component = (props: Props) => {
   const [dialogOpen, setDialogOpen] = useState(false);

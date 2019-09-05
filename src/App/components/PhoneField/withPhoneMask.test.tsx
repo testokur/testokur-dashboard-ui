@@ -1,10 +1,7 @@
 import React from 'react';
-import { withPhoneMask } from './withPhoneMask';
-import { TextField } from '@material-ui/core';
 import { mount } from 'enzyme';
 import MaskedInput from 'react-text-mask';
-
-const PhoneField = withPhoneMask(TextField);
+import { PhoneField } from '..';
 
 test('phone mask should be applied', () => {
   const wrapper = mount(

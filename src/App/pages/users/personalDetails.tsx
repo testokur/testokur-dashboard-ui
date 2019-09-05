@@ -3,15 +3,13 @@ import { TextField, withStyles } from '@material-ui/core';
 import { styles } from './styles';
 import { User } from '../home/types';
 import { CitySelect } from '../../city';
-import { withPhoneMask } from '../../components';
+import { PhoneField } from '../../components';
 
 interface Props {
   classes: any;
   user: User;
   onChange: (user: User) => void;
 }
-
-const PhoneField = withPhoneMask(TextField);
 
 const component = (props: Props) => {
   return (
