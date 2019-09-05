@@ -16,15 +16,15 @@
     },
     "/api/v1/sms/add-credits": {
       "options": 204,
-      "post": 204
+      "post": "wait-for-2sec.js"
     },
     "/api/v1/users/activate": {
       "options": 204,
-      "post": 204
+      "post": "wait-for-2sec.js"
     },
     "/api/v1/sms/send-admin": {
       "options": 204,
-      "post": 204
+      "post": "wait-for-2sec.js"
     },
     "/api/v1/users": {
       "options": 204,
@@ -48,7 +48,7 @@
     },
     "/api/v1/users/:id": {
       "options": 204,
-      "delete": 204
+      "delete": "wait-for-2sec.js"
     }
   }
 }
