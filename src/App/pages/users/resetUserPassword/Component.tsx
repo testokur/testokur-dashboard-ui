@@ -1,13 +1,12 @@
 import React from 'react';
 import * as _ from 'lodash';
-import { CircularProgress, Button, Grid, withStyles } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { ValidatorForm } from 'react-material-ui-form-validator';
-import { PasswordField, MessageBox } from '../../../components';
+import { PasswordField, MessageBox, InteractiveButtonWithSpinner } from '../../../components';
 import { snakeToCamel } from '../../../helpers';
 import { connect } from 'react-redux';
 import { User } from '../../home/types';
 import AppState from '../../../AppState';
-import { styles } from './styles';
 import { requestResetPassword } from './actions';
 
 interface ComponentProps {
@@ -94,12 +93,7 @@ class Component extends React.Component<Props, State> {
               errorMessages={['Yeni parola tekrari ile ayni olmali']}
               value={formData.newPasswordConfirm}
             />
-            <div className={this.props.classes.wrapper}>
-              <Button type="submit" fullWidth variant="contained" color="primary" disabled={this.props.loading}>
-                Onayla
-              </Button>
-              {this.props.loading && <CircularProgress size={24} className={this.props.classes.buttonProgress} />}
-            </div>
+            <InteractiveButtonWithSpinner loading={this.props.loading} />
           </ValidatorForm>
         </Grid>
       </Grid>
@@ -132,4 +126,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(withStyles(styles as any, { withTheme: true })(Component as any) as any);
+)(Component as any);
