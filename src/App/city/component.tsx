@@ -26,7 +26,7 @@ interface PropsFromDispatch {
 
 type Props = PropsFromState & PropsFromDispatch & ComponentProps;
 
-class Component extends React.Component<Props> {
+export class Component extends React.Component<Props> {
   public componentDidMount() {
     this.props.fetchCityRequest();
   }
