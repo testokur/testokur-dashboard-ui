@@ -3,10 +3,10 @@ import { Button, CircularProgress, withStyles } from '@material-ui/core';
 import { Theme } from '@material-ui/core';
 import { green } from '@material-ui/core/colors';
 
-type Props = {
+interface Props {
   classes?: any;
   loading: boolean;
-};
+}
 
 export const styles = (theme: Theme) => ({
   wrapper: {
