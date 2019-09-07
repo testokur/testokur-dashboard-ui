@@ -6,3 +6,4 @@ export { confirmationDialog as ConfirmationDialog } from './confirmationDialog';
 export { default as PhoneField } from './PhoneField/Component';
 export { default as DefaultTransition } from './defaultTransition';
 export { default as InteractiveButtonWithSpinner } from './InteractiveButtonWithSpinner';
+export { default as Select } from './select';

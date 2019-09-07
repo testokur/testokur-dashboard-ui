@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react';
-import { FormControl, InputLabel, Select, MenuItem, withStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { LicenseTypeModel } from './types';
 import { fetchLicenseTypes } from './actions';
 import AppState from '../AppState';
-import { styles } from './styles';
-import { withLoading } from '../components';
+import { withLoading, Select } from '../components';
 
 interface ComponentProps {
-  classes?: any;
   id: number;
   onChange: (newValue: number) => void;
 }
@@ -29,19 +26,13 @@ const component = (props: Props) => {
   }, []);
 
   return (
-    <FormControl fullWidth variant="outlined" className={props.classes.formControl}>
-      <InputLabel htmlFor="license-type-select">Lisan Turu/Paket</InputLabel>
-      <Select value={props.id} onChange={(e) => props.onChange(e.target.value as number)}>
-        <MenuItem value="">
-          <em>Seciniz</em>
-        </MenuItem>
-        {props.licenseTypes.map((record) => (
-          <MenuItem key={record.id} value={record.id}>
-            {record.name}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
+    <Select
+      text="Lisans Turu/Paket"
+      id="license-type-select"
+      value={props.id.toString()}
+      onChange={(e) => props.onChange(e)}
+      items={props.licenseTypes}
+    />
   );
 };
 
@@ -56,9 +47,7 @@ const mapDispatchToProps = {
   fetchLicenseTypes,
 };
 
-const styled = withStyles(styles as any, { withTheme: true })(withLoading(component) as any);
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(styled);
+)(withLoading(component));
