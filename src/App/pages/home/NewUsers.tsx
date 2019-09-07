@@ -62,7 +62,7 @@ const mapStateToProps = ({ users }: AppState) => ({
   loading: users.loading,
   success: users.success,
   errorMessage: users.errorMessage,
-  users: _.filter(users.data, (u) => _.isNil(u.expiryDateUtc)),
+  users: _.filter(users.data, (u) => _.isUndefined(u.expiryDateUtc) && !u.active),
 });
 
 const mapDispatchToProps = {
