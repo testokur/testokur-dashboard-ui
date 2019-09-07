@@ -3,6 +3,7 @@ import { createIdentityApiClient, createWebApiClient } from '../../helpers';
 import { put, call, takeEvery, fork, all } from 'redux-saga/effects';
 import { fetchFailed, fetchSuccess } from './actions';
 import { FETCH_USERS_REQUEST, User } from './types';
+import { UserStatuses } from './UserStatuses';
 
 function callIdentityApi() {
   return createIdentityApiClient().get('/account/users');
@@ -16,9 +17,9 @@ function getLicenseTypes() {
 
 function getStatus(active: boolean, expiryDateUtc: Date | undefined): string {
   if (active) {
-    return _.isUndefined(expiryDateUtc) || expiryDateUtc > new Date() ? 'Aktif' : 'Suresi Dolmus';
+    return _.isUndefined(expiryDateUtc) || expiryDateUtc > new Date() ? UserStatuses.Active : UserStatuses.Expired;
   }
-  return _.isNil(expiryDateUtc) ? 'Onay Bekliyor' : 'Iptal Edilmis';
+  return _.isNil(expiryDateUtc) ? UserStatuses.PendingForActivation : UserStatuses.Deactivated;
 }
 
 function* handleFetch() {

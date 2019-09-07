@@ -7,6 +7,7 @@ import AccessTime from '@material-ui/icons/AccessTime';
 import Cancel from '@material-ui/icons/Cancel';
 import { green, amber } from '@material-ui/core/colors';
 import clsx from 'clsx';
+import { UserStatuses } from '../home/UserStatuses';
 
 interface Props {
   active: boolean;
@@ -48,13 +49,13 @@ const useStyles = makeStyles((theme: Theme) => ({
 function getStatus(props: Props): Status {
   if (props.active) {
     return _.isUndefined(props.expirationDate) || props.expirationDate > new Date()
-      ? new Status('active', <CheckCircleOutlineIcon />, 'Aktif')
-      : new Status('expired', <HourglassFull />, 'Suresi Dolmus');
+      ? new Status('active', <CheckCircleOutlineIcon />, UserStatuses.Active)
+      : new Status('expired', <HourglassFull />, UserStatuses.Expired);
   }
 
   return _.isNil(props.expirationDate)
-    ? new Status('pending', <AccessTime />, 'Onay Bekliyor')
-    : new Status('cancelled', <Cancel />, 'Iptal Edilmis');
+    ? new Status('pending', <AccessTime />, UserStatuses.PendingForActivation)
+    : new Status('cancelled', <Cancel />, UserStatuses.Deactivated);
 }
 
 export const UserStatus = (props: Props) => {

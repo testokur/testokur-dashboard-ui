@@ -11,6 +11,7 @@ import { User } from './types';
 import { fetchUsers } from './actions';
 import AppState from '../../AppState';
 import { withLoading } from '../../components';
+import { UserStatuses } from './UserStatuses';
 
 interface ComponentProps {
   classes: any;
@@ -62,7 +63,7 @@ const mapStateToProps = ({ users }: AppState) => ({
   loading: users.loading,
   success: users.success,
   errorMessage: users.errorMessage,
-  users: _.filter(users.data, (u) => _.isUndefined(u.expiryDateUtc) && !u.active),
+  users: _.filter(users.data, (u) => u.status === UserStatuses.PendingForActivation),
 });
 
 const mapDispatchToProps = {
