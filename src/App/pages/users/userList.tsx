@@ -60,8 +60,6 @@ const component = (props: Props) => {
     setDeleteUserDialogOpen(false);
     props.fetchUsers();
   };
-  const defaultPageSize = props.users.length;
-
   return (
     <div>
       <MaterialTable
@@ -158,8 +156,8 @@ const component = (props: Props) => {
         ]}
         options={{
           actionsColumnIndex: -1,
-          pageSize: defaultPageSize,
-          pageSizeOptions: [defaultPageSize, defaultPageSize * 2, defaultPageSize * 4],
+          pageSize: 50,
+          pageSizeOptions: [50, 100, 500, 1000],
         }}
       />
       <SendSmsDialog
