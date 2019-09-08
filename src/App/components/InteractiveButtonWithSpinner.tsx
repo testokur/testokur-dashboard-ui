@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, CircularProgress, withStyles } from '@material-ui/core';
-import { Theme } from '@material-ui/core';
+import { Button, CircularProgress, withStyles, Theme } from '@material-ui/core';
 import { green } from '@material-ui/core/colors';
 
 interface Props {

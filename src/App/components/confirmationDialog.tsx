@@ -1,5 +1,17 @@
-import React from 'react';
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
+import React, { useState } from 'react';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  CircularProgress,
+  createStyles,
+  makeStyles,
+  Theme,
+} from '@material-ui/core';
+import { green } from '@material-ui/core/colors';
 import { DefaultTransition } from '.';
 
 interface Props {
@@ -7,10 +19,30 @@ interface Props {
   message: string;
   title: string;
   onNoClick(): void;
-  onYesClick(event?: any): void;
+  onYesClick(event?: any): Promise<void>;
 }
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    wrapper: {
+      margin: theme.spacing(1),
+      position: 'relative',
+    },
+    buttonProgress: {
+      color: green[500],
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      marginTop: -12,
+      marginLeft: -12,
+    },
+  }),
+);
+
 export const confirmationDialog = (props: Props) => {
+  const [loading, setLoading] = useState(false);
+  const classes = useStyles();
+
   return (
     <Dialog
       open={props.open}
@@ -27,15 +59,22 @@ export const confirmationDialog = (props: Props) => {
         <Button onClick={props.onNoClick} color="primary">
           Hayir
         </Button>
-        <Button
-          onClick={(event) => {
-            event.preventDefault();
-            props.onYesClick(event);
-          }}
-          color="primary"
-        >
-          Evet
-        </Button>
+        <div className={classes.wrapper}>
+          <Button
+            variant="contained"
+            color="primary"
+            disabled={loading}
+            onClick={async (event) => {
+              await setLoading(true);
+              event.preventDefault();
+              await props.onYesClick(event);
+              await setLoading(false);
+            }}
+          >
+            Evet
+          </Button>
+          {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
+        </div>
       </DialogActions>
     </Dialog>
   );

@@ -93,11 +93,11 @@ class Component extends React.Component<Props, State> {
     this.handleMenuClose();
     this.setState({ logoutDialogOpen: true });
   };
-  private handleLogout = () => {
+  private handleLogout = async () => {
     this.setState({ logoutDialogOpen: false });
-    userManager.removeUser();
+    await userManager.removeUser();
     /* eslint-disable @typescript-eslint/camelcase */
-    userManager.signoutRedirect({ id_token_hint: this.props.idToken });
+    await userManager.signoutRedirect({ id_token_hint: this.props.idToken });
   };
 }
 
