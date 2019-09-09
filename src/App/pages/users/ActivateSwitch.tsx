@@ -3,33 +3,44 @@ import * as _ from 'lodash';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { createWebApiClient } from '../../helpers';
-import { ConfirmationDialog } from '../../components';
+import { ConfirmationDialog, withLoading } from '../../components';
 
 interface Props {
   active: boolean;
-  expiryDateUtc?: Date;
+  activationTimeUtc?: Date;
   email: string;
-  onActivated: () => void;
+  onActivationStatusChange: (newValue: boolean) => void;
 }
 
 export const ActivateSwitch = (props: Props) => {
   const [openDialog, setOpenDialog] = useState(false);
-  const activate = async (event: any) => {
-    event.preventDefault();
+  const [loading, setLoading] = useState(false);
+
+  const activate = async () => {
     setOpenDialog(false);
     await createWebApiClient().post(`/api/v1/users/activate?email=${props.email}`);
-    props.onActivated();
   };
-
+  const deactivate = async () => {
+    setOpenDialog(false);
+    await createWebApiClient().post(`/api/v1/users/deactivate?email=${props.email}`);
+  };
   const onSwitchClick = async (event: any) => {
-    if (!props.active && _.isNil(props.expiryDateUtc)) {
+    setLoading(true);
+    if (_.isUndefined(props.activationTimeUtc) && !props.active) {
       setOpenDialog(true);
-    } else {
-      await activate(event);
+      return;
     }
+
+    if (props.active) {
+      await deactivate();
+    } else {
+      await activate();
+    }
+    props.onActivationStatusChange(!props.active);
+    setLoading(false);
   };
 
-  return (
+  const component = (innerProps: { loading: boolean }) => (
     <div>
       <FormControlLabel
         value="start"
@@ -48,4 +59,7 @@ export const ActivateSwitch = (props: Props) => {
       />
     </div>
   );
+  const Component = withLoading(component);
+
+  return <Component loading={loading} />;
 };

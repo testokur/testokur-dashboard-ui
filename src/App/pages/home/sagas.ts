@@ -46,6 +46,9 @@ function* handleFetch() {
           };
           combinedUser.expiryDateUtc = _.isNil(user.expiryDateUtc) ? undefined : new Date(user.expiryDateUtc);
           combinedUser.startDateTimeUtc = _.isNil(user.startDateTimeUtc) ? undefined : new Date(user.startDateTimeUtc);
+          combinedUser.activationTimeUtc = _.isNil(user.activationTimeUtc)
+            ? undefined
+            : new Date(user.activationTimeUtc);
           combinedUser.createdDateTimeUtc = new Date(user.createdDateTimeUtc);
           combinedUser.status = getStatus(combinedUser.active, combinedUser.expiryDateUtc);
           users.push(combinedUser);

@@ -23,7 +23,7 @@ export interface User {
   licenseTypeName: string;
   startDateTimeUtc: Date | undefined;
   expiryDateUtc: Date | undefined;
-  activationTimeUtc: Date;
+  activationTimeUtc: Date | undefined;
   loginDevices: LoginDevice[];
   smsBalance: number;
   cityName: string;

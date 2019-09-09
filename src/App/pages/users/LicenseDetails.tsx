@@ -10,7 +10,6 @@ import { formatDateTime, parseDateTime } from '../../helpers';
 interface Props {
   user: User;
   classes: any;
-  onActivated: () => void;
   onChange: (user: User) => void;
 }
 
@@ -34,8 +33,8 @@ const component = (props: Props) => {
       <ActivateSwitch
         active={props.user.active}
         email={props.user.email}
-        expiryDateUtc={props.user.expiryDateUtc}
-        onActivated={props.onActivated}
+        activationTimeUtc={props.user.activationTimeUtc}
+        onActivationStatusChange={(newValue: boolean) => props.onChange({ ...props.user, active: newValue })}
       />
       <TextField
         label="E-Posta"
