@@ -19,6 +19,7 @@ export const ActivateSwitch = (props: Props) => {
   const activate = async () => {
     setOpenDialog(false);
     await createWebApiClient().post(`/api/v1/users/activate?email=${props.email}`);
+    setLoading(false);
   };
   const onSwitchClick = async (event: any) => {
     setLoading(true);

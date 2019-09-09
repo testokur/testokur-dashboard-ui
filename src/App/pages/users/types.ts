@@ -15,6 +15,6 @@ export interface UpdateUserModel {
   maxAllowedStudentCount: number;
   canScan: boolean;
   licenseTypeId: number;
-  expiryDateUtc?: Date;
+  expiryDateUtc: Date | undefined;
   active: boolean | undefined;
 }
