@@ -16,4 +16,5 @@ export interface UpdateUserModel {
   canScan: boolean;
   licenseTypeId: number;
   expiryDateUtc?: Date;
+  active:boolean | undefined;
 }

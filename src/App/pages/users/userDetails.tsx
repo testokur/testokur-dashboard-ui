@@ -178,6 +178,7 @@ class Component extends React.Component<Props, State> {
       canScan: this.state.user.canScan,
       licenseTypeId: this.state.user.licenseTypeId,
       expiryDateUtc: this.state.user.expiryDateUtc,
+      active:this.state.user.active,
     };
     await createWebApiClient().post('/api/v1/users/update-by-admin', model);
     this.setState((prevState) => ({
