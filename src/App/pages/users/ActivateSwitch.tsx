@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as _ from 'lodash';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { createWebApiClient } from '../../helpers';
+import { createIdentityApiClient } from '../../helpers';
 import { ConfirmationDialog, withLoading } from '../../components';
 
 interface Props {
@@ -18,11 +18,11 @@ export const ActivateSwitch = (props: Props) => {
 
   const activate = async () => {
     setOpenDialog(false);
-    await createWebApiClient().post(`/api/v1/users/activate?email=${props.email}`);
+    await createIdentityApiClient().post(`/api/v1/users/activate?email=${props.email}`);
   };
   const deactivate = async () => {
     setOpenDialog(false);
-    await createWebApiClient().post(`/api/v1/users/deactivate?email=${props.email}`);
+    await createIdentityApiClient().post(`/api/v1/users/deactivate?email=${props.email}`);
   };
   const onSwitchClick = async (event: any) => {
     setLoading(true);
