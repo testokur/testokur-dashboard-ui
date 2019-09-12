@@ -89,9 +89,6 @@ workflows:
             branches:
               only: master
       - deploy-prod:
-          requires:
-            - static-code-analysis
-            - build-and-test
           filters:
             tags:
               only: /^v.*/
