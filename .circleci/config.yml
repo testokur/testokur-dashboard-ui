@@ -59,12 +59,7 @@ jobs:
   deploy-prod:
     <<: *defaults
     steps:
-      - attach_workspace:
-          at: ~/repo
-      - run:
-          name: Copy image to the app server
-          command: |
-            scp -q dashboard.tar $SSH_USERNAME@$SSH_HOST:/home/docker-images/
+      - checkout
       - run:
           name: Run container
           command: |
@@ -76,11 +71,11 @@ workflows:
       - build-and-test:
           filters:
             tags:
-              only: /.*/
+              only: /.qa*/
       - static-code-analysis:
           filters:
             tags:
-              only: /.*/
+              only: /.qa*/
       - deploy-qa:
           requires:
             - static-code-analysis
