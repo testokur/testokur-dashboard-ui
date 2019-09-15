@@ -74,9 +74,6 @@ workflows:
   dashboard-ui:
     jobs:
       - build-and-test:
-          filters:
-            tags:
-              only: /.qa*/
       - static-code-analysis:
           filters:
             tags:
