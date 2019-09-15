@@ -51,19 +51,24 @@ jobs:
       - run:
           name: Copy image to the app server
           command: |
-            scp -q dashboard.tar $SSH_USERNAME@$SSH_HOST:/home/docker-images/
+            scp -q dashboard.tar $SSH_USERNAME@$QA_SERVER:/home/docker-images/
       - run:
           name: Run container
           command: |
-            ssh  $SSH_USERNAME@$SSH_HOST 'bash -s' < deploy.sh > /dev/null
+            ssh  $SSH_USERNAME@$QA_SERVER 'bash -s' < deploy.sh > /dev/null
   deploy-prod:
     <<: *defaults
     steps:
-      - checkout
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Copy image to the app server
+          command: |
+            scp -q dashboard.tar $SSH_USERNAME@$PROD_SERVER:/home/images/
       - run:
           name: Run container
           command: |
-            ssh  $SSH_USERNAME@$SSH_HOST 'bash -s' < deploy-prod.sh > /dev/null
+            ssh  $SSH_USERNAME@$PROD_SERVER 'bash -s' < deploy-prod.sh > /dev/null
 workflows:
   version: 2
   dashboard-ui:
@@ -84,6 +89,8 @@ workflows:
             branches:
               only: master
       - deploy-prod:
+          requires:
+            - build-and-test
           filters:
             tags:
               only: /^v.*/
