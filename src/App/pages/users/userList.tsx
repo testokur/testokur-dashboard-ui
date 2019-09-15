@@ -11,6 +11,7 @@ import { tableIcons, withLoading } from '../../components';
 import Sms from '@material-ui/icons/Sms';
 import DeleteForever from '@material-ui/icons/DeleteForever';
 import AddCircleOutline from '@material-ui/icons/AddCircleOutline';
+import Update from '@material-ui/icons/Update';
 
 import { fetchUsers } from '../home/actions';
 import { SendSmsDialog } from './SendSmsDialog';
@@ -42,6 +43,7 @@ const component = (props: Props) => {
   const [smsDialogOpen, setSmsDialogOpen] = useState(false);
   const [deleteUserDialogOpen, setDeleteUserDialogOpen] = useState(false);
   const [addSmsCreditDialogOpen, setAddSmsCreditDialogOpen] = useState(false);
+  const [extendUserDialogOpen, setExtendUserDialogOpen] = useState(false);
   const [user, setUser] = useState<User | User[]>();
 
   const handleSendSms = async (body: string): Promise<boolean> => {
@@ -60,6 +62,16 @@ const component = (props: Props) => {
     setDeleteUserDialogOpen(false);
     props.fetchUsers();
   };
+
+  const extendUser = async () => {
+    await createWebApiClient().post('/api/v1/users/extend', {
+      email: _.get(user, 'email', ''),
+      currentExpiryDateTimeUtc: _.get(user, 'expiryDateUtc', ''),
+    });
+    setExtendUserDialogOpen(false);
+    props.fetchUsers();
+  };
+
   return (
     <div>
       <MaterialTable
@@ -153,6 +165,14 @@ const component = (props: Props) => {
               setAddSmsCreditDialogOpen(true);
             },
           },
+          {
+            icon: () => <Update />,
+            tooltip: 'Lisans Uzat',
+            onClick: (event, rowData) => {
+              setUser(rowData);
+              setExtendUserDialogOpen(true);
+            },
+          },
         ]}
         options={{
           actionsColumnIndex: -1,
@@ -177,6 +197,16 @@ const component = (props: Props) => {
         onYesClick={deleteUser}
         title={'Kullanici Silme'}
         message={_.get(user, 'email', '') + ' e-posta adresine sahip kullaniciyi silmek istediginize emin misiniz?'}
+      />
+      <ConfirmationDialog
+        open={extendUserDialogOpen}
+        onNoClick={() => setExtendUserDialogOpen(false)}
+        onYesClick={extendUser}
+        title={'Kullanici Lisans Uzatma'}
+        message={
+          _.get(user, 'email', '') +
+          ' e-posta adresine sahip kullanicinin lisansi 1 yil uzatilacaktir. Onayliyor musunuz?'
+        }
       />
     </div>
   );
