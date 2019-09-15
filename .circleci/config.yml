@@ -74,6 +74,9 @@ workflows:
   dashboard-ui:
     jobs:
       - build-and-test:
+          filters:
+            tags:
+              only: /.*/
       - static-code-analysis:
           filters:
             tags:
