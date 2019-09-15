@@ -1,9 +1,9 @@
 #!/bin/bash
-docker load -i /home/docker-images/dashboard.tar
+docker load -i /home/images/dashboard.tar
 docker stop testokur-dashboard-qa
 docker rm --force testokur-dashboard-qa
 docker run -d  \
-  --env-file  /home/docker-images/dashboard-qa.env \
+  --env-file  /home/env/dashboard-qa.env \
 	--name testokur-dashboard-qa \
 	--restart=always  \
 	--network=testokur \
