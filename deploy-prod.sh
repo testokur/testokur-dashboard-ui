@@ -8,3 +8,4 @@ docker run -d  \
 	--network=testokur \
 	--network-alias=dashboard \
 	nazmialtun/testokur-dashboard-ui:latest
+echo Y | docker system prune
