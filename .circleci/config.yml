@@ -3,6 +3,8 @@ defaults: &defaults
   working_directory: ~/repo
   machine: true
 jobs:
+  environment:
+    IMAGE_NAME: nazmialtun/testokur-dashboard-ui
   static-code-analysis:
     <<: *defaults
     steps:
@@ -34,13 +36,16 @@ jobs:
           command: |
             docker-compose build --build-arg CODECOV_TOKEN=$CODECOV_TOKEN  app
       - run:
-          name: Compress the image file
+          name: Publish Docker Image to Docker Hub
           command: |
-            docker save -o dashboard.tar testokur-dashboard:latest
+            echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+                IMAGE_TAG="0.0.${CIRCLE_BUILD_NUM}"
+                docker tag $IMAGE_NAME:latest $IMAGE_NAME:$IMAGE_TAG
+                docker push $IMAGE_NAME:latest
+                docker push $IMAGE_NAME:$IMAGE_TAG
       - persist_to_workspace:
           root: ~/repo
           paths:
-            - dashboard.tar
             - deploy.sh
             - deploy-prod.sh
   deploy-qa:
@@ -48,10 +53,6 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      - run:
-          name: Copy image to the app server
-          command: |
-            scp -q dashboard.tar $SSH_USERNAME@$QA_SERVER:/home/images/
       - run:
           name: Run container
           command: |
@@ -61,10 +62,6 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      - run:
-          name: Copy image to the app server
-          command: |
-            scp -q dashboard.tar $SSH_USERNAME@$PROD_SERVER:/home/images/
       - run:
           name: Run container
           command: |
