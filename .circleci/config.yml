@@ -3,8 +3,6 @@ defaults: &defaults
   working_directory: ~/repo
   machine: true
 jobs:
-  environment:
-    IMAGE_NAME: nazmialtun/testokur-dashboard-ui
   static-code-analysis:
     <<: *defaults
     steps:
@@ -40,9 +38,10 @@ jobs:
           command: |
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
                 IMAGE_TAG="0.0.${CIRCLE_BUILD_NUM}"
-                docker tag $IMAGE_NAME:latest $IMAGE_NAME:$IMAGE_TAG
-                docker push $IMAGE_NAME:latest
-                docker push $IMAGE_NAME:$IMAGE_TAG
+                docker tag testokur-dashboard-ui:latest nazmialtun/testokur-dashboard-ui:$IMAGE_TAG
+                docker tag testokur-dashboard-ui:latest nazmialtun/testokur-dashboard-ui:latest
+                docker push nazmialtun/testokur-dashboard-ui:latest
+                docker push nazmialtun/testokur-dashboard-ui:$IMAGE_TAG
       - persist_to_workspace:
           root: ~/repo
           paths:
