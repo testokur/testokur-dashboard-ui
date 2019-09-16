@@ -1,4 +1,5 @@
 #!/bin/bash
+docker pull nazmialtun/testokur-dashboard-ui:latest
 docker stop testokur-dashboard && docker rm --force testokur-dashboard
 docker run -d  \
     --env-file  /home/env/dashboard.env \
