@@ -35,8 +35,8 @@ class Component extends React.Component<Props, State> {
     super(props);
     this.state = {
       formData: {
-        newPassword: '',
-        newPasswordConfirm: '',
+        newPassword: '123456',
+        newPasswordConfirm: '123456',
       },
     };
   }
@@ -54,8 +54,8 @@ class Component extends React.Component<Props, State> {
       if (this.state.formData.newPassword !== '') {
         this.setState({
           formData: {
-            newPassword: '123456',
-            newPasswordConfirm: '123456',
+            newPassword: '',
+            newPasswordConfirm: '',
           },
         });
       }
