@@ -70,7 +70,7 @@ workflows:
       - build-and-test:
           filters:
             tags:
-              only: /.*/
+              only: /.qa*/
       - static-code-analysis:
           filters:
             tags:
