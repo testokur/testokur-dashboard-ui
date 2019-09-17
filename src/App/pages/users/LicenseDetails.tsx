@@ -23,6 +23,8 @@ const component = (props: Props) => {
   const onExpiryDateChange = (newValue: string) => {
     try {
       props.onChange({ ...props.user, expiryDateUtc: parseDateTime(newValue) });
+    } catch {
+      // Do nothing
     } finally {
       setExpiryDateTime(newValue);
     }

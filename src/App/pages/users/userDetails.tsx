@@ -81,21 +81,7 @@ class Component extends React.Component<Props, State> {
             <Tab label="DIGER BILGILER" />
             <Tab label="PAROLA DEGISTIR" />
           </Tabs>
-          {this.state.tabIndex === 0 && (
-            <LicenseDetails
-              user={this.state.user}
-              onChange={this.handleChange}
-              onActivated={() => {
-                this.setState((prevState) => ({
-                  ...prevState,
-                  user: {
-                    ...prevState.user,
-                    active: true,
-                  },
-                }));
-              }}
-            />
-          )}
+          {this.state.tabIndex === 0 && <LicenseDetails user={this.state.user} onChange={this.handleChange} />}
           {this.state.tabIndex === 1 && <PersonalDetails user={this.state.user} onChange={this.handleChange} />}
           {this.state.tabIndex === 2 && <SmsDetails user={this.state.user} onChange={this.handleChange} />}
           {this.state.tabIndex === 3 && <ResetUserPassword user={this.state.user} />}
