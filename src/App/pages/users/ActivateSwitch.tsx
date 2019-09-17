@@ -22,6 +22,7 @@ export const ActivateSwitch = (props: Props) => {
     setLoading(false);
   };
   const onSwitchClick = async (event: any) => {
+    event.preventDefault();
     setLoading(true);
     if (_.isUndefined(props.activationTimeUtc) && !props.active) {
       setOpenDialog(true);

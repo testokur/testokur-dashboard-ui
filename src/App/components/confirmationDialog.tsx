@@ -66,7 +66,6 @@ export const confirmationDialog = (props: Props) => {
             disabled={loading}
             onClick={async (event) => {
               await setLoading(true);
-              event.preventDefault();
               await props.onYesClick(event);
               await setLoading(false);
             }}

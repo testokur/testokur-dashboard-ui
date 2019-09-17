@@ -133,7 +133,7 @@ class Component extends React.Component<Props, State> {
   private handleChange = async (newUser: User) => {
     let reFetchUsers = false;
 
-    if (newUser.smsBalance !== this.state.user.smsBalance) {
+    if (newUser.smsBalance !== this.state.user.smsBalance || newUser.active !== this.state.user.active) {
       reFetchUsers = true;
     }
 
