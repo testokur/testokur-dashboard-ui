@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PeopleIcon from '@material-ui/icons/People';
 import { connect } from 'react-redux';
 import { UserList } from '../UserList';
-import { withLoading } from '../../../components';
 import AppState from '../../../AppState';
 import { fetchOnlineUsers } from './actions';
 
@@ -16,17 +15,17 @@ interface PropsFromDispatch {
 
 type Props = PropsFromState & PropsFromDispatch;
 
-class Component extends React.Component<Props> {
-  public async componentDidMount() {
-    this.props.fetchOnlineUsers();
-  }
-  public render() {
-    const onlineUserIcon = (className: string) => <PeopleIcon className={className} />;
-    return (
-      <UserList title={'Online Kullanicilar'} users={this.props.users} icon={onlineUserIcon} iconBgColor="#2B8A1E" />
-    );
-  }
-}
+const component = (props: Props) => {
+  const onlineUserIcon = (className: string) => <PeopleIcon className={className} />;
+  props.fetchOnlineUsers();
+  useEffect(() => {
+    const interval = setInterval(() => {
+      props.fetchOnlineUsers();
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+  return <UserList title={'Online Kullanicilar'} users={props.users} icon={onlineUserIcon} iconBgColor="#2B8A1E" />;
+};
 
 const mapStateToProps = ({ onlineUsers }: AppState) => ({
   loading: onlineUsers.loading,
@@ -40,4 +39,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(withLoading(Component) as any);
+)(component);

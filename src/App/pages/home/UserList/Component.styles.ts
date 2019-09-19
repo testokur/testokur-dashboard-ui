@@ -6,8 +6,8 @@ export const styles = (theme: Theme) => ({
     marginLeft: '1em',
     marginTop: 20,
   },
-  list:{
-    maxHeight:250,
+  list: {
+    maxHeight: 250,
     overflow: 'auto',
   },
   card: {
