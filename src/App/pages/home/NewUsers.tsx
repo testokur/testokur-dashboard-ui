@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Typography, Divider, List, Card, ListItemText, ListItem } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import CardIcon from './CardIcon';
+import CardIcon from './UserList/CardIcon';
 import { styles } from './NewUsers.styles';
 import { User } from './types';
 import { fetchUsers } from './actions';
@@ -37,7 +37,7 @@ class Component extends React.Component<Props> {
     const customerIcon = (className: string) => <CustomerIcon className={className} />;
     return (
       <div className={this.props.classes.main}>
-        <CardIcon icon={customerIcon} bgColor="#4caf50" />
+        <CardIcon icon={customerIcon} bgColor="#1F841C" />
         <Card className={this.props.classes.card}>
           <Typography className={this.props.classes.title} color="textSecondary">
             Onay Bekleyen Kullanicilar

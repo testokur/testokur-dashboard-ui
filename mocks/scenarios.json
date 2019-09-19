@@ -38,6 +38,10 @@
       "options": 204,
       "get": "users-api.js"
     },
+    "/api/v1/users/online": {
+      "options": 204,
+      "get": "online-users.js"
+    },
     "/api/v1/users/update-by-admin": {
       "options": 204,
       "post": "wait-for-2sec.js"
