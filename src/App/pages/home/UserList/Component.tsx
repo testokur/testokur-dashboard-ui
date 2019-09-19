@@ -3,20 +3,20 @@ import CardIcon from './CardIcon';
 import { Typography, Divider, List, Card, ListItemText, ListItem } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-import { User } from '../types';
 import { styles } from './Component.styles';
 
 interface Props {
   title: string;
   classes: any;
-  users: User[];
+  users: string[];
   icon: (className: string) => JSX.Element;
+  iconBgColor: string;
 }
 
 const component = (props: Props) => {
   return (
     <div className={props.classes.main}>
-      <CardIcon icon={props.icon} bgColor="#1F841C" />
+      <CardIcon icon={props.icon} bgColor={props.iconBgColor} />
       <Card className={props.classes.card}>
         <Typography className={props.classes.title} color="textSecondary">
           {props.title}
@@ -27,8 +27,8 @@ const component = (props: Props) => {
         <Divider />
         <List>
           {props.users.map((record) => (
-            <ListItem button to={`/users/${record.userName}`} component={Link} key={record.id}>
-              <ListItemText primary={`${record.userName}`} className={props.classes.listItemText} />
+            <ListItem button to={`/users/${record}`} component={Link} key={record}>
+              <ListItemText primary={`${record}`} className={props.classes.listItemText} />
             </ListItem>
           ))}
         </List>

@@ -65,9 +65,9 @@ export const confirmationDialog = (props: Props) => {
             color="primary"
             disabled={loading}
             onClick={async (event) => {
-              await setLoading(true);
+              setLoading(true);
               await props.onYesClick(event);
-              await setLoading(false);
+              setLoading(false);
             }}
           >
             Evet

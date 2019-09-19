@@ -1,21 +1,13 @@
 import React from 'react';
 import * as _ from 'lodash';
 import CustomerIcon from '@material-ui/icons/PersonAdd';
-import { withStyles } from '@material-ui/core/styles';
-import { Typography, Divider, List, Card, ListItemText, ListItem } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import CardIcon from './UserList/CardIcon';
-import { styles } from './NewUsers.styles';
 import { User } from './types';
 import { fetchUsers } from './actions';
 import AppState from '../../AppState';
 import { withLoading } from '../../components';
 import { UserStatuses } from './UserStatuses';
-
-interface ComponentProps {
-  classes: any;
-}
+import { UserList } from './UserList';
 
 interface PropsFromState {
   success: boolean;
@@ -27,34 +19,21 @@ interface PropsFromDispatch {
   fetchUsers: typeof fetchUsers;
 }
 
-type Props = PropsFromState & PropsFromDispatch & ComponentProps;
+type Props = PropsFromState & PropsFromDispatch;
 
 class Component extends React.Component<Props> {
   public async componentDidMount() {
-    await this.props.fetchUsers();
+    this.props.fetchUsers();
   }
   public render() {
     const customerIcon = (className: string) => <CustomerIcon className={className} />;
     return (
-      <div className={this.props.classes.main}>
-        <CardIcon icon={customerIcon} bgColor="#1F841C" />
-        <Card className={this.props.classes.card}>
-          <Typography className={this.props.classes.title} color="textSecondary">
-            Onay Bekleyen Kullanicilar
-          </Typography>
-          <Typography variant="h2" component="h2" className={this.props.classes.value}>
-            {this.props.users.length}
-          </Typography>
-          <Divider />
-          <List>
-            {this.props.users.map((record) => (
-              <ListItem button to={`/users/${record.userName}`} component={Link} key={record.id}>
-                <ListItemText primary={`${record.userName}`} className={this.props.classes.listItemText} />
-              </ListItem>
-            ))}
-          </List>
-        </Card>
-      </div>
+      <UserList
+        title={'Onay Bekleyen Kullanicilar'}
+        users={_.map(this.props.users, 'userName')}
+        icon={customerIcon}
+        iconBgColor="#4E4EFF"
+      />
     );
   }
 }
@@ -70,9 +49,7 @@ const mapDispatchToProps = {
   fetchUsers,
 };
 
-const styled = withStyles(styles as any, { withTheme: true })(withLoading(Component) as any);
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(styled);
+)(withLoading(Component) as any);
