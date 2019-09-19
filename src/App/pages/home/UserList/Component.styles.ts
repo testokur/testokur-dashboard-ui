@@ -6,6 +6,10 @@ export const styles = (theme: Theme) => ({
     marginLeft: '1em',
     marginTop: 20,
   },
+  list:{
+    maxHeight:250,
+    overflow: 'auto',
+  },
   card: {
     padding: '16px 0',
     overflow: 'inherit',

@@ -25,7 +25,7 @@ const component = (props: Props) => {
           {props.users.length}
         </Typography>
         <Divider />
-        <List>
+        <List className={props.classes.list}>
           {props.users.map((record) => (
             <ListItem button to={`/users/${record}`} component={Link} key={record}>
               <ListItemText primary={`${record}`} className={props.classes.listItemText} />

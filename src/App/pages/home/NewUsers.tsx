@@ -32,7 +32,7 @@ class Component extends React.Component<Props> {
         title={'Onay Bekleyen Kullanicilar'}
         users={_.map(this.props.users, 'userName')}
         icon={customerIcon}
-        iconBgColor="#4E4EFF"
+        iconBgColor="#1E688A"
       />
     );
   }
