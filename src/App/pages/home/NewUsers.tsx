@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { User } from './types';
 import { fetchUsers } from './actions';
 import AppState from '../../AppState';
-import { withLoading } from '../../components';
 import { UserStatuses } from './UserStatuses';
 import { UserList } from './UserList';
 
@@ -52,4 +51,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(withLoading(Component) as any);
+)(Component);
