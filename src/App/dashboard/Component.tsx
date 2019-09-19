@@ -8,6 +8,7 @@ import { Route, Switch } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
 import { Home } from '../pages/home';
 import { UserDetails, UserList } from '../pages/users';
+import { isMobile } from 'react-device-detect';
 
 interface State {
   open: boolean;
@@ -20,7 +21,7 @@ class Component extends React.Component<Props, State> {
   public constructor(props: Props) {
     super(props);
     this.state = {
-      open: true,
+      open: !isMobile,
     };
   }
   public render() {

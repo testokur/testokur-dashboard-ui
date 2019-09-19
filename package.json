@@ -30,6 +30,7 @@
     "material-table": "^1.40.0",
     "oidc-client": "^1.7.1",
     "react": "^16.8.6",
+    "react-device-detect": "^1.9.9",
     "react-dom": "^16.8.6",
     "react-material-ui-form-validator": "^2.0.9",
     "react-redux": "^7.0.3",

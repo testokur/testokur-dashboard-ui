@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, IconButton, Divider, withStyles, Hidden } from '@material-ui/core';
+import { Drawer, IconButton, Divider, withStyles } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
@@ -27,26 +27,24 @@ class Component extends React.Component<Props> {
   }
   public render() {
     return (
-      <Hidden mdDown={this.props.open && true}>
-        <Drawer
-          variant="permanent"
-          open={this.props.open}
-          classes={{
-            paper: clsx(this.props.classes.drawerPaper, !this.props.open && this.props.classes.drawerPaperClose),
-          }}
-        >
-          <div className={this.props.classes.toolbarIcon}>
-            <IconButton onClick={this.props.handleDrawerClose}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </div>
-          <Divider />
-          {routes.map((route, index) => {
-            return <NavLinkListItem key={index} path={route.path} icon={route.icon} title={route.title} />;
-          })}
-          <Divider />
-        </Drawer>
-      </Hidden>
+      <Drawer
+        variant="permanent"
+        open={this.props.open}
+        classes={{
+          paper: clsx(this.props.classes.drawerPaper, !this.props.open && this.props.classes.drawerPaperClose),
+        }}
+      >
+        <div className={this.props.classes.toolbarIcon}>
+          <IconButton onClick={this.props.handleDrawerClose}>
+            <ChevronLeftIcon />
+          </IconButton>
+        </div>
+        <Divider />
+        {routes.map((route, index) => {
+          return <NavLinkListItem key={index} path={route.path} icon={route.icon} title={route.title} />;
+        })}
+        <Divider />
+      </Drawer>
     );
   }
 }
