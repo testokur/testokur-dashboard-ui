@@ -21,7 +21,7 @@ const component = (props: Props) => {
   useEffect(() => {
     const interval = setInterval(() => {
       props.fetchOnlineUsers();
-    }, 1000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
   return <UserList title={'Online Kullanicilar'} users={props.users} icon={onlineUserIcon} iconBgColor="#2B8A1E" />;
