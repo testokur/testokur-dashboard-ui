@@ -17,11 +17,11 @@ type Props = PropsFromState & PropsFromDispatch;
 
 const component = (props: Props) => {
   const onlineUserIcon = (className: string) => <PeopleIcon className={className} />;
-  props.fetchOnlineUsers();
   useEffect(() => {
+    props.fetchOnlineUsers();
     const interval = setInterval(() => {
       props.fetchOnlineUsers();
-    }, 5000);
+    }, 10000);
     return () => clearInterval(interval);
   }, []);
   return <UserList title={'Online Kullanicilar'} users={props.users} icon={onlineUserIcon} iconBgColor="#2B8A1E" />;
