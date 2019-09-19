@@ -7,7 +7,9 @@ export const component = () => {
   return (
     <div>
       <NewUsers />
-      <Box mt={10}><OnlineUsers /></Box>
+      <Box mt={10}>
+        <OnlineUsers />
+      </Box>
     </div>
   );
 };
