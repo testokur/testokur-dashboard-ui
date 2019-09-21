@@ -7,7 +7,7 @@ import { CHANGE_PASSWORD_REQUEST } from './types';
 type ChangePasswordResponse = AxiosResponse<any>;
 
 function callApi(model: any) {
-  return createIdentityApiClient().post('/account/change-password', model);
+  return createIdentityApiClient().post('/api/v1/users/change-password', model);
 }
 
 function* handlePost(model: any) {

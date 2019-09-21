@@ -7,7 +7,7 @@ import { RESET_PASSWORD_ADMIN_REQUEST } from './types';
 type ResetPasswordResponse = AxiosResponse<any>;
 
 function callApi(model: any) {
-  return createIdentityApiClient().post('/account/reset-user-password-by-admin', model);
+  return createIdentityApiClient().post('/api/v1/users/reset-user-password-by-admin', model);
 }
 
 function* handlePost(model: any) {

@@ -34,7 +34,7 @@
       "options": 204,
       "post": "wait-for-2sec.js"
     },
-    "/api/v1/users": {
+    "/api/v1/users-api": {
       "options": 204,
       "get": "users-api.js"
     },
@@ -46,15 +46,15 @@
       "options": 204,
       "post": "wait-for-2sec.js"
     },
-    "/account/users": {
+    "/api/v1/users": {
       "options": 204,
       "get": "users.json"
     },
-    "/account/reset-user-password-by-admin": {
+    "/api/v1/users/reset-user-password-by-admin": {
       "options": 204,
       "post": "wait-for-2sec.js"
     },
-    "/account/change-password": {
+    "/api/v1/users/change-password": {
       "options": 204,
       "post": "wait-for-2sec.js"
     },

@@ -6,10 +6,14 @@ import { FETCH_USERS_REQUEST, User } from './types';
 import { UserStatuses } from './UserStatuses';
 
 function callIdentityApi() {
-  return createIdentityApiClient().get('/account/users');
+  return createIdentityApiClient().get('/api/v1/users');
 }
 function callWebApi() {
-  return createWebApiClient().get('/api/v1/users');
+  let path = '/api/v1/users';
+  if (window._env_.webapiUrl === 'http://localhost:8097') {
+    path = '/api/v1/users-api';
+  }
+  return createWebApiClient().get(path);
 }
 function getLicenseTypes() {
   return createWebApiClient().get('/api/v1/license-types');
