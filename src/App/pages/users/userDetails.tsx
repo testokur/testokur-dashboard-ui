@@ -17,6 +17,7 @@ import { createWebApiClient } from '../../helpers';
 import { UpdateUserModel } from './types';
 import { Guid } from 'guid-typescript';
 import { fetchUsers } from '../home/actions';
+import { UserActivityList } from './userActivityList';
 
 interface MatchParams {
   userName: string;
@@ -80,11 +81,13 @@ class Component extends React.Component<Props, State> {
             <Tab label="KISISEL" />
             <Tab label="DIGER" />
             <Tab label="PAROLA" />
+            <Tab label="LOG" />
           </Tabs>
           {this.state.tabIndex === 0 && <LicenseDetails user={this.state.user} onChange={this.handleChange} />}
           {this.state.tabIndex === 1 && <PersonalDetails user={this.state.user} onChange={this.handleChange} />}
           {this.state.tabIndex === 2 && <SmsDetails user={this.state.user} onChange={this.handleChange} />}
           {this.state.tabIndex === 3 && <ResetUserPassword user={this.state.user} />}
+          {this.state.tabIndex === 4 && <UserActivityList user={this.state.user} />}
         </div>
         {this.state.tabIndex !== 3 && (
           <Box marginTop={2}>

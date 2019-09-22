@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import axios from 'axios';
 
 export const HeaderNames = {
@@ -6,6 +7,9 @@ export const HeaderNames = {
 };
 
 axios.defaults.headers.post[HeaderNames.ContentType] = 'application/json';
+if (!_.isNil(localStorage.getItem('access_token'))) {
+  axios.defaults.headers.common[HeaderNames.Authorization] = `Bearer ${localStorage.getItem('access_token')}`;
+}
 
 export const createIdentityApiClient = (timeOut: number = 60000) =>
   axios.create({
