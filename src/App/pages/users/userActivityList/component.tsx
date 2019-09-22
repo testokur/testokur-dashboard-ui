@@ -9,6 +9,20 @@ interface Props {
   user: User;
 }
 
+const logTypes: { [id: number]: string } = {
+  0: 'Kullanici Olusturuldu',
+  1: 'Kullanici Aktiflestirildi',
+  2: 'Basarili Oturum Acma',
+  3: 'Hatali Kullanici Adi veya Parola',
+  4: 'Parola Degistirildi',
+  5: 'Oturum Acma Engelleme : Gecersiz Makina',
+  6: 'Parola Sifirlama',
+  7: 'Kullanici Pasiflestirme',
+  8: 'Kullanici Guncelleme',
+  9: 'Yonetici Sifre Sifirlama',
+  10: 'Lisans Yenileme',
+  11: 'Yonetici Masterkey ile Oturum Acma',
+};
 const component = (props: Props) => {
   const [data, setData] = useState();
 
@@ -29,6 +43,7 @@ const component = (props: Props) => {
           {
             title: 'Islem',
             field: 'type',
+            render: (rowData) => <span>{logTypes[rowData.type]}</span>,
           },
           {
             title: 'Tarih/Zaman',

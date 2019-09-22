@@ -4,6 +4,7 @@ export const styles = (theme: Theme) => ({
   root: {
     flexGrow: 1,
     width: '100%',
+    padding: theme.spacing(3, 2),
     backgroundColor: theme.palette.background.paper,
   },
   avatar: {

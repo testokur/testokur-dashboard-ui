@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import React, { useEffect, useState } from 'react';
-import { withStyles } from '@material-ui/core';
+import { withStyles, Typography, Paper } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import MaterialTable from 'material-table';
@@ -73,7 +73,10 @@ const component = (props: Props) => {
   };
 
   return (
-    <div>
+    <Paper className={props.classes.root}>
+      <Typography variant="h5" gutterBottom>
+        KULLANICILAR
+      </Typography>
       <MaterialTable
         icons={tableIcons}
         title="KULLANICILAR"
@@ -175,9 +178,11 @@ const component = (props: Props) => {
           },
         ]}
         options={{
+          showTitle: false,
           actionsColumnIndex: -1,
           pageSize: 50,
           pageSizeOptions: [50, 100, 500, 1000],
+          searchFieldAlignment: 'left',
         }}
       />
       <SendSmsDialog
@@ -208,7 +213,7 @@ const component = (props: Props) => {
           ' e-posta adresine sahip kullanicinin lisansi 1 yil uzatilacaktir. Onayliyor musunuz?'
         }
       />
-    </div>
+    </Paper>
   );
 };
 
