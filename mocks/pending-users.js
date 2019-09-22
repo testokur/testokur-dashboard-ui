@@ -1,5 +1,8 @@
 module.exports = (req, res) => {
   setTimeout(() => {
+    if (!req.headers.authorization) {
+      return res.status(403).json({ error: 'No credentials sent!' });
+    }
     res.json([
       {
         userName: 'nazmialtun@windowslive.com',
