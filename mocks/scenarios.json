@@ -69,6 +69,10 @@
     "/api/v1/users/pending": {
       "options": 204,
       "get": "pending-users.js"
+    },
+    "/api/v1/user-activities/today-logins": {
+      "options": 204,
+      "get": "today-logins.js"
     }
   }
 }

@@ -1,1 +1,1 @@
-export { default as OnlineUsers } from './Component';
+export { component as OnlineUsers } from './Component';

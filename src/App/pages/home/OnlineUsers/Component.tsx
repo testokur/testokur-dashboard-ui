@@ -1,42 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PeopleIcon from '@material-ui/icons/People';
-import { connect } from 'react-redux';
 import { UserList } from '../UserList';
-import AppState from '../../../AppState';
-import { fetchOnlineUsers } from './actions';
+import { createWebApiClient } from '../../../helpers';
 
-interface PropsFromState {
-  users: string[];
-}
-
-interface PropsFromDispatch {
-  fetchOnlineUsers: typeof fetchOnlineUsers;
-}
-
-type Props = PropsFromState & PropsFromDispatch;
-
-const component = (props: Props) => {
+export const component = () => {
   const onlineUserIcon = (className: string) => <PeopleIcon className={className} />;
+  const [data, setData] = useState([]);
+
   useEffect(() => {
-    props.fetchOnlineUsers();
-    const interval = setInterval(() => {
-      props.fetchOnlineUsers();
-    }, 10000);
-    return () => clearInterval(interval);
+    const fetchActivities = async () => {
+      const response = await createWebApiClient().get('/api/v1/users/online');
+      setData(response.data);
+    };
+    fetchActivities();
   }, []);
-  return <UserList title={'Online Kullanicilar'} users={props.users} icon={onlineUserIcon} iconBgColor="#2B8A1E" />;
+
+  return <UserList title={'Online Kullanicilar'} users={data} icon={onlineUserIcon} iconBgColor="#2B8A1E" />;
 };
-
-const mapStateToProps = ({ onlineUsers }: AppState) => ({
-  loading: onlineUsers.loading,
-  users: onlineUsers.data,
-});
-
-const mapDispatchToProps = {
-  fetchOnlineUsers,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(component);

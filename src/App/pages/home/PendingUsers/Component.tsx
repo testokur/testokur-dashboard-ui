@@ -1,47 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as _ from 'lodash';
-import { connect } from 'react-redux';
 import { UserList } from '../UserList';
-import AppState from '../../../AppState';
-import { fetchPendingUsers } from './actions';
-import { IdentityUser } from './types';
 import CustomerIcon from '@material-ui/icons/PersonAdd';
+import { createIdentityApiClient } from '../../../helpers';
 
-interface PropsFromState {
-  users: IdentityUser[];
-}
-
-interface PropsFromDispatch {
-  fetchPendingUsers: typeof fetchPendingUsers;
-}
-
-type Props = PropsFromState & PropsFromDispatch;
-
-const component = (props: Props) => {
+export const component = () => {
   const customerIcon = (className: string) => <CustomerIcon className={className} />;
+  const [data, setData] = useState([]);
+
   useEffect(() => {
-    props.fetchPendingUsers();
+    const fetchActivities = async () => {
+      const response = await createIdentityApiClient().get('/api/v1/users/pending');
+      setData(response.data);
+    };
+    fetchActivities();
   }, []);
+
   return (
     <UserList
       title={'Onay Bekleyen Kullanicilar'}
-      users={_.map(props.users, 'userName')}
+      users={_.map(data, 'userName')}
       icon={customerIcon}
       iconBgColor="#1E688A"
     />
   );
 };
-
-const mapStateToProps = ({ pendingUsers }: AppState) => ({
-  loading: pendingUsers.loading,
-  users: pendingUsers.data,
-});
-
-const mapDispatchToProps = {
-  fetchPendingUsers,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(component);

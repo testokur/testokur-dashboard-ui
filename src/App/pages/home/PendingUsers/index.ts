@@ -1,1 +1,1 @@
-export { default as PendingUsers } from './Component';
+export { component as PendingUsers } from './Component';
