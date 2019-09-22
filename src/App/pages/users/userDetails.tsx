@@ -76,10 +76,10 @@ class Component extends React.Component<Props, State> {
             indicatorColor="primary"
             textColor="primary"
           >
-            <Tab label="LISANS BILGILERI" />
-            <Tab label="KISISEL BILGILER" />
-            <Tab label="DIGER BILGILER" />
-            <Tab label="PAROLA DEGISTIR" />
+            <Tab label="LISANS" />
+            <Tab label="KISISEL" />
+            <Tab label="DIGER" />
+            <Tab label="PAROLA" />
           </Tabs>
           {this.state.tabIndex === 0 && <LicenseDetails user={this.state.user} onChange={this.handleChange} />}
           {this.state.tabIndex === 1 && <PersonalDetails user={this.state.user} onChange={this.handleChange} />}

@@ -61,6 +61,14 @@
     "/api/v1/users/:id": {
       "options": 204,
       "delete": "wait-for-2sec.js"
+    },
+    "/api/v1/user-activities/:id": {
+      "options": 204,
+      "get": "user-activities.js"
+    },
+    "/api/v1/users/pending": {
+      "options": 204,
+      "get": "pending-users.js"
     }
   }
 }
