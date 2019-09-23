@@ -9,11 +9,7 @@ function callIdentityApi() {
   return createIdentityApiClient().get('/api/v1/users');
 }
 function callWebApi() {
-  let path = '/api/v1/users';
-  if (window._env_.webapiUrl === 'http://localhost:8097') {
-    path = '/api/v1/users-api';
-  }
-  return createWebApiClient().get(path);
+  return createWebApiClient().get('/api/v1/users');
 }
 function getLicenseTypes() {
   return createWebApiClient().get('/api/v1/license-types');

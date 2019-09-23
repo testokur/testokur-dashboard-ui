@@ -3,34 +3,27 @@ import * as _ from 'lodash';
 import { RouteComponentProps } from 'react-router';
 import { Grid, Avatar, withStyles, Divider, Tabs, Tab, Button, Paper, Box } from '@material-ui/core';
 import PersonIcon from '@material-ui/icons/Person';
-import { connect } from 'react-redux';
 import { styles } from './styles';
 import { UserStatus } from './UserStatus';
-import { User } from '../home/types';
-import AppState from '../../AppState';
 import LicenseDetails from './LicenseDetails';
 import { SmsDetails } from './smsDetails';
 import PersonalDetails from './personalDetails';
 import { ResetUserPassword } from './resetUserPassword';
 import { ConfirmationDialog, MessageBox } from '../../components';
 import { createWebApiClient } from '../../helpers';
-import { UpdateUserModel } from './types';
+import { UpdateUserModel, User } from './types';
 import { Guid } from 'guid-typescript';
-import { fetchUsers } from '../home/actions';
 import { UserActivityList } from './userActivityList';
+import { userService } from './userService';
 
 interface MatchParams {
   userName: string;
 }
 
-interface ComponentProps extends RouteComponentProps<MatchParams> {
+interface Props extends RouteComponentProps<MatchParams> {
   classes: any;
 }
 
-interface PropsFromState {
-  user: User;
-  fetchUsers: typeof fetchUsers;
-}
 interface State {
   tabIndex: number;
   openUpdateUserDialog: boolean;
@@ -39,20 +32,21 @@ interface State {
   message: string;
 }
 
-type Props = PropsFromState & ComponentProps;
-
 class Component extends React.Component<Props, State> {
   public constructor(props: Props) {
     super(props);
     this.state = {
       tabIndex: 0,
       openUpdateUserDialog: false,
-      user: this.props.user,
+      user: ({} as any) as User,
       success: false,
       message: '',
     };
   }
-
+  public async componentDidMount() {
+    const user: User = await userService.getUser(this.props.match.params.userName);
+    this.setState({ user: user });
+  }
   public render() {
     return (
       <div>
@@ -146,15 +140,15 @@ class Component extends React.Component<Props, State> {
     }));
 
     if (reFetchUsers) {
-      await this.props.fetchUsers();
+      this.setState({ user: await userService.getUser(this.props.match.params.userName) });
     }
   };
 
   private updateUser = async () => {
     const model: UpdateUserModel = {
       id: Guid.raw(),
-      updatedUserId: this.props.user.id,
-      subjectId: this.props.user.subjectId,
+      updatedUserId: this.state.user.id,
+      subjectId: this.state.user.subjectId,
       schoolName: this.state.user.schoolName,
       mobilePhone: this.state.user.phone,
       cityId: this.state.user.cityId,
@@ -176,19 +170,8 @@ class Component extends React.Component<Props, State> {
       message: 'Basariyla Guncellendi',
       openUpdateUserDialog: false,
     }));
-    await this.props.fetchUsers();
+    this.setState({ user: await userService.getUser(this.props.match.params.userName) });
   };
 }
 
-const mapStateToProps = ({ users }: AppState, { match }: ComponentProps) => ({
-  user: _.head(_.filter(users.data, { userName: match.params.userName })),
-});
-
-const mapDispatchToProps = {
-  fetchUsers,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(withStyles(styles as any, { withTheme: true })(Component as any) as any);
+export default withStyles(styles as any, { withTheme: true })(Component as any) as any;

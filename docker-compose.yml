@@ -13,13 +13,21 @@ services:
       - '5080:80'
     volumes:
       - npm-cache:/root/.npm
-  mock:
+  mock-webapi:
     image: nazmialtun/mockizen:latest
     volumes:
-      - ./mocks:/opt/app/mocks
+      - ./mocks/webapi:/opt/app/mocks
     expose:
       - '8080'
     ports:
       - '8097:8080'
+  mock-identity:
+    image: nazmialtun/mockizen:latest
+    volumes:
+      - ./mocks/identity:/opt/app/mocks
+    expose:
+      - '8080'
+    ports:
+      - '8098:8080'
 volumes:
   npm-cache:

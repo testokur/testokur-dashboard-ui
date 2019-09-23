@@ -12,7 +12,6 @@ interface Props {
   icon: (className: string) => JSX.Element;
   iconBgColor: string;
 }
-
 const component = (props: Props) => {
   return (
     <div className={props.classes.main}>

@@ -1,9 +1,9 @@
 /* eslint-disable react/display-name */
 import React, { useEffect, useState } from 'react';
 import MaterialTable from 'material-table';
-import { User } from '../../home/types';
 import { tableIcons } from '../../../components';
 import { createIdentityApiClient, formatDateTime } from '../../../helpers';
+import { User } from '../types';
 
 interface Props {
   user: User;

@@ -1,0 +1,42 @@
+{
+  "port": 8080,
+  "headers": {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "*",
+    "Access-Control-Allow-Methods": "*"
+  },
+  "routes": {
+    "/api/v1/users/deactivate": {
+      "options": 204,
+      "post": "wait-for-2sec.js"
+    },
+    "/api/v1/users": {
+      "options": 204,
+      "get": "users.json",
+      "/:userName/details": {
+        "options": 204,
+        "get": "single-user.js"
+      }
+    },
+    "/api/v1/users/reset-user-password-by-admin": {
+      "options": 204,
+      "post": "wait-for-2sec.js"
+    },
+    "/api/v1/users/change-password": {
+      "options": 204,
+      "post": "wait-for-2sec.js"
+    },
+    "/api/v1/user-activities": {
+      "options": 204,
+      "get": "user-activities.js"
+    },
+    "/api/v1/users/pending": {
+      "options": 204,
+      "get": "pending-users.js"
+    },
+    "/api/v1/user-activities/today-logins": {
+      "options": 204,
+      "get": "today-logins.js"
+    }
+  }
+}

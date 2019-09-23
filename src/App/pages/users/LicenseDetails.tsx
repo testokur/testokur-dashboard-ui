@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import * as _ from 'lodash';
-import { User } from '../home/types';
 import { TextField, withStyles, Switch, FormControlLabel } from '@material-ui/core';
 import { ActivateSwitch } from './ActivateSwitch';
 import { styles } from './LicenseDetails.styles';
 import { LicenseTypeSelect } from '../../licenseType';
 import { formatDateTime, parseDateTime } from '../../helpers';
+import { User } from './types';
 
 interface Props {
   user: User;

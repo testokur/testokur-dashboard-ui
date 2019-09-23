@@ -12,5 +12,5 @@ module.exports = (req, res) => {
       'user11@yandex.com',
       'user19@yandex.com',
     ]);
-  }, 200);
+  }, 2000);
 };

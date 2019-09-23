@@ -5,9 +5,9 @@ import { ValidatorForm } from 'react-material-ui-form-validator';
 import { PasswordField, MessageBox, InteractiveButtonWithSpinner } from '../../../components';
 import { snakeToCamel } from '../../../helpers';
 import { connect } from 'react-redux';
-import { User } from '../../home/types';
 import AppState from '../../../AppState';
 import { requestResetPassword } from './actions';
+import { User } from '../types';
 
 interface ComponentProps {
   classes?: any;
