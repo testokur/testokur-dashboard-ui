@@ -28,8 +28,8 @@ class Component extends React.PureComponent<Props> {
           >
             <MenuIcon />
           </IconButton>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={this.props.classes.title}>
-            TestOkur Yonetici Paneli
+          <Typography component="h3" variant="h6" color="inherit" noWrap className={this.props.classes.title}>
+            TestOkur
           </Typography>
           <UserMenu open={this.props.open} />
         </Toolbar>

@@ -4,6 +4,7 @@ import { Typography, Divider, List, Card, ListItemText, ListItem } from '@materi
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { styles } from './Component.styles';
+import { withLoading } from '../../../components';
 
 interface Props {
   title: string;
@@ -11,6 +12,7 @@ interface Props {
   users: string[];
   icon: (className: string) => JSX.Element;
   iconBgColor: string;
+  loading: boolean;
 }
 const component = (props: Props) => {
   return (
@@ -36,4 +38,4 @@ const component = (props: Props) => {
   );
 };
 
-export default withStyles(styles as any, { withTheme: true })(component);
+export default withStyles(styles as any, { withTheme: true })(withLoading(component));

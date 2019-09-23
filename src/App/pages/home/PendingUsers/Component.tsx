@@ -7,10 +7,12 @@ import { createIdentityApiClient } from '../../../helpers';
 export const component = () => {
   const customerIcon = (className: string) => <CustomerIcon className={className} />;
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchActivities = async () => {
       const response = await createIdentityApiClient().get('/api/v1/users/pending');
+      setLoading(false);
       setData(response.data);
     };
     fetchActivities();
@@ -18,6 +20,7 @@ export const component = () => {
 
   return (
     <UserList
+      loading={loading}
       title={'Onay Bekleyen Kullanicilar'}
       users={_.map(data, 'userName')}
       icon={customerIcon}

@@ -15,12 +15,6 @@ test('when loading is set true then loader should be rendered', () => {
       .first()
       .prop('display'),
   ).toBe('block');
-  expect(
-    wrapper
-      .find('.component')
-      .first()
-      .prop('display'),
-  ).toBe('none');
 });
 
 test('when loading is set false then component should be rendered', () => {
@@ -32,10 +26,4 @@ test('when loading is set false then component should be rendered', () => {
       .first()
       .prop('display'),
   ).toBe('none');
-  expect(
-    wrapper
-      .find('.component')
-      .first()
-      .prop('display'),
-  ).toBe('block');
 });

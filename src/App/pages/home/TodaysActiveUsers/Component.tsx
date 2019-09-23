@@ -6,14 +6,16 @@ import { createIdentityApiClient } from '../../../helpers';
 export const component = () => {
   const icon = (className: string) => <PeopleOutline className={className} />;
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchActivities = async () => {
       const response = await createIdentityApiClient().get('/api/v1/user-activities/today-logins');
+      setLoading(false);
       setData(response.data);
     };
     fetchActivities();
   }, []);
 
-  return <UserList title={'Bugun Oturum Acanlar'} users={data} icon={icon} iconBgColor="#0b9fb3" />;
+  return <UserList loading={loading} title={'Bugun Oturum Acanlar'} users={data} icon={icon} iconBgColor="#0b9fb3" />;
 };

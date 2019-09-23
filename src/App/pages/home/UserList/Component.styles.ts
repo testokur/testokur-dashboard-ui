@@ -7,7 +7,7 @@ export const styles = (theme: Theme) => ({
     marginTop: 20,
   },
   list: {
-    maxHeight: 255,
+    maxHeight: 260,
     overflow: 'auto',
   },
   card: {
