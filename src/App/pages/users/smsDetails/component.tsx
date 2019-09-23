@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { withStyles, TextField } from '@material-ui/core';
 import { styles } from './styles';
-import { User } from '../../home/types';
 import { default as SmsFieldWithButton } from './smsFieldWithButton';
 import { AddSmsDialog } from './AddSmsDialog';
 import { createWebApiClient } from '../../../helpers';
 import { PhoneField } from '../../../components';
+import { User } from '../types';
 
 interface Props {
   classes: any;

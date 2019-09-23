@@ -6,7 +6,7 @@ import { Chip } from '@material-ui/core';
 import HourglassFull from '@material-ui/icons/HourglassFull';
 import AccessTime from '@material-ui/icons/AccessTime';
 import Cancel from '@material-ui/icons/Cancel';
-import { UserStatuses } from '../home/UserStatuses';
+import { UserStatuses } from './types';
 
 test('When status is active then check icon with "active" text should be displayed', () => {
   const expirationDate = new Date(new Date().setFullYear(new Date().getFullYear() + 1));

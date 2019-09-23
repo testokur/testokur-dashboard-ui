@@ -45,6 +45,9 @@ const component = (props: Props) => {
         InputProps={{
           readOnly: true,
         }}
+        InputLabelProps={{
+          shrink: true,
+        }}
       />
       <TextField
         label="Olusturulma Tarihi/Zamani"

@@ -1,9 +1,9 @@
 import React from 'react';
 import { TextField, withStyles } from '@material-ui/core';
 import { styles } from './styles';
-import { User } from '../home/types';
 import { CitySelect } from '../../city';
 import { PhoneField } from '../../components';
+import { User } from './types';
 
 interface Props {
   classes: any;

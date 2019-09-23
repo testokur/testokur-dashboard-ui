@@ -7,7 +7,7 @@ import AccessTime from '@material-ui/icons/AccessTime';
 import Cancel from '@material-ui/icons/Cancel';
 import { green, amber } from '@material-ui/core/colors';
 import clsx from 'clsx';
-import { UserStatuses } from '../home/UserStatuses';
+import { UserStatuses } from './types';
 
 interface Props {
   active: boolean;

@@ -10,6 +10,21 @@ class UserService {
     return this.combineUser(identityUser, apiUser);
   }
 
+  public async getUserList() {
+    const identityUsers = (await createIdentityApiClient().get('/api/v1/users')).data;
+    const apiUsers = (await createWebApiClient().get('/api/v1/users')).data;
+    const users: User[] = [];
+
+    identityUsers.forEach((identityUser: any) => {
+      apiUsers.forEach((apiUser: any) => {
+        if (identityUser.id === apiUser.subjectId) {
+          users.push(this.combineUser(identityUser, apiUser));
+        }
+      });
+    });
+    return users;
+  }
+
   private combineUser(identityUser: any, apiUser: any) {
     const user: User = {
       ...identityUser,
