@@ -38,7 +38,7 @@ class UserService {
       ? undefined
       : new Date(identityUser.activationTimeUtc);
     user.createdDateTimeUtc = new Date(identityUser.createdDateTimeUtc);
-    user.status = this.getStatus(identityUser.active, identityUser.expiryDateUtc);
+    user.status = this.getStatus(user.active, user.expiryDateUtc);
 
     return user;
   }
