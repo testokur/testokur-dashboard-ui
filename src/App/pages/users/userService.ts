@@ -6,29 +6,32 @@ class UserService {
   public async getUser(userName: string) {
     const apiUser = (await createWebApiClient().get(`/api/v1/users/${userName}`)).data;
     const identityUser = (await createIdentityApiClient().get(`/api/v1/users/${userName}/details`)).data;
-
-    return this.combineUser(identityUser, apiUser);
+    const licenseTypes = (await createWebApiClient().get('/api/v1/license-types')).data;
+    return this.combineUser(identityUser, apiUser,licenseTypes);
   }
 
   public async getUserList() {
     const identityUsers = (await createIdentityApiClient().get('/api/v1/users')).data;
     const apiUsers = (await createWebApiClient().get('/api/v1/users')).data;
+    const licenseTypes = (await createWebApiClient().get('/api/v1/license-types')).data;
     const users: User[] = [];
 
     identityUsers.forEach((identityUser: any) => {
       apiUsers.forEach((apiUser: any) => {
         if (identityUser.id === apiUser.subjectId) {
-          users.push(this.combineUser(identityUser, apiUser));
+          users.push(this.combineUser(identityUser, apiUser,licenseTypes));
         }
       });
     });
     return users;
   }
 
-  private combineUser(identityUser: any, apiUser: any) {
+  private combineUser(identityUser: any, apiUser: any, licenseTypes:any[]) {
+
     const user: User = {
       ...identityUser,
       ...apiUser,
+      licenseTypeName: _.find(licenseTypes, ['id', identityUser.licenseTypeId]).name,
     };
     user.expiryDateUtc = _.isNil(identityUser.expiryDateUtc) ? undefined : new Date(identityUser.expiryDateUtc);
     user.startDateTimeUtc = _.isNil(identityUser.startDateTimeUtc)
