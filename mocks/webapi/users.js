@@ -74,5 +74,5 @@ module.exports = (req, res) => {
         registrarPhone: '5449875544',
       },
     ]);
-  }, 200);
+  }, 4000);
 };

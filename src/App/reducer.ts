@@ -2,9 +2,9 @@ import { combineReducers } from 'redux';
 import { reducer as oidcReducer } from 'redux-oidc';
 import { connectRouter } from 'connected-react-router';
 import { History } from 'history';
-import { default as changePasswordReducer } from './pages/changePassword/reducer';
-import { default as licenseTypesReducer } from './licenseType/reducer';
-import { default as citiesReducer } from './city/reducer';
+import changePasswordReducer from './pages/changePassword/reducer';
+import licenseTypesReducer from './licenseType/reducer';
+import citiesReducer from './city/reducer';
 import { resetUserPasswordReducer } from './pages/users/resetUserPassword';
 
 export default (history: History) =>

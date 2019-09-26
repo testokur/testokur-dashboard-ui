@@ -5,7 +5,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
 import clsx from 'clsx';
 import { styles } from './styles';
-import { default as NavLinkListItem } from './NavLinkListItem';
+import NavLinkListItem from './NavLinkListItem';
 
 interface Props {
   handleDrawerClose: () => void;

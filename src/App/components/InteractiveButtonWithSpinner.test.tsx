@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { default as InteractiveButtonWithSpinner } from './InteractiveButtonWithSpinner';
+import InteractiveButtonWithSpinner from './InteractiveButtonWithSpinner';
 import { CircularProgress, Button } from '@material-ui/core';
 
 test('spinner should be rendered and button should be disabled when loading', () => {

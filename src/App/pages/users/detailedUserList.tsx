@@ -1,10 +1,10 @@
 import * as _ from 'lodash';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { withStyles, Typography, Paper } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import MaterialTable from 'material-table';
 import { styles } from './styles';
-import { tableIcons } from '../../components';
+import { tableIcons, withLoading } from '../../components';
 import Sms from '@material-ui/icons/Sms';
 import DeleteForever from '@material-ui/icons/DeleteForever';
 import AddCircleOutline from '@material-ui/icons/AddCircleOutline';
@@ -13,23 +13,16 @@ import { SendSmsDialog } from './SendSmsDialog';
 import { createWebApiClient, formatDateTime } from '../../helpers';
 import { AddSmsDialog } from './smsDetails/AddSmsDialog';
 import { ConfirmationDialog } from '../../components';
-import { userService } from './userService';
 import { User } from './types';
 
 interface Props {
   classes: any;
+  data: User[];
+  reloadData: () => Promise<void>;
 }
 
 /* eslint-disable react/display-name */
 const component = (props: Props) => {
-  const [data, setData] = useState<User[]>([]);
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      setData(await userService.getUserList());
-    };
-    fetchUsers();
-  }, []);
   const [smsDialogOpen, setSmsDialogOpen] = useState(false);
   const [deleteUserDialogOpen, setDeleteUserDialogOpen] = useState(false);
   const [addSmsCreditDialogOpen, setAddSmsCreditDialogOpen] = useState(false);
@@ -44,13 +37,13 @@ const component = (props: Props) => {
   const handleAddCredit = async (amount: number) => {
     setAddSmsCreditDialogOpen(false);
     await createWebApiClient().post('/api/v1/sms/add-credits', { userId: _.get(user, 'id', ''), amount: amount });
-    setData(await userService.getUserList());
+    await props.reloadData();
   };
 
   const deleteUser = async () => {
     await createWebApiClient().delete(`/api/v1/users/${_.get(user, 'id', '')}`);
     setDeleteUserDialogOpen(false);
-    setData(await userService.getUserList());
+    await props.reloadData();
   };
 
   const extendUser = async () => {
@@ -59,7 +52,7 @@ const component = (props: Props) => {
       currentExpiryDateTimeUtc: _.get(user, 'expiryDateUtc', ''),
     });
     setExtendUserDialogOpen(false);
-    setData(await userService.getUserList());
+    await props.reloadData();
   };
 
   return (
@@ -69,6 +62,7 @@ const component = (props: Props) => {
       </Typography>
       <MaterialTable
         icons={tableIcons}
+        data={props.data}
         title="KULLANICILAR"
         columns={[
           {
@@ -112,7 +106,6 @@ const component = (props: Props) => {
             field: 'status',
           },
         ]}
-        data={data}
         localization={{
           body: {
             emptyDataSourceMessage: 'Gösterilecek kayıt yok',
@@ -207,4 +200,4 @@ const component = (props: Props) => {
   );
 };
 
-export default withStyles(styles as any, { withTheme: true })(component as any);
+export default withStyles(styles as any, { withTheme: true })(withLoading(component) as any);

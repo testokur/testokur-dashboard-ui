@@ -3,7 +3,7 @@ import { AppBar, Toolbar, IconButton, Typography, withStyles } from '@material-u
 import MenuIcon from '@material-ui/icons/Menu';
 import { styles } from './styles';
 import clsx from 'clsx';
-import { default as UserMenu } from './UserMenu/component';
+import UserMenu from './UserMenu/component';
 
 interface Props {
   handleDrawerOpen: () => void;
