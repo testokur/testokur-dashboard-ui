@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as _ from 'lodash';
 import { TextField, withStyles, Switch, FormControlLabel } from '@material-ui/core';
 import { ActivateSwitch } from './ActivateSwitch';
@@ -15,6 +15,9 @@ interface Props {
 
 const component = (props: Props) => {
   const [expiryDateTime, setExpiryDateTime] = useState(formatDateTime(props.user.expiryDateUtc));
+  useEffect(() => {
+    setExpiryDateTime(formatDateTime(props.user.expiryDateUtc));
+  }, [props]);
 
   const onExpiryDateChange = (newValue: string) => {
     try {
