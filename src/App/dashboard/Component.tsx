@@ -8,7 +8,7 @@ import { Route, Switch } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
 import { Home } from '../pages/home';
 import { UserDetails, UserListPage } from '../pages/users';
-import { EmailListPage } from '../pages/emails';
+import { EmailListPage, EmailDetails } from '../pages/emails';
 import { isMobile } from 'react-device-detect';
 
 interface State {
@@ -55,6 +55,7 @@ class Component extends React.Component<Props, State> {
             <Route path="/users" exact={true} component={UserListPage} />
             <Route path="/users/:userName" exact={true} component={UserDetails} />
             <Route path="/emails" exact={true} component={EmailListPage} />
+            <Route path="/emails/:id" exact={true} component={EmailDetails} />
           </Switch>
           {this.Footer()}
         </main>
