@@ -8,6 +8,7 @@ import { Route, Switch } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
 import { Home } from '../pages/home';
 import { UserDetails, UserListPage } from '../pages/users';
+import { EmailListPage } from '../pages/emails';
 import { isMobile } from 'react-device-detect';
 
 interface State {
@@ -53,6 +54,7 @@ class Component extends React.Component<Props, State> {
             <Route path="/changePassword" exact={true} component={changePassword} />
             <Route path="/users" exact={true} component={UserListPage} />
             <Route path="/users/:userName" exact={true} component={UserDetails} />
+            <Route path="/emails" exact={true} component={EmailListPage} />
           </Switch>
           {this.Footer()}
         </main>

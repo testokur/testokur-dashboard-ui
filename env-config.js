@@ -3,5 +3,6 @@ window._env_ = {
   identityApiUrl: 'http://localhost:8098',
   reduxLoggerActive: 'true',
   webapiUrl: 'http://localhost:8097',
+  notificationApiUrl: 'http://localhost:8097',
   sentryKey: '',
 };

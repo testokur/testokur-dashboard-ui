@@ -3,6 +3,7 @@ import { Drawer, IconButton, Divider, withStyles } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
+import EmailIcon from '@material-ui/icons/Email';
 import clsx from 'clsx';
 import { styles } from './styles';
 import NavLinkListItem from './NavLinkListItem';
@@ -17,6 +18,7 @@ interface Props {
 const routes = [
   { path: '/', title: 'Ana Sayfa', icon: () => <DashboardIcon /> },
   { path: '/users', title: 'Kullanicilar', icon: () => <PeopleIcon /> },
+  { path: '/emails', title: 'E-Postalar', icon: () => <EmailIcon /> },
 ];
 
 class Component extends React.Component<Props> {

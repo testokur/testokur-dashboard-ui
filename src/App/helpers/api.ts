@@ -22,3 +22,9 @@ export const createWebApiClient = (timeOut: number = 60000) =>
     baseURL: window._env_.webapiUrl,
     timeout: timeOut,
   });
+
+export const createNotificationApiClient = (timeOut: number = 60000) =>
+  axios.create({
+    baseURL: window._env_.notificationApiUrl,
+    timeout: timeOut,
+  });

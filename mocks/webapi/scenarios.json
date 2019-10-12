@@ -46,6 +46,10 @@
       "options": 204,
       "delete": "wait-for-2sec.js",
       "get": "single-user.js"
+    },
+    "/api/v1/emails": {
+      "options": 204,
+      "get": "emails.js"
     }
   }
 }
