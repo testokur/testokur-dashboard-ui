@@ -75,13 +75,6 @@ workflows:
           filters:
             tags:
               only: /.qa*/
-      - deploy-qa:
-          requires:
-            - static-code-analysis
-            - build-and-test
-          filters:
-            branches:
-              only: master
       - deploy-prod:
           filters:
             tags:
