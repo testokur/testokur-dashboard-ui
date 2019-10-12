@@ -13,7 +13,7 @@ interface Props {
 
 const component = (props: Props) => {
   const from = new Date();
-  from.setDate(from.getDate() - 7);
+  from.setDate(from.getDate() - 3);
   const to = new Date();
   to.setDate(from.getDate() + 1);
 

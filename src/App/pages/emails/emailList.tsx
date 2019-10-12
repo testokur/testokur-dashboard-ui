@@ -31,7 +31,9 @@ const component = (props: Props) => {
           {
             title: 'Konu',
             field: 'subject',
-            render: (rowData) => <Link to={`/emails/${rowData.id}`}>{rowData.subject}</Link>,
+            render: (rowData) => (
+              <Link to={{ pathname: `/emails/${rowData.id}`, state: rowData }}>{rowData.subject}</Link>
+            ),
           },
           {
             title: 'Gonderim Tarihi',
