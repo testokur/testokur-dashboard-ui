@@ -11,19 +11,19 @@ if (!_.isNil(localStorage.getItem('access_token'))) {
   axios.defaults.headers.common[HeaderNames.Authorization] = `Bearer ${localStorage.getItem('access_token')}`;
 }
 
-export const createIdentityApiClient = (timeOut: number = 60000) =>
+export const createIdentityApiClient = (timeOut: number = 180000) =>
   axios.create({
     baseURL: window._env_.identityApiUrl,
     timeout: timeOut,
   });
 
-export const createWebApiClient = (timeOut: number = 60000) =>
+export const createWebApiClient = (timeOut: number = 180000) =>
   axios.create({
     baseURL: window._env_.webapiUrl,
     timeout: timeOut,
   });
 
-export const createNotificationApiClient = (timeOut: number = 60000) =>
+export const createNotificationApiClient = (timeOut: number = 180000) =>
   axios.create({
     baseURL: window._env_.notificationApiUrl,
     timeout: timeOut,

@@ -4,7 +4,7 @@ import { createNotificationApiClient } from '../../helpers/api';
 import EmailList from './emailList';
 import { TextField, InputAdornment, Button, Divider, withStyles } from '@material-ui/core';
 import clsx from 'clsx';
-import { formatDateTime } from '../../helpers';
+import { formatDateTime, parseDateTime } from '../../helpers';
 import { styles } from './styles';
 
 interface Props {
@@ -23,11 +23,16 @@ const component = (props: Props) => {
 
   const fetchEmails = async () => {
     setLoading(true);
-    setData(
-      (await createNotificationApiClient().get(
-        `/api/v1/emails?from=${new Date(startDate).toISOString()}&to=${to.toISOString()}`,
-      )).data,
-    );
+
+    try {
+      setData(
+        (await createNotificationApiClient().get(
+          `/api/v1/emails?from=${parseDateTime(startDate).toISOString()}&to=${to.toISOString()}`,
+        )).data,
+      );
+    } catch (e) {
+      // Do Nothing
+    }
     setLoading(false);
   };
 
@@ -50,18 +55,7 @@ const component = (props: Props) => {
           endAdornment: (
             <InputAdornment position="end">
               <Divider className={props.classes.divider} />
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={async (e) =>
-                  setData(
-                    (await createNotificationApiClient().get(
-                      `/api/v1/emails?from=${new Date(startDate).toISOString()}&to=${to.toISOString()}`,
-                    )).data,
-                  )
-                }
-                className={props.classes.button}
-              >
+              <Button variant="contained" color="primary" onClick={fetchEmails} className={props.classes.button}>
                 Filtrele
               </Button>
             </InputAdornment>
