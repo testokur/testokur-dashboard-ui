@@ -1,5 +1,5 @@
 export interface IdentityStats {
-  expiredUsersToday: number;
+  expiredUsersToday: string;
   totalIndividualLoginCountInDay: number;
   totalUserCount: number;
   totalActiveUserCount: number;

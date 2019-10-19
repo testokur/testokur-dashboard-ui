@@ -50,6 +50,14 @@
     "/api/v1/emails": {
       "options": 204,
       "get": "emails.js"
+    },
+    "/api/v1/report-requests": {
+      "options": 204,
+      "get": "report-requests.js"
+    },
+    "/api/v1/statistics": {
+      "options": 204,
+      "get": "statistics.js"
     }
   }
 }

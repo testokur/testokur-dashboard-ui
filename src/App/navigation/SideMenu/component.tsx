@@ -4,6 +4,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
 import EmailIcon from '@material-ui/icons/Email';
+import TableChartIcon from '@material-ui/icons/TableChart';
 import clsx from 'clsx';
 import { styles } from './styles';
 import NavLinkListItem from './NavLinkListItem';
@@ -19,6 +20,7 @@ const routes = [
   { path: '/', title: 'Ana Sayfa', icon: () => <DashboardIcon /> },
   { path: '/users', title: 'Kullanicilar', icon: () => <PeopleIcon /> },
   { path: '/emails', title: 'E-Postalar', icon: () => <EmailIcon /> },
+  { path: '/statistics', title: 'Istatistikler', icon: () => <TableChartIcon /> },
 ];
 
 class Component extends React.Component<Props> {

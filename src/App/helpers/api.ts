@@ -28,3 +28,9 @@ export const createNotificationApiClient = (timeOut: number = 180000) =>
     baseURL: window._env_.notificationApiUrl,
     timeout: timeOut,
   });
+
+export const createReportApiClient = (timeOut: number = 180000) =>
+  axios.create({
+    baseURL: window._env_.reportApiUrl,
+    timeout: timeOut,
+  });
