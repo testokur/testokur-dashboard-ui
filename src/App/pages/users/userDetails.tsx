@@ -162,6 +162,7 @@ class Component extends React.Component<Props, State> {
       licenseTypeId: this.state.user.licenseTypeId,
       expiryDateUtc: this.state.user.expiryDateUtc,
       active: this.state.user.active,
+      notes: this.state.user.notes,
     };
     await createWebApiClient().post('/api/v1/users/update-by-admin', model);
     this.setState((prevState) => ({

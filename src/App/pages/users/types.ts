@@ -24,6 +24,7 @@ export interface UpdateUserModel {
   licenseTypeId: number;
   expiryDateUtc: Date | undefined;
   active: boolean | undefined;
+  notes: string;
 }
 
 export interface User {
