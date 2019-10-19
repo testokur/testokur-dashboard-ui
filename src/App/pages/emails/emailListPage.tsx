@@ -15,7 +15,7 @@ const component = (props: Props) => {
   const from = new Date();
   from.setDate(from.getDate() - 3);
   const to = new Date();
-  to.setDate(from.getDate() + 1);
+  to.setDate(from.getDate() + 4);
 
   const [startDate, setStartDate] = useState(formatDateTime(from));
   const [data, setData] = useState<Email[]>([]);
