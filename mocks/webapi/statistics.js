@@ -1,10 +1,6 @@
 module.exports = (req, res) => {
   setTimeout(() => {
     res.json({
-      totalStudentCount: 3453453,
-      todayStudentCount: 3213,
-      todayScannedStudentFormCount: 4234,
-      totalScannedStudentFormCount: 54353,
       totalESchoolStudentCount: 534534,
       totalBulkStudentCount: 41234,
       totalSingleEntryStudentCount: 53425,

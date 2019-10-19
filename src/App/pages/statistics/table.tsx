@@ -20,6 +20,22 @@ interface Props {
 
 /* eslint-disable react/display-name */
 const component = (props: Props) => {
+  const totalStudentCount: number =
+    _.get(props, 'webApiStats.totalESchoolStudentCount', 0) +
+    _.get(props, 'webApiStats.totalBulkStudentCount', 0) +
+    _.get(props, 'webApiStats.totalSingleEntryStudentCount', 0);
+  const todayStudentCount: number =
+    _.get(props, 'webApiStats.todayESchoolStudentCount', 0) +
+    _.get(props, 'webApiStats.todayBulkStudentCount', 0) +
+    _.get(props, 'webApiStats.todaySingleEntryStudentCount', 0);
+
+  const todayScannedStudentFormCount: number =
+    _.get(props, 'webApiStats.todayScannedStudentFormCountByCamera', 0) +
+    _.get(props, 'webApiStats.todayScannedStudentFormCountByFile', 0);
+  const totalScannedStudentFormCount: number =
+    _.get(props, 'webApiStats.totalScannedStudentFormCountByCamera', 0) +
+    _.get(props, 'webApiStats.totalScannedStudentFormCountByFile', 0);
+
   return (
     <div>
       <Chip color="secondary" className={props.classes.title} icon={<Textsms />} label={'SMS'} />
@@ -38,7 +54,7 @@ const component = (props: Props) => {
           <ListItem>
             <ListItemText
               primary="Sistem(Otomatik) Tarafindan Gun Icinde Iletilen SMS Sayisi"
-              secondary={_.get(props, 'notificationStats.TotalSystemSmsCountInDay')}
+              secondary={_.get(props, 'notificationStats.totalSystemSmsCountInDay')}
             />
           </ListItem>
           <Divider component="li" />
@@ -136,10 +152,7 @@ const component = (props: Props) => {
           <ListItem>
             <ListItemText
               primary="Bugun/Toplam Okutulan Ogrenci Optik Form Sayisi"
-              secondary={`${_.get(props, 'webApiStats.todayScannedStudentFormCount')} / ${_.get(
-                props,
-                'webApiStats.totalScannedStudentFormCount',
-              )} `}
+              secondary={`${todayScannedStudentFormCount} / ${totalScannedStudentFormCount}`}
             />
           </ListItem>
           <Divider component="li" />
@@ -193,10 +206,7 @@ const component = (props: Props) => {
           <ListItem>
             <ListItemText
               primary="Bugun/Toplam Girilen Ogrenci Sayisi"
-              secondary={`${_.get(props, 'webApiStats.todayStudentCount')} / ${_.get(
-                props,
-                'webApiStats.totalStudentCount',
-              )} `}
+              secondary={`${todayStudentCount} / ${totalStudentCount} `}
             />
           </ListItem>
           <Divider component="li" />

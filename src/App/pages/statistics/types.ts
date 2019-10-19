@@ -8,10 +8,6 @@ export interface IdentityStats {
 }
 
 export interface WebApiStats {
-  totalStudentCount: number;
-  todayStudentCount: number;
-  todayScannedStudentFormCount: number;
-  totalScannedStudentFormCount: number;
   totalESchoolStudentCount: number;
   totalBulkStudentCount: number;
   totalSingleEntryStudentCount: number;
