@@ -45,9 +45,7 @@ const component = (props: Props) => {
         value={props.user.email}
         margin="normal"
         variant="outlined"
-        InputProps={{
-          readOnly: true,
-        }}
+        onChange={(e) => props.onChange({ ...props.user, email: e.target.value as string })}
         InputLabelProps={{
           shrink: true,
         }}
