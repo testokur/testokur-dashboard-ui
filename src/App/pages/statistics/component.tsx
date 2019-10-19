@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { withStyles } from '@material-ui/core';
-import { styles } from './styles';
 import { IdentityStats, WebApiStats, ReportStats, NotificationStats } from './types';
 import { createIdentityApiClient, createWebApiClient } from '../../helpers';
 import { createReportApiClient, createNotificationApiClient } from '../../helpers/api';
 import Table from './table';
+import { styles } from './styles';
 
 interface Props {
   classes: any;
