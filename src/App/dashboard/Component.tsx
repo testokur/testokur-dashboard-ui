@@ -11,6 +11,7 @@ import { UserDetails, UserListPage } from '../pages/users';
 import { EmailListPage, EmailDetails } from '../pages/emails';
 import { isMobile } from 'react-device-detect';
 import { Statistics } from '../pages/statistics';
+import { SmsListPage, SmsDetails } from '../pages/smses';
 
 interface State {
   open: boolean;
@@ -57,6 +58,8 @@ class Component extends React.Component<Props, State> {
             <Route path="/users/:userName" exact={true} component={UserDetails} />
             <Route path="/emails" exact={true} component={EmailListPage} />
             <Route path="/emails/:id" exact={true} component={EmailDetails} />
+            <Route path="/smses" exact={true} component={SmsListPage} />
+            <Route path="/smses/:id" exact={true} component={SmsDetails} />
             <Route path="/statistics" exact={true} component={Statistics} />
           </Switch>
           {this.Footer()}

@@ -55,6 +55,10 @@
       "options": 204,
       "get": "report-requests.js"
     },
+    "/api/v1/sms/today": {
+      "options": 204,
+      "get": "sms.js"
+    },
     "/api/v1/statistics": {
       "options": 204,
       "get": "statistics.js"

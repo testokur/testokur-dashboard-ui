@@ -1,19 +1,43 @@
+/*eslint no-undef: 0*/
 import * as _ from 'lodash';
 import { createWebApiClient, createIdentityApiClient } from '../../helpers';
 import { User, UserStatuses } from './types';
 
 class UserService {
   public async getUser(userName: string) {
-    const apiUser = (await createWebApiClient().get(`/api/v1/users/${userName}`)).data;
-    const identityUser = (await createIdentityApiClient().get(`/api/v1/users/${userName}/details`)).data;
-    const licenseTypes = (await createWebApiClient().get('/api/v1/license-types')).data;
+    const getIdentityUserAsync = async () => {
+      return (await createIdentityApiClient().get(`/api/v1/users/${userName}/details`)).data;
+    };
+    const getApiUserAsync = async () => {
+      return (await createWebApiClient().get(`/api/v1/users/${userName}`)).data;
+    };
+    const getLicenseTypesAsync = async () => {
+      return (await createWebApiClient().get('/api/v1/license-types')).data;
+    };
+    const [identityUser, apiUser, licenseTypes] = await Promise.all([
+      getIdentityUserAsync(),
+      getApiUserAsync(),
+      getLicenseTypesAsync(),
+    ]);
+
     return this.combineUser(identityUser, apiUser, licenseTypes);
   }
 
   public async getUserList() {
-    const identityUsers = (await createIdentityApiClient().get('/api/v1/users')).data;
-    const apiUsers = (await createWebApiClient().get('/api/v1/users')).data;
-    const licenseTypes = (await createWebApiClient().get('/api/v1/license-types')).data;
+    const getIdentityUsersAsync = async () => {
+      return (await createIdentityApiClient().get('/api/v1/users')).data;
+    };
+    const getApiUsersAsync = async () => {
+      return (await createWebApiClient().get('/api/v1/users')).data;
+    };
+    const getLicenseTypesAsync = async () => {
+      return (await createWebApiClient().get('/api/v1/license-types')).data;
+    };
+    const [identityUsers, apiUsers, licenseTypes] = await Promise.all([
+      getIdentityUsersAsync(),
+      getApiUsersAsync(),
+      getLicenseTypesAsync(),
+    ]);
     const users: User[] = [];
 
     identityUsers.forEach((identityUser: any) => {
