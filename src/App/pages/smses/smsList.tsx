@@ -77,8 +77,8 @@ const component = (props: Props) => {
         options={{
           showTitle: false,
           actionsColumnIndex: -1,
-          pageSize: 50,
-          pageSizeOptions: [50, 100, 500, 1000],
+          pageSize: 500,
+          pageSizeOptions: [100, 500, 1000,10000],
           searchFieldAlignment: 'left',
         }}
       />
