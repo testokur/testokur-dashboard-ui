@@ -3,6 +3,7 @@ import { styles } from './styles';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { formatDateTime } from '../../helpers';
+import { Typography, Divider } from '@material-ui/core';
 
 interface Props {
   classes: any;
@@ -48,20 +49,12 @@ const component = (props: Props) => {
           readOnly: true,
         }}
       />
-      <TextField
-        label="Govde"
-        style={{ margin: 8 }}
-        placeholder="Govde"
-        fullWidth
-        multiline
-        rows="20"
-        value={props.location.state.body}
-        margin="normal"
-        variant="outlined"
-        InputProps={{
-          readOnly: true,
-        }}
-      />
+      <Divider />
+      <Typography variant="h6">
+        E-Posta
+      </Typography>
+      <Divider />
+      <div dangerouslySetInnerHTML={{ __html: props.location.state.body }} />
     </div>
   );
 };
