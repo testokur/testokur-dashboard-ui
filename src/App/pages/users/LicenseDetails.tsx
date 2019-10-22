@@ -129,6 +129,19 @@ const component = (props: Props) => {
           shrink: true,
         }}
       />
+      <TextField
+        label="Referans / Promosyon"
+        style={{ margin: 8 }}
+        placeholder="Referans / Promosyon"
+        fullWidth
+        value={props.user.referrer}
+        margin="normal"
+        variant="outlined"
+        onChange={(e) => props.onChange({ ...props.user, referrer: e.target.value as string })}
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
       <FormControlLabel
         control={
           <Switch

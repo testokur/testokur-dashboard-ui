@@ -107,7 +107,7 @@ const component = (props: Props) => {
         }}
       />
       <TextField
-        label="SMS Sunucusundam(IstanbulSms) Giden Cevap"
+        label="SMS Sunucusundan(IstanbulSms) Gelen Cevap"
         style={{ margin: 8 }}
         fullWidth
         multiline

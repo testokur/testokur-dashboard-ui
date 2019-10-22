@@ -55,4 +55,5 @@ export interface User {
   notes: string;
   registrarFullName: string;
   registrarPhone: string;
+  referrer: string;
 }
