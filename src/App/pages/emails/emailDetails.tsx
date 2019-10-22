@@ -50,9 +50,7 @@ const component = (props: Props) => {
         }}
       />
       <Divider />
-      <Typography variant="h6">
-        E-Posta
-      </Typography>
+      <Typography variant="h6">E-Posta</Typography>
       <Divider />
       <div dangerouslySetInnerHTML={{ __html: props.location.state.body }} />
     </div>
