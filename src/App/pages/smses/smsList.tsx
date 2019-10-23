@@ -31,7 +31,7 @@ const component = (props: Props) => {
           },
           {
             title: 'Kullanici',
-            render: (rowData) => <Link to={{ pathname: `/users/${rowData.userEmail}` }}>{rowData.userEmail}</Link>,
+            field: 'userEmail',
           },
           {
             title: 'Baslik',
