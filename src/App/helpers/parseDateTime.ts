@@ -1,7 +1,7 @@
 import fecha from 'fecha';
 import * as _ from 'lodash';
 
-const defaultFormat = 'DD.MM.YYYY HH:mm';
+const defaultFormat = 'DD.MM.YYYY HH:mm:ss';
 
 export default (input: string) => {
   const parsedDate = fecha.parse(input, defaultFormat);
