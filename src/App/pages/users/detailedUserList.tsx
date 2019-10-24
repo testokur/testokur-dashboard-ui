@@ -10,7 +10,7 @@ import DeleteForever from '@material-ui/icons/DeleteForever';
 import AddCircleOutline from '@material-ui/icons/AddCircleOutline';
 import Update from '@material-ui/icons/Update';
 import { SendSmsDialog } from './SendSmsDialog';
-import { createWebApiClient, formatDateTime } from '../../helpers';
+import { createWebApiClient } from '../../helpers';
 import { AddSmsDialog } from './smsDetails/AddSmsDialog';
 import { ConfirmationDialog } from '../../components';
 import { User } from './types';
@@ -84,6 +84,14 @@ const component = (props: Props) => {
             ),
           },
           {
+            title: 'Kurum Adi',
+            field: 'schoolName',
+          },
+          {
+            title: 'Telefon',
+            field: 'phone',
+          },
+          {
             title: 'Şehir-İlçe',
             field: 'cityName',
             render: (rowData) => (
@@ -91,15 +99,6 @@ const component = (props: Props) => {
                 {rowData.cityName} {rowData.districtName}
               </span>
             ),
-          },
-          {
-            title: 'Bitiş Tarihi',
-            field: 'expiryDateUtc',
-            render: (rowData) => <span>{formatDateTime(rowData.expiryDateUtc)}</span>,
-          },
-          {
-            title: 'Sms Bakiye',
-            field: 'smsBalance',
           },
           {
             title: 'Durum',
