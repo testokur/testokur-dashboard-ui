@@ -2,9 +2,8 @@ import * as _ from 'lodash';
 import React, { useState } from 'react';
 import { withStyles, Typography, Paper } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import MaterialTable from 'material-table';
 import { styles } from './styles';
-import { tableIcons, withLoading } from '../../components';
+import { withLoading, Table } from '../../components';
 import Sms from '@material-ui/icons/Sms';
 import DeleteForever from '@material-ui/icons/DeleteForever';
 import AddCircleOutline from '@material-ui/icons/AddCircleOutline';
@@ -60,10 +59,42 @@ const component = (props: Props) => {
       <Typography variant="h5" gutterBottom>
         KULLANICILAR
       </Typography>
-      <MaterialTable
-        icons={tableIcons}
+      <Table
         data={props.data}
-        title="KULLANICILAR"
+        actions={[
+          {
+            icon: () => <DeleteForever />,
+            tooltip: 'Sil',
+            onClick: (event, rowData) => {
+              setUser(rowData);
+              setDeleteUserDialogOpen(true);
+            },
+          },
+          {
+            icon: () => <Sms />,
+            tooltip: 'Sms Gonder',
+            onClick: (event, rowData) => {
+              setUser(rowData);
+              setSmsDialogOpen(true);
+            },
+          },
+          {
+            icon: () => <AddCircleOutline />,
+            tooltip: 'Sms Kredisi Ekle',
+            onClick: (event, rowData) => {
+              setUser(rowData);
+              setAddSmsCreditDialogOpen(true);
+            },
+          },
+          {
+            icon: () => <Update />,
+            tooltip: 'Lisans Uzat',
+            onClick: (event, rowData) => {
+              setUser(rowData);
+              setExtendUserDialogOpen(true);
+            },
+          },
+        ]}
         columns={[
           {
             title: 'E-Posta',
@@ -105,67 +136,6 @@ const component = (props: Props) => {
             field: 'status',
           },
         ]}
-        localization={{
-          body: {
-            emptyDataSourceMessage: 'Gösterilecek kayıt yok',
-          },
-          header: {
-            actions: 'Islemler',
-          },
-          toolbar: {
-            searchTooltip: 'Arama',
-            searchPlaceholder: 'Arama',
-          },
-          pagination: {
-            labelRowsSelect: 'satır',
-            labelDisplayedRows: '{count} satırdan {from}-{to} arası',
-            firstTooltip: 'İlk Sayfa',
-            previousTooltip: 'Önceki Sayfa',
-            nextTooltip: 'Sonraki Sayfa',
-            lastTooltip: 'Son Sayfa',
-          },
-        }}
-        actions={[
-          {
-            icon: () => <DeleteForever />,
-            tooltip: 'Sil',
-            onClick: (event, rowData) => {
-              setUser(rowData);
-              setDeleteUserDialogOpen(true);
-            },
-          },
-          {
-            icon: () => <Sms />,
-            tooltip: 'Sms Gonder',
-            onClick: (event, rowData) => {
-              setUser(rowData);
-              setSmsDialogOpen(true);
-            },
-          },
-          {
-            icon: () => <AddCircleOutline />,
-            tooltip: 'Sms Kredisi Ekle',
-            onClick: (event, rowData) => {
-              setUser(rowData);
-              setAddSmsCreditDialogOpen(true);
-            },
-          },
-          {
-            icon: () => <Update />,
-            tooltip: 'Lisans Uzat',
-            onClick: (event, rowData) => {
-              setUser(rowData);
-              setExtendUserDialogOpen(true);
-            },
-          },
-        ]}
-        options={{
-          showTitle: false,
-          actionsColumnIndex: -1,
-          pageSize: 50,
-          pageSizeOptions: [50, 100, 500, 1000],
-          searchFieldAlignment: 'left',
-        }}
       />
       <SendSmsDialog
         onSubmit={handleSendSms}

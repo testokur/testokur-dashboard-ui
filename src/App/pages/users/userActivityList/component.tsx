@@ -1,9 +1,8 @@
 /* eslint-disable react/display-name */
 import React, { useEffect, useState } from 'react';
-import MaterialTable from 'material-table';
-import { tableIcons } from '../../../components';
 import { createIdentityApiClient, formatDateTime } from '../../../helpers';
 import { User } from '../types';
+import { Table } from '../../../components';
 
 interface Props {
   user: User;
@@ -36,9 +35,8 @@ const component = (props: Props) => {
 
   return (
     <div>
-      <MaterialTable
-        icons={tableIcons}
-        title="Kullanici Aktivite Loglari"
+      <Table
+        pageSizeOptions={[10, 50, 100]}
         columns={[
           {
             title: 'Islem',
@@ -56,32 +54,6 @@ const component = (props: Props) => {
           },
         ]}
         data={data}
-        localization={{
-          body: {
-            emptyDataSourceMessage: 'Gösterilecek kayıt yok',
-          },
-          header: {
-            actions: 'Islemler',
-          },
-          toolbar: {
-            searchTooltip: 'Arama',
-            searchPlaceholder: 'Arama',
-          },
-          pagination: {
-            labelRowsSelect: 'satır',
-            labelDisplayedRows: '{count} satırdan {from}-{to} arası',
-            firstTooltip: 'İlk Sayfa',
-            previousTooltip: 'Önceki Sayfa',
-            nextTooltip: 'Sonraki Sayfa',
-            lastTooltip: 'Son Sayfa',
-          },
-        }}
-        options={{
-          actionsColumnIndex: -1,
-          search: false,
-          pageSize: 5,
-          pageSizeOptions: [5, 10, 50],
-        }}
       />
     </div>
   );

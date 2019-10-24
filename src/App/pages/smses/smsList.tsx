@@ -1,8 +1,7 @@
 import * as _ from 'lodash';
 import React from 'react';
 import { withStyles, Typography, Paper } from '@material-ui/core';
-import MaterialTable from 'material-table';
-import { tableIcons, withLoading } from '../../components';
+import { withLoading, Table } from '../../components';
 import { Sms } from './types';
 import { styles } from './styles';
 import { formatDateTime } from '../../helpers';
@@ -21,8 +20,7 @@ const component = (props: Props) => {
       <Typography variant="h5" gutterBottom>
         Bugun Gonderilen Sms&apos;ler
       </Typography>
-      <MaterialTable
-        icons={tableIcons}
+      <Table
         data={props.data}
         columns={[
           {
@@ -54,33 +52,6 @@ const component = (props: Props) => {
             render: (rowData) => <SmsStatus status={rowData.status} />,
           },
         ]}
-        localization={{
-          body: {
-            emptyDataSourceMessage: 'Gösterilecek kayıt yok',
-          },
-          header: {
-            actions: 'Islemler',
-          },
-          toolbar: {
-            searchTooltip: 'Arama',
-            searchPlaceholder: 'Arama',
-          },
-          pagination: {
-            labelRowsSelect: 'satır',
-            labelDisplayedRows: '{count} satırdan {from}-{to} arası',
-            firstTooltip: 'İlk Sayfa',
-            previousTooltip: 'Önceki Sayfa',
-            nextTooltip: 'Sonraki Sayfa',
-            lastTooltip: 'Son Sayfa',
-          },
-        }}
-        options={{
-          showTitle: false,
-          actionsColumnIndex: -1,
-          pageSize: 500,
-          pageSizeOptions: [100, 500, 1000, 10000],
-          searchFieldAlignment: 'left',
-        }}
       />
     </Paper>
   );
