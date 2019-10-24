@@ -88,6 +88,16 @@ const component = (props: Props) => {
           <Divider component="li" />
           <ListItem>
             <ListItemText
+              primary="Gun icinde en fazla kontor harcayan kullanici ( harcadigi kontor) "
+              secondary={`${_.get(props, 'notificationStats.topSmsSenderEmailInDay')} (${_.get(
+                props,
+                'notificationStats.topSmsSenderCreditInDay',
+              )})`}
+            />
+          </ListItem>
+          <Divider component="li" />
+          <ListItem>
+            <ListItemText
               primary="Toplam Gonderilen SMS Sayisi (Agustos 2017'den itibaren)"
               secondary={_.get(props, 'notificationStats.totalSmsCountAll')}
             />

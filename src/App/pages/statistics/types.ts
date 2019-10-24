@@ -39,4 +39,5 @@ export interface NotificationStats {
   topSmsSenderCreditInDay: number;
   totalSmsCountAll: number;
   totalSmsCreditsAll: number;
+  topSmsSenderEmailInDay: string;
 }

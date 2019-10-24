@@ -22,6 +22,7 @@ module.exports = (req, res) => {
       averageSmsDuration: 423,
       topSmsSenderEmailAddressInDay: 432,
       topSmsSenderCreditInDay: 543,
+      topSmsSenderEmailInDay: 'youknowho@hotmail.com',
       totalSmsCountAll: 6456456,
       totalSmsCreditsAll: 43242423,
     });
