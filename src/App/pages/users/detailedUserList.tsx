@@ -33,9 +33,13 @@ const component = (props: Props) => {
     return true;
   };
 
-  const handleAddCredit = async (amount: number) => {
+  const handleAddCredit = async (amount: number, gift: boolean) => {
     setAddSmsCreditDialogOpen(false);
-    await createWebApiClient().post('/api/v1/sms/add-credits', { userId: _.get(user, 'id', ''), amount: amount });
+    await createWebApiClient().post('/api/v1/sms/add-credits', {
+      userId: _.get(user, 'id', ''),
+      amount: amount,
+      gift: gift,
+    });
     await props.reloadData();
   };
 

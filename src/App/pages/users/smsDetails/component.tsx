@@ -16,9 +16,9 @@ interface Props {
 const component = (props: Props) => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const handleAddCredit = async (amount: number) => {
+  const handleAddCredit = async (amount: number, gift: boolean) => {
     setDialogOpen(false);
-    await createWebApiClient().post('/api/v1/sms/add-credits', { userId: props.user.id, amount: amount });
+    await createWebApiClient().post('/api/v1/sms/add-credits', { userId: props.user.id, amount: amount, gift: gift });
     props.onChange({ ...props.user, smsBalance: props.user.smsBalance + amount });
   };
   return (
