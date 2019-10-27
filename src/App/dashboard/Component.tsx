@@ -9,6 +9,7 @@ import { Typography } from '@material-ui/core';
 import { Home } from '../pages/home';
 import { UserDetails, UserListPage } from '../pages/users';
 import { EmailListPage, EmailDetails } from '../pages/emails';
+import { DistributorListPage, DistributorDetails } from '../pages/distributors';
 import { isMobile } from 'react-device-detect';
 import { Statistics } from '../pages/statistics';
 import { SmsListPage, SmsDetails } from '../pages/smses';
@@ -61,6 +62,8 @@ class Component extends React.Component<Props, State> {
             <Route path="/smses" exact={true} component={SmsListPage} />
             <Route path="/smses/:id" exact={true} component={SmsDetails} />
             <Route path="/statistics" exact={true} component={Statistics} />
+            <Route path="/distributors" exact={true} component={DistributorListPage} />
+            <Route path="/distributor/:userName" exact={true} component={DistributorDetails} />
           </Switch>
           {this.Footer()}
         </main>

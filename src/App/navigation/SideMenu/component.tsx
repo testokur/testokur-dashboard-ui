@@ -3,6 +3,7 @@ import { Drawer, IconButton, Divider, withStyles } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
+import SupervisedUserCircle from '@material-ui/icons/SupervisedUserCircle';
 import EmailIcon from '@material-ui/icons/Email';
 import Textsms from '@material-ui/icons/Textsms';
 import TableChartIcon from '@material-ui/icons/TableChart';
@@ -20,6 +21,7 @@ interface Props {
 const routes = [
   { path: '/', title: 'Ana Sayfa', icon: () => <DashboardIcon /> },
   { path: '/users', title: 'Kullanicilar', icon: () => <PeopleIcon /> },
+  { path: '/distributors', title: 'Bayiler', icon: () => <SupervisedUserCircle /> },
   { path: '/emails', title: 'E-Postalar', icon: () => <EmailIcon /> },
   { path: '/smses', title: 'Smsler', icon: () => <Textsms /> },
   { path: '/statistics', title: 'Istatistikler', icon: () => <TableChartIcon /> },

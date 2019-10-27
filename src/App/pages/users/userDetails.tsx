@@ -73,7 +73,7 @@ class Component extends React.Component<Props, State> {
           >
             <Tab label="LISANS" />
             <Tab label="KISISEL" />
-            <Tab label="DIGER" />
+            <Tab label="SMS" />
             <Tab label="PAROLA" />
             <Tab label="LOG" />
           </Tabs>
