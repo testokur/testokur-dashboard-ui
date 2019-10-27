@@ -22,7 +22,7 @@ const logTypes: { [id: number]: string } = {
   10: 'Lisans Yenileme',
   11: 'Yonetici Masterkey ile Oturum Acma',
 };
-const component = (props: Props) => {
+const userActivityList = (props: Props) => {
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -59,4 +59,4 @@ const component = (props: Props) => {
   );
 };
 
-export default component;
+export default userActivityList;

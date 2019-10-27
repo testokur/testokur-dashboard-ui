@@ -1,1 +1,1 @@
-export { component as TodaysActiveUsers } from './Component';
+export { todaysActiveUsers as TodaysActiveUsers } from './todaysActiveUsers';

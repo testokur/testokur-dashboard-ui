@@ -10,7 +10,7 @@ interface Props {
   classes: any;
 }
 
-const component = (props: Props) => {
+const statistics = (props: Props) => {
   const [identityStats, setIdentityStats] = useState<IdentityStats>();
   const [webApiStats, setWebApiStats] = useState<WebApiStats>();
   const [reportStats, setReportStats] = useState<ReportStats>();
@@ -43,4 +43,4 @@ const component = (props: Props) => {
   );
 };
 
-export default withStyles(styles as any, { withTheme: true })(component as any) as any;
+export default withStyles(styles as any, { withTheme: true })(statistics as any) as any;

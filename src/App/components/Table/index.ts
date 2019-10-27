@@ -1,1 +1,1 @@
-export { default as Table } from './component';
+export { default as Table } from './Table';

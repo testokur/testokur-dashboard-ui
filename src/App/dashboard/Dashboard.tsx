@@ -14,15 +14,15 @@ import { isMobile } from 'react-device-detect';
 import { Statistics } from '../pages/statistics';
 import { SmsListPage, SmsDetails } from '../pages/smses';
 
-interface State {
+interface DashboardState {
   open: boolean;
 }
-interface Props {
+interface DashboardProps {
   classes: any;
 }
 
-class Component extends React.Component<Props, State> {
-  public constructor(props: Props) {
+class Dashboard extends React.Component<DashboardProps, DashboardState> {
+  public constructor(props: DashboardProps) {
     super(props);
     this.state = {
       open: !isMobile,
@@ -72,4 +72,4 @@ class Component extends React.Component<Props, State> {
   };
 }
 
-export default withStyles(styles as any, { withTheme: true })(Component as any) as any;
+export default withStyles(styles as any, { withTheme: true })(Dashboard as any) as any;

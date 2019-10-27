@@ -19,7 +19,7 @@ interface Props {
 }
 
 /* eslint-disable react/display-name */
-const component = (props: Props) => {
+const table = (props: Props) => {
   const totalStudentCount: number =
     _.get(props, 'webApiStats.totalESchoolStudentCount', 0) +
     _.get(props, 'webApiStats.totalBulkStudentCount', 0) +
@@ -256,4 +256,4 @@ const component = (props: Props) => {
   );
 };
 
-export default withStyles(styles as any, { withTheme: true })(withLoading(component) as any);
+export default withStyles(styles as any, { withTheme: true })(withLoading(table) as any);

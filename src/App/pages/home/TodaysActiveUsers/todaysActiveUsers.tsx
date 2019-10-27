@@ -3,7 +3,7 @@ import PeopleOutline from '@material-ui/icons/PeopleOutline';
 import { UserList } from '../UserList';
 import { createIdentityApiClient } from '../../../helpers';
 
-export const component = () => {
+export const todaysActiveUsers = () => {
   const icon = (className: string) => <PeopleOutline className={className} />;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);

@@ -43,14 +43,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface Props {
+interface MessageBoxProps {
   className?: string;
   message?: string;
   variant: keyof typeof variantIcon;
   hasCloseButton?: boolean;
 }
 
-export const messageBox = (props: Props) => {
+export const messageBox = (props: MessageBoxProps) => {
   const [closed, setClosed] = useState(false);
   const classes = useStyles();
   const { className, message, variant, hasCloseButton, ...other } = props;

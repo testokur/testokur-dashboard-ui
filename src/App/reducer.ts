@@ -3,7 +3,7 @@ import { reducer as oidcReducer } from 'redux-oidc';
 import { connectRouter } from 'connected-react-router';
 import { History } from 'history';
 import changePasswordReducer from './pages/changePassword/reducer';
-import licenseTypesReducer from './licenseType/reducer';
+import licenseTypesReducer from './licenseTypeSelect/reducer';
 import citiesReducer from './city/reducer';
 import { resetUserPasswordReducer } from './pages/users/resetUserPassword';
 

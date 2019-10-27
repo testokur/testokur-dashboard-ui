@@ -10,7 +10,7 @@ interface Props {
   location: any;
 }
 
-const component = (props: Props) => {
+const emailDetails = (props: Props) => {
   return (
     <div>
       <TextField
@@ -57,4 +57,4 @@ const component = (props: Props) => {
   );
 };
 
-export default withStyles(styles as any, { withTheme: true })(component as any) as any;
+export default withStyles(styles as any, { withTheme: true })(emailDetails as any) as any;

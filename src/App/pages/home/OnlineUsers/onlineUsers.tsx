@@ -3,7 +3,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import { UserList } from '../UserList';
 import { createWebApiClient } from '../../../helpers';
 
-export const component = () => {
+export const onlineUsers = () => {
   const onlineUserIcon = (className: string) => <PeopleIcon className={className} />;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);

@@ -21,7 +21,7 @@ interface PropsFromDispatch {
 
 type Props = PropsFromState & PropsFromDispatch & ComponentProps;
 
-const component = (props: Props) => {
+const licenseTypeSelect = (props: Props) => {
   useEffect(() => {
     props.fetchLicenseTypes();
   }, []);
@@ -50,4 +50,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(withLoading(component));
+)(withLoading(licenseTypeSelect));

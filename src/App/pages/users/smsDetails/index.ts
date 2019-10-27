@@ -1,1 +1,1 @@
-export { default as SmsDetails } from './component';
+export { default as SmsDetails } from './smsDetails';

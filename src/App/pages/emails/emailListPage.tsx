@@ -11,7 +11,7 @@ interface Props {
   classes: any;
 }
 
-const component = (props: Props) => {
+const emailListPage = (props: Props) => {
   const from = new Date();
   from.setDate(from.getDate() - 3);
   const to = new Date();
@@ -67,4 +67,4 @@ const component = (props: Props) => {
   );
 };
 
-export default withStyles(styles as any, { withTheme: true })(component as any) as any;
+export default withStyles(styles as any, { withTheme: true })(emailListPage as any) as any;

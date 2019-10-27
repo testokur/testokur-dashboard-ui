@@ -1,16 +1,17 @@
 import React from 'react';
 import * as _ from 'lodash';
-import { Typography, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { ValidatorForm } from 'react-material-ui-form-validator';
-import { PasswordField, InteractiveButtonWithSpinner } from '../../components';
-import { snakeToCamel } from '../../helpers';
-import { requestChangePassword, resetChangePasswordState } from './actions';
+import { PasswordField, MessageBox, InteractiveButtonWithSpinner } from '../../../components';
+import { snakeToCamel } from '../../../helpers';
 import { connect } from 'react-redux';
-import { MessageBox } from '../../components';
-import AppState from '../../AppState';
+import AppState from '../../../AppState';
+import { requestResetPassword } from './actions';
+import { User } from '../types';
 
 interface ComponentProps {
-  classes: any;
+  classes?: any;
+  user: User;
 }
 
 interface PropsFromState {
@@ -24,25 +25,22 @@ interface State {
 }
 
 interface PropsFromDispatch {
-  requestChangePassword: typeof requestChangePassword;
-  resetChangePasswordState: typeof resetChangePasswordState;
+  requestResetPassword: typeof requestResetPassword;
 }
 
 type Props = PropsFromState & PropsFromDispatch & ComponentProps;
 
-class Component extends React.Component<Props, State> {
+class ResetUserPassword extends React.Component<Props, State> {
   public constructor(props: Props) {
     super(props);
     this.state = {
       formData: {
-        currentPassword: '',
-        newPassword: '',
-        newPasswordConfirm: '',
+        newPassword: '123456',
+        newPasswordConfirm: '123456',
       },
     };
   }
   public componentDidMount() {
-    this.props.resetChangePasswordState();
     ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
       const { formData } = this.state;
       if (value !== formData.newPassword) {
@@ -53,10 +51,9 @@ class Component extends React.Component<Props, State> {
   }
   public componentDidUpdate() {
     if (this.props.success && !_.isNil(this.props.message)) {
-      if (this.state.formData.currentPassword !== '') {
+      if (this.state.formData.newPassword !== '') {
         this.setState({
           formData: {
-            currentPassword: '',
             newPassword: '',
             newPasswordConfirm: '',
           },
@@ -71,9 +68,6 @@ class Component extends React.Component<Props, State> {
     return (
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-          <Typography component="h1" variant="h5">
-            Parola Degistir
-          </Typography>
           <ValidatorForm onSubmit={this.handleSubmit}>
             {!this.props.success && !_.isNil(this.props.message) ? (
               <MessageBox variant="error" message={this.props.message} />
@@ -85,12 +79,6 @@ class Component extends React.Component<Props, State> {
             ) : (
               <></>
             )}
-            <PasswordField
-              label="Mevcut Parola"
-              onChange={this.handleChange}
-              name="current-password"
-              value={formData.currentPassword}
-            />
             <PasswordField
               label="Yeni Parola"
               onChange={this.handleChange}
@@ -118,22 +106,24 @@ class Component extends React.Component<Props, State> {
     this.setState({ formData });
   };
   private handleSubmit = () => {
-    this.props.requestChangePassword(this.state.formData.currentPassword, this.state.formData.newPassword);
+    this.props.requestResetPassword(this.props.user.subjectId, this.state.formData.newPassword);
   };
 }
 
-const mapStateToProps = ({ changePassword }: AppState) => ({
-  loading: changePassword.loading,
-  success: changePassword.success,
-  message: changePassword.message,
-});
+function mapStateToProps({ resetUserPassword }: AppState, ownProps: ComponentProps) {
+  return {
+    user: ownProps.user,
+    loading: resetUserPassword.loading,
+    success: resetUserPassword.success,
+    message: resetUserPassword.message,
+  };
+}
 
 const mapDispatchToProps = {
-  requestChangePassword,
-  resetChangePasswordState,
+  requestResetPassword,
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Component as any);
+)(ResetUserPassword as any);

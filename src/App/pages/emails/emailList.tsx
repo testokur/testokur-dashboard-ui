@@ -13,7 +13,7 @@ interface Props {
 }
 
 /* eslint-disable react/display-name */
-const component = (props: Props) => {
+const emailList = (props: Props) => {
   return (
     <Paper className={props.classes.root}>
       <Typography variant="h5" gutterBottom>
@@ -44,4 +44,4 @@ const component = (props: Props) => {
   );
 };
 
-export default withStyles(styles as any, { withTheme: true })(withLoading(component) as any);
+export default withStyles(styles as any, { withTheme: true })(withLoading(emailList) as any);

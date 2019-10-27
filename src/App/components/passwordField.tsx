@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextValidator } from 'react-material-ui-form-validator';
 
-interface Props {
+interface PasswordFieldProps {
   errorMessages?: any[] | string;
   validators?: any[];
   label: string;
@@ -10,7 +10,7 @@ interface Props {
   onChange?(e: React.FormEvent<{}>, newValue: string): void;
 }
 
-export const passwordField = (props: Props) => {
+export const passwordField = (props: PasswordFieldProps) => {
   return (
     <TextValidator
       variant="outlined"

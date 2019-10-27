@@ -11,7 +11,7 @@ interface Props {
   onChange: (user: User) => void;
 }
 
-const component = (props: Props) => {
+const personalDetails = (props: Props) => {
   return (
     <div>
       <TextField
@@ -65,4 +65,4 @@ const component = (props: Props) => {
   );
 };
 
-export default withStyles(styles as any, { withTheme: true })(component as any) as any;
+export default withStyles(styles as any, { withTheme: true })(personalDetails as any) as any;

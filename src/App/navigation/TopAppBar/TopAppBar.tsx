@@ -3,7 +3,7 @@ import { AppBar, Toolbar, IconButton, Typography, withStyles } from '@material-u
 import MenuIcon from '@material-ui/icons/Menu';
 import { styles } from './styles';
 import clsx from 'clsx';
-import UserMenu from './UserMenu/component';
+import UserMenu from './UserMenu/UserMenu';
 
 interface Props {
   handleDrawerOpen: () => void;
@@ -11,7 +11,7 @@ interface Props {
   open: boolean;
 }
 
-class Component extends React.PureComponent<Props> {
+class TopAppBar extends React.PureComponent<Props> {
   public render() {
     return (
       <AppBar
@@ -38,4 +38,4 @@ class Component extends React.PureComponent<Props> {
   }
 }
 
-export default withStyles(styles as any, { withTheme: true })(Component as any) as any;
+export default withStyles(styles as any, { withTheme: true })(TopAppBar as any) as any;

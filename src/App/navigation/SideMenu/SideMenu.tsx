@@ -27,7 +27,7 @@ const routes = [
   { path: '/statistics', title: 'Istatistikler', icon: () => <TableChartIcon /> },
 ];
 
-class Component extends React.Component<Props> {
+class SideMenu extends React.Component<Props> {
   public static displayName = 'SideMenu';
 
   public constructor(props: Props) {
@@ -56,4 +56,4 @@ class Component extends React.Component<Props> {
     );
   }
 }
-export default withStyles(styles as any, { withTheme: true })(Component as any) as any;
+export default withStyles(styles as any, { withTheme: true })(SideMenu as any) as any;

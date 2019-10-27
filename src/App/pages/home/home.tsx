@@ -4,7 +4,7 @@ import { PendingUsers } from './PendingUsers';
 import { TodaysActiveUsers } from './TodaysActiveUsers';
 import { Grid } from '@material-ui/core';
 
-export const component = () => {
+export const home = () => {
   return (
     <div>
       <Grid container spacing={3}>

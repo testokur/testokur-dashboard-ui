@@ -10,7 +10,7 @@ interface Props {
   location: any;
 }
 
-const component = (props: Props) => {
+const smsDetails = (props: Props) => {
   return (
     <div>
       <SmsStatus status={props.location.state.status} />
@@ -149,4 +149,4 @@ const component = (props: Props) => {
   );
 };
 
-export default withStyles(styles as any, { withTheme: true })(component as any) as any;
+export default withStyles(styles as any, { withTheme: true })(smsDetails as any) as any;

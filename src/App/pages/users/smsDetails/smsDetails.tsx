@@ -13,7 +13,7 @@ interface Props {
   onChange: (user: User) => void;
 }
 
-const component = (props: Props) => {
+const smsDetails = (props: Props) => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleAddCredit = async (amount: number, gift: boolean) => {
@@ -67,4 +67,4 @@ const component = (props: Props) => {
   );
 };
 
-export default withStyles(styles as any, { withTheme: true })(component as any) as any;
+export default withStyles(styles as any, { withTheme: true })(smsDetails as any) as any;

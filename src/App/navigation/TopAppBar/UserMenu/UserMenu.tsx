@@ -29,7 +29,7 @@ interface State {
   logoutDialogOpen: boolean;
 }
 
-class Component extends React.Component<Props, State> {
+class UserMenu extends React.Component<Props, State> {
   public constructor(props: Props) {
     super(props);
     this.state = {
@@ -109,4 +109,4 @@ function mapStateToProps(state: AppState, ownProps: OwnProps) {
   };
 }
 
-export default connect(mapStateToProps)(withStyles(styles as any, { withTheme: true })(Component as any) as any);
+export default connect(mapStateToProps)(withStyles(styles as any, { withTheme: true })(UserMenu as any) as any);

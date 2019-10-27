@@ -10,7 +10,7 @@ interface Props {
   onClick: () => void;
 }
 
-const component = (props: Props) => {
+const smsFieldWithButton = (props: Props) => {
   return (
     <TextField
       id="filled-adornment-password"
@@ -35,4 +35,4 @@ const component = (props: Props) => {
   );
 };
 
-export default withStyles(styles as any, { withTheme: true })(component as any) as any;
+export default withStyles(styles as any, { withTheme: true })(smsFieldWithButton as any) as any;

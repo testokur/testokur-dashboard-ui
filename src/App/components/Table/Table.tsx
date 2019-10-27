@@ -2,7 +2,7 @@ import React from 'react';
 import MaterialTable, { Column, Action, Options } from 'material-table';
 import { tableIcons } from './tableIcons';
 
-export interface Props<RowData extends object> {
+export interface TableProps<RowData extends object> {
   title?: string;
   // tslint:disable-next-line:array-type
   actions?: (Action<RowData> | ((rowData: RowData) => Action<RowData>))[];
@@ -12,7 +12,7 @@ export interface Props<RowData extends object> {
   data: RowData[];
 }
 
-export default class Component<RowData extends object> extends React.Component<Props<RowData>> {
+export default class Table<RowData extends object> extends React.Component<TableProps<RowData>> {
   public static defaultProps = {
     pageSizeOptions: [50, 100, 500, 1000],
   };

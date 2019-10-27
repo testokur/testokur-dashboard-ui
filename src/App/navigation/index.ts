@@ -1,4 +1,4 @@
-import SideMenu from './SideMenu/component';
-import TopAppBar from './TopAppBar/component';
+import SideMenu from './SideMenu/SideMenu';
+import TopAppBar from './TopAppBar/TopAppBar';
 
 export { SideMenu, TopAppBar };

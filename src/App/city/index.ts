@@ -1,1 +1,1 @@
-export { default as CitySelect } from './Component';
+export { default as CitySelect } from './CitySelect';

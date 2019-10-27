@@ -4,7 +4,7 @@ import { UserList } from '../UserList';
 import CustomerIcon from '@material-ui/icons/PersonAdd';
 import { createIdentityApiClient } from '../../../helpers';
 
-export const component = () => {
+export const pendingUsers = () => {
   const customerIcon = (className: string) => <CustomerIcon className={className} />;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);

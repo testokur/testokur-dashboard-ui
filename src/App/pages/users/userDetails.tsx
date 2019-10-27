@@ -5,7 +5,7 @@ import { Grid, Avatar, withStyles, Divider, Tabs, Tab, Button, Paper, Box } from
 import PersonIcon from '@material-ui/icons/Person';
 import { styles } from './styles';
 import { UserStatus } from './UserStatus';
-import LicenseDetails from './LicenseDetails';
+import LicenseDetails from './licenseDetails';
 import { SmsDetails } from './smsDetails';
 import PersonalDetails from './personalDetails';
 import { ResetUserPassword } from './resetUserPassword';

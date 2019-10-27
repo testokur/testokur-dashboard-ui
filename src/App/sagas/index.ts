@@ -1,6 +1,6 @@
 import { changePasswordSaga } from '../pages/changePassword/sagas';
 import { all, fork } from 'redux-saga/effects';
-import { licenseTypeSaga } from '../licenseType/sagas';
+import { licenseTypeSaga } from '../licenseTypeSelect/sagas';
 import { citySaga } from '../city/sagas';
 import { resetPasswordSaga } from '../pages/users/resetUserPassword';
 

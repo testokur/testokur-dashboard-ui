@@ -7,7 +7,7 @@ import AppState from '../AppState';
 import { fetchCityRequest } from './actions';
 import { withLoading, Select } from '../components';
 
-interface ComponentProps {
+interface CitySelectProps {
   cityId: number;
   districtId: number;
   onChange: (newCityId: number, newDistrictId: number) => void;
@@ -21,9 +21,9 @@ interface PropsFromDispatch {
   fetchCityRequest: typeof fetchCityRequest;
 }
 
-type Props = PropsFromState & PropsFromDispatch & ComponentProps;
+type Props = PropsFromState & PropsFromDispatch & CitySelectProps;
 
-export class Component extends React.Component<Props> {
+export class CitySelect extends React.Component<Props> {
   public componentDidMount() {
     this.props.fetchCityRequest();
   }
@@ -51,7 +51,7 @@ export class Component extends React.Component<Props> {
   };
 }
 
-const mapStateToProps = ({ cities }: AppState, ownProps: ComponentProps) => ({
+const mapStateToProps = ({ cities }: AppState, ownProps: CitySelectProps) => ({
   loading: cities.loading,
   cities: cities.data,
   cityId: ownProps.cityId,
@@ -66,4 +66,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(withLoading(Component));
+)(withLoading(CitySelect));

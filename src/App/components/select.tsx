@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormControl, InputLabel, Select, MenuItem, Theme, withStyles } from '@material-ui/core';
 
-interface Props {
+interface SelectProps {
   text: string;
   id: string;
   classes: any;
@@ -16,7 +16,7 @@ const styles = (theme: Theme) => ({
   },
 });
 
-export const component = (props: Props) => {
+export const select = (props: SelectProps) => {
   return (
     <FormControl fullWidth variant="outlined" className={props.classes.formControl}>
       <InputLabel htmlFor={props.id}>{props.text}</InputLabel>
@@ -34,4 +34,4 @@ export const component = (props: Props) => {
   );
 };
 
-export default withStyles(styles as any, { withTheme: true })(component);
+export default withStyles(styles as any, { withTheme: true })(select);

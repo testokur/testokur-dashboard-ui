@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, CircularProgress, withStyles, Theme } from '@material-ui/core';
 import { green } from '@material-ui/core/colors';
 
-interface Props {
+interface InteractiveButtonWithSpinnerProps {
   classes?: any;
   loading: boolean;
 }
@@ -22,7 +22,7 @@ export const styles = (theme: Theme) => ({
   },
 });
 
-const component = (props: Props) => {
+const interactiveButtonWithSpinner = (props: InteractiveButtonWithSpinnerProps) => {
   return (
     <div className={props.classes.wrapper}>
       <Button type="submit" fullWidth variant="contained" color="primary" disabled={props.loading}>
@@ -33,4 +33,4 @@ const component = (props: Props) => {
   );
 };
 
-export default withStyles(styles as any, { withTheme: true })(component as any);
+export default withStyles(styles as any, { withTheme: true })(interactiveButtonWithSpinner as any);

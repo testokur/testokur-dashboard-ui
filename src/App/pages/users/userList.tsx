@@ -21,7 +21,7 @@ interface Props {
 }
 
 /* eslint-disable react/display-name */
-const component = (props: Props) => {
+const userList = (props: Props) => {
   const [smsDialogOpen, setSmsDialogOpen] = useState(false);
   const [deleteUserDialogOpen, setDeleteUserDialogOpen] = useState(false);
   const [addSmsCreditDialogOpen, setAddSmsCreditDialogOpen] = useState(false);
@@ -177,4 +177,4 @@ const component = (props: Props) => {
   );
 };
 
-export default withStyles(styles as any, { withTheme: true })(withLoading(component) as any);
+export default withStyles(styles as any, { withTheme: true })(withLoading(userList) as any);

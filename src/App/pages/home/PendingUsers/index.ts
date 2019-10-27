@@ -1,1 +1,1 @@
-export { component as PendingUsers } from './Component';
+export { pendingUsers as PendingUsers } from './pendingUsers';

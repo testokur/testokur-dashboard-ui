@@ -38,7 +38,7 @@ export const ActivateSwitch = (props: Props) => {
     setLoading(false);
   };
 
-  const component = (innerProps: { loading: boolean }) => (
+  const activateSwitch = (innerProps: { loading: boolean }) => (
     <div>
       <FormControlLabel
         value="start"
@@ -57,7 +57,7 @@ export const ActivateSwitch = (props: Props) => {
       />
     </div>
   );
-  const Component = withLoading(component);
+  const Component = withLoading(activateSwitch);
 
   return <Component loading={loading} />;
 };

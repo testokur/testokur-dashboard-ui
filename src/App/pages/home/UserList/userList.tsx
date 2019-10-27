@@ -3,7 +3,7 @@ import CardIcon from './CardIcon';
 import { Typography, Divider, List, Card, ListItemText, ListItem } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-import { styles } from './Component.styles';
+import { styles } from './userList.style';
 import { withLoading } from '../../../components';
 
 interface Props {
@@ -14,7 +14,7 @@ interface Props {
   iconBgColor: string;
   loading: boolean;
 }
-const component = (props: Props) => {
+const userList = (props: Props) => {
   return (
     <div className={props.classes.main}>
       <CardIcon icon={props.icon} bgColor={props.iconBgColor} />
@@ -38,4 +38,4 @@ const component = (props: Props) => {
   );
 };
 
-export default withStyles(styles as any, { withTheme: true })(withLoading(component));
+export default withStyles(styles as any, { withTheme: true })(withLoading(userList));

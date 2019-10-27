@@ -10,7 +10,7 @@ interface Props {
   classes: any;
 }
 
-const component = (props: Props) => {
+const smsListPage = (props: Props) => {
   const [data, setData] = useState<Sms[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -56,4 +56,4 @@ const component = (props: Props) => {
   );
 };
 
-export default withStyles(styles as any, { withTheme: true })(component as any) as any;
+export default withStyles(styles as any, { withTheme: true })(smsListPage as any) as any;

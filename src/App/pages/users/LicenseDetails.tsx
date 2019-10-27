@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import { TextField, withStyles, Switch, FormControlLabel } from '@material-ui/core';
 import { ActivateSwitch } from './ActivateSwitch';
 import { styles } from './LicenseDetails.styles';
-import { LicenseTypeSelect } from '../../licenseType';
+import { LicenseTypeSelect } from '../../licenseTypeSelect';
 import { formatDateTime, parseDateTime } from '../../helpers';
 import { User } from './types';
 
@@ -13,7 +13,7 @@ interface Props {
   onChange: (user: User) => void;
 }
 
-const component = (props: Props) => {
+const licenseDetails = (props: Props) => {
   const [expiryDateTime, setExpiryDateTime] = useState(formatDateTime(props.user.expiryDateUtc));
   useEffect(() => {
     setExpiryDateTime(formatDateTime(props.user.expiryDateUtc));
@@ -157,4 +157,4 @@ const component = (props: Props) => {
   );
 };
 
-export default withStyles(styles as any, { withTheme: true })(component as any) as any;
+export default withStyles(styles as any, { withTheme: true })(licenseDetails as any) as any;

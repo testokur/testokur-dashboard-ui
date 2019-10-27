@@ -1,1 +1,1 @@
-export { default as UserActivityList } from './component';
+export { default as UserActivityList } from './userActivityList';

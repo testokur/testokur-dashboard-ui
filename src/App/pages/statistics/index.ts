@@ -1,1 +1,1 @@
-export { default as Statistics } from './component';
+export { default as Statistics } from './statistics';
