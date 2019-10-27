@@ -5,5 +5,5 @@ export interface Distributor {
   userName: string;
   schoolName: string;
   phone: string;
-  users:string[] | undefined;
+  users: string[] | undefined;
 }
