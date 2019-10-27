@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import * as _ from 'lodash';
 import { TextField, withStyles, Switch, FormControlLabel } from '@material-ui/core';
 import { ActivateSwitch } from './ActivateSwitch';
-import { styles } from './LicenseDetails.styles';
+import { styles } from './licenseDetails.styles';
 import { LicenseTypeSelect } from '../../licenseTypeSelect';
 import { formatDateTime, parseDateTime } from '../../helpers';
 import { User } from './types';
