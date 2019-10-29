@@ -1,6 +1,6 @@
 /*eslint no-undef: 0*/
 import * as _ from 'lodash';
-import { createWebApiClient, createIdentityApiClient } from '../../helpers';
+import { createWebApiClient, createIdentityApiClient, createSabitApiClient } from '../../helpers';
 import { User, UserStatuses } from './types';
 
 class UserService {
@@ -12,7 +12,7 @@ class UserService {
       return (await createWebApiClient().get(`/api/v1/users/${userName}`)).data;
     };
     const getLicenseTypesAsync = async () => {
-      return (await createWebApiClient().get('/api/v1/license-types')).data;
+      return (await createSabitApiClient().get('/api/v1/license-types')).data;
     };
     const [identityUser, apiUser, licenseTypes] = await Promise.all([
       getIdentityUserAsync(),
@@ -31,7 +31,7 @@ class UserService {
       return (await createWebApiClient().get('/api/v1/users')).data;
     };
     const getLicenseTypesAsync = async () => {
-      return (await createWebApiClient().get('/api/v1/license-types')).data;
+      return (await createSabitApiClient().get('/api/v1/license-types')).data;
     };
     const [identityUsers, apiUsers, licenseTypes] = await Promise.all([
       getIdentityUsersAsync(),

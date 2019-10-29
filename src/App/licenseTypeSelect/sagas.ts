@@ -1,10 +1,10 @@
 import { put, call, takeEvery, fork, all } from 'redux-saga/effects';
 import { fetchSuccess } from './actions';
-import { createWebApiClient } from '../helpers';
+import { createSabitApiClient } from '../helpers';
 import { FETCH_LICENSETYPES_REQUEST } from './types';
 
 function callApi() {
-  return createWebApiClient().get('/api/v1/license-types');
+  return createSabitApiClient().get('/api/v1/license-types');
 }
 
 function* handleFetch() {

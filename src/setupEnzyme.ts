@@ -10,5 +10,6 @@ window._env_ = {
   notificationApiUrl: 'http://localhost:9079',
   reportApiUrl: 'http://localhost:9079',
   identityApiUrl: 'http://localhost:9078',
+  sabitApiUrl: 'http://localhost:9079',
   sentryKey: '',
 };

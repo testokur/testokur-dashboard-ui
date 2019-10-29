@@ -34,3 +34,9 @@ export const createReportApiClient = (timeOut: number = 180000) =>
     baseURL: window._env_.reportApiUrl,
     timeout: timeOut,
   });
+
+export const createSabitApiClient = (timeOut: number = 180000) =>
+  axios.create({
+    baseURL: window._env_.sabitApiUrl,
+    timeout: timeOut,
+  });
