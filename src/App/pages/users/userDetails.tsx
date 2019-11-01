@@ -1,7 +1,7 @@
 import React from 'react';
 import * as _ from 'lodash';
 import { RouteComponentProps } from 'react-router';
-import { Grid, Avatar, withStyles, Divider, Tabs, Tab, Button, Paper, Box } from '@material-ui/core';
+import { Grid, Avatar, withStyles, Divider, Tabs, Tab, Fab } from '@material-ui/core';
 import PersonIcon from '@material-ui/icons/Person';
 import { styles } from './styles';
 import { UserStatus } from './UserStatus';
@@ -15,6 +15,10 @@ import { UpdateUserModel, User } from './types';
 import { Guid } from 'guid-typescript';
 import { UserActivityList } from './userActivityList';
 import { userService } from './userService';
+import DeleteForever from '@material-ui/icons/DeleteForever';
+import Sms from '@material-ui/icons/Sms';
+import Save from '@material-ui/icons/Save';
+import { SendSmsDialog } from './SendSmsDialog';
 
 interface MatchParams {
   userName: string;
@@ -30,6 +34,8 @@ interface State {
   user: User;
   success: boolean;
   message: string;
+  smsDialogOpen: boolean;
+  deleteUserDialogOpen: boolean;
 }
 
 class Component extends React.Component<Props, State> {
@@ -41,6 +47,8 @@ class Component extends React.Component<Props, State> {
       user: ({} as any) as User,
       success: false,
       message: '',
+      smsDialogOpen: false,
+      deleteUserDialogOpen: false,
     };
   }
   public async componentDidMount() {
@@ -84,23 +92,32 @@ class Component extends React.Component<Props, State> {
           {this.state.tabIndex === 4 && <UserActivityList user={this.state.user} />}
         </div>
         {this.state.tabIndex !== 3 && (
-          <Box marginTop={2}>
-            <Grid container justify="flex-start">
-              <Grid item xs={6}>
-                <Paper>
-                  <Button
-                    type="button"
-                    onClick={() => this.setUpdateUserDialogState(true)}
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                  >
-                    Degisiklikleri Kaydet
-                  </Button>
-                </Paper>
-              </Grid>
-            </Grid>
-          </Box>
+          <div>
+            <Fab
+              color="primary"
+              className={this.props.classes.fab}
+              onClick={() => this.setUpdateUserDialogState(true)}
+              aria-label="Degisiklikleri Kaydet"
+            >
+              <Save />
+            </Fab>
+            <Fab
+              color="secondary"
+              className={this.props.classes.fab}
+              onClick={() => this.setDeleteUserDialogState(true)}
+              aria-label="sil"
+            >
+              <DeleteForever />
+            </Fab>
+            <Fab
+              color="primary"
+              className={this.props.classes.fab}
+              onClick={() => this.setsmsDialogOpenState(true)}
+              aria-label="Sms Gonder"
+            >
+              <Sms />
+            </Fab>
+          </div>
         )}
         <ConfirmationDialog
           open={this.state.openUpdateUserDialog}
@@ -108,6 +125,22 @@ class Component extends React.Component<Props, State> {
           message={'Yaptiginiz degisikliler kaydedilecektir. Onayliyor musunuz?'}
           onNoClick={() => this.setUpdateUserDialogState(false)}
           onYesClick={() => this.updateUser()}
+        />
+        <ConfirmationDialog
+          open={this.state.deleteUserDialogOpen}
+          onNoClick={() => this.setDeleteUserDialogState(false)}
+          onYesClick={() => this.deleteUser()}
+          title={'Kullanici Silme'}
+          message={
+            _.get(this.state.user, 'email', '') +
+            ' e-posta adresine sahip kullaniciyi silmek istediginize emin misiniz?'
+          }
+        />
+        <SendSmsDialog
+          onSubmit={this.sendSms}
+          open={this.state.smsDialogOpen}
+          onClose={() => this.setsmsDialogOpenState(false)}
+          phone={_.get(this.state.user, 'phone', '')}
         />
       </div>
     );
@@ -127,10 +160,24 @@ class Component extends React.Component<Props, State> {
     }));
   };
 
+  private setDeleteUserDialogState = (display: boolean) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      deleteUserDialogOpen: display,
+    }));
+  };
+
+  private setsmsDialogOpenState = (display: boolean) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      smsDialogOpen: display,
+    }));
+  };
+
   private handleChange = async (newUser: User) => {
     let reFetchUsers = false;
 
-    if (newUser.smsBalance !== this.state.user.smsBalance || newUser.active !== this.state.user.active) {
+    if (newUser.smsBalance !== this.state.user.smsBalance) {
       reFetchUsers = true;
     }
 
@@ -142,6 +189,18 @@ class Component extends React.Component<Props, State> {
     if (reFetchUsers) {
       this.setState({ user: await userService.getUser(this.props.match.params.userName) });
     }
+  };
+
+  private sendSms = async (body: string): Promise<boolean> => {
+    await createWebApiClient().post('/api/v1/sms/send-admin', {
+      receiver: _.get(this.state.user, 'phone', ''),
+      body: body,
+    });
+    return true;
+  };
+  private deleteUser = async () => {
+    await createWebApiClient().delete(`/api/v1/users/${_.get(this.state.user, 'id', '')}`);
+    this.props.history.goBack();
   };
 
   private updateUser = async () => {
