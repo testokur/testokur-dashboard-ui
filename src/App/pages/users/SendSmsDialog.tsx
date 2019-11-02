@@ -5,6 +5,7 @@ import { MessageBox, DefaultTransition } from '../../components';
 interface Props {
   open: boolean;
   phone: string;
+  initialBody: string;
   onClose(): void;
   onSubmit(body: string): Promise<boolean>;
 }
@@ -16,6 +17,7 @@ export const SendSmsDialog = (props: Props) => {
 
   useEffect(() => {
     setPhone(props.phone);
+    setBody(props.initialBody);
   }, [props.phone]);
 
   return (
@@ -87,4 +89,7 @@ export const SendSmsDialog = (props: Props) => {
       </DialogActions>
     </Dialog>
   );
+};
+SendSmsDialog.defaultProps = {
+  initialBody: '',
 };

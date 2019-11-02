@@ -137,6 +137,7 @@ class Component extends React.Component<Props, State> {
           }
         />
         <SendSmsDialog
+          initialBody={`SAYIN ${this.state.user.registrarFullName}, ADINIZA KAYITLI TESTOKUR SİPARİŞ KAYDI BULUNMADIĞINDAN LİSANS KAYDINIZ ONAYLANMAMIŞTIR. WEB SİTEMİZDEN HEMEN SİPARİŞ OLUŞTURABİLİRSİNİZ. İLGİNİZE TEŞEKKÜR EDERİZ`}
           onSubmit={this.sendSms}
           open={this.state.smsDialogOpen}
           onClose={() => this.setsmsDialogOpenState(false)}
