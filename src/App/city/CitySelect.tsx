@@ -28,8 +28,7 @@ export class CitySelect extends React.Component<Props> {
     this.props.fetchCityRequest();
   }
   public render = () => {
-    return _.isEmpty(this.props.cities) ||
-    _.isUndefined(this.props.cityId) ? (
+    return _.isEmpty(this.props.cities) || _.isUndefined(this.props.cityId) ? (
       <></>
     ) : (
       <div>
