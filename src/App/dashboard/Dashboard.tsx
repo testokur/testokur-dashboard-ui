@@ -3,7 +3,7 @@ import { CssBaseline } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { SideMenu, TopAppBar } from '../navigation';
 import { styles } from './style';
-import { changePassword } from '../pages/changePassword';
+import { ChangePassword } from '../pages/changePassword';
 import { Route, Switch } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
 import { Home } from '../pages/home';
@@ -40,7 +40,7 @@ class Dashboard extends React.Component<DashboardProps, DashboardState> {
   private Footer = () => {
     return (
       <Typography className={this.props.classes.footer} variant="body2" color="textSecondary" align="center">
-        {'TestOkur yonetim paneli. Tum haklari saklidir. Copyright © 2019.'}
+        {'TestOkur – Optik Okuyucu ve Ölçme Değerlendirme Sistemi.Tum haklari saklidir © 2019.'}
       </Typography>
     );
   };
@@ -54,7 +54,7 @@ class Dashboard extends React.Component<DashboardProps, DashboardState> {
           <div className={this.props.classes.toolbar} />
           <Switch>
             <Route path="/" exact={true} component={Home} />
-            <Route path="/changePassword" exact={true} component={changePassword} />
+            <Route path="/changePassword" exact={true} component={ChangePassword} />
             <Route path="/users" exact={true} component={UserListPage} />
             <Route path="/users/:userName" exact={true} component={UserDetails} />
             <Route path="/emails" exact={true} component={EmailListPage} />

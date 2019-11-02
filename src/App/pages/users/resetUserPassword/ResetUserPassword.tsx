@@ -1,129 +1,73 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import * as _ from 'lodash';
-import { Grid } from '@material-ui/core';
 import { ValidatorForm } from 'react-material-ui-form-validator';
-import { PasswordField, MessageBox, InteractiveButtonWithSpinner } from '../../../components';
-import { snakeToCamel } from '../../../helpers';
-import { connect } from 'react-redux';
-import AppState from '../../../AppState';
-import { requestResetPassword } from './actions';
+import { Typography, Grid } from '@material-ui/core';
+import { createIdentityApiClient, HttpStatusCode } from '../../../helpers';
+import { MessageBox, InteractiveButtonWithSpinner, PasswordField } from '../../../components';
 import { User } from '../types';
 
-interface ComponentProps {
-  classes?: any;
+interface Props {
   user: User;
 }
 
-interface PropsFromState {
-  loading: boolean;
-  success: boolean;
-  message?: string;
-}
+export const ResetUserPassword = (props: Props) => {
+  const [newPassword, setNewPassword] = useState('');
+  const [newPasswordConfirm, setNewPasswordConfirm] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [message, setMessage] = useState('');
 
-interface State {
-  formData: any;
-}
-
-interface PropsFromDispatch {
-  requestResetPassword: typeof requestResetPassword;
-}
-
-type Props = PropsFromState & PropsFromDispatch & ComponentProps;
-
-class ResetUserPassword extends React.Component<Props, State> {
-  public constructor(props: Props) {
-    super(props);
-    this.state = {
-      formData: {
-        newPassword: '123456',
-        newPasswordConfirm: '123456',
-      },
-    };
-  }
-  public componentDidMount() {
+  const handleSubmit = async () => {
+    setLoading(true);
+    const response = await createIdentityApiClient().post('/api/v1/users/reset-user-password-by-admin', {
+      subjectId: props.user.subjectId,
+      newPassword: newPassword,
+    });
+    if (response.status !== HttpStatusCode.OK) {
+      setSuccess(false);
+      setMessage(response.data);
+    } else {
+      setSuccess(true);
+      setMessage('Parolaniz Basariyla Degistirildi');
+      setNewPassword('');
+      setNewPasswordConfirm('');
+    }
+    setLoading(false);
+  };
+  useEffect(() => {
     ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
-      const { formData } = this.state;
-      if (value !== formData.newPassword) {
+      if (value !== newPassword) {
         return false;
       }
       return true;
     });
-  }
-  public componentDidUpdate() {
-    if (this.props.success && !_.isNil(this.props.message)) {
-      if (this.state.formData.newPassword !== '') {
-        this.setState({
-          formData: {
-            newPassword: '',
-            newPasswordConfirm: '',
-          },
-        });
-      }
-    }
-  }
-
-  public render() {
-    const { formData } = this.state;
-
-    return (
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          <ValidatorForm onSubmit={this.handleSubmit}>
-            {!this.props.success && !_.isNil(this.props.message) ? (
-              <MessageBox variant="error" message={this.props.message} />
-            ) : (
-              <></>
-            )}
-            {this.props.success && !_.isNil(this.props.message) ? (
-              <MessageBox variant="success" message={this.props.message} />
-            ) : (
-              <></>
-            )}
-            <PasswordField
-              label="Yeni Parola"
-              onChange={this.handleChange}
-              name="new-password"
-              value={formData.newPassword}
-            />
-            <PasswordField
-              label="Yeni Parola Tekrar"
-              onChange={this.handleChange}
-              name="new-password-confirm"
-              validators={['isPasswordMatch']}
-              errorMessages={['Yeni parola tekrari ile ayni olmali']}
-              value={formData.newPasswordConfirm}
-            />
-            <InteractiveButtonWithSpinner loading={this.props.loading} />
-          </ValidatorForm>
-        </Grid>
+  }, [newPassword]);
+  return (
+    <Grid container spacing={3}>
+      <Grid item xs={12} sm={6}>
+        <Typography component="h1" variant="h5">
+          Parola Degistir
+        </Typography>
+        <ValidatorForm onSubmit={handleSubmit}>
+          {!success && !_.isEmpty(message) ? <MessageBox variant="error" message={message} /> : <></>}
+          {success && !_.isEmpty(message) ? <MessageBox variant="success" message={message} /> : <></>}
+          <PasswordField
+            label="Yeni Parola"
+            onChange={(e) => setNewPassword(e.target.value)}
+            name="new-password"
+            value={newPassword}
+          />
+          <PasswordField
+            label="Yeni Parola Tekrar"
+            onChange={(e) => setNewPasswordConfirm(e.target.value)}
+            name="new-password-confirm"
+            validators={['isPasswordMatch']}
+            errorMessages={['Yeni parola tekrari ile ayni olmali']}
+            value={newPasswordConfirm}
+          />
+          <InteractiveButtonWithSpinner loading={loading} />
+        </ValidatorForm>
       </Grid>
-    );
-  }
-
-  private handleChange = (event: any) => {
-    const { formData } = this.state;
-    formData[snakeToCamel(event.target.name)] = event.target.value;
-    this.setState({ formData });
-  };
-  private handleSubmit = () => {
-    this.props.requestResetPassword(this.props.user.subjectId, this.state.formData.newPassword);
-  };
-}
-
-function mapStateToProps({ resetUserPassword }: AppState, ownProps: ComponentProps) {
-  return {
-    user: ownProps.user,
-    loading: resetUserPassword.loading,
-    success: resetUserPassword.success,
-    message: resetUserPassword.message,
-  };
-}
-
-const mapDispatchToProps = {
-  requestResetPassword,
+    </Grid>
+  );
 };
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ResetUserPassword as any);

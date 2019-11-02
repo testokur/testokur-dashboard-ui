@@ -7,7 +7,7 @@ interface PasswordFieldProps {
   label: string;
   value: any;
   name: string;
-  onChange?(e: React.FormEvent<{}>, newValue: string): void;
+  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>;
 }
 
 export const passwordField = (props: PasswordFieldProps) => {
