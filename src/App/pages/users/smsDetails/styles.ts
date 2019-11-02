@@ -1,10 +1,6 @@
 import { Theme } from '@material-ui/core';
 
 export const styles = (theme: Theme) => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
   margin: {
     margin: theme.spacing(1),
   },

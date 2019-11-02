@@ -20,6 +20,9 @@ const smsFieldWithButton = (props: Props) => {
       type="text"
       label="SMS Kredisi"
       value={props.credit}
+      InputLabelProps={{
+        shrink: true,
+      }}
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">

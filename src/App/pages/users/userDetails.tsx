@@ -6,7 +6,6 @@ import PersonIcon from '@material-ui/icons/Person';
 import { styles } from './styles';
 import { UserStatus } from './UserStatus';
 import LicenseDetails from './licenseDetails';
-import { SmsDetails } from './smsDetails';
 import { ResetUserPassword } from './resetUserPassword';
 import { ConfirmationDialog, MessageBox } from '../../components';
 import { createWebApiClient } from '../../helpers';
@@ -79,16 +78,14 @@ class Component extends React.Component<Props, State> {
             textColor="primary"
           >
             <Tab label="LISANS" />
-            <Tab label="SMS" />
             <Tab label="PAROLA" />
             <Tab label="LOG" />
           </Tabs>
           {this.state.tabIndex === 0 && <LicenseDetails user={this.state.user} onChange={this.handleChange} />}
-          {this.state.tabIndex === 1 && <SmsDetails user={this.state.user} onChange={this.handleChange} />}
-          {this.state.tabIndex === 2 && <ResetUserPassword user={this.state.user} />}
-          {this.state.tabIndex === 3 && <UserActivityList user={this.state.user} />}
+          {this.state.tabIndex === 1 && <ResetUserPassword user={this.state.user} />}
+          {this.state.tabIndex === 2 && <UserActivityList user={this.state.user} />}
         </div>
-        {this.state.tabIndex !== 2 && (
+        {this.state.tabIndex !== 1 && (
           <div>
             <Fab
               color="primary"

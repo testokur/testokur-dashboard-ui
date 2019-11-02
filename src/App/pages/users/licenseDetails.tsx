@@ -8,6 +8,7 @@ import { formatDateTime, parseDateTime } from '../../helpers';
 import { User } from './types';
 import { CitySelect } from '../../city';
 import { PhoneField } from '../../components';
+import { SmsDetails } from './smsDetails';
 
 interface Props {
   user: User;
@@ -155,6 +156,7 @@ const licenseDetails = (props: Props) => {
         label="Tarama Yapabilir"
         labelPlacement="start"
       />
+      <SmsDetails user={props.user} onChange={props.onChange} />
       <TextField
         label="Isim"
         style={{ margin: 8 }}
@@ -213,6 +215,47 @@ const licenseDetails = (props: Props) => {
         onChange={(newCityId, newDistrictId) =>
           props.onChange({ ...props.user, cityId: newCityId, districtId: newDistrictId })
         }
+      />
+      <TextField
+        label="Siparis Veren Ad-Soyad"
+        style={{ margin: 8 }}
+        placeholder="Siparis Veren Ad-Soyad"
+        fullWidth
+        onChange={(e) => props.onChange({ ...props.user, registrarFullName: e.target.value })}
+        value={props.user.registrarFullName}
+        margin="normal"
+        variant="outlined"
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+      <PhoneField
+        label="Siparis Veren Telefon"
+        style={{ margin: 8 }}
+        placeholder="Siparis Veren Telefon"
+        fullWidth
+        value={props.user.registrarPhone}
+        onChange={(e) => props.onChange({ ...props.user, registrarPhone: e.target.value.replace(/[-)()]/g, '') })}
+        margin="normal"
+        variant="outlined"
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+      <TextField
+        label="Notlar/Yorumlar"
+        style={{ margin: 8 }}
+        placeholder="Notlar/Yorumlar"
+        fullWidth
+        multiline
+        rows="5"
+        value={props.user.notes}
+        onChange={(e) => props.onChange({ ...props.user, notes: e.target.value })}
+        margin="normal"
+        variant="outlined"
+        InputLabelProps={{
+          shrink: true,
+        }}
       />
     </form>
   );
