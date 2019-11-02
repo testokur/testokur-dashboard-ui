@@ -13,7 +13,6 @@ interface Props {
 const smsFieldWithButton = (props: Props) => {
   return (
     <TextField
-      id="filled-adornment-password"
       className={clsx(props.classes.margin, props.classes.textField)}
       variant="outlined"
       fullWidth

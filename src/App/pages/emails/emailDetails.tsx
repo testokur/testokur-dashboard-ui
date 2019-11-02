@@ -1,9 +1,9 @@
 import React from 'react';
 import { styles } from './styles';
 import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import { formatDateTime } from '../../helpers';
 import { Typography, Divider } from '@material-ui/core';
+import { FormTextbox } from '../../components';
 
 interface Props {
   classes: any;
@@ -13,42 +13,9 @@ interface Props {
 const emailDetails = (props: Props) => {
   return (
     <div>
-      <TextField
-        label="Alici E-Posta"
-        style={{ margin: 8 }}
-        placeholder="Alici E-Posta"
-        fullWidth
-        value={props.location.state.receiver}
-        margin="normal"
-        variant="outlined"
-        InputProps={{
-          readOnly: true,
-        }}
-      />
-      <TextField
-        label="Gonderim Tarihi/Zamani"
-        style={{ margin: 8 }}
-        placeholder="Gonderim Tarihi/Zamani"
-        fullWidth
-        value={formatDateTime(new Date(props.location.state.sentOnUtc))}
-        margin="normal"
-        variant="outlined"
-        InputProps={{
-          readOnly: true,
-        }}
-      />
-      <TextField
-        label="Baslik"
-        style={{ margin: 8 }}
-        placeholder="Baslik"
-        fullWidth
-        value={props.location.state.subject}
-        margin="normal"
-        variant="outlined"
-        InputProps={{
-          readOnly: true,
-        }}
-      />
+      <FormTextbox label="Alici E-Posta" value={props.location.state.receiver} />
+      <FormTextbox label="Gonderim Tarihi/Zamani" value={formatDateTime(new Date(props.location.state.sentOnUtc))} />
+      <FormTextbox label="Baslik" value={props.location.state.subject} />
       <Divider />
       <Typography variant="h6">E-Posta</Typography>
       <Divider />

@@ -16,7 +16,7 @@ const styles = (theme: Theme) => ({
   },
 });
 
-export const select = (props: SelectProps) => {
+const select = (props: SelectProps) => {
   return (
     <FormControl fullWidth variant="outlined" className={props.classes.formControl}>
       <InputLabel htmlFor={props.id}>{props.text}</InputLabel>
