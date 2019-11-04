@@ -36,7 +36,7 @@ const select = (props: SelectProps) => {
 
 select.defaultProps = {
   items: [],
-  value: "0"
+  value: '0',
 };
 
 export default withStyles(styles as any, { withTheme: true })(select);
