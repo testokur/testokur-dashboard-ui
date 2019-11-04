@@ -84,7 +84,8 @@ const licenseDetails = (props: Props) => {
         control={
           <Switch
             color="primary"
-            checked={props.user.canScan}
+            checked={_.isUndefined(props.user.canScan) ? false : props.user.canScan}
+            value="canScan"
             onChange={(e) => props.onChange({ ...props.user, canScan: e.target.checked })}
           />
         }
