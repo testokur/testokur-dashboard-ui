@@ -39,7 +39,7 @@ export const SendSmsDialog = (props: Props) => {
               fullWidth
             />
             <TextField
-              value={'TESOKUR'}
+              value={'TESTOKUR'}
               margin="dense"
               id="subject"
               label="Baslik"
