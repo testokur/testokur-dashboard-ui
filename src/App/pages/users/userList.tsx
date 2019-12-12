@@ -114,7 +114,7 @@ const userList = (props: Props) => {
             field: 'firstName',
             render: (rowData) => (
               <span>
-                {rowData.firstName} {rowData.lastName}
+                {rowData.firstName.trim()} {rowData.lastName.trim()}
               </span>
             ),
           },
