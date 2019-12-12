@@ -113,9 +113,11 @@ const userList = (props: Props) => {
             title: 'Ad Soyad',
             field: 'firstName',
             customFilterAndSearch: (filter, rowData) => {
+              const value = rowData.firstName.concat(' ', rowData.lastName).toLocaleUpperCase();
+
               return (
-                rowData.firstName.toLocaleUpperCase().includes(filter.toLocaleUpperCase()) ||
-                rowData.lastName.toLocaleUpperCase().includes(filter.toLocaleUpperCase())
+                value.includes(filter.toLocaleUpperCase()) ||
+                value.toLocaleUpperCase().includes(filter.toLocaleUpperCase())
               );
             },
             render: (rowData) => (
