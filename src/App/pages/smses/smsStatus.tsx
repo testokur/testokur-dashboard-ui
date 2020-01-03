@@ -53,15 +53,15 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 function getStatus(props: Props): Status {
   if (props.status === 0) {
-    return new Status('pending', <AccessTime />, SmsStatuses.Pending);
+    return new Status('pending', (<AccessTime />), SmsStatuses.Pending);
   }
   if (props.status === 1) {
-    return new Status('successful', <CheckCircleOutlineIcon />, SmsStatuses.Successful);
+    return new Status('successful', (<CheckCircleOutlineIcon />), SmsStatuses.Successful);
   }
   if (props.status === 2) {
-    return new Status('tryagain', <HourglassFull />, SmsStatuses.TryingAgain);
+    return new Status('tryagain', (<HourglassFull />), SmsStatuses.TryingAgain);
   }
-  return new Status('failed', <Cancel />, SmsStatuses.Failed);
+  return new Status('failed', (<Cancel />), SmsStatuses.Failed);
 }
 
 export const SmsStatus = (props: Props) => {

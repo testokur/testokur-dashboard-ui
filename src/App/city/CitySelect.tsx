@@ -63,7 +63,4 @@ const mapDispatchToProps = {
   fetchCityRequest,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(withLoading(CitySelect));
+export default connect(mapStateToProps, mapDispatchToProps)(withLoading(CitySelect));

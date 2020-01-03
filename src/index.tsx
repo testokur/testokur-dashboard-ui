@@ -12,6 +12,7 @@ const history = createBrowserHistory();
 const store = createStore(history);
 loadUser(store, userManager);
 
-render(<App store={store} history={history} userManager={userManager} />, document.getElementById(
-  'app',
-) as HTMLElement);
+render(
+  <App store={store} history={history} userManager={userManager} />,
+  document.getElementById('app') as HTMLElement,
+);

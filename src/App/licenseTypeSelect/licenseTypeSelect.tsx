@@ -47,7 +47,4 @@ const mapDispatchToProps = {
   fetchLicenseTypes,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(withLoading(licenseTypeSelect));
+export default connect(mapStateToProps, mapDispatchToProps)(withLoading(licenseTypeSelect));
