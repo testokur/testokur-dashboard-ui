@@ -63,17 +63,13 @@ const licenseDetails = (props: Props) => {
         label="Izin verilen PC Sayisi"
         value={props.user.maxAllowedDeviceCount}
         type="number"
-        onChange={(e) =>
-          props.onChange({ ...props.user, maxAllowedDeviceCount: (e.target.value as unknown) as number })
-        }
+        onChange={(e) => props.onChange({ ...props.user, maxAllowedDeviceCount: Number(e.target.value) })}
       />
       <FormTextbox
         label="Izin verilen Ogrenci Kayit Sayisi"
         value={props.user.maxAllowedStudentCount}
         type="number"
-        onChange={(e) =>
-          props.onChange({ ...props.user, maxAllowedStudentCount: (e.target.value as unknown) as number })
-        }
+        onChange={(e) => props.onChange({ ...props.user, maxAllowedStudentCount: Number(e.target.value) })}
       />
       <FormTextbox
         label="Referans / Promosyon"
