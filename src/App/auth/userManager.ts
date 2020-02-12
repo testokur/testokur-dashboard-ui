@@ -17,6 +17,7 @@ const userManagerSettings: UserManagerSettings = {
   loadUserInfo: true,
   monitorSession: true,
   response_mode: 'query',
+  clockSkew: 3000000,
 };
 
 export const userManager = createUserManager(userManagerSettings);
