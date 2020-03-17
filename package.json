@@ -27,7 +27,7 @@
     "guid-typescript": "^1.0.9",
     "history": "^4.9.0",
     "lodash": "^4.17.11",
-    "material-table": "^1.40.0",
+    "material-table": "^1.57.2",
     "oidc-client": "^1.7.1",
     "react": "^16.8.6",
     "react-device-detect": "^1.9.9",
