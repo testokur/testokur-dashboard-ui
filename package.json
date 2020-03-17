@@ -23,7 +23,7 @@
     "axios": "^0.19.2",
     "clsx": "^1.0.4",
     "connected-react-router": "^6.4.0",
-    "fecha": "^3.0.3",
+    "fecha": "^4.2.0",
     "guid-typescript": "^1.0.9",
     "history": "^4.9.0",
     "lodash": "^4.17.11",
