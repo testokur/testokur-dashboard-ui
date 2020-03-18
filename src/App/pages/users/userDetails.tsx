@@ -17,6 +17,7 @@ import DeleteForever from '@material-ui/icons/DeleteForever';
 import Sms from '@material-ui/icons/Sms';
 import Save from '@material-ui/icons/Save';
 import { SendSmsDialog } from './SendSmsDialog';
+import { SmsLogHistory } from './smsLogHistory';
 
 interface MatchParams {
   userName: string;
@@ -80,10 +81,12 @@ class Component extends React.Component<Props, State> {
             <Tab label="LISANS" />
             <Tab label="PAROLA" />
             <Tab label="LOG" />
+            <Tab label="SMS LOG" />
           </Tabs>
           {this.state.tabIndex === 0 && <LicenseDetails user={this.state.user} onChange={this.handleChange} />}
           {this.state.tabIndex === 1 && <ResetUserPassword user={this.state.user} />}
           {this.state.tabIndex === 2 && <UserActivityList user={this.state.user} />}
+          {this.state.tabIndex === 3 && <SmsLogHistory user={this.state.user} />}
         </div>
         {this.state.tabIndex !== 1 && (
           <div>

@@ -22,6 +22,7 @@ const logTypes: { [id: number]: string } = {
   10: 'Lisans Yenileme',
   11: 'Yonetici Masterkey ile Oturum Acma',
 };
+
 const userActivityList = (props: Props) => {
   const [data, setData] = useState<any | undefined>();
 

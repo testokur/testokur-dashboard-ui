@@ -1,3 +1,5 @@
+# TestOkur Dashboard UI
+
 [![CircleCI](https://circleci.com/gh/testokur/testokur-dashboard-ui.svg?style=svg)](https://circleci.com/gh/testokur/testokur-dashboard-ui)
 [![BCH compliance](https://bettercodehub.com/edge/badge/NazmiAltun/testokur-dashboard-ui?branch=master)](https://bettercodehub.com/)
 [![CodeFactor](https://www.codefactor.io/repository/github/testokur/testokur-dashboard-ui/badge)](https://www.codefactor.io/repository/github/nazmialtun/testokur-dashboard-ui)
@@ -8,5 +10,3 @@
 [![dependencies Status](https://david-dm.org/testokur/testokur-dashboard-ui/status.svg)](https://david-dm.org/testokur/testokur-dashboard-ui)
 [![devDependencies Status](https://david-dm.org/testokur/testokur-dashboard-ui/dev-status.svg)](https://david-dm.org/testokur/testokur-dashboard-ui?type=dev)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/3787/badge)](https://bestpractices.coreinfrastructure.org/projects/3787)
-
-# TestOkur Dashboard UI

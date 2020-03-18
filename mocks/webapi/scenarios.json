@@ -59,6 +59,10 @@
       "options": 204,
       "get": "sms.js"
     },
+    "/api/v1/sms/:id/logs": {
+      "options": 204,
+      "get": "sms-logs.js"
+    },
     "/api/v1/statistics": {
       "options": 204,
       "get": "statistics.js"
