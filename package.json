@@ -21,7 +21,7 @@
     "@material-ui/styles": "^4.0.1",
     "@sentry/browser": "^5.6.1",
     "axios": "^0.19.2",
-    "clsx": "^1.0.4",
+    "clsx": "^1.1.0",
     "connected-react-router": "^6.4.0",
     "fecha": "^4.2.0",
     "guid-typescript": "^1.0.9",
