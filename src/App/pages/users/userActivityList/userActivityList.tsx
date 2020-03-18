@@ -23,7 +23,7 @@ const logTypes: { [id: number]: string } = {
   11: 'Yonetici Masterkey ile Oturum Acma',
 };
 const userActivityList = (props: Props) => {
-  const [data, setData] = useState();
+  const [data, setData] = useState<any | undefined>();
 
   useEffect(() => {
     const fetchActivities = async () => {

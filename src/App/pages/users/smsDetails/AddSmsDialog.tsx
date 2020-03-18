@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const AddSmsDialog = (props: Props) => {
-  const [amount, setAmount] = useState();
+  const [amount, setAmount] = useState('0');
   const [gift, setGift] = useState(false);
   return (
     <Dialog open={props.open} TransitionComponent={DefaultTransition} onClose={props.onClose}>
@@ -39,7 +39,7 @@ export const AddSmsDialog = (props: Props) => {
           onClick={(event) => {
             event.preventDefault();
             props.onSubmit(parseInt(amount, 10), gift);
-            setAmount(0);
+            setAmount('0');
           }}
           color="primary"
         >
