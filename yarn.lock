@@ -1102,50 +1102,50 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@redux-saga/types/-/types-1.1.0.tgz#0e81ce56b4883b4b2a3001ebe1ab298b84237204"
 
-"@sentry/browser@^5.6.1":
-  version "5.15.2"
-  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-5.15.2.tgz#8008a2d621ac0da7c8a06cb6e490376421d4b4a2"
+"@sentry/browser@^5.15.4":
+  version "5.15.4"
+  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-5.15.4.tgz#5a7e7bad088556665ed8e69bceb0e18784e4f6c7"
   dependencies:
-    "@sentry/core" "5.15.2"
-    "@sentry/types" "5.15.2"
-    "@sentry/utils" "5.15.2"
+    "@sentry/core" "5.15.4"
+    "@sentry/types" "5.15.4"
+    "@sentry/utils" "5.15.4"
     tslib "^1.9.3"
 
-"@sentry/core@5.15.2":
-  version "5.15.2"
-  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-5.15.2.tgz#4f46ea3fcc48c58a1a4df41d48967c6595e79714"
+"@sentry/core@5.15.4":
+  version "5.15.4"
+  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-5.15.4.tgz#08b617e093a636168be5aebad141d1f744217085"
   dependencies:
-    "@sentry/hub" "5.15.2"
-    "@sentry/minimal" "5.15.2"
-    "@sentry/types" "5.15.2"
-    "@sentry/utils" "5.15.2"
+    "@sentry/hub" "5.15.4"
+    "@sentry/minimal" "5.15.4"
+    "@sentry/types" "5.15.4"
+    "@sentry/utils" "5.15.4"
     tslib "^1.9.3"
 
-"@sentry/hub@5.15.2":
-  version "5.15.2"
-  resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-5.15.2.tgz#92bdb71d962b6d3fa76822df667fdbb11ac6996f"
+"@sentry/hub@5.15.4":
+  version "5.15.4"
+  resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-5.15.4.tgz#cb64473725a60eec63b0be58ed1143eaaf894bee"
   dependencies:
-    "@sentry/types" "5.15.2"
-    "@sentry/utils" "5.15.2"
+    "@sentry/types" "5.15.4"
+    "@sentry/utils" "5.15.4"
     tslib "^1.9.3"
 
-"@sentry/minimal@5.15.2":
-  version "5.15.2"
-  resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-5.15.2.tgz#80530a3701930df0e8878cc683ad435f14eeb11b"
+"@sentry/minimal@5.15.4":
+  version "5.15.4"
+  resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-5.15.4.tgz#113f01fefb86b7830994c3dfa7ad4889ba7b2003"
   dependencies:
-    "@sentry/hub" "5.15.2"
-    "@sentry/types" "5.15.2"
+    "@sentry/hub" "5.15.4"
+    "@sentry/types" "5.15.4"
     tslib "^1.9.3"
 
-"@sentry/types@5.15.2":
-  version "5.15.2"
-  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-5.15.2.tgz#50a7620ae578bd291ca946c05dcfd7d835bb016b"
+"@sentry/types@5.15.4":
+  version "5.15.4"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-5.15.4.tgz#37f30e35b06e8e12ad1101f1beec3e9b88ca1aab"
 
-"@sentry/utils@5.15.2":
-  version "5.15.2"
-  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-5.15.2.tgz#457745802172be35a576ad26bd5c521c55cbe1bb"
+"@sentry/utils@5.15.4":
+  version "5.15.4"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-5.15.4.tgz#02865ab3c9b745656cea0ab183767ec26c96f6e6"
   dependencies:
-    "@sentry/types" "5.15.2"
+    "@sentry/types" "5.15.4"
     tslib "^1.9.3"
 
 "@sindresorhus/is@^0.7.0":
