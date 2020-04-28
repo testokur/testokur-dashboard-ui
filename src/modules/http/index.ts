@@ -23,9 +23,9 @@ class Client {
     return await response.json();
   }
 
-  private createUrl(url:string) : string {
-   const fullUrl = `${this.baseUrl}/${url}`; 
-   return fullUrl.replace(/([^:]\/)\/+/g, "$1");
+  private createUrl(url: string): string {
+    const fullUrl = `${this.baseUrl}/${url}`;
+    return fullUrl.replace(/([^:]\/)\/+/g, '$1');
   }
 
   private createRequest(method: string, data?: any): RequestInit {
@@ -46,3 +46,4 @@ export const identityApiClient = new Client(window._env_.identityApiUrl);
 export const notificationApiClient = new Client(window._env_.notificationApiUrl);
 export const reportApiClient = new Client(window._env_.reportApiUrl);
 export const sabitApiClient = new Client(window._env_.sabitApiUrl);
+export { HttpStatusCode } from './HttpStatusCode';

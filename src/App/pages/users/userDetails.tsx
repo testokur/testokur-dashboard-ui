@@ -8,7 +8,7 @@ import { UserStatus } from './UserStatus';
 import LicenseDetails from './licenseDetails';
 import { ResetUserPassword } from './resetUserPassword';
 import { ConfirmationDialog, MessageBox } from '../../components';
-import { createWebApiClient } from '../../helpers';
+import { webApiClient } from '../../../modules';
 import { UpdateUserModel, User } from './types';
 import { Guid } from 'guid-typescript';
 import { UserActivityList } from './userActivityList';
@@ -187,14 +187,14 @@ class Component extends React.Component<Props, State> {
   };
 
   private sendSms = async (body: string): Promise<boolean> => {
-    await createWebApiClient().post('/api/v1/sms/send-admin', {
+    await webApiClient.post('/api/v1/sms/send-admin', {
       receiver: _.get(this.state.user, 'phone', ''),
       body: body,
     });
     return true;
   };
   private deleteUser = async () => {
-    await createWebApiClient().delete(`/api/v1/users/${_.get(this.state.user, 'id', '')}`);
+    await webApiClient.delete(`/api/v1/users/${_.get(this.state.user, 'id', '')}`);
     this.props.history.goBack();
   };
 
@@ -218,7 +218,7 @@ class Component extends React.Component<Props, State> {
       active: this.state.user.active,
       notes: this.state.user.notes,
     };
-    await createWebApiClient().post('/api/v1/users/update-by-admin', model);
+    await webApiClient.post('/api/v1/users/update-by-admin', model);
     this.setState((prevState) => ({
       ...prevState,
       success: true,

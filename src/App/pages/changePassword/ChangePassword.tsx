@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import { ValidatorForm } from 'react-material-ui-form-validator';
 import { Typography, Grid } from '@material-ui/core';
 import { PasswordField, InteractiveButtonWithSpinner, MessageBox } from '../../components';
-import { createIdentityApiClient, HttpStatusCode } from '../../helpers';
+import { identityApiClient, HttpStatusCode } from '../../../modules';
 
 export const ChangePassword = () => {
   const [currentPassword, setCurrentPassword] = useState('');
@@ -15,7 +15,7 @@ export const ChangePassword = () => {
 
   const handleSubmit = async () => {
     setLoading(true);
-    const response = await createIdentityApiClient().post('/api/v1/users/change-password', {
+    const response = await identityApiClient.post('/api/v1/users/change-password', {
       currentPassword: currentPassword,
       newPassword: newPassword,
     });

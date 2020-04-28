@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import * as _ from 'lodash';
 import { ValidatorForm } from 'react-material-ui-form-validator';
 import { Typography, Grid } from '@material-ui/core';
-import { createIdentityApiClient, HttpStatusCode } from '../../../helpers';
+import { identityApiClient, HttpStatusCode } from '../../../../modules';
 import { MessageBox, InteractiveButtonWithSpinner, PasswordField } from '../../../components';
 import { User } from '../types';
 
@@ -19,7 +19,7 @@ export const ResetUserPassword = (props: Props) => {
 
   const handleSubmit = async () => {
     setLoading(true);
-    const response = await createIdentityApiClient().post('/api/v1/users/reset-user-password-by-admin', {
+    const response = await identityApiClient.post('/api/v1/users/reset-user-password-by-admin', {
       subjectId: props.user.subjectId,
       newPassword: newPassword,
     });

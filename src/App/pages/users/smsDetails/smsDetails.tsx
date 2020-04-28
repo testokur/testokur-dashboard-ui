@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core';
 import { styles } from './styles';
 import SmsFieldWithButton from './smsFieldWithButton';
 import { AddSmsDialog } from './AddSmsDialog';
-import { createWebApiClient } from '../../../helpers';
+import { webApiClient } from '../../../../modules';
 import { User } from '../types';
 
 interface Props {
@@ -17,7 +17,7 @@ const smsDetails = (props: Props) => {
 
   const handleAddCredit = async (amount: number, gift: boolean) => {
     setDialogOpen(false);
-    await createWebApiClient().post('/api/v1/sms/add-credits', { userId: props.user.id, amount: amount, gift: gift });
+    await webApiClient.post('/api/v1/sms/add-credits', { userId: props.user.id, amount: amount, gift: gift });
     props.onChange({ ...props.user, smsBalance: props.user.smsBalance + amount });
   };
   return (

@@ -1,8 +1,9 @@
 /* eslint-disable react/display-name */
 import React, { useEffect, useState } from 'react';
-import { createIdentityApiClient, formatDateTime } from '../../../helpers';
+import { identityApiClient } from '../../../../modules';
 import { User } from '../types';
 import { Table } from '../../../components';
+import { formatDateTime } from '../../../helpers';
 
 interface Props {
   user: User;
@@ -28,7 +29,7 @@ const userActivityList = (props: Props) => {
 
   useEffect(() => {
     const fetchActivities = async () => {
-      const response = await createIdentityApiClient().get(`/api/v1/user-activities?userId=${props.user.subjectId}`);
+      const response = await identityApiClient.get(`/api/v1/user-activities?userId=${props.user.subjectId}`);
       setData(response.data);
     };
     fetchActivities();

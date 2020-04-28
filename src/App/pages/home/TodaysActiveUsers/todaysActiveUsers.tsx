@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PeopleOutline from '@material-ui/icons/PeopleOutline';
 import { UserList } from '../UserList';
-import { createIdentityApiClient } from '../../../helpers';
+import { identityApiClient } from '../../../../modules';
 
 export const todaysActiveUsers = () => {
   const icon = (className: string) => <PeopleOutline className={className} />;
@@ -10,7 +10,7 @@ export const todaysActiveUsers = () => {
 
   useEffect(() => {
     const fetchActivities = async () => {
-      const response = await createIdentityApiClient().get('/api/v1/user-activities/today-logins');
+      const response = await identityApiClient.get('/api/v1/user-activities/today-logins');
       setLoading(false);
       setData(response.data);
     };

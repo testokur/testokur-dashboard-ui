@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Email } from './types';
-import { createNotificationApiClient } from '../../helpers/api';
+import { notificationApiClient } from '../../../modules';
 import EmailList from './emailList';
 import { TextField, InputAdornment, Button, Divider, withStyles } from '@material-ui/core';
 import clsx from 'clsx';
@@ -27,7 +27,7 @@ const emailListPage = (props: Props) => {
     try {
       setData(
         (
-          await createNotificationApiClient().get(
+          await notificationApiClient.get(
             `/api/v1/emails?from=${parseDateTime(startDate).toISOString()}&to=${to.toISOString()}`,
           )
         ).data,

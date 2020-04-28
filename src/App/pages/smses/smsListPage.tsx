@@ -1,7 +1,7 @@
 /*eslint no-undef: 0*/
 import React, { useEffect, useState } from 'react';
 import { Sms } from './types';
-import { createNotificationApiClient, createWebApiClient } from '../../helpers/api';
+import { notificationApiClient, webApiClient } from '../../../modules';
 import SmsList from './smsList';
 import { withStyles } from '@material-ui/core';
 import { styles } from './styles';
@@ -19,10 +19,10 @@ const smsListPage = (props: Props) => {
 
     try {
       const getSmsesAsync = async () => {
-        return (await createNotificationApiClient().get('/api/v1/sms/today')).data;
+        return (await notificationApiClient.get('/api/v1/sms/today')).data;
       };
       const getApiUsersAsync = async () => {
-        return (await createWebApiClient().get('/api/v1/users')).data;
+        return (await webApiClient.get('/api/v1/users')).data;
       };
 
       const [smses, apiUsers] = await Promise.all([getSmsesAsync(), getApiUsersAsync()]);

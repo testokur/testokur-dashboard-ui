@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as _ from 'lodash';
 import { UserList } from '../UserList';
 import CustomerIcon from '@material-ui/icons/PersonAdd';
-import { createIdentityApiClient } from '../../../helpers';
+import { identityApiClient } from '../../../../modules';
 
 export const pendingUsers = () => {
   const customerIcon = (className: string) => <CustomerIcon className={className} />;
@@ -11,7 +11,7 @@ export const pendingUsers = () => {
 
   useEffect(() => {
     const fetchActivities = async () => {
-      const response = await createIdentityApiClient().get('/api/v1/users/pending');
+      const response = await identityApiClient.get('/api/v1/users/pending');
       setLoading(false);
       setData(response.data);
     };

@@ -9,7 +9,8 @@ import DeleteForever from '@material-ui/icons/DeleteForever';
 import AddCircleOutline from '@material-ui/icons/AddCircleOutline';
 import Update from '@material-ui/icons/Update';
 import { SendSmsDialog } from './SendSmsDialog';
-import { createWebApiClient, formatDateTime } from '../../helpers';
+import { formatDateTime } from '../../helpers';
+import { webApiClient } from '../../../modules';
 import { AddSmsDialog } from './smsDetails/AddSmsDialog';
 import { ConfirmationDialog } from '../../components';
 import { User } from './types';
@@ -29,13 +30,13 @@ const userList = (props: Props) => {
   const [user, setUser] = useState<User | User[]>();
 
   const handleSendSms = async (body: string): Promise<boolean> => {
-    await createWebApiClient().post('/api/v1/sms/send-admin', { receiver: _.get(user, 'phone', ''), body: body });
+    await webApiClient.post('/api/v1/sms/send-admin', { receiver: _.get(user, 'phone', ''), body: body });
     return true;
   };
 
   const handleAddCredit = async (amount: number, gift: boolean) => {
     setAddSmsCreditDialogOpen(false);
-    await createWebApiClient().post('/api/v1/sms/add-credits', {
+    await webApiClient.post('/api/v1/sms/add-credits', {
       userId: _.get(user, 'id', ''),
       amount: amount,
       gift: gift,
@@ -44,13 +45,13 @@ const userList = (props: Props) => {
   };
 
   const deleteUser = async () => {
-    await createWebApiClient().delete(`/api/v1/users/${_.get(user, 'id', '')}`);
+    await webApiClient.delete(`/api/v1/users/${_.get(user, 'id', '')}`);
     setDeleteUserDialogOpen(false);
     await props.reloadData();
   };
 
   const extendUser = async () => {
-    await createWebApiClient().post('/api/v1/users/extend', {
+    await webApiClient.post('/api/v1/users/extend', {
       email: _.get(user, 'email', ''),
       currentExpiryDateTimeUtc: _.get(user, 'expiryDateUtc', ''),
     });

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { withStyles } from '@material-ui/core';
 import { IdentityStats, WebApiStats, ReportStats, NotificationStats } from './types';
-import { createIdentityApiClient, createWebApiClient } from '../../helpers';
-import { createReportApiClient, createNotificationApiClient } from '../../helpers/api';
+import { identityApiClient, webApiClient, reportApiClient, notificationApiClient } from '../../../modules';
 import Table from './table';
 import { styles } from './styles';
 
@@ -19,10 +18,10 @@ const statistics = (props: Props) => {
 
   const fetchStats = async () => {
     setLoading(true);
-    setIdentityStats((await createIdentityApiClient().get('api/v1/stats')).data);
-    setWebApiStats((await createWebApiClient().get('api/v1/statistics')).data);
-    setReportStats((await createReportApiClient().get('api/v1/report-requests')).data);
-    setNotificationStats((await createNotificationApiClient().get('api/v1/statistics')).data);
+    setIdentityStats((await identityApiClient.get('api/v1/stats')).data);
+    setWebApiStats((await webApiClient.get('api/v1/statistics')).data);
+    setReportStats((await reportApiClient.get('api/v1/report-requests')).data);
+    setNotificationStats((await notificationApiClient.get('api/v1/statistics')).data);
     setLoading(false);
   };
 

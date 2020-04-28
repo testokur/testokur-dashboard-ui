@@ -20,7 +20,6 @@
     "@material-ui/icons": "^4.0.1",
     "@material-ui/styles": "^4.0.1",
     "@sentry/browser": "^5.15.4",
-    "axios": "^0.19.2",
     "clsx": "^1.0.4",
     "connected-react-router": "^6.4.0",
     "fecha": "^4.2.0",
