@@ -12,7 +12,7 @@ export const onlineUsers = () => {
     const fetchActivities = async () => {
       const response = await webApiClient.get('/api/v1/users/online');
       setLoading(false);
-      setData(response.data);
+      setData(response);
     };
     fetchActivities();
   }, []);

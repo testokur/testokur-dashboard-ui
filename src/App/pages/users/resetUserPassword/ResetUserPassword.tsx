@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import * as _ from 'lodash';
 import { ValidatorForm } from 'react-material-ui-form-validator';
 import { Typography, Grid } from '@material-ui/core';
-import { identityApiClient, HttpStatusCode } from '../../../../modules';
+import { identityApiClient } from '../../../../modules';
 import { MessageBox, InteractiveButtonWithSpinner, PasswordField } from '../../../components';
 import { User } from '../types';
 
@@ -23,9 +23,9 @@ export const ResetUserPassword = (props: Props) => {
       subjectId: props.user.subjectId,
       newPassword: newPassword,
     });
-    if (response.status !== HttpStatusCode.OK) {
+    if (!response.ok) {
       setSuccess(false);
-      setMessage(response.data);
+      setMessage(await response.text());
     } else {
       setSuccess(true);
       setMessage('Parolaniz Basariyla Degistirildi');

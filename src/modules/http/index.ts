@@ -11,16 +11,14 @@ class Client {
     return await response.json();
   }
 
-  public async post(url: string, data?: any): Promise<any> {
-    const response = await fetch(this.createUrl(url), this.createRequest('POST', data));
-
-    return await response.json();
+  public async post(url: string, data?: any): Promise<Response> {
+    return await fetch(this.createUrl(url), this.createRequest('POST', data));
   }
 
-  public async delete(url: string): Promise<any> {
+  public async delete(url: string): Promise<string> {
     const response = await fetch(this.createUrl(url), this.createRequest('DELETE'));
 
-    return await response.json();
+    return await response.text();
   }
 
   private createUrl(url: string): string {

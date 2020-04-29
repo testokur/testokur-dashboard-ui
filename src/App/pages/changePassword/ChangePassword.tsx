@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import { ValidatorForm } from 'react-material-ui-form-validator';
 import { Typography, Grid } from '@material-ui/core';
 import { PasswordField, InteractiveButtonWithSpinner, MessageBox } from '../../components';
-import { identityApiClient, HttpStatusCode } from '../../../modules';
+import { identityApiClient } from '../../../modules';
 
 export const ChangePassword = () => {
   const [currentPassword, setCurrentPassword] = useState('');
@@ -19,9 +19,9 @@ export const ChangePassword = () => {
       currentPassword: currentPassword,
       newPassword: newPassword,
     });
-    if (response.status !== HttpStatusCode.OK) {
+    if (!response.ok) {
       setSuccess(false);
-      setMessage(response.data);
+      setMessage(await response.text());
     } else {
       setSuccess(true);
       setMessage('Parolaniz Basariyla Degistirildi');

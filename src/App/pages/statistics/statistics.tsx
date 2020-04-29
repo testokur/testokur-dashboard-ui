@@ -18,10 +18,10 @@ const statistics = (props: Props) => {
 
   const fetchStats = async () => {
     setLoading(true);
-    setIdentityStats((await identityApiClient.get('api/v1/stats')).data);
-    setWebApiStats((await webApiClient.get('api/v1/statistics')).data);
-    setReportStats((await reportApiClient.get('api/v1/report-requests')).data);
-    setNotificationStats((await notificationApiClient.get('api/v1/statistics')).data);
+    setIdentityStats((await identityApiClient.get('api/v1/stats')));
+    setWebApiStats((await webApiClient.get('api/v1/statistics')));
+    setReportStats((await reportApiClient.get('api/v1/report-requests')));
+    setNotificationStats((await notificationApiClient.get('api/v1/statistics')));
     setLoading(false);
   };
 

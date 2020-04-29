@@ -13,7 +13,7 @@ export const pendingUsers = () => {
     const fetchActivities = async () => {
       const response = await identityApiClient.get('/api/v1/users/pending');
       setLoading(false);
-      setData(response.data);
+      setData(response);
     };
     fetchActivities();
   }, []);

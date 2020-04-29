@@ -9,7 +9,7 @@ function callApi() {
 
 function* handleFetch() {
   const res = yield call(callApi);
-  yield put(fetchSuccess(res.data));
+  yield put(fetchSuccess(res));
 }
 
 function* watchFetchRequest() {

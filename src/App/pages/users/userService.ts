@@ -6,13 +6,13 @@ import { User, UserStatuses } from './types';
 class UserService {
   public async getUser(userName: string) {
     const getIdentityUserAsync = async () => {
-      return (await identityApiClient.get(`/api/v1/users/${userName}/details`)).data;
+      return (await identityApiClient.get(`/api/v1/users/${userName}/details`));
     };
     const getApiUserAsync = async () => {
-      return (await webApiClient.get(`/api/v1/users/${userName}`)).data;
+      return (await webApiClient.get(`/api/v1/users/${userName}`));
     };
     const getLicenseTypesAsync = async () => {
-      return (await sabitApiClient.get('/api/v1/license-types')).data;
+      return (await sabitApiClient.get('/api/v1/license-types'));
     };
     const [identityUser, apiUser, licenseTypes] = await Promise.all([
       getIdentityUserAsync(),
@@ -25,13 +25,13 @@ class UserService {
 
   public async getUserList() {
     const getIdentityUsersAsync = async () => {
-      return (await identityApiClient.get('/api/v1/users')).data;
+      return (await identityApiClient.get('/api/v1/users'));
     };
     const getApiUsersAsync = async () => {
-      return (await webApiClient.get('/api/v1/users')).data;
+      return (await webApiClient.get('/api/v1/users'));
     };
     const getLicenseTypesAsync = async () => {
-      return (await sabitApiClient.get('/api/v1/license-types')).data;
+      return (await sabitApiClient.get('/api/v1/license-types'));
     };
     const [identityUsers, apiUsers, licenseTypes] = await Promise.all([
       getIdentityUsersAsync(),

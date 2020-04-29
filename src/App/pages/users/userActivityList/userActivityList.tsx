@@ -30,7 +30,7 @@ const userActivityList = (props: Props) => {
   useEffect(() => {
     const fetchActivities = async () => {
       const response = await identityApiClient.get(`/api/v1/user-activities?userId=${props.user.subjectId}`);
-      setData(response.data);
+      setData(response);
     };
     fetchActivities();
   }, []);

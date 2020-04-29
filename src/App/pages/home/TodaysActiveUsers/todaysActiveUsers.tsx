@@ -12,7 +12,7 @@ export const todaysActiveUsers = () => {
     const fetchActivities = async () => {
       const response = await identityApiClient.get('/api/v1/user-activities/today-logins');
       setLoading(false);
-      setData(response.data);
+      setData(response);
     };
     fetchActivities();
   }, []);

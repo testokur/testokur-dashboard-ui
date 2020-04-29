@@ -1,5 +1,7 @@
 import React from 'react';
-import * as _ from 'lodash';
+import isEmpty from 'lodash/isEmpty';
+import isUndefined from 'lodash/isUndefined';
+import find from 'lodash/find';
 import { connect } from 'react-redux';
 
 import { City } from './types';
@@ -28,7 +30,7 @@ export class CitySelect extends React.Component<Props> {
     this.props.fetchCityRequest();
   }
   public render = () => {
-    return _.isEmpty(this.props.cities) || _.isUndefined(this.props.cityId) ? (
+    return isEmpty(this.props.cities) || isUndefined(this.props.cityId) ? (
       <></>
     ) : (
       <div>
@@ -44,7 +46,7 @@ export class CitySelect extends React.Component<Props> {
           id="district-select"
           value={this.props.districtId.toString()}
           onChange={(e) => this.props.onChange(this.props.cityId, e)}
-          items={(_.find(this.props.cities, ['id', this.props.cityId]) as City).districts}
+          items={(find(this.props.cities, ['id', this.props.cityId]) as City).districts}
         />
       </div>
     );
