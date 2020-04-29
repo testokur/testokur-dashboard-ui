@@ -44,4 +44,3 @@ export const identityApiClient = new Client(window._env_.identityApiUrl);
 export const notificationApiClient = new Client(window._env_.notificationApiUrl);
 export const reportApiClient = new Client(window._env_.reportApiUrl);
 export const sabitApiClient = new Client(window._env_.sabitApiUrl);
-export { HttpStatusCode } from './HttpStatusCode';
