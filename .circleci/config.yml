@@ -71,10 +71,14 @@ workflows:
           filters:
             tags:
               only: /.qa*/
+            branches:
+              ignore: /dependabot.*/
       - static-code-analysis:
           filters:
             tags:
               only: /.qa*/
+            branches:
+              ignore: /dependabot.*/
       - deploy-prod:
           filters:
             tags:
