@@ -30,7 +30,7 @@ const emailListPage = (props: Props) => {
           await notificationApiClient.get(
             `/api/v1/emails?from=${parseDateTime(startDate).toISOString()}&to=${to.toISOString()}`,
           )
-        ).data,
+        ),
       );
     } catch (e) {
       // Do Nothing

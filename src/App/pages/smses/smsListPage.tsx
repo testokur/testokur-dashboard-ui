@@ -19,10 +19,10 @@ const smsListPage = (props: Props) => {
 
     try {
       const getSmsesAsync = async () => {
-        return (await notificationApiClient.get('/api/v1/sms/today')).data;
+        return (await notificationApiClient.get('/api/v1/sms/today'));
       };
       const getApiUsersAsync = async () => {
-        return (await webApiClient.get('/api/v1/users')).data;
+        return (await webApiClient.get('/api/v1/users'));
       };
 
       const [smses, apiUsers] = await Promise.all([getSmsesAsync(), getApiUsersAsync()]);
