@@ -18,7 +18,7 @@
   "dependencies": {
     "@material-ui/core": "^4.9.8",
     "@material-ui/icons": "^4.0.1",
-    "@material-ui/styles": "^4.0.1",
+    "@material-ui/styles": "^4.9.13",
     "@sentry/browser": "^5.15.4",
     "clsx": "^1.0.4",
     "connected-react-router": "^6.4.0",
