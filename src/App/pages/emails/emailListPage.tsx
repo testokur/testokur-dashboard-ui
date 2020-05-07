@@ -26,10 +26,8 @@ const emailListPage = (props: Props) => {
 
     try {
       setData(
-        (
-          await notificationApiClient.get(
-            `/api/v1/emails?from=${parseDateTime(startDate).toISOString()}&to=${to.toISOString()}`,
-          )
+        await notificationApiClient.get(
+          `/api/v1/emails?from=${parseDateTime(startDate).toISOString()}&to=${to.toISOString()}`,
         ),
       );
     } catch (e) {
