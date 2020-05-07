@@ -6,11 +6,9 @@
   "author": "Nazmi Altun <nazmialtun@windowslive.com>",
   "license": "MIT",
   "scripts": {
-    "tsc": "tsc -p ./ --noEmit",
-    "lint": "eslint --fix \"src/**\"",
-    "ts-lint": "tslint -p ./",
+    "lint": "tsc -p ./ --noEmit && eslint --fix \"src/**\" && tslint -p ./",
     "dev": "chmod +x ./env.sh && ./env.sh && cp env-config.js ./public/ && cross-env NODE_ENV=development webpack-dev-server --color --progress",
-    "precommit": "yarn tsc && yarn format && yarn ts-lint && yarn lint && yarn test",
+    "precommit": "yarn format &&  yarn lint && yarn test",
     "build": "rimraf dist && cross-env NODE_ENV=production webpack --color --progress",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,json,md,yml}\"",
     "test": "jest --env=jsdom"
