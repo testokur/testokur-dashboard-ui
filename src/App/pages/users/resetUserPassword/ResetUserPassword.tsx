@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import * as _ from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import { ValidatorForm } from 'react-material-ui-form-validator';
 import { Typography, Grid } from '@material-ui/core';
 import { identityApiClient } from '../../../../modules';
@@ -49,8 +49,8 @@ export const ResetUserPassword = (props: Props) => {
           Parola Degistir
         </Typography>
         <ValidatorForm onSubmit={handleSubmit}>
-          {!success && !_.isEmpty(message) ? <MessageBox variant="error" message={message} /> : <></>}
-          {success && !_.isEmpty(message) ? <MessageBox variant="success" message={message} /> : <></>}
+          {!success && !isEmpty(message) ? <MessageBox variant="error" message={message} /> : <></>}
+          {success && !isEmpty(message) ? <MessageBox variant="success" message={message} /> : <></>}
           <PasswordField
             label="Yeni Parola"
             onChange={(e) => setNewPassword(e.target.value)}

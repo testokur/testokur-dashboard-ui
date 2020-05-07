@@ -1,12 +1,12 @@
 import fecha from 'fecha';
-import * as _ from 'lodash';
+import isNil from 'lodash/isNil';
 
 const defaultFormat = 'DD.MM.YYYY HH:mm:ss';
 
 export default (input: string) => {
   const parsedDate = fecha.parse(input, defaultFormat);
 
-  if (_.isNil(parsedDate)) {
+  if (isNil(parsedDate)) {
     throw Error();
   }
 

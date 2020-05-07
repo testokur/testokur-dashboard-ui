@@ -1,5 +1,5 @@
 import React from 'react';
-import * as _ from 'lodash';
+import get from 'lodash/get';
 import { Chip, makeStyles, Theme } from '@material-ui/core';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import HourglassFull from '@material-ui/icons/HourglassFull';
@@ -70,7 +70,7 @@ export const SmsStatus = (props: Props) => {
   return (
     <Chip
       color="secondary"
-      className={clsx(classes.chip, _.get(classes, `${status.name}`))}
+      className={clsx(classes.chip, get(classes, `${status.name}`))}
       label={status.label}
       icon={status.icon}
     />

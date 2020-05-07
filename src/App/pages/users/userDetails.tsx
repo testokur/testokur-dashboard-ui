@@ -1,5 +1,6 @@
 import React from 'react';
-import * as _ from 'lodash';
+import get from 'lodash/get';
+import isNil from 'lodash/isNil';
 import { RouteComponentProps } from 'react-router';
 import { Grid, Avatar, withStyles, Divider, Tabs, Tab, Fab } from '@material-ui/core';
 import PersonIcon from '@material-ui/icons/Person';
@@ -57,7 +58,7 @@ class Component extends React.Component<Props, State> {
     return (
       <div>
         <div className={this.props.classes.root}>
-          {this.state.success && !_.isNil(this.state.message) ? (
+          {this.state.success && !isNil(this.state.message) ? (
             <MessageBox variant="success" message={this.state.message} />
           ) : (
             <></>
@@ -126,8 +127,7 @@ class Component extends React.Component<Props, State> {
           onYesClick={() => this.deleteUser()}
           title={'Kullanici Silme'}
           message={
-            _.get(this.state.user, 'email', '') +
-            ' e-posta adresine sahip kullaniciyi silmek istediginize emin misiniz?'
+            get(this.state.user, 'email', '') + ' e-posta adresine sahip kullaniciyi silmek istediginize emin misiniz?'
           }
         />
         <SendSmsDialog
@@ -135,7 +135,7 @@ class Component extends React.Component<Props, State> {
           onSubmit={this.sendSms}
           open={this.state.smsDialogOpen}
           onClose={() => this.setsmsDialogOpenState(false)}
-          phone={_.get(this.state.user, 'phone', '')}
+          phone={get(this.state.user, 'phone', '')}
         />
       </div>
     );
@@ -188,13 +188,13 @@ class Component extends React.Component<Props, State> {
 
   private sendSms = async (body: string): Promise<boolean> => {
     await webApiClient.post('/api/v1/sms/send-admin', {
-      receiver: _.get(this.state.user, 'phone', ''),
+      receiver: get(this.state.user, 'phone', ''),
       body: body,
     });
     return true;
   };
   private deleteUser = async () => {
-    await webApiClient.delete(`/api/v1/users/${_.get(this.state.user, 'id', '')}`);
+    await webApiClient.delete(`/api/v1/users/${get(this.state.user, 'id', '')}`);
     this.props.history.goBack();
   };
 

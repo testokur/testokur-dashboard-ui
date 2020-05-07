@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import * as _ from 'lodash';
+import map from 'lodash/map';
 import { UserList } from '../UserList';
 import CustomerIcon from '@material-ui/icons/PersonAdd';
 import { identityApiClient } from '../../../../modules';
@@ -22,7 +22,7 @@ export const pendingUsers = () => {
     <UserList
       loading={loading}
       title={'Onay Bekleyen Kullanicilar'}
-      users={_.map(data, 'userName')}
+      users={map(data, 'userName')}
       icon={customerIcon}
       iconBgColor="#1E688A"
     />

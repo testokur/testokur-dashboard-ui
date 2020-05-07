@@ -1,5 +1,5 @@
 import React from 'react';
-import * as _ from 'lodash';
+import isNull from 'lodash/isNull';
 import { CircularProgress, Box } from '@material-ui/core';
 import { RouteProps, Route } from 'react-router-dom';
 import AppState from '../AppState';
@@ -45,7 +45,7 @@ export class PrivateRoute extends React.Component<Props> {
 function mapStateToProps(state: AppState, ownProps: PrivateRouteProps) {
   return {
     component: ownProps.component,
-    requiresAuthentication: !state.oidc.isLoadingUser && _.isNull(state.oidc.user),
+    requiresAuthentication: !state.oidc.isLoadingUser && isNull(state.oidc.user),
     location: state.router.location,
   };
 }

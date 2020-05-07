@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import get from 'lodash/get';
 import React from 'react';
 import { IdentityStats, WebApiStats, ReportStats, NotificationStats } from './types';
 import { withLoading } from '../../components';
@@ -21,20 +21,20 @@ interface Props {
 /* eslint-disable react/display-name */
 const table = (props: Props) => {
   const totalStudentCount: number =
-    _.get(props, 'webApiStats.totalESchoolStudentCount', 0) +
-    _.get(props, 'webApiStats.totalBulkStudentCount', 0) +
-    _.get(props, 'webApiStats.totalSingleEntryStudentCount', 0);
+    get(props, 'webApiStats.totalESchoolStudentCount', 0) +
+    get(props, 'webApiStats.totalBulkStudentCount', 0) +
+    get(props, 'webApiStats.totalSingleEntryStudentCount', 0);
   const todayStudentCount: number =
-    _.get(props, 'webApiStats.todayESchoolStudentCount', 0) +
-    _.get(props, 'webApiStats.todayBulkStudentCount', 0) +
-    _.get(props, 'webApiStats.todaySingleEntryStudentCount', 0);
+    get(props, 'webApiStats.todayESchoolStudentCount', 0) +
+    get(props, 'webApiStats.todayBulkStudentCount', 0) +
+    get(props, 'webApiStats.todaySingleEntryStudentCount', 0);
 
   const todayScannedStudentFormCount: number =
-    _.get(props, 'webApiStats.todayScannedStudentFormCountByCamera', 0) +
-    _.get(props, 'webApiStats.todayScannedStudentFormCountByFile', 0);
+    get(props, 'webApiStats.todayScannedStudentFormCountByCamera', 0) +
+    get(props, 'webApiStats.todayScannedStudentFormCountByFile', 0);
   const totalScannedStudentFormCount: number =
-    _.get(props, 'webApiStats.totalScannedStudentFormCountByCamera', 0) +
-    _.get(props, 'webApiStats.totalScannedStudentFormCountByFile', 0);
+    get(props, 'webApiStats.totalScannedStudentFormCountByCamera', 0) +
+    get(props, 'webApiStats.totalScannedStudentFormCountByFile', 0);
 
   return (
     <div>
@@ -44,7 +44,7 @@ const table = (props: Props) => {
           <ListItem>
             <ListItemText
               primary="Kullanici Tarafindan Gun Icinde Iletilen Sms Sayisi"
-              secondary={`${_.get(props, 'notificationStats.totalUserSmsCountInDay')} ( Kontor Olarak : ${_.get(
+              secondary={`${get(props, 'notificationStats.totalUserSmsCountInDay')} ( Kontor Olarak : ${get(
                 props,
                 'notificationStats.totalSmsCredit',
               )} ) `}
@@ -54,42 +54,42 @@ const table = (props: Props) => {
           <ListItem>
             <ListItemText
               primary="Sistem(Otomatik) Tarafindan Gun Icinde Iletilen SMS Sayisi"
-              secondary={_.get(props, 'notificationStats.totalSystemSmsCountInDay')}
+              secondary={get(props, 'notificationStats.totalSystemSmsCountInDay')}
             />
           </ListItem>
           <Divider component="li" />
           <ListItem>
             <ListItemText
               primary="Gun Icinde Gonderilen Basarili SMS Sayisi"
-              secondary={_.get(props, 'notificationStats.totalSuccessfulSmsCountInDay')}
+              secondary={get(props, 'notificationStats.totalSuccessfulSmsCountInDay')}
             />
           </ListItem>
           <Divider component="li" />
           <ListItem>
             <ListItemText
               primary="Gun Icinde Hata Alinan SMS Sayisi"
-              secondary={_.get(props, 'notificationStats.totalFailedSmsCountInDay')}
+              secondary={get(props, 'notificationStats.totalFailedSmsCountInDay')}
             />
           </ListItem>
           <Divider component="li" />
           <ListItem>
             <ListItemText
               primary="En Uzun SMS Gonderim Suresi"
-              secondary={`${_.get(props, 'notificationStats.longestSmsDuration')} milisaniye`}
+              secondary={`${get(props, 'notificationStats.longestSmsDuration')} milisaniye`}
             />
           </ListItem>
           <Divider component="li" />
           <ListItem>
             <ListItemText
               primary="Ortalama SMS Gonderim Suresi"
-              secondary={`${_.get(props, 'notificationStats.averageSmsDuration')} milisaniye`}
+              secondary={`${get(props, 'notificationStats.averageSmsDuration')} milisaniye`}
             />
           </ListItem>
           <Divider component="li" />
           <ListItem>
             <ListItemText
               primary="Gun icinde en fazla kontor harcayan kullanici ( harcadigi kontor) "
-              secondary={`${_.get(props, 'notificationStats.topSmsSenderEmailInDay')} (${_.get(
+              secondary={`${get(props, 'notificationStats.topSmsSenderEmailInDay')} (${get(
                 props,
                 'notificationStats.topSmsSenderCreditInDay',
               )})`}
@@ -99,14 +99,14 @@ const table = (props: Props) => {
           <ListItem>
             <ListItemText
               primary="Toplam Gonderilen SMS Sayisi (Agustos 2017'den itibaren)"
-              secondary={_.get(props, 'notificationStats.totalSmsCountAll')}
+              secondary={get(props, 'notificationStats.totalSmsCountAll')}
             />
           </ListItem>
           <Divider component="li" />
           <ListItem>
             <ListItemText
               primary="Toplam Kullanici Tarafindan Tuketilen Sms Kontor Sayisi (Agustos 2017'den itibaren)"
-              secondary={_.get(props, 'notificationStats.totalSmsCreditsAll')}
+              secondary={get(props, 'notificationStats.totalSmsCreditsAll')}
             />
           </ListItem>
           <Divider component="li" />
@@ -118,39 +118,39 @@ const table = (props: Props) => {
           <ListItem>
             <ListItemText
               primary="Gun icinde oturum acan kisi sayisi"
-              secondary={_.get(props, 'identityStats.totalIndividualLoginCountInDay')}
+              secondary={get(props, 'identityStats.totalIndividualLoginCountInDay')}
             />
           </ListItem>
           <Divider component="li" />
           <ListItem>
             <ListItemText
               primary="Lisans suresi bugun biten kullanicilar"
-              secondary={_.get(props, 'identityStats.expiredUsersToday')}
+              secondary={get(props, 'identityStats.expiredUsersToday')}
             />
           </ListItem>
           <Divider component="li" />
           <ListItem>
             <ListItemText
               primary="Aktif Kullanici Sayisi"
-              secondary={_.get(props, 'identityStats.totalActiveUserCount')}
+              secondary={get(props, 'identityStats.totalActiveUserCount')}
             />
           </ListItem>
           <Divider component="li" />
           <ListItem>
-            <ListItemText primary="Toplam Kullanici Sayisi" secondary={_.get(props, 'identityStats.totalUserCount')} />
+            <ListItemText primary="Toplam Kullanici Sayisi" secondary={get(props, 'identityStats.totalUserCount')} />
           </ListItem>
           <Divider component="li" />
           <ListItem>
             <ListItemText
               primary="Bugun Onaylanan Yeni Kullanici Sayisi"
-              secondary={_.get(props, 'identityStats.newUserActivatedCountToday')}
+              secondary={get(props, 'identityStats.newUserActivatedCountToday')}
             />
           </ListItem>
           <Divider component="li" />
           <ListItem>
             <ListItemText
               primary="Bugun Lisans Uzatan Yeni Kullanici Sayisi"
-              secondary={_.get(props, 'identityStats.subscriptionExtendedCountToday')}
+              secondary={get(props, 'identityStats.subscriptionExtendedCountToday')}
             />
           </ListItem>
           <Divider component="li" />
@@ -169,7 +169,7 @@ const table = (props: Props) => {
           <ListItem>
             <ListItemText
               primary="Bugun/Toplam Kameradan Okutulan Ogrenci Optik Form Sayisi"
-              secondary={`${_.get(props, 'webApiStats.todayScannedStudentFormCountByCamera')} / ${_.get(
+              secondary={`${get(props, 'webApiStats.todayScannedStudentFormCountByCamera')} / ${get(
                 props,
                 'webApiStats.totalScannedStudentFormCountByCamera',
               )} `}
@@ -179,7 +179,7 @@ const table = (props: Props) => {
           <ListItem>
             <ListItemText
               primary="Bugun/Toplam Dosyadan Okutulan Ogrenci Optik Form Sayisi"
-              secondary={`${_.get(props, 'webApiStats.todayScannedStudentFormCountByFile')} / ${_.get(
+              secondary={`${get(props, 'webApiStats.todayScannedStudentFormCountByFile')} / ${get(
                 props,
                 'webApiStats.totalScannedStudentFormCountByFile',
               )} `}
@@ -194,7 +194,7 @@ const table = (props: Props) => {
           <ListItem>
             <ListItemText
               primary="Bugun/Toplam Alinan Rapor Sayisi"
-              secondary={`${_.get(props, 'reportStats.todayCount')} / ${_.get(props, 'reportStats.totalCount')} `}
+              secondary={`${get(props, 'reportStats.todayCount')} / ${get(props, 'reportStats.totalCount')} `}
             />
           </ListItem>
           <Divider component="li" />
@@ -206,10 +206,7 @@ const table = (props: Props) => {
           <ListItem>
             <ListItemText
               primary="Bugun/Toplam Sinav Tanim Sayisi"
-              secondary={`${_.get(props, 'webApiStats.todayExamCount')} / ${_.get(
-                props,
-                'webApiStats.totalExamCount',
-              )} `}
+              secondary={`${get(props, 'webApiStats.todayExamCount')} / ${get(props, 'webApiStats.totalExamCount')} `}
             />
           </ListItem>
           <Divider component="li" />
@@ -223,7 +220,7 @@ const table = (props: Props) => {
           <ListItem>
             <ListItemText
               primary="E-Okul'dan Aktarilan Bugun/Toplam Ogrenci Sayisi"
-              secondary={`${_.get(props, 'webApiStats.todayESchoolStudentCount')} / ${_.get(
+              secondary={`${get(props, 'webApiStats.todayESchoolStudentCount')} / ${get(
                 props,
                 'webApiStats.totalESchoolStudentCount',
               )} `}
@@ -233,7 +230,7 @@ const table = (props: Props) => {
           <ListItem>
             <ListItemText
               primary="Seri Ogrenci Girisinden Girilen  Bugun/Toplam Ogrenci Sayisi"
-              secondary={`${_.get(props, 'webApiStats.todayBulkStudentCount')} / ${_.get(
+              secondary={`${get(props, 'webApiStats.todayBulkStudentCount')} / ${get(
                 props,
                 'webApiStats.totalBulkStudentCount',
               )} `}
@@ -243,7 +240,7 @@ const table = (props: Props) => {
           <ListItem>
             <ListItemText
               primary="Tek tek Girilen Bugun/Toplam Ogrenci Sayisi"
-              secondary={`${_.get(props, 'webApiStats.todaySingleEntryStudentCount')} / ${_.get(
+              secondary={`${get(props, 'webApiStats.todaySingleEntryStudentCount')} / ${get(
                 props,
                 'webApiStats.totalSingleEntryStudentCount',
               )} `}

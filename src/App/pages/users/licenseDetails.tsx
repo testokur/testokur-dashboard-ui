@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import * as _ from 'lodash';
+import isUndefined from 'lodash/isUndefined';
 import { withStyles, Switch, FormControlLabel } from '@material-ui/core';
 import { ActivateSwitch } from './ActivateSwitch';
 import { styles } from './licenseDetails.styles';
@@ -80,7 +80,7 @@ const licenseDetails = (props: Props) => {
         control={
           <Switch
             color="primary"
-            checked={_.isUndefined(props.user.canScan) ? false : props.user.canScan}
+            checked={isUndefined(props.user.canScan) ? false : props.user.canScan}
             value="canScan"
             onChange={(e) => props.onChange({ ...props.user, canScan: e.target.checked })}
           />

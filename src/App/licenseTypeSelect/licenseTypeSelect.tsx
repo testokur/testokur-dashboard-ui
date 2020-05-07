@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import * as _ from 'lodash';
+import isNil from 'lodash/isNil';
 import { connect } from 'react-redux';
 import { LicenseTypeModel } from './types';
 import { fetchLicenseTypes } from './actions';
@@ -29,7 +29,7 @@ const licenseTypeSelect = (props: Props) => {
     <Select
       text="Lisans Turu/Paket"
       id="license-type-select"
-      value={_.isNil(props.id) ? '' : props.id.toString()}
+      value={isNil(props.id) ? '' : props.id.toString()}
       onChange={(e) => props.onChange(e)}
       items={props.licenseTypes}
     />

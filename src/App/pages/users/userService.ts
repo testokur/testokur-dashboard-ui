@@ -1,5 +1,7 @@
 /*eslint no-undef: 0*/
-import * as _ from 'lodash';
+import isNil from 'lodash/isNil';
+import find from 'lodash/find';
+import isUndefined from 'lodash/find';
 import { webApiClient, identityApiClient, sabitApiClient } from '../../../modules';
 import { User, UserStatuses } from './types';
 
@@ -54,13 +56,11 @@ class UserService {
     const user: User = {
       ...identityUser,
       ...apiUser,
-      licenseTypeName: _.find(licenseTypes, ['id', identityUser.licenseTypeId]).name,
+      licenseTypeName: find(licenseTypes, ['id', identityUser.licenseTypeId]).name,
     };
-    user.expiryDateUtc = _.isNil(identityUser.expiryDateUtc) ? undefined : new Date(identityUser.expiryDateUtc);
-    user.startDateTimeUtc = _.isNil(identityUser.startDateTimeUtc)
-      ? undefined
-      : new Date(identityUser.startDateTimeUtc);
-    user.activationTimeUtc = _.isNil(identityUser.activationTimeUtc)
+    user.expiryDateUtc = isNil(identityUser.expiryDateUtc) ? undefined : new Date(identityUser.expiryDateUtc);
+    user.startDateTimeUtc = isNil(identityUser.startDateTimeUtc) ? undefined : new Date(identityUser.startDateTimeUtc);
+    user.activationTimeUtc = isNil(identityUser.activationTimeUtc)
       ? undefined
       : new Date(identityUser.activationTimeUtc);
     user.createdDateTimeUtc = new Date(identityUser.createdDateTimeUtc);
@@ -70,9 +70,11 @@ class UserService {
   }
   private getStatus(active: boolean, expiryDateUtc: Date | undefined): string {
     if (active) {
-      return _.isUndefined(expiryDateUtc) || expiryDateUtc > new Date() ? UserStatuses.Active : UserStatuses.Expired;
+      return isUndefined(expiryDateUtc) || (expiryDateUtc ?? new Date()) > new Date()
+        ? UserStatuses.Active
+        : UserStatuses.Expired;
     }
-    return _.isNil(expiryDateUtc) ? UserStatuses.PendingForActivation : UserStatuses.Deactivated;
+    return isNil(expiryDateUtc) ? UserStatuses.PendingForActivation : UserStatuses.Deactivated;
   }
 }
 

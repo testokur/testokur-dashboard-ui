@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import get from 'lodash/get';
 import React from 'react';
 import { Button, withStyles, MenuItem, Menu } from '@material-ui/core';
 import { Link } from 'react-router-dom';
@@ -103,8 +103,8 @@ class UserMenu extends React.Component<Props, State> {
 
 function mapStateToProps(state: AppState, ownProps: OwnProps) {
   return {
-    idToken: _.get(state, 'oidc.user.id_token', ''),
-    username: _.get(state, 'oidc.user.profile.name', ''),
+    idToken: get(state, 'oidc.user.id_token', ''),
+    username: get(state, 'oidc.user.profile.name', ''),
     open: ownProps.open,
   };
 }

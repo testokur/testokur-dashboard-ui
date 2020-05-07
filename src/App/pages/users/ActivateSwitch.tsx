@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import * as _ from 'lodash';
+import isUndefined from 'lodash/isUndefined';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { webApiClient } from '../../../modules';
@@ -25,7 +25,7 @@ export const ActivateSwitch = (props: Props) => {
   const onSwitchClick = async (event: any) => {
     event.preventDefault();
     setLoading(true);
-    if (_.isUndefined(props.activationTimeUtc) && !props.active) {
+    if (isUndefined(props.activationTimeUtc) && !props.active) {
       setOpenDialog(true);
       return;
     }

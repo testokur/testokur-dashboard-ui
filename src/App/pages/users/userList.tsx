@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import get from 'lodash/get';
 import React, { useState } from 'react';
 import { withStyles, Typography, Paper } from '@material-ui/core';
 import { Link } from 'react-router-dom';
@@ -30,14 +30,14 @@ const userList = (props: Props) => {
   const [user, setUser] = useState<User | User[]>();
 
   const handleSendSms = async (body: string): Promise<boolean> => {
-    await webApiClient.post('/api/v1/sms/send-admin', { receiver: _.get(user, 'phone', ''), body: body });
+    await webApiClient.post('/api/v1/sms/send-admin', { receiver: get(user, 'phone', ''), body: body });
     return true;
   };
 
   const handleAddCredit = async (amount: number, gift: boolean) => {
     setAddSmsCreditDialogOpen(false);
     await webApiClient.post('/api/v1/sms/add-credits', {
-      userId: _.get(user, 'id', ''),
+      userId: get(user, 'id', ''),
       amount: amount,
       gift: gift,
     });
@@ -45,15 +45,15 @@ const userList = (props: Props) => {
   };
 
   const deleteUser = async () => {
-    await webApiClient.delete(`/api/v1/users/${_.get(user, 'id', '')}`);
+    await webApiClient.delete(`/api/v1/users/${get(user, 'id', '')}`);
     setDeleteUserDialogOpen(false);
     await props.reloadData();
   };
 
   const extendUser = async () => {
     await webApiClient.post('/api/v1/users/extend', {
-      email: _.get(user, 'email', ''),
-      currentExpiryDateTimeUtc: _.get(user, 'expiryDateUtc', ''),
+      email: get(user, 'email', ''),
+      currentExpiryDateTimeUtc: get(user, 'expiryDateUtc', ''),
     });
     setExtendUserDialogOpen(false);
     await props.reloadData();
@@ -158,7 +158,7 @@ const userList = (props: Props) => {
         onSubmit={handleSendSms}
         open={smsDialogOpen}
         onClose={() => setSmsDialogOpen(false)}
-        phone={_.get(user, 'phone', '')}
+        phone={get(user, 'phone', '')}
       />
       <AddSmsDialog
         open={addSmsCreditDialogOpen}
@@ -170,7 +170,7 @@ const userList = (props: Props) => {
         onNoClick={() => setDeleteUserDialogOpen(false)}
         onYesClick={deleteUser}
         title={'Kullanici Silme'}
-        message={_.get(user, 'email', '') + ' e-posta adresine sahip kullaniciyi silmek istediginize emin misiniz?'}
+        message={get(user, 'email', '') + ' e-posta adresine sahip kullaniciyi silmek istediginize emin misiniz?'}
       />
       <ConfirmationDialog
         open={extendUserDialogOpen}
@@ -178,7 +178,7 @@ const userList = (props: Props) => {
         onYesClick={extendUser}
         title={'Kullanici Lisans Uzatma'}
         message={
-          _.get(user, 'email', '') +
+          get(user, 'email', '') +
           ' e-posta adresine sahip kullanicinin lisansi 1 yil uzatilacaktir. Onayliyor musunuz?'
         }
       />

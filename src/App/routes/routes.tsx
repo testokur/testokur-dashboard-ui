@@ -1,5 +1,5 @@
 import React from 'react';
-import * as _ from 'lodash';
+import isNil from 'lodash/isNil';
 import { User } from 'oidc-client';
 import { CircularProgress, Box } from '@material-ui/core';
 import SigninCallback from '../pages/signinCallback';
@@ -31,7 +31,7 @@ const routes = (props: Props) => {
     return <SigninCallback />;
   }
 
-  if (_.isNil(props.user) && props.location.pathname !== '/signin-callback') {
+  if (isNil(props.user) && props.location.pathname !== '/signin-callback') {
     userManager.signinRedirect();
     return spinner();
   }
