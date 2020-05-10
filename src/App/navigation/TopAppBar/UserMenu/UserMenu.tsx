@@ -1,4 +1,4 @@
-import get from 'lodash/get';
+import { get } from 'testokur-utils';
 import React from 'react';
 import { Button, withStyles, MenuItem, Menu } from '@material-ui/core';
 import { Link } from 'react-router-dom';

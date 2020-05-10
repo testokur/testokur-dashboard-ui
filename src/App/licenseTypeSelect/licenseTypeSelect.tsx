@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import isNil from 'lodash/isNil';
+import { isNil } from 'testokur-utils';
 import { connect } from 'react-redux';
 import { LicenseTypeModel } from './types';
 import { fetchLicenseTypes } from './actions';

@@ -1,4 +1,4 @@
-import get from 'lodash/get';
+import { get } from 'testokur-utils';
 import React, { useState } from 'react';
 import { withStyles, Typography, Paper } from '@material-ui/core';
 import { Link } from 'react-router-dom';

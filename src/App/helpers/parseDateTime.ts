@@ -1,5 +1,5 @@
 import fecha from 'fecha';
-import isNil from 'lodash/isNil';
+import { isNil } from 'testokur-utils';
 
 const defaultFormat = 'DD.MM.YYYY HH:mm:ss';
 

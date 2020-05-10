@@ -1,7 +1,7 @@
 /*eslint no-undef: 0*/
+import { isUndefined } from 'testokur-utils';
 import isNil from 'lodash/isNil';
 import find from 'lodash/find';
-import isUndefined from 'lodash/find';
 import { webApiClient, identityApiClient, sabitApiClient } from '../../../modules';
 import { User, UserStatuses } from './types';
 
@@ -70,7 +70,7 @@ class UserService {
   }
   private getStatus(active: boolean, expiryDateUtc: Date | undefined): string {
     if (active) {
-      return isUndefined(expiryDateUtc) || (expiryDateUtc ?? new Date()) > new Date()
+      return isUndefined(expiryDateUtc) || expiryDateUtc > new Date()
         ? UserStatuses.Active
         : UserStatuses.Expired;
     }

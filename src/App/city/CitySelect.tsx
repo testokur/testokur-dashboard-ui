@@ -1,6 +1,5 @@
 import React from 'react';
-import isEmpty from 'lodash/isEmpty';
-import isUndefined from 'lodash/isUndefined';
+import { isEmpty, isUndefined } from 'testokur-utils';
 import find from 'lodash/find';
 import { connect } from 'react-redux';
 

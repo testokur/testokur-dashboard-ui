@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import isUndefined from 'lodash/isUndefined';
+import { isUndefined } from 'testokur-utils';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { webApiClient } from '../../../modules';

@@ -1,6 +1,5 @@
 import React from 'react';
-import get from 'lodash/get';
-import isNil from 'lodash/isNil';
+import { get, isNil } from 'testokur-utils';
 import { RouteComponentProps } from 'react-router';
 import { Grid, Avatar, withStyles, Divider, Tabs, Tab, Fab } from '@material-ui/core';
 import PersonIcon from '@material-ui/icons/Person';

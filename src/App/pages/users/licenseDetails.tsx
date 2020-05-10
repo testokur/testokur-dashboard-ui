@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import isUndefined from 'lodash/isUndefined';
+import { isUndefined } from 'testokur-utils';
 import { withStyles, Switch, FormControlLabel } from '@material-ui/core';
 import { ActivateSwitch } from './ActivateSwitch';
 import { styles } from './licenseDetails.styles';

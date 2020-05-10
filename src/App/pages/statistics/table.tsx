@@ -1,4 +1,4 @@
-import get from 'lodash/get';
+import { get } from 'testokur-utils';
 import React from 'react';
 import { IdentityStats, WebApiStats, ReportStats, NotificationStats } from './types';
 import { withLoading } from '../../components';

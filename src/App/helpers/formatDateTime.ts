@@ -1,4 +1,4 @@
-import isUndefined from 'lodash/isUndefined';
+import { isUndefined } from 'testokur-utils';
 import fecha from 'fecha';
 
 const defaultFormat = 'DD.MM.YYYY HH:mm:ss';

@@ -1,5 +1,5 @@
 import React from 'react';
-import isNil from 'lodash/isNil';
+import { isNil } from 'testokur-utils';
 import { User } from 'oidc-client';
 import { CircularProgress, Box } from '@material-ui/core';
 import SigninCallback from '../pages/signinCallback';

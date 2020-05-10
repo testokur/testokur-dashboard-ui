@@ -1,7 +1,5 @@
 import React from 'react';
-import get from 'lodash/get';
-import isUndefined from 'lodash/isUndefined';
-import isNil from 'lodash/isNil';
+import { get, isNil, isUndefined } from 'testokur-utils';
 import { Chip, makeStyles, Theme } from '@material-ui/core';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import HourglassFull from '@material-ui/icons/HourglassFull';

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty } from 'testokur-utils';
 import { ValidatorForm } from 'react-material-ui-form-validator';
 import { Typography, Grid } from '@material-ui/core';
 import { identityApiClient } from '../../../../modules';
