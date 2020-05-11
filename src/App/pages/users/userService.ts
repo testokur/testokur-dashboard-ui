@@ -51,10 +51,11 @@ class UserService {
   }
 
   private combineUser(identityUser: any, apiUser: any, licenseTypes: any[]) {
+
     const user: User = {
       ...identityUser,
       ...apiUser,
-      licenseTypeName: find(licenseTypes, (l) => l.licenseTypeId === identityUser.licenseTypeId).name,
+      licenseTypeName: find(licenseTypes, (l) => l.id === identityUser.licenseTypeId).name,
     };
     user.expiryDateUtc = isNil(identityUser.expiryDateUtc) ? undefined : new Date(identityUser.expiryDateUtc);
     user.startDateTimeUtc = isNil(identityUser.startDateTimeUtc) ? undefined : new Date(identityUser.startDateTimeUtc);
