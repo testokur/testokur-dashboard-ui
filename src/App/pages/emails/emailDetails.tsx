@@ -1,7 +1,7 @@
 import React from 'react';
 import { styles } from './styles';
 import { withStyles } from '@material-ui/core/styles';
-import { formatDateTime } from '../../helpers';
+import { formatDateTime } from 'testokur-utils';
 import { Typography, Divider } from '@material-ui/core';
 import { FormTextbox } from '../../components';
 

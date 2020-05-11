@@ -4,7 +4,7 @@ import { withStyles, Switch, FormControlLabel } from '@material-ui/core';
 import { ActivateSwitch } from './ActivateSwitch';
 import { styles } from './licenseDetails.styles';
 import { LicenseTypeSelect } from '../../licenseTypeSelect';
-import { formatDateTime, parseDateTime } from '../../helpers';
+import { formatDateTime, parseDateTime } from 'testokur-utils';
 import { User } from './types';
 import { CitySelect } from '../../city';
 import { PhoneField, FormTextbox } from '../../components';

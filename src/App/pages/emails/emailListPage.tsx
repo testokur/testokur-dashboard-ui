@@ -4,7 +4,7 @@ import { notificationApiClient } from '../../../modules';
 import EmailList from './emailList';
 import { TextField, InputAdornment, Button, Divider, withStyles } from '@material-ui/core';
 import clsx from 'clsx';
-import { formatDateTime, parseDateTime } from '../../helpers';
+import { formatDateTime, parseDateTime } from 'testokur-utils';
 import { styles } from './styles';
 
 interface Props {

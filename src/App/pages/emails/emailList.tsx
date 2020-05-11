@@ -3,7 +3,7 @@ import { withStyles, Typography, Paper } from '@material-ui/core';
 import { withLoading, Table } from '../../components';
 import { Email } from './types';
 import { styles } from './styles';
-import { formatDateTime } from '../../helpers';
+import { formatDateTime } from 'testokur-utils';
 import { Link } from 'react-router-dom';
 
 interface Props {

@@ -2,7 +2,7 @@ import React from 'react';
 import { styles } from './styles';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import { formatDateTime } from '../../helpers';
+import { formatDateTime } from 'testokur-utils';
 import { SmsStatus } from './smsStatus';
 
 interface Props {

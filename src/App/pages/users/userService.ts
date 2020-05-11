@@ -1,5 +1,5 @@
 /*eslint no-undef: 0*/
-import { isUndefined,isNil, find } from 'testokur-utils';
+import { isUndefined, isNil, find } from 'testokur-utils';
 import { webApiClient, identityApiClient, sabitApiClient } from '../../../modules';
 import { User, UserStatuses } from './types';
 
@@ -54,7 +54,7 @@ class UserService {
     const user: User = {
       ...identityUser,
       ...apiUser,
-    licenseTypeName: find(licenseTypes, l => l.licenseTypeId === identityUser.licenseTypeId).name,
+      licenseTypeName: find(licenseTypes, (l) => l.licenseTypeId === identityUser.licenseTypeId).name,
     };
     user.expiryDateUtc = isNil(identityUser.expiryDateUtc) ? undefined : new Date(identityUser.expiryDateUtc);
     user.startDateTimeUtc = isNil(identityUser.startDateTimeUtc) ? undefined : new Date(identityUser.startDateTimeUtc);
@@ -68,9 +68,7 @@ class UserService {
   }
   private getStatus(active: boolean, expiryDateUtc: Date | undefined): string {
     if (active) {
-      return isUndefined(expiryDateUtc) || expiryDateUtc > new Date()
-        ? UserStatuses.Active
-        : UserStatuses.Expired;
+      return isUndefined(expiryDateUtc) || expiryDateUtc > new Date() ? UserStatuses.Active : UserStatuses.Expired;
     }
     return isNil(expiryDateUtc) ? UserStatuses.PendingForActivation : UserStatuses.Deactivated;
   }

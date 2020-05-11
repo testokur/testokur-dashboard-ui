@@ -9,7 +9,7 @@ import DeleteForever from '@material-ui/icons/DeleteForever';
 import AddCircleOutline from '@material-ui/icons/AddCircleOutline';
 import Update from '@material-ui/icons/Update';
 import { SendSmsDialog } from './SendSmsDialog';
-import { formatDateTime } from '../../helpers';
+import { formatDateTime } from 'testokur-utils';
 import { webApiClient } from '../../../modules';
 import { AddSmsDialog } from './smsDetails/AddSmsDialog';
 import { ConfirmationDialog } from '../../components';

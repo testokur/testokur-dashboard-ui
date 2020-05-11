@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { identityApiClient } from '../../../../modules';
 import { User } from '../types';
 import { Table } from '../../../components';
-import { formatDateTime } from '../../../helpers';
+import { formatDateTime } from 'testokur-utils';
 
 interface Props {
   user: User;

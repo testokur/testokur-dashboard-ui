@@ -3,8 +3,8 @@ import { UserList } from '../UserList';
 import CustomerIcon from '@material-ui/icons/PersonAdd';
 import { identityApiClient } from '../../../../modules';
 
-type User =  {
-  userName :string
+interface User {
+  userName: string;
 }
 
 export const pendingUsers = () => {
@@ -25,7 +25,7 @@ export const pendingUsers = () => {
     <UserList
       loading={loading}
       title={'Onay Bekleyen Kullanicilar'}
-      users={data.map(u => u.userName)}
+      users={data.map((u) => u.userName)}
       icon={customerIcon}
       iconBgColor="#1E688A"
     />

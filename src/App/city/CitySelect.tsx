@@ -1,5 +1,5 @@
 import React from 'react';
-import { isEmpty, isUndefined,find } from 'testokur-utils';
+import { isEmpty, isUndefined, find } from 'testokur-utils';
 import { connect } from 'react-redux';
 
 import { City } from './types';
@@ -44,7 +44,7 @@ export class CitySelect extends React.Component<Props> {
           id="district-select"
           value={this.props.districtId.toString()}
           onChange={(e) => this.props.onChange(this.props.cityId, e)}
-          items={find(this.props.cities, x => x.id == this.props.cityId).districts}
+          items={find(this.props.cities, (x) => x.id === this.props.cityId).districts}
         />
       </div>
     );
