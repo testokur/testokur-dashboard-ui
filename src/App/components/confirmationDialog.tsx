@@ -72,7 +72,7 @@ export const confirmationDialog = (props: Props) => {
           >
             Evet
           </Button>
-          <Loading loading={loading} type={LoadingTypes.ButtonLoader}  />
+          <Loading loading={loading} type={LoadingTypes.ButtonLoader} />
         </div>
       </DialogActions>
     </Dialog>

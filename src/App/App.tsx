@@ -19,14 +19,14 @@ class App extends React.Component<AppProps> {
   public render() {
     return (
       <ThemeProvider theme={createTheme()}>
-      <GlobalStyle />
-      <Provider store={this.props.store}>
-        <OidcProvider store={this.props.store} userManager={this.props.userManager}>
-          <ConnectedRouter history={this.props.history}>
-            <Routes />
-          </ConnectedRouter>
-        </OidcProvider>
-      </Provider>
+        <GlobalStyle />
+        <Provider store={this.props.store}>
+          <OidcProvider store={this.props.store} userManager={this.props.userManager}>
+            <ConnectedRouter history={this.props.history}>
+              <Routes />
+            </ConnectedRouter>
+          </OidcProvider>
+        </Provider>
       </ThemeProvider>
     );
   }

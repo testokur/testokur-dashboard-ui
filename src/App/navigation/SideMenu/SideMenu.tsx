@@ -7,7 +7,7 @@ import SupervisedUserCircle from '@material-ui/icons/SupervisedUserCircle';
 import EmailIcon from '@material-ui/icons/Email';
 import Textsms from '@material-ui/icons/Textsms';
 import TableChartIcon from '@material-ui/icons/TableChart';
-import {Divider, SpacingsAfter} from 'testokur-ui';
+import { Divider, SpacingsAfter } from 'testokur-ui';
 import clsx from 'clsx';
 import { styles } from './styles';
 import NavLinkListItem from './NavLinkListItem';

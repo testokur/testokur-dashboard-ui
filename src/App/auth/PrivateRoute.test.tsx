@@ -8,8 +8,9 @@ import { ThemeProvider } from 'styled-components';
 test('should render only spinner when user is not logged in', () => {
   const wrapper = mount(
     <ThemeProvider theme={createTheme()}>
-  <PrivateRoute component={undefined} requiresAuthentication={true} location={undefined} />
-  </ThemeProvider>);
+      <PrivateRoute component={undefined} requiresAuthentication={true} location={undefined} />
+    </ThemeProvider>,
+  );
   expect(wrapper.find(Loading)).toHaveLength(1);
 });
 

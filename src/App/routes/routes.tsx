@@ -16,9 +16,7 @@ interface Props {
 
 const routes = (props: Props) => {
   const spinner = () => {
-    return (
-      <Loading loading={true} type={LoadingTypes.PageLoader} />
-    );
+    return <Loading loading={true} type={LoadingTypes.PageLoader} />;
   };
   if (props.isLoadingUser || !props.location) {
     return spinner();

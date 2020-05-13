@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import React from 'react';
 import { Box, makeStyles, Theme, createStyles } from '@material-ui/core';
-import {Loading, LoadingTypes} from 'testokur-ui';
+import { Loading, LoadingTypes } from 'testokur-ui';
 
 interface Props {
   loading: boolean;
@@ -25,7 +25,7 @@ export const withLoading = <P extends object>(Component: React.ComponentType<P>)
       <Box>
         <Component {...(componentProps as P)} />
       </Box>
-      <Loading loading={loading} type={LoadingTypes.BoxLoader} text="Yukleniyor..."  />
+      <Loading loading={loading} type={LoadingTypes.BoxLoader} text="Yukleniyor..." />
     </Box>
   );
 };

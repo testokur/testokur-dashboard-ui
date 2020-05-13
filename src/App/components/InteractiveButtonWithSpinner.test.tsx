@@ -6,10 +6,12 @@ import { createTheme } from 'testokur-ui';
 import { ThemeProvider } from 'styled-components';
 
 test('spinner should be rendered and button should be disabled when loading', () => {
-  const wrapper = mount(<ThemeProvider theme={createTheme()}>
-    <InteractiveButtonWithSpinner loading={true} />
-    </ThemeProvider> );
-    expect(wrapper.find('div[type="ButtonLoader"]').length).toBeGreaterThanOrEqual(1);
+  const wrapper = mount(
+    <ThemeProvider theme={createTheme()}>
+      <InteractiveButtonWithSpinner loading={true} />
+    </ThemeProvider>,
+  );
+  expect(wrapper.find('div[type="ButtonLoader"]').length).toBeGreaterThanOrEqual(1);
   expect(
     wrapper
       .find(Button)
@@ -19,9 +21,11 @@ test('spinner should be rendered and button should be disabled when loading', ()
 });
 
 test('spinner should not be rendered and button should not be disabled when not loading', () => {
-  const wrapper = mount(<ThemeProvider theme={createTheme()}>
-  <InteractiveButtonWithSpinner loading={false} />
-  </ThemeProvider> );
+  const wrapper = mount(
+    <ThemeProvider theme={createTheme()}>
+      <InteractiveButtonWithSpinner loading={false} />
+    </ThemeProvider>,
+  );
   expect(wrapper.find('div[type="ButtonLoader"]').length).toBe(0);
   expect(
     wrapper

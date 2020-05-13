@@ -51,7 +51,6 @@ class UserService {
   }
 
   private combineUser(identityUser: any, apiUser: any, licenseTypes: any[]) {
-
     const user: User = {
       ...identityUser,
       ...apiUser,

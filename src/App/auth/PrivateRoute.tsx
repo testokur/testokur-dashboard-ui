@@ -26,7 +26,7 @@ export class PrivateRoute extends React.Component<Props> {
   public render = () => {
     const { component: Component, ...rest } = this.props;
     return this.props.requiresAuthentication ? (
-      <Loading loading={true} type={LoadingTypes.PageLoader} text="Lutfen Bekleyiniz..."  />
+      <Loading loading={true} type={LoadingTypes.PageLoader} text="Lutfen Bekleyiniz..." />
     ) : (
       <Route {...rest} render={(routeProps) => <Component {...routeProps} />} />
     );

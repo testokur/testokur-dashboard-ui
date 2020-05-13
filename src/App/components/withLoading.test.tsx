@@ -11,8 +11,9 @@ test('when loading is set true then loader should be rendered', () => {
   const WithLoader = withLoading(dummyComponent);
   const wrapper = mount(
     <ThemeProvider theme={createTheme()}>
-     <WithLoader loading={true} />
-  </ThemeProvider>);
+      <WithLoader loading={true} />
+    </ThemeProvider>,
+  );
 
   expect(wrapper.find('div[type="BoxLoader"]').length).toBeGreaterThanOrEqual(1);
 });
