@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, CircularProgress, withStyles, Theme } from '@material-ui/core';
+import { Button, withStyles, Theme } from '@material-ui/core';
 import { green } from '@material-ui/core/colors';
+import { Loading, LoadingTypes } from 'testokur-ui';
 
 interface InteractiveButtonWithSpinnerProps {
   classes?: any;
@@ -28,7 +29,7 @@ const interactiveButtonWithSpinner = (props: InteractiveButtonWithSpinnerProps) 
       <Button type="submit" fullWidth variant="contained" color="primary" disabled={props.loading}>
         Onayla
       </Button>
-      {props.loading && <CircularProgress size={24} className={props.classes.buttonProgress} />}
+      <Loading loading={props.loading} type={LoadingTypes.ButtonLoader} />
     </div>
   );
 };

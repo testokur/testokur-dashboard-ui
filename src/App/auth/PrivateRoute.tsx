@@ -1,10 +1,10 @@
 import React from 'react';
 import { isNil } from 'testokur-utils';
-import { CircularProgress, Box } from '@material-ui/core';
 import { RouteProps, Route } from 'react-router-dom';
 import AppState from '../AppState';
 import { connect } from 'react-redux';
 import { userManager } from './userManager';
+import { Loading, LoadingTypes } from 'testokur-ui';
 
 interface ConnectedProps {
   requiresAuthentication: boolean;
@@ -26,18 +26,9 @@ export class PrivateRoute extends React.Component<Props> {
   public render = () => {
     const { component: Component, ...rest } = this.props;
     return this.props.requiresAuthentication ? (
-      this.spinner()
+      <Loading loading={true} type={LoadingTypes.PageLoader} text="Lutfen Bekleyiniz..."  />
     ) : (
       <Route {...rest} render={(routeProps) => <Component {...routeProps} />} />
-    );
-  };
-
-  private spinner = () => {
-    return (
-      <Box display="flex" justifyContent="center">
-        {' '}
-        <CircularProgress size={100} />{' '}
-      </Box>
     );
   };
 }

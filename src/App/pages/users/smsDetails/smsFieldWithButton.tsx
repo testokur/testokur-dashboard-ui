@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles, TextField, Divider, Button, InputAdornment } from '@material-ui/core';
+import { withStyles, TextField, Button, InputAdornment } from '@material-ui/core';
 import AddCircleOutline from '@material-ui/icons/AddCircleOutline';
 import { styles } from './styles';
 import clsx from 'clsx';
@@ -25,7 +25,6 @@ const smsFieldWithButton = (props: Props) => {
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
-            <Divider className={props.classes.divider} />
             <Button onClick={props.onClick} variant="contained" color="primary" className={props.classes.button}>
               <AddCircleOutline className={props.classes.leftIcon}>ekle</AddCircleOutline>
               Kredi Ekle

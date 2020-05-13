@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, IconButton, Divider, withStyles } from '@material-ui/core';
+import { Drawer, IconButton, withStyles } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
@@ -7,6 +7,7 @@ import SupervisedUserCircle from '@material-ui/icons/SupervisedUserCircle';
 import EmailIcon from '@material-ui/icons/Email';
 import Textsms from '@material-ui/icons/Textsms';
 import TableChartIcon from '@material-ui/icons/TableChart';
+import {Divider, SpacingsAfter} from 'testokur-ui';
 import clsx from 'clsx';
 import { styles } from './styles';
 import NavLinkListItem from './NavLinkListItem';
@@ -47,11 +48,11 @@ class SideMenu extends React.Component<Props> {
             <ChevronLeftIcon />
           </IconButton>
         </div>
-        <Divider />
+        <Divider spacingsAfter={SpacingsAfter.Normal} />
         {routes.map((route, index) => {
           return <NavLinkListItem key={index} path={route.path} icon={route.icon} title={route.title} />;
         })}
-        <Divider />
+        <Divider spacingsAfter={SpacingsAfter.Normal} />
       </Drawer>
     );
   }

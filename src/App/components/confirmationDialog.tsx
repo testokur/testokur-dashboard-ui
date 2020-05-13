@@ -6,13 +6,13 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  CircularProgress,
   createStyles,
   makeStyles,
   Theme,
 } from '@material-ui/core';
 import { green } from '@material-ui/core/colors';
 import { DefaultTransition } from '.';
+import { Loading, LoadingTypes } from 'testokur-ui';
 
 interface Props {
   open: boolean;
@@ -72,7 +72,7 @@ export const confirmationDialog = (props: Props) => {
           >
             Evet
           </Button>
-          {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
+          <Loading loading={loading} type={LoadingTypes.ButtonLoader}  />
         </div>
       </DialogActions>
     </Dialog>

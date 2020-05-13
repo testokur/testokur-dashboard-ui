@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Email } from './types';
 import { notificationApiClient } from '../../../modules';
 import EmailList from './emailList';
-import { TextField, InputAdornment, Button, Divider, withStyles } from '@material-ui/core';
+import { TextField, InputAdornment, Button, withStyles } from '@material-ui/core';
 import clsx from 'clsx';
 import { formatDateTime, parseDateTime } from 'testokur-utils';
 import { styles } from './styles';
@@ -54,7 +54,6 @@ const emailListPage = (props: Props) => {
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
-              <Divider className={props.classes.divider} />
               <Button variant="contained" color="primary" onClick={fetchEmails} className={props.classes.button}>
                 Filtrele
               </Button>

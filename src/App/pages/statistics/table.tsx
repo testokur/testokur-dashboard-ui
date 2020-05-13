@@ -3,7 +3,8 @@ import React from 'react';
 import { IdentityStats, WebApiStats, ReportStats, NotificationStats } from './types';
 import { withLoading } from '../../components';
 import { styles } from './styles';
-import { withStyles, ListItemText, List, ListItem, Divider, Chip } from '@material-ui/core';
+import { withStyles, ListItemText, List, ListItem, Chip } from '@material-ui/core';
+import { Divider, SpacingsAfter } from 'testokur-ui';
 import Textsms from '@material-ui/icons/Textsms';
 import Face from '@material-ui/icons/Face';
 import CameraAlt from '@material-ui/icons/CameraAlt';
@@ -50,42 +51,42 @@ const table = (props: Props) => {
               )} ) `}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
           <ListItem>
             <ListItemText
               primary="Sistem(Otomatik) Tarafindan Gun Icinde Iletilen SMS Sayisi"
               secondary={get(props, 'notificationStats.totalSystemSmsCountInDay')}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
           <ListItem>
             <ListItemText
               primary="Gun Icinde Gonderilen Basarili SMS Sayisi"
               secondary={get(props, 'notificationStats.totalSuccessfulSmsCountInDay')}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
           <ListItem>
             <ListItemText
               primary="Gun Icinde Hata Alinan SMS Sayisi"
               secondary={get(props, 'notificationStats.totalFailedSmsCountInDay')}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
           <ListItem>
             <ListItemText
               primary="En Uzun SMS Gonderim Suresi"
               secondary={`${get(props, 'notificationStats.longestSmsDuration')} milisaniye`}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
           <ListItem>
             <ListItemText
               primary="Ortalama SMS Gonderim Suresi"
               secondary={`${get(props, 'notificationStats.averageSmsDuration')} milisaniye`}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
           <ListItem>
             <ListItemText
               primary="Gun icinde en fazla kontor harcayan kullanici ( harcadigi kontor) "
@@ -95,21 +96,21 @@ const table = (props: Props) => {
               )})`}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
           <ListItem>
             <ListItemText
               primary="Toplam Gonderilen SMS Sayisi (Agustos 2017'den itibaren)"
               secondary={get(props, 'notificationStats.totalSmsCountAll')}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
           <ListItem>
             <ListItemText
               primary="Toplam Kullanici Tarafindan Tuketilen Sms Kontor Sayisi (Agustos 2017'den itibaren)"
               secondary={get(props, 'notificationStats.totalSmsCreditsAll')}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
         </List>
       </div>
       <Chip color="secondary" className={props.classes.title} icon={<Face />} label={'KULLANICILAR'} />
@@ -121,39 +122,39 @@ const table = (props: Props) => {
               secondary={get(props, 'identityStats.totalIndividualLoginCountInDay')}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
           <ListItem>
             <ListItemText
               primary="Lisans suresi bugun biten kullanicilar"
               secondary={get(props, 'identityStats.expiredUsersToday')}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
           <ListItem>
             <ListItemText
               primary="Aktif Kullanici Sayisi"
               secondary={get(props, 'identityStats.totalActiveUserCount')}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
           <ListItem>
             <ListItemText primary="Toplam Kullanici Sayisi" secondary={get(props, 'identityStats.totalUserCount')} />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
           <ListItem>
             <ListItemText
               primary="Bugun Onaylanan Yeni Kullanici Sayisi"
               secondary={get(props, 'identityStats.newUserActivatedCountToday')}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
           <ListItem>
             <ListItemText
               primary="Bugun Lisans Uzatan Yeni Kullanici Sayisi"
               secondary={get(props, 'identityStats.subscriptionExtendedCountToday')}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
         </List>
       </div>
       <Chip color="secondary" className={props.classes.title} icon={<CameraAlt />} label={'OPTIK OKUMA'} />
@@ -165,7 +166,7 @@ const table = (props: Props) => {
               secondary={`${todayScannedStudentFormCount} / ${totalScannedStudentFormCount}`}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
           <ListItem>
             <ListItemText
               primary="Bugun/Toplam Kameradan Okutulan Ogrenci Optik Form Sayisi"
@@ -175,7 +176,7 @@ const table = (props: Props) => {
               )} `}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
           <ListItem>
             <ListItemText
               primary="Bugun/Toplam Dosyadan Okutulan Ogrenci Optik Form Sayisi"
@@ -185,7 +186,7 @@ const table = (props: Props) => {
               )} `}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
         </List>
       </div>
       <Chip color="secondary" className={props.classes.title} icon={<GridOn />} label={'RAPORLAR'} />
@@ -197,7 +198,7 @@ const table = (props: Props) => {
               secondary={`${get(props, 'reportStats.todayCount')} / ${get(props, 'reportStats.totalCount')} `}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
         </List>
       </div>
       <Chip color="secondary" className={props.classes.title} icon={<School />} label={'TANIM'} />
@@ -209,14 +210,14 @@ const table = (props: Props) => {
               secondary={`${get(props, 'webApiStats.todayExamCount')} / ${get(props, 'webApiStats.totalExamCount')} `}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
           <ListItem>
             <ListItemText
               primary="Bugun/Toplam Girilen Ogrenci Sayisi"
               secondary={`${todayStudentCount} / ${totalStudentCount} `}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
           <ListItem>
             <ListItemText
               primary="E-Okul'dan Aktarilan Bugun/Toplam Ogrenci Sayisi"
@@ -226,7 +227,7 @@ const table = (props: Props) => {
               )} `}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
           <ListItem>
             <ListItemText
               primary="Seri Ogrenci Girisinden Girilen  Bugun/Toplam Ogrenci Sayisi"
@@ -236,7 +237,7 @@ const table = (props: Props) => {
               )} `}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
           <ListItem>
             <ListItemText
               primary="Tek tek Girilen Bugun/Toplam Ogrenci Sayisi"
@@ -246,7 +247,7 @@ const table = (props: Props) => {
               )} `}
             />
           </ListItem>
-          <Divider component="li" />
+          <Divider spacingsAfter={SpacingsAfter.Smallest} />
         </List>
       </div>
     </div>

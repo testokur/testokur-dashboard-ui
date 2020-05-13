@@ -1,7 +1,8 @@
 import React from 'react';
 import { get, isNil } from 'testokur-utils';
 import { RouteComponentProps } from 'react-router';
-import { Grid, Avatar, withStyles, Divider, Tabs, Tab, Fab } from '@material-ui/core';
+import { Grid, Avatar, withStyles, Tabs, Tab, Fab } from '@material-ui/core';
+import { Divider, SpacingsAfter } from 'testokur-ui';
 import PersonIcon from '@material-ui/icons/Person';
 import { styles } from './styles';
 import { UserStatus } from './UserStatus';
@@ -69,7 +70,7 @@ class Component extends React.Component<Props, State> {
             <h3>{this.state.user.userName}</h3>
             <UserStatus active={this.state.user.active} expirationDate={this.state.user.expiryDateUtc} />
           </Grid>
-          <Divider />
+          <Divider spacingsAfter={SpacingsAfter.Normal} />
           <Tabs
             value={this.state.tabIndex}
             onChange={this.handleTabChange}

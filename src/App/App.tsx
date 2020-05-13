@@ -6,6 +6,8 @@ import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import { UserManager } from 'oidc-client';
 import { Routes } from './routes';
+import { ThemeProvider } from 'styled-components';
+import { createTheme, GlobalStyle } from 'testokur-ui';
 
 interface AppProps {
   store: Store;
@@ -16,6 +18,8 @@ interface AppProps {
 class App extends React.Component<AppProps> {
   public render() {
     return (
+      <ThemeProvider theme={createTheme()}>
+      <GlobalStyle />
       <Provider store={this.props.store}>
         <OidcProvider store={this.props.store} userManager={this.props.userManager}>
           <ConnectedRouter history={this.props.history}>
@@ -23,6 +27,7 @@ class App extends React.Component<AppProps> {
           </ConnectedRouter>
         </OidcProvider>
       </Provider>
+      </ThemeProvider>
     );
   }
 }

@@ -1,12 +1,12 @@
 import React from 'react';
 import { isNil } from 'testokur-utils';
 import { User } from 'oidc-client';
-import { CircularProgress, Box } from '@material-ui/core';
 import SigninCallback from '../pages/signinCallback';
 import { connect } from 'react-redux';
 import AppState from '../AppState';
 import { PrivateRoute, userManager } from '../auth';
 import { Dashboard } from '../dashboard';
+import { LoadingTypes, Loading } from 'testokur-ui';
 
 interface Props {
   user: User;
@@ -17,10 +17,7 @@ interface Props {
 const routes = (props: Props) => {
   const spinner = () => {
     return (
-      <Box display="flex" justifyContent="center">
-        {' '}
-        <CircularProgress size={100} />{' '}
-      </Box>
+      <Loading loading={true} type={LoadingTypes.PageLoader} />
     );
   };
   if (props.isLoadingUser || !props.location) {

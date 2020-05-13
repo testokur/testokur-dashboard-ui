@@ -1,6 +1,7 @@
 import React from 'react';
 import CardIcon from './CardIcon';
-import { Typography, Divider, List, Card, ListItemText, ListItem } from '@material-ui/core';
+import { Typography, List, Card, ListItemText, ListItem } from '@material-ui/core';
+import { Divider, SpacingsAfter } from 'testokur-ui';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { styles } from './userList.style';
@@ -25,7 +26,7 @@ const userList = (props: Props) => {
         <Typography variant="h2" component="h2" className={props.classes.value}>
           {props.users.length}
         </Typography>
-        <Divider />
+        <Divider spacingsAfter={SpacingsAfter.Smallest} />
         <List className={props.classes.list}>
           {props.users.map((record) => (
             <ListItem button to={`/users/${record}`} component={Link} key={record}>
