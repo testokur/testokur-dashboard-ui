@@ -131,9 +131,11 @@ class Component extends React.Component<Props, State> {
     );
   }
   private handleTabChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const newTabIndex = Number.parseInt(event.currentTarget.value);
+
     this.setState((prevState) => ({
       ...prevState,
-      tabIndex: event.currentTarget.valueAsNumber,
+      tabIndex: newTabIndex,
     }));
   };
 

@@ -9432,10 +9432,10 @@ test-exclude@^6.0.0:
     glob "^7.1.4"
     minimatch "^3.0.4"
 
-testokur-ui@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/testokur-ui/-/testokur-ui-1.0.8.tgz#6ed1dc2596e72101a3d1666d3b1660d25e2c816d"
-  integrity sha512-AvMJLOrt2UT+AAQph1zXnYrDWcavMqvm0bCJEdNd0Igc7Q+jsfbTiX/UH2W/vu5sJAg8ssn3ndi0GBhziKpRfw==
+testokur-ui@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/testokur-ui/-/testokur-ui-1.0.10.tgz#83f46d3b517dad438bd88cd49e142e37a1cb377b"
+  integrity sha512-HEHbHEhkj1huDc/BXuP5W1KBAiseMJ8VP3rDVDCP0OwenTtzyjzpHqQ+FxbPVSheaMd8BCU8+QCVOIaFjtKgdg==
   dependencies:
     react "^16.13.0"
     react-dom "^16.13.0"
