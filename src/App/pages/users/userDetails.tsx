@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { get, isNil } from 'testokur-utils';
 import { RouteComponentProps } from 'react-router';
-import { Grid, Avatar, withStyles, Tabs, Tab, Fab } from '@material-ui/core';
-import { Divider, SpacingsAfter } from 'testokur-ui';
+import { Grid, Avatar, withStyles, Fab } from '@material-ui/core';
+import { Divider, SpacingsAfter, Tabs } from 'testokur-ui';
 import PersonIcon from '@material-ui/icons/Person';
 import { styles } from './styles';
 import { UserStatus } from './UserStatus';
@@ -71,17 +71,7 @@ class Component extends React.Component<Props, State> {
             <UserStatus active={this.state.user.active} expirationDate={this.state.user.expiryDateUtc} />
           </Grid>
           <Divider spacingsAfter={SpacingsAfter.Normal} />
-          <Tabs
-            value={this.state.tabIndex}
-            onChange={this.handleTabChange}
-            variant="fullWidth"
-            indicatorColor="primary"
-            textColor="primary"
-          >
-            <Tab label="LISANS" />
-            <Tab label="PAROLA" />
-            <Tab label="LOG" />
-          </Tabs>
+          <Tabs value={this.state.tabIndex} onChange={this.handleTabChange} items={['LISANS', 'PAROLA', 'LOG']} />
           {this.state.tabIndex === 0 && <LicenseDetails user={this.state.user} onChange={this.handleChange} />}
           {this.state.tabIndex === 1 && <ResetUserPassword user={this.state.user} />}
           {this.state.tabIndex === 2 && <UserActivityList user={this.state.user} />}
@@ -140,11 +130,10 @@ class Component extends React.Component<Props, State> {
       </div>
     );
   }
-
-  private handleTabChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+  private handleTabChange = (event: ChangeEvent<HTMLInputElement>) => {
     this.setState((prevState) => ({
       ...prevState,
-      tabIndex: newValue,
+      tabIndex: event.currentTarget.valueAsNumber,
     }));
   };
 
