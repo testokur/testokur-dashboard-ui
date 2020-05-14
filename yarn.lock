@@ -7978,7 +7978,7 @@ react-device-detect@^1.9.9:
   dependencies:
     ua-parser-js "^0.7.21"
 
-react-dom@^16.13.0, react-dom@^16.8.6:
+react-dom@^16.8.6:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.1.tgz#c1bd37331a0486c078ee54c4740720993b2e0e7f"
   integrity sha512-81PIMmVLnCNLO/fFOQxdQkvEq/+Hfpv24XNJfpyZhTRfO0QcmQIF/PgCa1zCOj2w1hrn12MFLyaJ/G0+Mxtfag==
@@ -9432,13 +9432,12 @@ test-exclude@^6.0.0:
     glob "^7.1.4"
     minimatch "^3.0.4"
 
-testokur-ui@^1.0.10:
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/testokur-ui/-/testokur-ui-1.0.10.tgz#83f46d3b517dad438bd88cd49e142e37a1cb377b"
-  integrity sha512-HEHbHEhkj1huDc/BXuP5W1KBAiseMJ8VP3rDVDCP0OwenTtzyjzpHqQ+FxbPVSheaMd8BCU8+QCVOIaFjtKgdg==
+testokur-ui@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/testokur-ui/-/testokur-ui-1.0.11.tgz#4c9008202eef98a38a4672a4573435528162450d"
+  integrity sha512-s0PI4igfP6I0+umo31wwri1DdSuV2v8C1cvhHRwxOO0xtSVc6EMsV0K4zG68P4q3ToHC/YbahoaB6AMFdT7MIg==
   dependencies:
     react "^16.13.0"
-    react-dom "^16.13.0"
     styled-components "^5.1.0"
     testokur-utils "^1.2.12"
 
