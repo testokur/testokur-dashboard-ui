@@ -37,7 +37,7 @@
     "redux-oidc": "^3.1.2",
     "redux-saga": "^1.0.3",
     "testokur-ui": "^1.0.10",
-    "testokur-utils": "^1.2.12",
+    "testokur-utils": "^1.2.18",
     "typesafe-actions": "^5.1.0"
   },
   "devDependencies": {
