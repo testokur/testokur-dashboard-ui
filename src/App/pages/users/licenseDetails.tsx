@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { isUndefined } from 'testokur-utils';
-import { withStyles, Switch, FormControlLabel } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 import { ActivateSwitch } from './ActivateSwitch';
 import { styles } from './licenseDetails.styles';
 import { LicenseTypeSelect } from '../../licenseTypeSelect';
@@ -9,6 +9,7 @@ import { User } from './types';
 import { CitySelect } from '../../city';
 import { PhoneField, FormTextbox } from '../../components';
 import { SmsDetails } from './smsDetails';
+import { CheckBox } from 'testokur-ui';
 
 interface Props {
   user: User;
@@ -76,18 +77,10 @@ const licenseDetails = (props: Props) => {
         value={props.user.referrer}
         onChange={(e) => props.onChange({ ...props.user, referrer: e.target.value })}
       />
-      <FormControlLabel
-        control={
-          <Switch
-            color="primary"
-            checked={isUndefined(props.user.canScan) ? false : props.user.canScan}
-            value="canScan"
-            onChange={(e) => props.onChange({ ...props.user, canScan: e.target.checked })}
-          />
-        }
+      <CheckBox
         label="Tarama Yapabilir"
-        labelPlacement="start"
-      />
+        checked={isUndefined(props.user.canScan) ? false : props.user.canScan}
+        onChange={(e) => props.onChange({ ...props.user, canScan: e.target.checked })} />
       <SmsDetails user={props.user} onChange={props.onChange} />
       <FormTextbox
         label="Isim"

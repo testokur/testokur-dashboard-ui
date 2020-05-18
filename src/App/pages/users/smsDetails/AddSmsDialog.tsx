@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Dialog, DialogActions, DialogContent, TextField, Switch, FormControlLabel } from '@material-ui/core';
+import { Button, Dialog, DialogActions, DialogContent, TextField } from '@material-ui/core';
 import { DefaultTransition } from '../../../components';
+import { CheckBox } from 'testokur-ui';
 
 interface Props {
   open: boolean;
@@ -24,12 +25,7 @@ export const AddSmsDialog = (props: Props) => {
           type="number"
           fullWidth
         />
-        <FormControlLabel
-          value="start"
-          control={<Switch color="primary" checked={gift} onChange={(e) => setGift(e.target.checked)} />}
-          label="Hediye SMS"
-          labelPlacement="end"
-        />
+        <CheckBox label="Hediye SMS" checked={gift} onChange={(e) => setGift(e.target.checked)} />
       </DialogContent>
       <DialogActions>
         <Button onClick={props.onClose} color="primary">
