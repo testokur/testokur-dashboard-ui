@@ -80,7 +80,8 @@ const licenseDetails = (props: Props) => {
       <CheckBox
         label="Tarama Yapabilir"
         checked={isUndefined(props.user.canScan) ? false : props.user.canScan}
-        onChange={(e) => props.onChange({ ...props.user, canScan: e.target.checked })} />
+        onChange={(e) => props.onChange({ ...props.user, canScan: e.target.checked })}
+      />
       <SmsDetails user={props.user} onChange={props.onChange} />
       <FormTextbox
         label="Isim"

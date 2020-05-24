@@ -12,12 +12,7 @@ test('spinner should be rendered and button should be disabled when loading', ()
     </ThemeProvider>,
   );
   expect(wrapper.find('div[type="ButtonLoader"]').length).toBeGreaterThanOrEqual(1);
-  expect(
-    wrapper
-      .find(Button)
-      .first()
-      .prop('disabled'),
-  ).toBeTruthy();
+  expect(wrapper.find(Button).first().prop('disabled')).toBeTruthy();
 });
 
 test('spinner should not be rendered and button should not be disabled when not loading', () => {
@@ -27,10 +22,5 @@ test('spinner should not be rendered and button should not be disabled when not 
     </ThemeProvider>,
   );
   expect(wrapper.find('div[type="ButtonLoader"]').length).toBe(0);
-  expect(
-    wrapper
-      .find(Button)
-      .first()
-      .prop('disabled'),
-  ).toBeFalsy();
+  expect(wrapper.find(Button).first().prop('disabled')).toBeFalsy();
 });

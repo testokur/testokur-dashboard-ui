@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import { City } from './types';
 import AppState from '../AppState';
 import { fetchCityRequest } from './actions';
-import { withLoading, Select } from '../components';
+import { withLoading } from '../components';
+import { Select, SelectItem, SpacingsAfter } from 'testokur-ui';
 
 interface CitySelectProps {
   cityId: number;
@@ -33,18 +34,20 @@ export class CitySelect extends React.Component<Props> {
     ) : (
       <div>
         <Select
-          text="Sehir"
-          id="city-select"
+          spaceAfter={SpacingsAfter.Medium}
+          placeholder="Sehir"
           value={this.props.cityId.toString()}
-          onChange={(e) => this.props.onChange(e, 0)}
-          items={this.props.cities}
+          items={this.props.cities.map((c) => new SelectItem(c.id, c.name))}
+          onChange={(e) => this.props.onChange(parseInt(e.currentTarget.value, 10), 0)}
         />
         <Select
-          text="Ilce"
-          id="district-select"
-          value={this.props.districtId.toString()}
-          onChange={(e) => this.props.onChange(this.props.cityId, e)}
-          items={find(this.props.cities, (x) => x.id === this.props.cityId).districts}
+          spaceAfter={SpacingsAfter.Medium}
+          placeholder="Ilce"
+          value={this.props.districtId}
+          onChange={(e) => this.props.onChange(this.props.cityId, parseInt(e.currentTarget.value, 10))}
+          items={(find(this.props.cities, (x) => x.id === this.props.cityId)?.districts ?? []).map(
+            (x) => new SelectItem(x.id, x.name),
+          )}
         />
       </div>
     );

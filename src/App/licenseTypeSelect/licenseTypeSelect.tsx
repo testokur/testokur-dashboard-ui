@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { LicenseTypeModel } from './types';
 import { fetchLicenseTypes } from './actions';
 import AppState from '../AppState';
-import { withLoading, Select } from '../components';
+import { withLoading } from '../components';
+import { SelectItem, Select } from 'testokur-ui';
 
 interface ComponentProps {
   id: number;
@@ -27,11 +28,10 @@ const licenseTypeSelect = (props: Props) => {
   }, []);
   return (
     <Select
-      text="Lisans Turu/Paket"
-      id="license-type-select"
+      placeholder="Lisans Turu/Paket"
       value={isNil(props.id) ? '' : props.id.toString()}
-      onChange={(e) => props.onChange(e)}
-      items={props.licenseTypes}
+      items={props.licenseTypes.map((c) => new SelectItem(c.id, c.name))}
+      onChange={(e) => props.onChange(parseInt(e.currentTarget.value, 10))}
     />
   );
 };

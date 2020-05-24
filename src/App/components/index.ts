@@ -5,6 +5,5 @@ export { confirmationDialog as ConfirmationDialog } from './confirmationDialog';
 export { PhoneField } from './PhoneField';
 export { default as DefaultTransition } from './defaultTransition';
 export { default as InteractiveButtonWithSpinner } from './InteractiveButtonWithSpinner';
-export { default as Select } from './select';
 export { Table } from './Table';
 export { FormTextbox } from './FormTextbox';

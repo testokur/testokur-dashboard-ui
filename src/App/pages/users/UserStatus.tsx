@@ -49,13 +49,13 @@ const useStyles = makeStyles((theme: Theme) => ({
 function getStatus(props: Props): Status {
   if (props.active) {
     return isUndefined(props.expirationDate) || props.expirationDate > new Date()
-      ? new Status('active', (<CheckCircleOutlineIcon />), UserStatuses.Active)
-      : new Status('expired', (<HourglassFull />), UserStatuses.Expired);
+      ? new Status('active', <CheckCircleOutlineIcon />, UserStatuses.Active)
+      : new Status('expired', <HourglassFull />, UserStatuses.Expired);
   }
 
   return isNil(props.expirationDate)
-    ? new Status('pending', (<AccessTime />), UserStatuses.PendingForActivation)
-    : new Status('cancelled', (<Cancel />), UserStatuses.Deactivated);
+    ? new Status('pending', <AccessTime />, UserStatuses.PendingForActivation)
+    : new Status('cancelled', <Cancel />, UserStatuses.Deactivated);
 }
 
 export const UserStatus = (props: Props) => {
