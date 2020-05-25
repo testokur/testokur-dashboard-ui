@@ -8236,9 +8236,9 @@ test-exclude@^6.0.0:
     glob "^7.1.4"
     minimatch "^3.0.4"
 
-testokur-ui@^1.0.17:
-  version "1.0.17"
-  resolved "https://registry.yarnpkg.com/testokur-ui/-/testokur-ui-1.0.17.tgz#ed0c1e423c00a9ff8d791199089f8069cfb1ce2c"
+testokur-ui@^1.0.19:
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/testokur-ui/-/testokur-ui-1.0.19.tgz#384444994c280c9671f6e8d9e2d4f422803b752b"
   dependencies:
     react "^16.13.0"
     styled-components "^5.1.0"
