@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { isUndefined } from 'testokur-utils';
 import { webApiClient } from '../../../modules';
 import { ConfirmationDialog, withLoading } from '../../components';
-import { CheckBox } from 'testokur-ui';
+import { Checkbox } from 'testokur-ui';
 
 interface Props {
   active: boolean;
@@ -39,7 +39,7 @@ export const ActivateSwitch = (props: Props) => {
 
   const activateSwitch = (innerProps: { loading: boolean }) => (
     <div>
-      <CheckBox checked={props.active} onChange={onSwitchClick} label="Lisans Durumu" />
+      <Checkbox checked={props.active} onChange={onSwitchClick} label="Lisans Durumu" />
       <ConfirmationDialog
         open={openDialog}
         title={'Lisans Aktivasyon'}

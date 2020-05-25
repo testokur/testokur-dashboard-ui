@@ -9,7 +9,7 @@ import { User } from './types';
 import { CitySelect } from '../../city';
 import { PhoneField, FormTextbox } from '../../components';
 import { SmsDetails } from './smsDetails';
-import { CheckBox } from 'testokur-ui';
+import { Checkbox } from 'testokur-ui';
 
 interface Props {
   user: User;
@@ -77,7 +77,7 @@ const licenseDetails = (props: Props) => {
         value={props.user.referrer}
         onChange={(e) => props.onChange({ ...props.user, referrer: e.target.value })}
       />
-      <CheckBox
+      <Checkbox
         label="Tarama Yapabilir"
         checked={isUndefined(props.user.canScan) ? false : props.user.canScan}
         onChange={(e) => props.onChange({ ...props.user, canScan: e.target.checked })}

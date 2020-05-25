@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, TextField } from '@material-ui/core';
 import { DefaultTransition } from '../../../components';
-import { CheckBox } from 'testokur-ui';
+import { Checkbox } from 'testokur-ui';
 
 interface Props {
   open: boolean;
@@ -25,7 +25,7 @@ export const AddSmsDialog = (props: Props) => {
           type="number"
           fullWidth
         />
-        <CheckBox label="Hediye SMS" checked={gift} onChange={(e) => setGift(e.target.checked)} />
+        <Checkbox label="Hediye SMS" checked={gift} onChange={(e) => setGift(e.target.checked)} />
       </DialogContent>
       <DialogActions>
         <Button onClick={props.onClose} color="primary">

@@ -5,7 +5,7 @@ import { Grid, Avatar, withStyles, Fab } from '@material-ui/core';
 import { Divider, SpacingsAfter, Tabs } from 'testokur-ui';
 import PersonIcon from '@material-ui/icons/Person';
 import { styles } from './styles';
-import { UserStatus } from './UserStatus';
+import UserStatus from './UserStatus';
 import LicenseDetails from './licenseDetails';
 import { ResetUserPassword } from './resetUserPassword';
 import { ConfirmationDialog, MessageBox } from '../../components';
