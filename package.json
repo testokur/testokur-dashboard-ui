@@ -83,7 +83,7 @@
     "react-redux-typescript-scripts": "^1.6.2",
     "rimraf": "^3.0.0",
     "sonarqube-scanner": "^2.7.0",
-    "terser-webpack-plugin": "^3.0.6",
+    "terser-webpack-plugin": "^3.0.7",
     "ts-jest": "^25.3.0",
     "tslint": "^5.19.0",
     "tslint-config-prettier": "^1.18.0",
