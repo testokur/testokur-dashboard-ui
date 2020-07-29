@@ -27,7 +27,7 @@
     "react": "^16.13.1",
     "react-device-detect": "^1.13.1",
     "react-dom": "^16.8.6",
-    "react-material-ui-form-validator": "^2.0.9",
+    "react-material-ui-form-validator": "^2.1.0",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.0.0",
     "react-router-redux": "^4.0.8",
