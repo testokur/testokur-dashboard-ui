@@ -79,7 +79,7 @@
     "husky": "^4.2.3",
     "jest": "^25.2.4",
     "jest-sonar-reporter": "^2.0.0",
-    "prettier": "^2.1.0",
+    "prettier": "^2.1.1",
     "react-redux-typescript-scripts": "^1.6.2",
     "rimraf": "^3.0.0",
     "sonarqube-scanner": "^2.7.0",
