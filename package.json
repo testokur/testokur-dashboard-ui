@@ -24,7 +24,7 @@
     "history": "^4.9.0",
     "material-table": "^1.69.1",
     "oidc-client": "^1.7.1",
-    "react": "^16.13.1",
+    "react": "^16.14.0",
     "react-device-detect": "^1.14.0",
     "react-dom": "^16.8.6",
     "react-material-ui-form-validator": "^2.1.1",
