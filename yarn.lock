@@ -7571,12 +7571,12 @@ react-beautiful-dnd@^13.0.0:
     redux "^4.0.4"
     use-memo-one "^1.1.1"
 
-react-device-detect@^1.14.0:
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/react-device-detect/-/react-device-detect-1.14.0.tgz#ae8bf8cff85055c030f97aa491a0c2b06c472644"
-  integrity sha512-fXFsZoTeLVrONrUr2sqCAXvnbouwyuqlBWoa3K92goCiPM1lUBvZqekv5TY3C02U/IrdoKLOBPFITYluwxKFyw==
+react-device-detect@^1.15.0:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/react-device-detect/-/react-device-detect-1.15.0.tgz#5321f94ae3c4d51ef399b0502a6c739e32d0f315"
+  integrity sha512-ywjtWW04U7vaJK87IAFHhKozZhTPeDVWsfYx5CxQSQCjU5+fnMMxWZt9HnVWaNTqBEn6g8wCNWyqav7sXJrURg==
   dependencies:
-    ua-parser-js "^0.7.22"
+    ua-parser-js "^0.7.23"
 
 react-dom@^16.14.0:
   version "16.14.0"
@@ -9274,10 +9274,10 @@ typical@^5.0.0, typical@^5.2.0:
   resolved "https://registry.yarnpkg.com/typical/-/typical-5.2.0.tgz#4daaac4f2b5315460804f0acf6cb69c52bb93066"
   integrity sha512-dvdQgNDNJo+8B2uBQoqdb11eUCE1JQXhvjC/CZtgvZseVd5TYMXnq0+vuUemXbd/Se29cTaUuPX3YIc2xgbvIg==
 
-ua-parser-js@^0.7.22:
-  version "0.7.22"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.22.tgz#960df60a5f911ea8f1c818f3747b99c6e177eae3"
-  integrity sha512-YUxzMjJ5T71w6a8WWVcMGM6YWOTX27rCoIQgLXiWaxqXSx9D7DNjiGWn1aJIRSQ5qr0xuhra77bSIh6voR/46Q==
+ua-parser-js@^0.7.23:
+  version "0.7.23"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.23.tgz#704d67f951e13195fbcd3d78818577f5bc1d547b"
+  integrity sha512-m4hvMLxgGHXG3O3fQVAyyAQpZzDOvwnhOTjYz5Xmr7r/+LpkNy3vJXdVRWgd1TkAb7NGROZuSy96CrlNVjA7KA==
 
 unbzip2-stream@^1.0.9:
   version "1.4.3"
