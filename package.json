@@ -23,7 +23,7 @@
     "guid-typescript": "^1.0.9",
     "history": "^4.9.0",
     "material-table": "^1.69.1",
-    "oidc-client": "^1.7.1",
+    "oidc-client": "^1.11.3",
     "react": "^16.14.0",
     "react-device-detect": "^1.15.0",
     "react-dom": "^16.14.0",
