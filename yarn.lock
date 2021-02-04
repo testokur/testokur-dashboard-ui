@@ -7570,10 +7570,10 @@ react-double-scrollbar@0.0.15:
   resolved "https://registry.yarnpkg.com/react-double-scrollbar/-/react-double-scrollbar-0.0.15.tgz#e915ab8cb3b959877075f49436debfdb04288fe4"
   integrity sha1-6RWrjLO5WYdwdfSUNt6/2wQoj+Q=
 
-react-form-validator-core@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-form-validator-core/-/react-form-validator-core-1.0.1.tgz#347400746f9f650b128d217342259e35c657d8e9"
-  integrity sha512-5saUtkeGhmjYoN3SeVtTyc+rO3Saxo8MzERQU9HHC+0bM1EIe24j62mYGk9aZv/eti51eRNOTZMmilIvSHt4LQ==
+react-form-validator-core@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-form-validator-core/-/react-form-validator-core-1.1.0.tgz#a0afa7af9b090374ad29be6d9bcfe7bdd2203f93"
+  integrity sha512-r7EKKm6e7YAZHbwiaxrVnBPMUIdYGMM0tOzvz4d9D6vqKqfqjmfUK5lFb/fy5o/+mkOvxM6alFdv5i5mC1KruQ==
   dependencies:
     create-react-context "^0.3.0"
     promise-polyfill "8.1.0"
@@ -7595,13 +7595,13 @@ react-lifecycles-compat@^3.0.2:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-material-ui-form-validator@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/react-material-ui-form-validator/-/react-material-ui-form-validator-2.1.2.tgz#d191738aee8fd9a8a809c169d55b7bf262917509"
-  integrity sha512-IyAB7rRbSIrwNtvOy+80C5CB3FX0rUqgNgXWCdJKGrGiJUAuhOrOqVjMSojNAoJppl0hX23nmW+MMdvEBIRvMQ==
+react-material-ui-form-validator@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/react-material-ui-form-validator/-/react-material-ui-form-validator-2.1.3.tgz#0807fb32c083532f846f0dbca8b313cd7689a8d9"
+  integrity sha512-i525YsjLH93PB6CT6FRQYo5mh/fTCsphvC1ppBxrrfBTlna9fku0KsG7sHv35fArSuc6vT34Bppf3uBy12errg==
   dependencies:
     prop-types "^15.0.0"
-    react-form-validator-core "1.0.1"
+    react-form-validator-core "1.1.0"
 
 react-redux-typescript-scripts@^1.6.2:
   version "1.6.2"
