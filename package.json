@@ -22,7 +22,7 @@
     "connected-react-router": "^6.9.1",
     "guid-typescript": "^1.0.9",
     "history": "^4.9.0",
-    "material-table": "^1.69.1",
+    "material-table": "^1.69.3",
     "oidc-client": "^1.11.5",
     "react": "^16.14.0",
     "react-device-detect": "^1.17.0",
