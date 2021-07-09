@@ -1657,10 +1657,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-material-ui-form-validator@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@types/react-material-ui-form-validator/-/react-material-ui-form-validator-2.1.0.tgz#59db64dd8dbdf0e510cd18349d29e1d0e2df4f3d"
-  integrity sha512-izwjulCvMsN01H8oF8X1IN7QDMHeaGmjYoAxL/cmlUJLtFH0BLLUNmlmZERrjNM+MOJAXUaOkwoCqOHlCtqCzQ==
+"@types/react-material-ui-form-validator@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@types/react-material-ui-form-validator/-/react-material-ui-form-validator-2.1.1.tgz#bf3f3f60b8e33deba04e5ce90c47442b237db1e5"
+  integrity sha512-76ldksssD8lTLd+TAhQh9rz1MBgdm17M07GlYH3H56f6Us30RW/8tfaus528GAmH6/ePPJrWNt41yC9V27aLbQ==
   dependencies:
     "@types/material-ui" "*"
     "@types/react" "*"
